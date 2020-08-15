@@ -91,8 +91,8 @@ dependencies {
 
 	// Mostly Used for compileOnly, if you prefer normal IC2, uncomment it instead.
     //provided "net.industrial-craft:industrialcraft-2:${config.ic2.version}:dev"  
-    compile "ic2:IC2Classic:1.2.1.8:dev"
-    
+	compile "net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev"
+	compileOnly "blusunrize:ImmersiveEngineering:0.7.7:deobf"
 	compile "mcp.mobius.waila:Waila:1.5.11-RC2-NONEI_1.7.10:dev"
 	compile "codechicken:CodeChickenLib:1.7.10-1.1.3.140:dev"
 	compile "codechicken:CodeChickenCore:1.7.10-1.0.7.47:dev"

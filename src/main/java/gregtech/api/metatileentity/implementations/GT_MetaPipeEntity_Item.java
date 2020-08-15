@@ -1,6 +1,7 @@
 package gregtech.api.metatileentity.implementations;
 
 import gregtech.GT_Mod;
+import gregtech.api.GregTech_API;
 import gregtech.api.enums.*;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
@@ -10,7 +11,6 @@ import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.metatileentity.BaseMetaPipeEntity;
 import gregtech.api.metatileentity.MetaPipeEntity;
 import gregtech.api.objects.GT_RenderedTexture;
-import gregtech.api.util.GT_CoverBehavior;
 import gregtech.api.util.GT_Utility;
 import gregtech.common.GT_Client;
 import net.minecraft.entity.Entity;
@@ -26,6 +26,8 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import static gregtech.api.enums.GT_Values.GT;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -38,6 +40,7 @@ public class GT_MetaPipeEntity_Item extends MetaPipeEntity implements IMetaTileE
     public int mTransferredItems = 0;
     public byte mLastReceivedFrom = 0, oLastReceivedFrom = 0;
     public boolean mIsRestrictive = false;
+    private boolean mCheckConnections = !GT_Mod.gregtechproxy.gt6Pipe;
 
     public GT_MetaPipeEntity_Item(int aID, String aName, String aNameRegional, float aThickNess, Materials aMaterial, int aInvSlotCount, int aStepSize, boolean aIsRestrictive, int aTickTime) {
         super(aID, aName, aNameRegional, aInvSlotCount, false);
@@ -154,6 +157,8 @@ public class GT_MetaPipeEntity_Item extends MetaPipeEntity implements IMetaTileE
     public void loadNBTData(NBTTagCompound aNBT) {
         mLastReceivedFrom = aNBT.getByte("mLastReceivedFrom");
         if (GT_Mod.gregtechproxy.gt6Pipe) {
+        	if (!aNBT.hasKey("mConnections"))
+        		mCheckConnections = true;
         	mConnections = aNBT.getByte("mConnections");
         }
     }
@@ -163,7 +168,17 @@ public class GT_MetaPipeEntity_Item extends MetaPipeEntity implements IMetaTileE
         if (aBaseMetaTileEntity.isServerSide() && aTick % 10 == 0) {
             if (aTick % mTickTime == 0) mTransferredItems = 0;
 
-            if (!GT_Mod.gregtechproxy.gt6Pipe || mCheckConnections) checkConnections();
+            for (byte tSide = 0; tSide < 6; tSide++) {
+            	ICoverable tBaseMetaTileEntity = aBaseMetaTileEntity.getTileEntityAtSide(tSide) instanceof ICoverable ? (ICoverable) aBaseMetaTileEntity.getTileEntityAtSide(tSide) : null;
+            	byte uSide = GT_Utility.getOppositeSide(tSide);
+                if ((mCheckConnections || isConnectedAtSide(tSide)
+                			|| aBaseMetaTileEntity.getCoverBehaviorAtSide(tSide).alwaysLookConnected(tSide, aBaseMetaTileEntity.getCoverIDAtSide(tSide), aBaseMetaTileEntity.getCoverDataAtSide(tSide), aBaseMetaTileEntity)
+                			|| (tBaseMetaTileEntity != null && tBaseMetaTileEntity.getCoverBehaviorAtSide(uSide).alwaysLookConnected(uSide, tBaseMetaTileEntity.getCoverIDAtSide(uSide), tBaseMetaTileEntity.getCoverDataAtSide(uSide), tBaseMetaTileEntity)))
+                		&& connect(tSide) == 0) {
+                	disconnect(tSide);
+                }
+            }
+            if (GT_Mod.gregtechproxy.gt6Pipe) mCheckConnections = false;
 
             if (oLastReceivedFrom == mLastReceivedFrom) {
                 doTickProfilingInThisTick = false;
@@ -206,48 +221,58 @@ public class GT_MetaPipeEntity_Item extends MetaPipeEntity implements IMetaTileE
     }
 
 	@Override
-    public boolean letsIn(GT_CoverBehavior coverBehavior, byte aSide, int aCoverID, int aCoverVariable, ICoverable aTileEntity) {
-        return coverBehavior.letsItemsIn(aSide, aCoverID, aCoverVariable, -1, aTileEntity);
-    }
-
-    @Override
-    public boolean letsOut(GT_CoverBehavior coverBehavior, byte aSide, int aCoverID, int aCoverVariable, ICoverable aTileEntity) {
-        return coverBehavior.letsItemsOut(aSide, aCoverID, aCoverVariable, -1, aTileEntity);
+	public int connect(byte aSide) {
+		int rConnect = 0;
+		if (aSide >= 6) return rConnect;
+		TileEntity tTileEntity = getBaseMetaTileEntity().getTileEntityAtSide(aSide);
+		byte tSide = GT_Utility.getOppositeSide(aSide);
+        if (tTileEntity != null) {
+            boolean temp = GT_Utility.isConnectableNonInventoryPipe(tTileEntity, tSide);
+            if (tTileEntity instanceof IGregTechTileEntity) {
+                temp = true;
+                if (((IGregTechTileEntity) tTileEntity).getMetaTileEntity() == null) return rConnect;
+                if (getBaseMetaTileEntity().getColorization() >= 0) {
+                    byte tColor = ((IGregTechTileEntity) tTileEntity).getColorization();
+                    if (tColor >= 0 && tColor != getBaseMetaTileEntity().getColorization()) {
+                    	return rConnect;
+                    }
                 }
-
-    @Override
-    public boolean canConnect(byte aSide, TileEntity tTileEntity) {
-        if (tTileEntity == null) return false;
-
-        final byte tSide = GT_Utility.getOppositeSide(aSide);
-        boolean connectable = GT_Utility.isConnectableNonInventoryPipe(tTileEntity, tSide);
-
-        final IGregTechTileEntity gTileEntity = (tTileEntity instanceof IGregTechTileEntity) ? (IGregTechTileEntity) tTileEntity : null;
-        if (gTileEntity != null) {
-            if (gTileEntity.getMetaTileEntity() == null) return false;
-            if (gTileEntity.getMetaTileEntity().connectsToItemPipe(tSide)) return true;
-            connectable = true;
+                if (((IGregTechTileEntity) tTileEntity).getMetaTileEntity().connectsToItemPipe(tSide)) {
+                	rConnect = 1;
                 }
-
+            }
+            if (rConnect == 0) {
             	if (tTileEntity instanceof IInventory) {
-            if (((IInventory) tTileEntity).getSizeInventory() <= 0) return false;
-            connectable = true;
+                    temp = true;
+                    if (((IInventory) tTileEntity).getSizeInventory() <= 0) {
+                    	return rConnect;
+                    }
                 }
                 if (tTileEntity instanceof ISidedInventory) {
+                    temp = true;
                     int[] tSlots = ((ISidedInventory) tTileEntity).getAccessibleSlotsFromSide(tSide);
-            if (tSlots == null || tSlots.length <= 0) return false;
-            connectable = true;
+                    if (tSlots == null || tSlots.length <= 0) {
+                    	return rConnect;
+                    }
                 }
-
-        return connectable;
-		}
-
-    @Override
-    public boolean getGT6StyleConnection() {
-        // Yes if GT6 pipes are enabled
-        return GT_Mod.gregtechproxy.gt6Pipe;
+                if (temp) {
+                    if (getBaseMetaTileEntity().getCoverBehaviorAtSide(aSide).letsItemsIn(aSide, getBaseMetaTileEntity().getCoverIDAtSide(aSide), getBaseMetaTileEntity().getCoverDataAtSide(aSide), -1, getBaseMetaTileEntity())
+                    		|| getBaseMetaTileEntity().getCoverBehaviorAtSide(aSide).letsItemsOut(aSide, getBaseMetaTileEntity().getCoverIDAtSide(aSide), getBaseMetaTileEntity().getCoverDataAtSide(aSide), -1, getBaseMetaTileEntity())) {
+                    	rConnect = 1;
+                    }
+                }
+            }
         }
-
+		if (rConnect == 0) {
+			if (!getBaseMetaTileEntity().getWorld().getChunkProvider().chunkExists(getBaseMetaTileEntity().getOffsetX(aSide, 1) >> 4, getBaseMetaTileEntity().getOffsetZ(aSide, 1) >> 4)) { // if chunk unloaded
+				rConnect = -1;
+			}
+		}
+        if (rConnect > 0) {
+        	super.connect(aSide);
+        }
+        return rConnect;
+	}
 
     @Override
     public boolean incrementTransferCounter(int aIncrement) {
