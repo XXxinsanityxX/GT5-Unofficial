@@ -49,8 +49,8 @@ public class GT_MetaTileEntity_ProcessingArray extends GT_MetaTileEntity_MultiBl
                 "1x Output Hatch/Bus (Any casing)",
                 "1x Maintenance Hatch (Any casing)",
                 "1x Energy Hatch (Any casing)",
-                "Robust Tungstensteel Machine Casings for the rest (16 at least!)",
-                "Place up to 16 Single Block GT Machines into the Controller Inventory"};
+                "Robust Tungstensteel Machine Casings for the rest (14 at least!)",
+                "Place up to 64 Single Block GT Machines into the Controller Inventory"};
     }
 
     public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, byte aSide, byte aFacing, byte aColorIndex, boolean aActive, boolean aRedstone) {
@@ -213,7 +213,7 @@ public class GT_MetaTileEntity_ProcessingArray extends GT_MetaTileEntity_MultiBl
                 this.mEUt = 0;
                 this.mOutputItems = null;
                 this.mOutputFluids = null;
-                int machines = Math.min(16, mInventory[1].stackSize);
+                int machines = Math.min(64, mInventory[1].stackSize);
                 int i = 0;
                 for (; i < machines; i++) {
                     if (!tRecipe.isRecipeInputEqual(true, tFluids, tInputs)) {
@@ -323,7 +323,7 @@ public class GT_MetaTileEntity_ProcessingArray extends GT_MetaTileEntity_MultiBl
                 }
             }
         }
-        return tAmount >= 16;
+        return tAmount >= 14;
     }
 
     public int getMaxEfficiency(ItemStack aStack) {
