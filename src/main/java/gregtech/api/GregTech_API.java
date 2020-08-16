@@ -204,6 +204,7 @@ public class GregTech_API {
     public static boolean mMagneticraft = false;
     public static boolean mImmersiveEngineering = false;
     public static boolean mGTPlusPlus = false;
+    public static boolean mTConstruct = false;
 
     public static boolean mUseOnlyGoodSolderingMaterials = false;
 

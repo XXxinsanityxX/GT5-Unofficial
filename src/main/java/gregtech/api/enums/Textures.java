@@ -144,8 +144,8 @@ public class Textures {
             	OVERLAY_OAK,
                 MACHINE_BRONZEPLATEDBRICKS,
                 MACHINE_CASING_SOLID_STEEL,
+                MACHINE_CASING_CLEAN_STAINLESSSTEEL,
                 MACHINE_CASING_STABLE_TITANIUM,
-                MACHINE_CASING_ROBUST_TUNGSTENSTEEL,
 
         	},
             MACHINECASINGS_SIDE = new IIconContainer[]{

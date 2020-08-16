@@ -84,6 +84,10 @@ repositories {
 		name = "ic2"
 		url = "http://maven.ic2.player.to/"
 	}
+	maven { // TConstruct
+		name 'DVS1 Maven FS'
+		url 'http://dvs1.progwml6.com/files/maven'
+	}
 }
 
 dependencies {
@@ -93,6 +97,7 @@ dependencies {
     //provided "net.industrial-craft:industrialcraft-2:${config.ic2.version}:dev"  
 	compile "net.industrial-craft:industrialcraft-2:2.2.828-experimental:dev"
 	compileOnly "blusunrize:ImmersiveEngineering:0.7.7:deobf"
+	compile "tconstruct:TConstruct:${config.minecraft.version}-${config.tconstruct.version}:deobf"
 	compile "mcp.mobius.waila:Waila:1.5.11-RC2-NONEI_1.7.10:dev"
 	compile "codechicken:CodeChickenLib:1.7.10-1.1.3.140:dev"
 	compile "codechicken:CodeChickenCore:1.7.10-1.0.7.47:dev"
