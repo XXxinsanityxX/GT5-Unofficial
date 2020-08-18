@@ -149,7 +149,6 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials TarPitch = new Materials(-1, TextureSet.SET_NONE, 		1.0F, 0, 2, 1|2, 255, 255, 255, 0, "TarPitch", "Tar Pitch", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
     public static Materials Serpentine = new Materials(-1, TextureSet.SET_NONE, 	1.0F, 0, 2, 1|2, 255, 255, 255, 0, "Serpentine", "Serpentine", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
     public static Materials Flux = new Materials(-1, TextureSet.SET_NONE, 			1.0F, 0, 2, 1, 255, 255, 255, 0, "Flux", "Flux", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
-    public static Materials RedstoneAlloy = new Materials(-1, TextureSet.SET_NONE, 	1.0F, 0, 2, 1, 255, 255, 255, 0, "RedstoneAlloy", "Redstone Alloy", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
     public static Materials OsmiumTetroxide = new Materials(-1, TextureSet.SET_NONE,1.0F, 0, 2, 1, 255, 255, 255, 0, "OsmiumTetroxide", "Osmium Tetroxide", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
     public static Materials RubberTreeSap = new Materials(-1, TextureSet.SET_NONE, 	1.0F, 0, 2, 0, 255, 255, 255, 0, "RubberTreeSap", "Rubber Tree Sap", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
     public static Materials AquaRegia = new Materials(-1, TextureSet.SET_NONE, 		1.0F, 0, 2, 0, 255, 255, 255, 0, "AquaRegia", "Aqua Regia", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
@@ -157,19 +156,11 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials SolutionNickelSulfate  = new Materials(-1, TextureSet.SET_NONE, 1.0F, 0, 2, 0, 255, 255, 255, 0, "SolutionNickelSulfate", "Nickel Sulfate Solution", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
     public static Materials Signalum = new Materials(-1, TextureSet.SET_NONE, 		1.0F, 0, 2, 1|2, 255, 255, 255, 0, "Signalum", "Signalum", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
     public static Materials Lumium = new Materials(-1, TextureSet.SET_NONE, 		1.0F, 0, 2, 1|2, 255, 255, 255, 0, "Lumium", "Lumium", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
-    public static Materials PhasedIron = new Materials(-1, TextureSet.SET_NONE, 	1.0F, 0, 2, 1|2, 255, 255, 255, 0, "PhasedIron", "Phased Iron", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
-    public static Materials PhasedGold = new Materials(-1, TextureSet.SET_NONE, 	1.0F, 0, 2, 1|2, 255, 255, 255, 0, "PhasedGold", "Phased Gold", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
-    public static Materials Soularium = new Materials(-1, TextureSet.SET_NONE, 		1.0F, 0, 2, 1, 255, 255, 255, 0, "Soularium", "Soularium", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
     public static Materials Endium = new Materials(770, TextureSet.SET_DULL, 		1.0F, 0, 2, 1|2, 165, 220, 250, 0, "Endium", "Endium", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes.dyeYellow);
     public static Materials Prismarine = new Materials(-1, TextureSet.SET_NONE, 	1.0F, 0, 2, 1|4, 255, 255, 255, 0, "Prismarine", "Prismarine", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
     public static Materials GraveyardDirt = new Materials(-1, TextureSet.SET_NONE, 	1.0F, 0, 2, 1, 255, 255, 255, 0, "GraveyardDirt", "Graveyard Dirt", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
-    public static Materials DarkSteel = new Materials(364, TextureSet.SET_DULL, 	8.0F, 512, 3, 1|2|8 |64, 80, 70, 80, 0, "DarkSteel", "Dark Steel", 0, 0, 1811, 0, false, false, 5, 1, 1, Dyes.dyePurple);
     public static Materials Terrasteel = new Materials(-1, TextureSet.SET_NONE, 	1.0F, 0, 2, 1|2, 255, 255, 255, 0, "Terrasteel", "Terrasteel", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
-    public static Materials ConductiveIron = new Materials(-1, TextureSet.SET_NONE, 1.0F, 0, 2, 1|2, 255, 255, 255, 0, "ConductiveIron", "Conductive Iron", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
-    public static Materials ElectricalSteel = new Materials(-1, TextureSet.SET_NONE,1.0F, 0, 2, 1|2, 255, 255, 255, 0, "ElectricalSteel", "Electrical Steel", 0, 0, 1811, 1000, true, false, 3, 1, 1, Dyes._NULL);
-    public static Materials EnergeticAlloy = new Materials(-1, TextureSet.SET_NONE, 1.0F, 0, 2, 1|2, 255, 255, 255, 0, "EnergeticAlloy", "Energetic Alloy", 0, 0, 1950, 1950, true, false, 3, 1, 1, Dyes._NULL);
-    public static Materials VibrantAlloy = new Materials(-1, TextureSet.SET_NONE, 	1.0F, 0, 2, 1|2, 255, 255, 255, 0, "VibrantAlloy", "Vibrant Alloy", 0, 0, 3300, 3300, true, false, 3, 1, 1, Dyes._NULL);
-    public static Materials PulsatingIron = new Materials(-1, TextureSet.SET_NONE, 	1.0F, 0, 2, 1|2, 255, 255, 255, 0, "PulsatingIron", "Pulsating Iron", 0, 0, 1600, 1600, true, false, 3, 1, 1, Dyes._NULL);
+
     public static Materials Teslatite = new Materials(-1, TextureSet.SET_NONE, 		1.0F, 0, 2, 1, 60, 180, 200, 0, "Teslatite", "Teslatite", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
     public static Materials Fluix = new Materials(-1, TextureSet.SET_NONE, 			1.0F, 0, 2, 1|4, 255, 255, 255, 0, "Fluix", "Fluix", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
     public static Materials Manasteel = new Materials(-1, TextureSet.SET_NONE, 		1.0F, 0, 2, 1|2, 255, 255, 255, 0, "Manasteel", "Manasteel", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
@@ -244,7 +235,6 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials Eclogite = new Materials(860, TextureSet.SET_DULL, 		1.0F, 0, 2, 1, 255, 255, 255, 0, "Eclogite", "Eclogite", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes._NULL);
     public static Materials ElectrumFlux = new Materials(320, TextureSet.SET_SHINY,16.0F, 512, 3, 1|2|64, 255, 255, 120, 0, "ElectrumFlux", "Fluxed Electrum", 0, 0, 3000, 3000, true, false, 1, 1, 1, Dyes.dyeYellow);
     public static Materials Emery = new Materials(-1/*861*/, TextureSet.SET_DULL, 		1.0F, 0, 2, 1, 255, 255, 255, 0, "Emery", "Emery", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes._NULL);
-    public static Materials Enderium = new Materials(321, TextureSet.SET_DULL, 		8.0F, 256, 3, 1|2|64, 89, 145, 135, 0, "Enderium", "Enderium", 0, 0, 3000, 3000, true, false, 1, 1, 1, Dyes.dyeGreen, Arrays.asList(new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 2), new TC_AspectStack(TC_Aspects.ALIENIS, 1)));
     public static Materials EnderiumBase = new Materials(-1, TextureSet.SET_DULL, 	8.0F, 256, 3, 1|2|64, 89, 145, 135, 0, "EnderiumBase", "Enderium Base", 0, 0, 3000, 3000, true, false, 1, 1, 1, Dyes.dyeGreen, Arrays.asList(new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 2), new TC_AspectStack(TC_Aspects.ALIENIS, 1)));
     public static Materials Energized = new Materials(-1, TextureSet.SET_NONE, 		1.0F, 0, 2, 0, 255, 255, 255, 0, "Energized", "Energized", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes._NULL);
     public static Materials Epidote = new Materials(862, TextureSet.SET_DULL, 		1.0F, 0, 2, 1, 255, 255, 255, 0, "Epidote", "Epidote", 0, 0, -1, 0, false, false, 0, 1, 1, Dyes._NULL);
@@ -740,7 +730,27 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials IronMagnetic = new Materials( 354, TextureSet.SET_MAGNETIC, 6.0F, 256, 2, 1|2|64|128, 200, 200, 200, 0, "IronMagnetic", "Magnetic Iron", 0, 0, -1, 0, false, false, 4, 51, 50, Dyes.dyeGray, 1, Arrays.asList(new MaterialStack(Iron, 1)), Arrays.asList(new TC_AspectStack(TC_Aspects.METALLUM, 2), new TC_AspectStack(TC_Aspects.MAGNETO, 1)));
     public static Materials SteelMagnetic = new Materials( 355, TextureSet.SET_MAGNETIC,6.0F, 512, 2, 1|2|64|128, 128, 128, 128, 0, "SteelMagnetic", "Magnetic Steel", 0, 0, 1000, 1000, true, false, 4, 51, 50, Dyes.dyeGray, 1, Arrays.asList(new MaterialStack(Steel, 1)), Arrays.asList(new TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_AspectStack(TC_Aspects.ORDO, 1), new TC_AspectStack(TC_Aspects.MAGNETO, 1)));
     public static Materials NeodymiumMagnetic=new Materials(356,TextureSet.SET_MAGNETIC,7.0F, 512, 2, 1|2|64|128, 100, 100, 100, 0, "NeodymiumMagnetic", "Magnetic Neodymium", 0, 0, 1297, 1297, true, false, 4, 51, 50, Dyes.dyeGray, 1, Arrays.asList(new MaterialStack(Neodymium, 1)), Arrays.asList(new TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_AspectStack(TC_Aspects.MAGNETO, 3)));
-    public static Materials TungstenCarbide =new Materials(370,TextureSet.SET_METALLIC,14.0F, 1280, 4, 1|2|64|128, 51, 0, 102, 0, "TungstenCarbide", "Tungstencarbide", 0, 0, 2460, 2460, true, false, 4, 1, 1, Dyes.dyeBlack, 2, Arrays.asList(new MaterialStack(Tungsten, 1), new MaterialStack(Carbon, 1)));
+    public static Materials TungstenCarbide = new Materials(370,TextureSet.SET_METALLIC,14.0F, 1280, 4, 1|2|64|128, 51, 0, 102, 0, "TungstenCarbide", "Tungstencarbide", 0, 0, 2460, 2460, true, false, 4, 1, 1, Dyes.dyeBlack, 2, Arrays.asList(new MaterialStack(Tungsten, 1), new MaterialStack(Carbon, 1)));
+
+    // ----- EnderIO
+    public static Materials CrudeSteel = new Materials(-1,TextureSet.SET_METALLIC,2.0F,64,2,1|2|64|128,38,38,38,0,"CrudeSteel","ClayCompound",0,0,-1,1000,false,false,4,1,1,Dyes.dyeGray);
+    public static Materials RedstoneAlloy = new Materials(-1,TextureSet.SET_METALLIC,1.0F,0,2,1,255,255,255,0,"RedstoneAlloy","RedstoneAlloy",0,0,-1,0,false,false,3,1,1,Dyes._NULL);
+    public static Materials ConductiveIron = new Materials(-1,TextureSet.SET_METALLIC,1.0F,0,2,1|2,255,255,255,0,"ConductiveIron","ConductiveIron",0,0,-1,0,false,false,3,1,1,Dyes._NULL);
+    public static Materials PulsatingIron = new Materials(-1,TextureSet.SET_METALLIC,1.0F,0,2,1|2,255,255,255,0,"PulsatingIron","PulsatingIron",0,0,1600,1600,true,false,3,1,1,Dyes._NULL);
+    public static Materials ElectricalSteel = new Materials(-1,TextureSet.SET_METALLIC,1.0F,0,2,1|2,255,255,255,0,"ElectricalSteel","ElectricalSteel",0,0,1811,1000,true,false,3,1,1,Dyes._NULL);
+    public static Materials Soularium = new Materials(-1,TextureSet.SET_METALLIC,1.0F,0,2,1,255,255,255,0,"Soularium","Soularium",0,0,-1,0,false,false,3,1,1,Dyes._NULL);
+    public static Materials DarkSteel = new Materials(-1,TextureSet.SET_METALLIC,8.0F,512,3,1|2|8|64,80,70,80,0,"DarkSteel","DarkSteel",0,0,1811,0,false,false,5,1,1,Dyes.dyePurple);
+    public static Materials EnergeticAlloy = new Materials(-1,TextureSet.SET_METALLIC,1.0F,0,2,1|2,255,255,255,0,"EnergeticAlloy","EnergeticAlloy",0,0,1950,1950,true,false,3,1,1,Dyes._NULL);
+    public static Materials VibrantAlloy = new Materials(-1,TextureSet.SET_METALLIC,1.0F,0,2,1|2,255,255,255,0,"VibrantAlloy","VibrantAlloy",0,0,3300,3300,true,false,3,1,1,Dyes._NULL);
+    public static Materials EndSteel = new Materials(-1,TextureSet.SET_METALLIC,12.0F,2000,4,1|2|64|128,223,217,165,0,"EndSteel","EndSteel",0,0,940,3600,true,false,3,1,1,Dyes.dyeYellow);
+    public static Materials CrystallineAlloy = new Materials(-1,TextureSet.SET_METALLIC,18.0F,768,4,1|2|64|128,114,197,197,0,"CrystallineAlloy","CrystallineAlloy",0,0,4500,4500,true,false,4,1,1,Dyes.dyeCyan);
+    public static Materials CrystallinePinkSlime = new Materials(-1,TextureSet.SET_METALLIC,6.0F,128,3,1|2|64|128,184,111,172,0,"CrystallinePinkSlime","CrystallinePinkSlime",0,0,-1,1800,true,false,4,1,1,Dyes.dyePink);
+    public static Materials EnergeticSilver = new Materials(-1,TextureSet.SET_METALLIC,8.0F,512,3,1|2|64|128,149,183,205,0,"EnergeticSilver","EnergeticSilver",0,0,-1,1800,true,false,4,1,1,Dyes.dyeLightBlue);
+    public static Materials VividAlloy = new Materials(-1,TextureSet.SET_METALLIC,12.0F,768,4,1|2|64|128,70,188,219,0,"VividAlloy","VividAlloy",0,0,-1,1800,true,false,4,1,1,Dyes.dyeBlue);
+    public static Materials MelodicAlloy = new Materials(-1,TextureSet.SET_METALLIC,24.0F,1024,5,1|2|64|128,136,98,136,0,"MelodicAlloy","MelodicAlloy",0,0,5400,5400,true,false,4,1,1,Dyes.dyeMagenta);
+    public static Materials StellarAlloy = new Materials(-1,TextureSet.SET_METALLIC,96.0F,10240,7,1|2|64|128,217,220,203,0,"StellarAlloy","StellarAlloy",0,0,7200,7200,true,false,4,1,1,Dyes.dyeWhite);
+    public static Materials Enderium = new Materials(-1,TextureSet.SET_DULL,8.0F,1500,3,1|2|64|128,89,145,135,0,"Enderium","Enderium",0,0,4500,4500,true,false,1,1,1,Dyes.dyeGreen);
+
     // Use GT6 recipe w/o chrome
     //public static Materials VanadiumSteel = new Materials( 371, TextureSet.SET_METALLIC,3.0F, 1920, 3, 1|2|64|128, 192, 192, 192, 0, "VanadiumSteel", "Vanadiumsteel", 0, 0, 1453, 1453, true, false, 4, 1, 1, Dyes.dyeWhite, 2, Arrays.asList(new MaterialStack(Vanadium, 1), new MaterialStack(Chrome, 1), new MaterialStack(Steel, 7)));
     public static Materials VanadiumSteel = new Materials( 371, TextureSet.SET_METALLIC,3.0F, 1920, 3, 1|2|64|128, 192, 192, 192, 0, "VanadiumSteel", "Vanadiumsteel", 0, 0, 1453, 1453, true, false, 4, 1, 1, Dyes.dyeWhite, 2, Arrays.asList(new MaterialStack(Vanadium, 1), new MaterialStack(Steel, 4)));
@@ -1202,8 +1212,8 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         SubTag.METAL.addTo(AnyIron, AnyCopper, AnyBronze, Metal, Aluminium, Americium, Antimony, Beryllium, Bismuth, Caesium, Cerium, Chrome, Cobalt, Copper, Dysprosium, Erbium, Europium, Gadolinium, Gallium, Gold,
                 Holmium, Indium, Iridium, Iron, Lanthanum, Lead, Lutetium, Magnesium, Manganese, Mercury, Niobium, Molybdenum, Neodymium, Neutronium, Nickel, Osmium, Palladium, Platinum, Plutonium, Plutonium241,
                 Praseodymium, Promethium, Rubidium, Samarium, Scandium, Silicon, Silver, Tantalum, Tellurium, Terbium, Thorium, Thulium, Tin, Titanium, Tungsten, Uranium, Uranium235, Vanadium, Ytterbium, Yttrium,
-                Zinc, /**Satinspar, Selenite, Microcline, Sylvite, RefinedGlowstone, RefinedObsidian,**/ Serpentine, Signalum, Lumium, PhasedIron, PhasedGold, DarkSteel, Terrasteel, TinAlloy, ConductiveIron, ElectricalSteel, EnergeticAlloy, VibrantAlloy,
-                PulsatingIron, Manasteel, DarkThaumium, ElvenElementium, EnrichedCopper, DiamondCopper, Adamantium, Amordrine, Angmallen, Ardite, Aredrite, Atlarus, Blutonium, Carmot, Celenegil, Ceruclase, DarkIron,
+                Zinc, /**Satinspar, Selenite, Microcline, Sylvite, RefinedGlowstone, RefinedObsidian,**/ Serpentine, Signalum, Lumium, DarkSteel, Terrasteel, TinAlloy, ConductiveIron, ElectricalSteel, EnergeticAlloy, VibrantAlloy, MelodicAlloy,
+                StellarAlloy, VividAlloy, EnergeticSilver, CrystallinePinkSlime, CrystallineAlloy, CrudeSteel, EndSteel, PulsatingIron, Manasteel, DarkThaumium, ElvenElementium, EnrichedCopper, DiamondCopper, Adamantium, Amordrine, Angmallen, Ardite, Aredrite, Atlarus, Blutonium, Carmot, Celenegil, Ceruclase, DarkIron,
                 Desh, Desichalkos, Duranium, ElectrumFlux, Enderium, EnderiumBase, Eximite, FierySteel, Force, Haderoth, Hematite, Hepatizon, HSLA, Infuscolium, InfusedGold, Inolashite, Mercassium, MeteoricIron,
                 MeteoricSteel, Naquadah, NaquadahAlloy, NaquadahEnriched, Naquadria, ObsidianFlux, Orichalcum, Osmonium, Oureclase, Phoenixite, Prometheum, Sanguinite, Starconium,
                 Tartarite, Thyrium, Tritanium, Vulcanite, Vyroxeres, Yellorium, Zectium, AluminiumBrass, Osmiridium, Sunnarium, AnnealedCopper, BatteryAlloy, Brass, Bronze, ChromiumDioxide, Cupronickel, DeepIron,
