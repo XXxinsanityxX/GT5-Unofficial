@@ -2,14 +2,16 @@ package gregtech.loaders.preload;
 
 import codechicken.nei.api.API;
 import cpw.mods.fml.common.Loader;
-import e99999.barrelBasic;
-import e99999.tankBasic;
 import gregtech.GT_Mod;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.*;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.metatileentity.implementations.*;
-import gregtech.api.util.*;
+import gregtech.api.util.GT_LanguageManager;
+import gregtech.api.util.GT_Log;
+import gregtech.api.util.GT_ModHandler;
+import gregtech.api.util.GT_OreDictUnificator;
+import gregtech.api.util.GT_Recipe;
 import gregtech.common.tileentities.automation.*;
 import gregtech.common.tileentities.boilers.GT_MetaTileEntity_Boiler_Bronze;
 import gregtech.common.tileentities.boilers.GT_MetaTileEntity_Boiler_Lava;
@@ -26,6 +28,7 @@ import gregtech.common.tileentities.machines.steam.*;
 import gregtech.common.tileentities.storage.GT_MetaTileEntity_Locker;
 import gregtech.common.tileentities.storage.GT_MetaTileEntity_QuantumChest;
 import gregtech.common.tileentities.storage.GT_MetaTileEntity_QuantumTank;
+import gregtech.loaders.postload.GT_ProcessingArrayRecipeLoader;
 import ic2.core.Ic2Items;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -60,6 +63,7 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         GT_ModHandler.addCraftingRecipe(ItemList.Casing_FrostProof.get(2L, new Object[0]), bits, new Object[]{"PhP", "PFP", aTextPlateWrench, 'P', OrePrefixes.plate.get(Materials.Aluminium), 'F', OrePrefixes.frameGt.get(Materials.Aluminium)});
         GT_ModHandler.addCraftingRecipe(ItemList.Casing_CleanStainlessSteel.get(2L, new Object[0]), bits, new Object[]{"PhP", "PFP", aTextPlateWrench, 'P', OrePrefixes.plate.get(Materials.StainlessSteel), 'F', OrePrefixes.frameGt.get(Materials.StainlessSteel)});
         GT_ModHandler.addCraftingRecipe(ItemList.Casing_RobustTungstenSteel.get(2L, new Object[0]), bits, new Object[]{"PhP", "PFP", aTextPlateWrench, 'P', OrePrefixes.plate.get(Materials.TungstenSteel), 'F', OrePrefixes.frameGt.get(Materials.TungstenSteel)});
+        GT_ModHandler.addCraftingRecipe(ItemList.Casing_RobustHSSG.get(2L, new Object[0]),bits,new Object[]{"PhP", "EFE", aTextPlateWrench, 'P', OrePrefixes.plate.get(Materials.HSSG), 'E',OrePrefixes.plate.get(Materials.Europium),'F', ItemList.Casing_RobustTungstenSteel});
         GT_ModHandler.addCraftingRecipe(ItemList.Casing_MiningOsmiridium.get(2L, new Object[0]), bits, new Object[]{"PhP", "PFP", aTextPlateWrench, 'P', OrePrefixes.plate.get(Materials.Osmiridium), 'F', OrePrefixes.frameGt.get(Materials.Osmiridium)});
         GT_ModHandler.addCraftingRecipe(ItemList.Casing_Turbine.get(2L, new Object[0]), bits, new Object[]{"PhP", "PFP", aTextPlateWrench, 'P', OrePrefixes.plate.get(Materials.Magnalium), 'F', OrePrefixes.frameGt.get(Materials.BlueSteel)});
         GT_ModHandler.addCraftingRecipe(ItemList.Casing_Turbine1.get(2L, new Object[0]), bits, new Object[]{"PhP", "PFP", aTextPlateWrench, 'P', OrePrefixes.plate.get(Materials.StainlessSteel), 'F', ItemList.Casing_Turbine});
@@ -405,6 +409,11 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         GT_ModHandler.addCraftingRecipe(ItemList.Machine_Steel_Boiler.get(1L, new Object[0]), bits, new Object[]{aTextPlate, "P P", "BFB", 'F', OreDictNames.craftingFurnace, 'P', OrePrefixes.plate.get(Materials.Steel), 'B', new ItemStack(Blocks.brick_block, 1)});
         GT_ModHandler.addCraftingRecipe(ItemList.Machine_Steel_Boiler_Lava.get(1L, new Object[0]), bits, new Object[]{aTextPlate, "GGG", aTextPlateMotor, 'M', ItemList.Hull_Steel_Bricks, 'P', OrePrefixes.plate.get(Materials.Steel), 'G', new ItemStack(Blocks.glass, 1)});
         GT_ModHandler.addCraftingRecipe(ItemList.Machine_Bronze_Boiler_Solar.get(1L, new Object[0]), bits, new Object[]{"GGG", "SSS", aTextPlateMotor, 'M', ItemList.Hull_Bronze_Bricks, 'P', OrePrefixes.pipeSmall.get(Materials.Bronze), 'S', OrePrefixes.plate.get(Materials.Silver), 'G', new ItemStack(Blocks.glass, 1)});
+
+        ItemList.Machine_Bronze_BlastFurnace.set(new GT_MetaTileEntity_BronzeBlastFurnace(108, "bronzemachine.blastfurnace", "Bronze Plated Blast Furnace").getStackForm(1L));
+        if (!Loader.isModLoaded("terrafirmacraft")) {
+            GT_ModHandler.addCraftingRecipe(ItemList.Machine_Bronze_BlastFurnace.get(1L, new Object[0]), bits, new Object[]{"PFP", "FwF", "PFP", 'P', OrePrefixes.plate.get(Materials.Bronze), 'F', OreDictNames.craftingFurnace});
+        }
 
         ItemList.Machine_Bricked_BlastFurnace.set(new GT_MetaTileEntity_BrickedBlastFurnace(130, "multimachine.brickedblastfurnace", "Bricked Blast Furnace").getStackForm(1L));
         if (GT_Mod.gregtechproxy.mBrickedBlastFurnace) {
@@ -1051,13 +1060,6 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         ItemList.Machine_ZPM_ArcFurnace.set(new GT_MetaTileEntity_BasicMachine_GT_Recipe(657, "basicmachine.arcfurnace.tier.07", "Advanced Arc Furnace VI", 7, "", GT_Recipe.GT_Recipe_Map.sArcFurnaceRecipes, 1, 4, 16000, 0, 1, "ArcFurnace.png", (String) GregTech_API.sSoundList.get(Integer.valueOf(202)), aBoolConst_0, aBoolConst_0, 0, "ARC_FURNACE", new Object[]{"WGW", aTextCableHull, aTextPlate, 'M', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.HULL, 'P', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.PLATE, 'C', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.CIRCUIT, 'W', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE4, 'G', OrePrefixes.cell.get(Materials.Graphite)}).getStackForm(1L));
         ItemList.Machine_UV_ArcFurnace.set(new GT_MetaTileEntity_BasicMachine_GT_Recipe(658, "basicmachine.arcfurnace.tier.08", "Advanced Arc Furnace VII", 8, "", GT_Recipe.GT_Recipe_Map.sArcFurnaceRecipes, 1, 4, 16000, 0, 1, "ArcFurnace.png", (String) GregTech_API.sSoundList.get(Integer.valueOf(202)), aBoolConst_0, aBoolConst_0, 0, "ARC_FURNACE", new Object[]{"WGW", aTextCableHull, aTextPlate, 'M', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.HULL, 'P', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.PLATE, 'C', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.CIRCUIT, 'W', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE4, 'G', OrePrefixes.cell.get(Materials.Graphite)}).getStackForm(1L));
 
-        ItemList.Machine_LV_Roaster.set(new GT_MetaTileEntity_BasicMachine_GT_Recipe(681, "basicmachine.roaster.tier.01", "Basic Roaster", 1, "", GT_Recipe.GT_Recipe_Map.sRoasterRecipes, 1, 4, 16000, 0, 1, "PlasmaArcFurnace.png", (String) GregTech_API.sSoundList.get(Integer.valueOf(202)), false, false, 0, "ROASTER", new Object[]{"WGW", "CMC", "PPP", Character.valueOf('M'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.HULL, Character.valueOf('P'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.COIL_HEATING, Character.valueOf('C'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.CIRCUIT, Character.valueOf('W'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE4, Character.valueOf('G'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE}).getStackForm(1L));
-        ItemList.Machine_MV_Roaster.set(new GT_MetaTileEntity_BasicMachine_GT_Recipe(682, "basicmachine.roaster.tier.02", "Advanced Roaster", 2, "", GT_Recipe.GT_Recipe_Map.sRoasterRecipes, 1, 4, 16000, 0, 1, "PlasmaArcFurnace.png", (String) GregTech_API.sSoundList.get(Integer.valueOf(202)), false, false, 0, "ROASTER", new Object[]{"WGW", "CMC", "PPP", Character.valueOf('M'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.HULL, Character.valueOf('P'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.COIL_HEATING, Character.valueOf('C'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.CIRCUIT, Character.valueOf('W'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE4, Character.valueOf('G'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE}).getStackForm(1L));
-        ItemList.Machine_HV_Roaster.set(new GT_MetaTileEntity_BasicMachine_GT_Recipe(683, "basicmachine.roaster.tier.03", "Advanced Roaster II", 3, "", GT_Recipe.GT_Recipe_Map.sRoasterRecipes, 1, 4, 16000, 0, 1, "PlasmaArcFurnace.png", (String) GregTech_API.sSoundList.get(Integer.valueOf(202)), false, false, 0, "ROASTER", new Object[]{"WGW", "CMC", "PPP", Character.valueOf('M'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.HULL, Character.valueOf('P'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.COIL_HEATING, Character.valueOf('C'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.CIRCUIT, Character.valueOf('W'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE4, Character.valueOf('G'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE}).getStackForm(1L));
-        ItemList.Machine_EV_Roaster.set(new GT_MetaTileEntity_BasicMachine_GT_Recipe(684, "basicmachine.roaster.tier.04", "Advanced Roaster III", 4, "", GT_Recipe.GT_Recipe_Map.sRoasterRecipes, 1, 4, 16000, 0, 1, "PlasmaArcFurnace.png", (String) GregTech_API.sSoundList.get(Integer.valueOf(202)), false, false, 0, "ROASTER", new Object[]{"WGW", "CMC", "PPP", Character.valueOf('M'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.HULL, Character.valueOf('P'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.COIL_HEATING, Character.valueOf('C'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.CIRCUIT, Character.valueOf('W'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE4, Character.valueOf('G'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE}).getStackForm(1L));
-        ItemList.Machine_IV_Roaster.set(new GT_MetaTileEntity_BasicMachine_GT_Recipe(685, "basicmachine.roaster.tier.05", "Advanced Roaster VI", 5, "", GT_Recipe.GT_Recipe_Map.sRoasterRecipes, 1, 4, 16000, 0, 1, "PlasmaArcFurnace.png", (String) GregTech_API.sSoundList.get(Integer.valueOf(202)), false, false, 0, "ROASTER", new Object[]{"WGW", "CMC", "PPP", Character.valueOf('M'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.HULL, Character.valueOf('P'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.COIL_HEATING, Character.valueOf('C'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.CIRCUIT, Character.valueOf('W'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE4, Character.valueOf('G'), GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE}).getStackForm(1L));
-
-        
         ItemList.Machine_LV_PlasmaArcFurnace.set(new GT_MetaTileEntity_BasicMachine_GT_Recipe(661, "basicmachine.plasmaarcfurnace.tier.01", "Basic Plasma Arc Furnace", 1, "", GT_Recipe.GT_Recipe_Map.sPlasmaArcFurnaceRecipes, 1, 4, 1000, 0, 1, "PlasmaArcFurnace.png", (String) GregTech_API.sSoundList.get(Integer.valueOf(202)), aBoolConst_0, aBoolConst_0, 0, "PLASMA_ARC_FURNACE", new Object[]{"WGW", aTextCableHull, "TPT", 'M', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.HULL, 'P', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.PLATE, 'C', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.BETTER_CIRCUIT, 'W', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE4, 'T', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.PUMP, 'G', OrePrefixes.cell.get(Materials.Graphite)}).getStackForm(1L));
         ItemList.Machine_MV_PlasmaArcFurnace.set(new GT_MetaTileEntity_BasicMachine_GT_Recipe(662, "basicmachine.plasmaarcfurnace.tier.02", "Advanced Plasma Arc Furnace", 2, "", GT_Recipe.GT_Recipe_Map.sPlasmaArcFurnaceRecipes, 1, 4, 1000, 0, 1, "PlasmaArcFurnace.png", (String) GregTech_API.sSoundList.get(Integer.valueOf(202)), aBoolConst_0, aBoolConst_0, 0, "PLASMA_ARC_FURNACE", new Object[]{"WGW", aTextCableHull, "TPT", 'M', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.HULL, 'P', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.PLATE, 'C', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.BETTER_CIRCUIT, 'W', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE4, 'T', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.PUMP, 'G', OrePrefixes.cell.get(Materials.Graphite)}).getStackForm(1L));
         ItemList.Machine_HV_PlasmaArcFurnace.set(new GT_MetaTileEntity_BasicMachine_GT_Recipe(663, "basicmachine.plasmaarcfurnace.tier.03", "Advanced Plasma Arc Furnace II", 3, "", GT_Recipe.GT_Recipe_Map.sPlasmaArcFurnaceRecipes, 1, 4, 1000, 0, 1, "PlasmaArcFurnace.png", (String) GregTech_API.sSoundList.get(Integer.valueOf(202)), aBoolConst_0, aBoolConst_0, 0, "PLASMA_ARC_FURNACE", new Object[]{"WGW", aTextCableHull, "TPT", 'M', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.HULL, 'P', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.PLATE, 'C', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.BETTER_CIRCUIT, 'W', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE4, 'T', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.PUMP, 'G', OrePrefixes.cell.get(Materials.Graphite)}).getStackForm(1L));
@@ -1081,6 +1083,25 @@ public class GT_Loader_MetaTileEntities implements Runnable {
 
         GT_ModHandler.addCraftingRecipe(ItemList.Machine_LV_Miner.get(1L), bitsd, new Object[]{"EEE", aTextWireHull, "CSC", 'M', ItemList.Hull_LV, 'E', ItemList.Electric_Motor_LV, 'C', OrePrefixes.circuit.get(Materials.Basic), 'W', OrePrefixes.cableGt01.get(Materials.Tin), 'S', ItemList.Sensor_LV});
         GT_ModHandler.addCraftingRecipe(ItemList.Machine_MV_Miner.get(1L), bitsd, new Object[]{"EEE", aTextWireHull, "CSC", 'M', ItemList.Hull_MV, 'E', ItemList.Electric_Motor_MV, 'C', OrePrefixes.circuit.get(Materials.Good), 'W', OrePrefixes.cableGt01.get(Materials.Copper), 'S', ItemList.Sensor_MV});
+
+        ItemList.Machine_LV_OrganicReplicator.set(new GT_MetaTileEntity_OrganicReplicator(681,"basicmachine.organicreplicator.tier.01","Basic Organic Replicator",1).getStackForm(1L));
+        ItemList.Machine_MV_OrganicReplicator.set(new GT_MetaTileEntity_OrganicReplicator(682,"basicmachine.organicreplicator.tier.02","Advanced Organic Replicator",2).getStackForm(1L));
+        ItemList.Machine_HV_OrganicReplicator.set(new GT_MetaTileEntity_OrganicReplicator(683,"basicmachine.organicreplicator.tier.03","Advanced Organic Replicator II",3).getStackForm(1L));
+        ItemList.Machine_EV_OrganicReplicator.set(new GT_MetaTileEntity_OrganicReplicator(684,"basicmachine.organicreplicator.tier.04","Advanced Organic Replicator III",4).getStackForm(1L));
+        ItemList.Machine_IV_OrganicReplicator.set(new GT_MetaTileEntity_OrganicReplicator(685,"basicmachine.organicreplicator.tier.05","Advanced Organic Replicator IV",5).getStackForm(1L));
+        ItemList.Machine_LuV_OrganicReplicator.set(new GT_MetaTileEntity_OrganicReplicator(686,"basicmachine.organicreplicator.tier.06","Advanced Organic Replicator V",6).getStackForm(1L));
+        ItemList.Machine_ZPM_OrganicReplicator.set(new GT_MetaTileEntity_OrganicReplicator(687,"basicmachine.organicreplicator.tier.07","Advanced Organic Replicator VI",7).getStackForm(1L));
+        ItemList.Machine_UV_OrganicReplicator.set(new GT_MetaTileEntity_OrganicReplicator(688,"basicmachine.organicreplicator.tier.08","Advanced Organic Replicator VII",8).getStackForm(1L));
+
+        GT_ModHandler.addCraftingRecipe(ItemList.Machine_LV_OrganicReplicator.get(1L),bitsd,new Object[]{"CRC","WFW","CMC",'M',ItemList.Hull_LV,'R',Ic2Items.crop,'C',OrePrefixes.circuit.get(Materials.Basic),'F',ItemList.Field_Generator_LV,'W',OrePrefixes.cableGt01.get(Materials.Tin)});
+        GT_ModHandler.addCraftingRecipe(ItemList.Machine_MV_OrganicReplicator.get(1L),bitsd,new Object[]{"CRC","WFW","CMC",'M',ItemList.Hull_MV,'R',Ic2Items.crop,'C',OrePrefixes.circuit.get(Materials.Good),'F',ItemList.Field_Generator_MV,'W',OrePrefixes.cableGt01.get(Materials.Copper)});
+        GT_ModHandler.addCraftingRecipe(ItemList.Machine_HV_OrganicReplicator.get(1L),bitsd,new Object[]{"CRC","WFW","CMC",'M',ItemList.Hull_HV,'R',Ic2Items.crop,'C',OrePrefixes.circuit.get(Materials.Advanced),'F',ItemList.Field_Generator_HV,'W',OrePrefixes.cableGt01.get(Materials.Gold)});
+        GT_ModHandler.addCraftingRecipe(ItemList.Machine_EV_OrganicReplicator.get(1L),bitsd,new Object[]{"CRC","WFW","CMC",'M',ItemList.Hull_EV,'R',Ic2Items.crop,'C',OrePrefixes.circuit.get(Materials.Data),'F',ItemList.Field_Generator_EV,'W',OrePrefixes.cableGt01.get(Materials.Aluminium)});
+        GT_ModHandler.addCraftingRecipe(ItemList.Machine_IV_OrganicReplicator.get(1L),bitsd,new Object[]{"CRC","WFW","CMC",'M',ItemList.Hull_IV,'R',Ic2Items.crop,'C',OrePrefixes.circuit.get(Materials.Elite),'F',ItemList.Field_Generator_IV,'W',OrePrefixes.cableGt01.get(Materials.Tungsten)});
+        GT_ModHandler.addCraftingRecipe(ItemList.Machine_LuV_OrganicReplicator.get(1L),bitsd,new Object[]{"CRC","WFW","CMC",'M',ItemList.Hull_LuV,'R',Ic2Items.crop,'C',OrePrefixes.circuit.get(Materials.Master),'F',ItemList.Field_Generator_LuV,'W',OrePrefixes.cableGt01.get(Materials.VanadiumGallium)});
+        GT_ModHandler.addCraftingRecipe(ItemList.Machine_ZPM_OrganicReplicator.get(1L),bitsd,new Object[]{"CRC","WFW","CMC",'M',ItemList.Hull_ZPM,'R',Ic2Items.crop,'C',OrePrefixes.circuit.get(Materials.Ultimate),'F',ItemList.Field_Generator_ZPM,'W',OrePrefixes.cableGt01.get(Materials.Naquadah)});
+        GT_ModHandler.addCraftingRecipe(ItemList.Machine_UV_OrganicReplicator.get(1L),bitsd,new Object[]{"CRC","WFW","CMC",'M',ItemList.Hull_UV,'R',Ic2Items.crop,'C',OrePrefixes.circuit.get(Materials.Superconductor),'F',ItemList.Field_Generator_UV,'W',OrePrefixes.cableGt01.get(Materials.NaquadahAlloy)});
+
     }
 
     private static void run3() {
@@ -1179,6 +1200,11 @@ public class GT_Loader_MetaTileEntities implements Runnable {
 
         ItemList.Processing_Array.set(new GT_MetaTileEntity_ProcessingArray(1199, "multimachine.processingarray", "Processing Array").getStackForm(1L));
         GT_ModHandler.addCraftingRecipe(ItemList.Processing_Array.get(1L, new Object[0]), bitsd, new Object[]{"CTC", "FMF", "CBC", 'M', ItemList.Hull_EV, 'B', OrePrefixes.pipeLarge.get(Materials.StainlessSteel), 'C', OrePrefixes.circuit.get(Materials.Elite), 'F', ItemList.Robot_Arm_EV, 'T', ItemList.Energy_LapotronicOrb});
+        GT_ProcessingArrayRecipeLoader.registerDefaultGregtechMaps();
+        
+        
+        ItemList.Advanced_Processing_Array.set(new GT_MetaTileEntity_AdvancedProcessingArray(1188, "multimachine.advancedprocessingarray", "Advanced Processing Array").getStackForm(1L));
+        GT_ModHandler.addCraftingRecipe(ItemList.Advanced_Processing_Array.get(1L, new Object[0]), bitsd, new Object[]{"RRR", "CPC", "CPC", 'R', ItemList.Robot_Arm_LuV, 'C', OrePrefixes.circuit.get(Materials.Master), 'P', ItemList.Processing_Array});
 
         ItemList.Distillation_Tower.set(new GT_MetaTileEntity_DistillationTower(1126, "multimachine.distillationtower", "Distillation Tower").getStackForm(1L));
         GT_ModHandler.addCraftingRecipe(ItemList.Distillation_Tower.get(1L, new Object[0]), bitsd, new Object[]{"CBC", "FMF", "CBC", 'M', ItemList.Hull_EV, 'B', OrePrefixes.pipeLarge.get(Materials.StainlessSteel), 'C', OrePrefixes.circuit.get(Materials.Data), 'F', ItemList.Electric_Pump_EV});
@@ -1331,6 +1357,13 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         		'P', OrePrefixes.pipeLarge.get(Materials.Polytetrafluoroethylene), 
         		'M', ItemList.Electric_Motor_HV,
         		'B', ItemList.Hull_HV});
+      
+        ItemList.Machine_DigitalTransformer_EV.set(new GT_MetaTileEntity_Digital_Transformer(12183, "basicmachine.d_transformer.tier.04", "Extreme Adjustable Transformer", 4,"ULV -> EV (Use Soft Mallet to invert)").getStackForm(1L));
+        ItemList.Machine_DigitalTransformer_IV.set(new GT_MetaTileEntity_Digital_Transformer(12184, "basicmachine.d_transformer.tier.05", "Insane Adjustable Transformer", 5,"ULV -> IV (Use Soft Mallet to invert)").getStackForm(1L));
+        ItemList.Machine_DigitalTransformer_LuV.set(new GT_MetaTileEntity_Digital_Transformer(12185, "basicmachine.d_transformer.tier.06", "Ludicrous Adjustable Transformer", 6,"ULV -> LuV (Use Soft Mallet to invert)").getStackForm(1L));
+        ItemList.Machine_DigitalTransformer_ZPM.set(new GT_MetaTileEntity_Digital_Transformer(12186, "basicmachine.d_transformer.tier.07", "ZPM Adjustable Transformer", 7,"ULV -> ZPM (Use Soft Mallet to invert)").getStackForm(1L));
+        ItemList.Machine_DigitalTransformer_UV.set(new GT_MetaTileEntity_Digital_Transformer(12187, "basicmachine.d_transformer.tier.08", "Ultimate Adjustable Transformer", 8,"ULV -> UV (Use Soft Mallet to invert)").getStackForm(1L));
+        ItemList.Machine_DigitalTransformer_MAX.set(new GT_MetaTileEntity_Digital_Transformer(12188, "basicmachine.d_transformer.tier.09", "MAX Adjustable Transformer", 9,"ULV -> MAX (Use Soft Mallet to invert)").getStackForm(1L));
    }
 
     private static void run4() {
@@ -1453,7 +1486,6 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         generateFluidMultiPipes(Materials.TungstenSteel, Materials.TungstenSteel.mName, "Tungstensteel", 5225, 600, 7500, true);
         generateFluidMultiPipes(Materials.Plastic, Materials.Plastic.mName, "Plastic", 5230, 360, 350, true);
         generateFluidMultiPipes(Materials.Polytetrafluoroethylene, Materials.Polytetrafluoroethylene.mName, "PTFE", 5235, 480, 600, true);
-        generateFluidPipes(Materials.IronWood, Materials.IronWood.mName,"IronWood", 5240, 120, 1977, true);
 
         GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(OrePrefixes.pipeSmall, Materials.TungstenSteel, 1L), ItemList.Electric_Pump_EV.get(1L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.pipeSmall, Materials.Ultimate, 1L), 300, 96);
         GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(OrePrefixes.pipeMedium, Materials.TungstenSteel, 1L), ItemList.Electric_Pump_IV.get(1L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.pipeMedium, Materials.Ultimate, 1L), 400, 148);
@@ -1491,15 +1523,10 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         generateItemPipes(Materials.Platinum, Materials.Platinum.mName, 5622, 4);
         generateItemPipes(Materials.Osmium, Materials.Osmium.mName, 5632, 8);
         generateItemPipes(Materials.PolyvinylChloride, Materials.PolyvinylChloride.mName, "PVC", 5640, 4);
-        //generateItemPipes(Materials.WroughtIron, Materials.WroughtIron.mName, 5646, 1);
+        generateItemPipes(Materials.WroughtIron, Materials.WroughtIron.mName, 5646, 1);
         generateItemPipes(Materials.Nickel, Materials.Nickel.mName, 5652, 1);
-        //generateItemPipes(Materials.Cobalt, Materials.Cobalt.mName, 5658, 2);
+        generateItemPipes(Materials.Cobalt, Materials.Cobalt.mName, 5658, 2);
         generateItemPipes(Materials.Aluminium, Materials.Aluminium.mName, 5664, 2);
-        generateItemPipes(Materials.Cupronickel, Materials.Cupronickel.mName, 5646, 1);
-        generateItemPipes(Materials.CobaltBrass, Materials.CobaltBrass.mName, 5658, 1);
-        generateItemPipes(Materials.RoseGold, Materials.RoseGold.mName, 5682, 2);
-        generateItemPipes(Materials.SterlingSilver, Materials.SterlingSilver.mName, 5670, 2);
-        generateItemPipes(Materials.Ultimet, Materials.Ultimet.mName, 5676, 4);
 
 
         ItemList.Automation_ChestBuffer_ULV.set(new GT_MetaTileEntity_ChestBuffer(9230, "automation.chestbuffer.tier.00", "Ultra Low Voltage Chest Buffer", 0).getStackForm(1L));
@@ -1644,33 +1671,7 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         GT_ModHandler.addCraftingRecipe(ItemList.Automation_ItemDistributor_ZPM.get(1L, new Object[0]), bitsd, new Object[]{"XCX", "VMV", " V ", 'M', ItemList.Hull_ZPM, 'V', ItemList.Conveyor_Module_ZPM, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Good)});
         GT_ModHandler.addCraftingRecipe(ItemList.Automation_ItemDistributor_UV.get(1L,  new Object[0]), bitsd, new Object[]{"XCX", "VMV", " V ", 'M', ItemList.Hull_UV,  'V', ItemList.Conveyor_Module_UV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Good)});
         GT_ModHandler.addCraftingRecipe(ItemList.Automation_ItemDistributor_MAX.get(1L, new Object[0]), bitsd, new Object[]{"XCX", "VMV", " V ", 'M', ItemList.Hull_MAX, 'V', ItemList.Conveyor_Module_UV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Good)});
-        
-        ItemList.Basic_Tank.set(new tankBasic(13101, "basic.tank.tier.00", "Tank I", 0).getStackForm(1L));
-        ItemList.Basic_Tank_Steam.set(new tankBasic(13102, "basic.tank.tier.01", "Tank II", 1).getStackForm(1L));
-        ItemList.Basic_Tank_LV.set(new tankBasic(13103, "basic.tank.tier.02", "Tank III", 2).getStackForm(1L));
-        ItemList.Basic_Tank_MV.set(new tankBasic(13104, "basic.tank.tier.03", "Tank IV", 3).getStackForm(1L));
-        ItemList.Basic_Tank_HV.set(new tankBasic(13105, "basic.tank.tier.04", "Tank V", 4).getStackForm(1L));
-
-        GT_ModHandler.addCraftingRecipe(ItemList.Basic_Tank.get(1L, new Object[0]), GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED, new Object[]{"wXh", "PBP", "PXP", Character.valueOf('P'), OrePrefixes.plate.get(Materials.Wood), Character.valueOf('X'), OrePrefixes.pipeMedium.get(Materials.Wood), Character.valueOf('B'), OrePrefixes.frameGt.get(Materials.Wood)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Basic_Tank_Steam.get(1L, new Object[0]), GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED, new Object[]{"wXh", "PBP", "PXP", Character.valueOf('P'), OrePrefixes.plate.get(Materials.Bronze), Character.valueOf('X'), OrePrefixes.pipeMedium.get(Materials.Bronze), Character.valueOf('B'), OrePrefixes.frameGt.get(Materials.Bronze)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Basic_Tank_LV.get(1L, new Object[0]), GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED, new Object[]{"wXh", "PBP", "PXP", Character.valueOf('P'), OrePrefixes.plate.get(Materials.Steel), Character.valueOf('X'), OrePrefixes.pipeLarge.get(Materials.Steel), Character.valueOf('B'), OrePrefixes.frameGt.get(Materials.Steel)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Basic_Tank_MV.get(1L, new Object[0]), GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED, new Object[]{"wXh", "PBP", "PXP", Character.valueOf('P'), OrePrefixes.plate.get(Materials.StainlessSteel), Character.valueOf('X'), OrePrefixes.pipeLarge.get(Materials.StainlessSteel), Character.valueOf('B'), OrePrefixes.frameGt.get(Materials.StainlessSteel)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Basic_Tank_HV.get(1L, new Object[0]), GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED, new Object[]{"wXh", "PBP", "PXP", Character.valueOf('P'), OrePrefixes.plate.get(Materials.Titanium), Character.valueOf('X'), OrePrefixes.pipeLarge.get(Materials.Titanium), Character.valueOf('B'), OrePrefixes.frameGt.get(Materials.Titanium)});
-        
-        ItemList.Basic_Barrel.set(new barrelBasic(13106, "basic.barrel.tier.00", "Chest I", 0).getStackForm(1L));
-        ItemList.Basic_Barrel_Steam.set(new barrelBasic(13107, "basic.barrel.tier.01", "Chest II", 1).getStackForm(1L));
-        ItemList.Basic_Barrel_LV.set(new barrelBasic(13108, "basic.barrel.tier.02", "Chest III", 2).getStackForm(1L));
-        ItemList.Basic_Barrel_MV.set(new barrelBasic(13109, "basic.barrel.tier.03", "Chest IV", 3).getStackForm(1L));
-        ItemList.Basic_Barrel_HV.set(new barrelBasic(13110, "basic.barrel.tier.04", "Chest V", 4).getStackForm(1L));
-
-        GT_ModHandler.addCraftingRecipe(ItemList.Basic_Barrel.get(1L, new Object[0]), GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED, new Object[]{"WXH", "PBP", "PPP", Character.valueOf('P'),  OrePrefixes.plate.get(Materials.Wood), Character.valueOf('X'), OrePrefixes.plate.get(Materials.Iron), Character.valueOf('B'), OrePrefixes.frameGt.get(Materials.Wood), Character.valueOf('W'), ToolDictNames.craftingToolSaw, Character.valueOf('H'), ToolDictNames.craftingToolSoftHammer });
-        GT_ModHandler.addCraftingRecipe(ItemList.Basic_Barrel_Steam.get(1L, new Object[0]), GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED, new Object[]{"WXH", "PBP", "PPP", Character.valueOf('P'), OrePrefixes.plate.get(Materials.Bronze), Character.valueOf('X'), OrePrefixes.plate.get(Materials.Iron), Character.valueOf('B'), OrePrefixes.frameGt.get(Materials.Bronze), Character.valueOf('W'), ToolDictNames.craftingToolSaw, Character.valueOf('H'), ToolDictNames.craftingToolHardHammer });
-        GT_ModHandler.addCraftingRecipe(ItemList.Basic_Barrel_LV.get(1L, new Object[0]), GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED, new Object[]{"WXH", "PBP", "PPP", Character.valueOf('P'), OrePrefixes.plate.get(Materials.Steel), Character.valueOf('X'), OrePrefixes.plate.get(Materials.Iron), Character.valueOf('B'), OrePrefixes.frameGt.get(Materials.Steel), Character.valueOf('W'), ToolDictNames.craftingToolSaw, Character.valueOf('H'), ToolDictNames.craftingToolHardHammer });
-        GT_ModHandler.addCraftingRecipe(ItemList.Basic_Barrel_MV.get(1L, new Object[0]), GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED, new Object[]{"WXH", "PBP", "PPP", Character.valueOf('P'), OrePrefixes.plate.get(Materials.StainlessSteel), Character.valueOf('X'), OrePrefixes.plate.get(Materials.Iron), Character.valueOf('B'), OrePrefixes.frameGt.get(Materials.StainlessSteel), Character.valueOf('W'), ToolDictNames.craftingToolSaw, Character.valueOf('H'), ToolDictNames.craftingToolHardHammer });
-        GT_ModHandler.addCraftingRecipe(ItemList.Basic_Barrel_HV.get(1L, new Object[0]), GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED, new Object[]{"WXH", "PBP", "PPP", Character.valueOf('P'), OrePrefixes.plate.get(Materials.Titanium), Character.valueOf('X'), OrePrefixes.plate.get(Materials.Iron), Character.valueOf('B'), OrePrefixes.frameGt.get(Materials.Titanium), Character.valueOf('W'), ToolDictNames.craftingToolSaw, Character.valueOf('H'), ToolDictNames.craftingToolHardHammer });
-
-
-  }
+    }
 
     private static void makeWires(Materials aMaterial, int aStartID, long aLossInsulated, long aLoss, long aAmperage, long aVoltage, boolean aInsulatable, boolean aAutoInsulated) {
     	String name = GT_LanguageManager.i18nPlaceholder ? "%material" : aMaterial.mDefaultLocalName;

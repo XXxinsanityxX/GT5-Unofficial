@@ -2,8 +2,8 @@ package gregtech.common.blocks;
 
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.GT_Values;
-import gregtech.api.enums.Materials;
 import gregtech.api.interfaces.metatileentity.IConnectable;
+import gregtech.api.enums.Materials;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.metatileentity.implementations.GT_MetaPipeEntity_Cable;
 import gregtech.api.metatileentity.implementations.GT_MetaPipeEntity_Fluid;
@@ -158,8 +158,16 @@ public class GT_Item_Machines
                     tTileEntity.setOwnerName(aPlayer.getDisplayName());
                 }
                 tTileEntity.getMetaTileEntity().initDefaultModes(aStack.getTagCompound());
+                final byte aSide = GT_Utility.getOppositeSide(side);
                 if (tTileEntity.getMetaTileEntity() instanceof IConnectable) {
-                	((IConnectable) tTileEntity.getMetaTileEntity()).connect(GT_Utility.getOppositeSide(side));
+                    // If we're connectable, try connecting to whatever we're up against
+                	((IConnectable) tTileEntity.getMetaTileEntity()).connect(aSide);
+                } else if (aPlayer != null && aPlayer.isSneaking()) {
+                    // If we're being placed against something that is connectable, try telling it to connect to us
+                    IGregTechTileEntity aTileEntity = tTileEntity.getIGregTechTileEntityAtSide(aSide);
+                    if (aTileEntity != null && aTileEntity.getMetaTileEntity() instanceof IConnectable) {
+                        ((IConnectable) aTileEntity.getMetaTileEntity()).connect((byte)side);
+                    }
                 }
             }
         } else if (!aWorld.setBlock(aX, aY, aZ, this.field_150939_a, tDamage, 3)) {

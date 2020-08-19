@@ -250,6 +250,7 @@ public class GT_Loader_Item_Block_And_Fluid
                 Materials.Nichrome,
                 Materials.Nickel,
                 Materials.Niobium,
+                Materials.NiobiumNitride,
                 Materials.NiobiumTitanium,
                 Materials.Osmiridium,
                 Materials.Osmium,

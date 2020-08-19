@@ -1,5 +1,6 @@
 package gregtech.api.interfaces.internal;
 
+import gregtech.api.util.GT_Recipe;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
@@ -420,12 +421,10 @@ public interface IGT_RecipeAdder {
 
 
     public boolean addSimpleArcFurnaceRecipe(ItemStack aInput, FluidStack aFluidInput, ItemStack[] aOutputs, int[] aChances, int aDuration, int aEUt);
-    
-    public boolean addRoasterRecipe(ItemStack aInput, FluidStack aFluidInput, ItemStack aOutput1, ItemStack aOutput2, ItemStack aOutput3, FluidStack aFluidOutput, int[] aChances, int aDuration, int aEUt);
 
     public boolean addPlasmaArcFurnaceRecipe(ItemStack aInput, FluidStack aFluidInput, ItemStack[] aOutputs, int[] aChances, int aDuration, int aEUt);
 
-    public boolean addPlasmaArcFurnaceRecipe(ItemStack aInput, FluidStack aFluidInput, ItemStack[] aOutputs, FluidStack aFluidOutput, int[] aChances, int aDuration, int aEUt);
+    public boolean addPlasmaArcFurnaceRecipe(ItemStack aInput, FluidStack aFluidInput, ItemStack[] aOutputs, FluidStack aFluidPutput, int[] aChances, int aDuration, int aEUt);
 
 
     /**
@@ -470,15 +469,12 @@ public interface IGT_RecipeAdder {
 
     /**
      * Adds a Vacuum Freezer Recipe
-     *  @param aInput1   must be != null
+     *
+     * @param aInput1   must be != null
      * @param aOutput1  must be != null
      * @param aDuration must be > 0
-     * @param aEUt should be > 0
      */
     public boolean addVacuumFreezerRecipe(ItemStack aInput1, ItemStack aOutput1, int aDuration);
-
-    boolean addVacuumFreezerRecipe(ItemStack aInput1, ItemStack aOutput1, int aDuration, int aEUt);
-
 
     /**
      * Adds a Fuel for My Generators

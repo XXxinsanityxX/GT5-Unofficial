@@ -88,7 +88,8 @@ public class GregTech_API {
      * 12001 - 12500 are reserved for RedMage17.
      * 12501 - 13000 are reserved for bartimaeusnek.
      * 13001 - 13100 are reserved for Techlone
-     * 13101 - 14999 are reserved for Dbp/BDE
+     * 13101 - 13500 are reserved for kekzdealer
+     * 13501 - 14999 are currently free.
      * 15000 - 16999 are reserved for TecTech.
      * 17000 - 29999 are currently free.
      * 30000 - 31999 are reserved for Alkalus.
@@ -188,7 +189,7 @@ public class GregTech_API {
 
     public static Block sBlockOres1, sBlockOresUb1, sBlockOresUb2, sBlockOresUb3, sBlockOresGC, sBlockGem, sBlockMetal1, sBlockMetal2, sBlockMetal3, sBlockMetal4, sBlockMetal5, sBlockMetal6, sBlockMetal7, sBlockMetal8, sBlockGem1, sBlockGem2, sBlockGem3, sBlockReinforced;
     public static Block sBlockGranites, sBlockConcretes, sBlockStones;
-    public static Block sBlockCasings1, sBlockCasings2, sBlockCasings3, sBlockCasings4, sBlockCasings5, sBlockCasings8;
+    public static Block sBlockCasings1, sBlockCasings2, sBlockCasings3, sBlockCasings4, sBlockCasings5,sBlockCasings8;
     /**
      * Getting assigned by the Config
      */
@@ -204,7 +205,9 @@ public class GregTech_API {
     public static boolean mMagneticraft = false;
     public static boolean mImmersiveEngineering = false;
     public static boolean mGTPlusPlus = false;
+    public static boolean mTranslocator = false;
     public static boolean mTConstruct = false;
+    public static boolean mGalacticraft = false;
 
     public static boolean mUseOnlyGoodSolderingMaterials = false;
 

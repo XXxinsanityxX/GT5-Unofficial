@@ -1,5 +1,6 @@
 package gregtech.common.blocks;
 
+import gregtech.api.enums.Dyes;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Textures;
 import gregtech.api.objects.GT_CopiedBlockTexture;

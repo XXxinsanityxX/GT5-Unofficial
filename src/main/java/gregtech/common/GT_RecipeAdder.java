@@ -1,5 +1,9 @@
 package gregtech.common;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import cpw.mods.fml.common.Loader;
 import gregtech.GT_Mod;
 import gregtech.api.GregTech_API;
@@ -23,11 +27,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-public class GT_RecipeAdder implements IGT_RecipeAdder {
+public class GT_RecipeAdder
+        implements IGT_RecipeAdder {
 	
 	private boolean isAddingDeprecatedRecipes = false;
 	
@@ -202,18 +203,14 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
         if ((aDuration = GregTech_API.sRecipeFile.get("primitiveblastfurnace", aInput1, aDuration)) <= 0) {
             return false;
         }
-        Materials[] coals = new Materials[]{Materials.Coal};
-        Materials[] charcoals = new Materials[] {Materials.Charcoal};
+        Materials[] coals = new Materials[]{Materials.Coal, Materials.Charcoal};
         for (Materials coal : coals) {
-        	GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, coal.getGems(aCoalAmount)}, new ItemStack[]{aOutput1, aOutput2, Materials.DarkAsh.getDustSmall(aCoalAmount)}, null, null, null, null, aDuration, 0, 0);
-        	GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, coal.getDust(aCoalAmount)}, new ItemStack[]{aOutput1, aOutput2, Materials.DarkAsh.getDustSmall(aCoalAmount)}, null, null, null, null, aDuration, 0, 0);
-        }        
-        for (Materials charcoal : charcoals) {
-        	GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, charcoal.getGems(aCoalAmount)}, new ItemStack[]{aOutput1, aOutput2, Materials.Ash.getDustTiny(aCoalAmount*2)}, null, null, null, null, aDuration, 0, 0);
-        	GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, charcoal.getDust(aCoalAmount)}, new ItemStack[]{aOutput1, aOutput2, Materials.Ash.getDustTiny(aCoalAmount*2)}, null, null, null, null, aDuration, 0, 0);
+        	GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, coal.getGems(aCoalAmount)}, new ItemStack[]{aOutput1, aOutput2, Materials.DarkAsh.getDustTiny(aCoalAmount)}, null, null, null, null, aDuration, 0, 0);
+        	GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, coal.getDust(aCoalAmount)}, new ItemStack[]{aOutput1, aOutput2, Materials.DarkAsh.getDustTiny(aCoalAmount)}, null, null, null, null, aDuration, 0, 0);
         }        
         if (Loader.isModLoaded("Railcraft")) { 
-        	GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, RailcraftToolItems.getCoalCoke(aCoalAmount / 2)}, new ItemStack[]{aOutput1, aOutput2, Materials.DarkAsh.getDustTiny(aCoalAmount)}, null, null, null, null, aDuration * 2 / 3, 0, 0);        }
+        	GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, RailcraftToolItems.getCoalCoke(aCoalAmount / 2)}, new ItemStack[]{aOutput1, aOutput2, Materials.Ash.getDustTiny(aCoalAmount / 2)}, null, null, null, null, aDuration * 2 / 3, 0, 0);
+        }
         if ((aInput1 == null || aInput1.stackSize <= 6 ) && (aInput2 == null || aInput2.stackSize <= 6 ) && 
         		(aOutput1 == null || aOutput1.stackSize <= 6 ) && (aOutput2 == null || aOutput2.stackSize <= 6 )) {
         	aInput1 =  aInput1  == null ? null : GT_Utility.copyAmount(aInput1.stackSize  * 10, aInput1);
@@ -221,15 +218,11 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
         	aOutput1 = aOutput1 == null ? null : GT_Utility.copyAmount(aOutput1.stackSize * 10, aOutput1);
         	aOutput2 = aOutput2 == null ? null : GT_Utility.copyAmount(aOutput2.stackSize * 10, aOutput2);
             for (Materials coal : coals) {
-            	GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, coal.getBlocks(aCoalAmount)}, new ItemStack[]{aOutput1, aOutput2, Materials.DarkAsh.getDustSmall(aCoalAmount*9)}, null, null, null, null, aDuration * 10, 0, 0);
-            	GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, coal.getBlocks(aCoalAmount)}, new ItemStack[]{aOutput1, aOutput2, Materials.DarkAsh.getDustSmall(aCoalAmount*9)}, null, null, null, null, aDuration * 10, 0, 0);
-            }
-            for (Materials charcoal : charcoals) {
-            	GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, charcoal.getBlocks(aCoalAmount)}, new ItemStack[]{aOutput1, aOutput2, Materials.Ash.getDust(aCoalAmount)}, null, null, null, null, aDuration * 10, 0, 0);
-            	GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, charcoal.getBlocks(aCoalAmount)}, new ItemStack[]{aOutput1, aOutput2, Materials.Ash.getDust(aCoalAmount)}, null, null, null, null, aDuration * 10, 0, 0);
+            	GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, coal.getBlocks(aCoalAmount)}, new ItemStack[]{aOutput1, aOutput2, Materials.DarkAsh.getDust(aCoalAmount)}, null, null, null, null, aDuration * 10, 0, 0);
+            	GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, coal.getBlocks(aCoalAmount)}, new ItemStack[]{aOutput1, aOutput2, Materials.DarkAsh.getDust(aCoalAmount)}, null, null, null, null, aDuration * 10, 0, 0);
             }
             if (Loader.isModLoaded("Railcraft")) { 
-            	GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, EnumCube.COKE_BLOCK.getItem(aCoalAmount / 2)}, new ItemStack[]{aOutput1, aOutput2, Materials.DarkAsh.getDustTiny(aCoalAmount*9)}, null, null, null, null, aDuration * 20 / 3, 0, 0);
+            	GT_Recipe.GT_Recipe_Map.sPrimitiveBlastRecipes.addRecipe(true, new ItemStack[]{aInput1, aInput2, EnumCube.COKE_BLOCK.getItem(aCoalAmount / 2)}, new ItemStack[]{aOutput1, aOutput2, Materials.Ash.getDust(aCoalAmount / 2)}, null, null, null, null, aDuration * 20 / 3, 0, 0);
             }
         }
         return true;
@@ -485,17 +478,6 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
         return false;
     }
 
-    public boolean addVacuumFreezerRecipe(ItemStack aInput1, ItemStack aOutput1, int aDuration, int aEUt) {
-        if ((aInput1 == null) || (aOutput1 == null)) {
-            return false;
-        }
-        if ((aDuration = GregTech_API.sRecipeFile.get("vacuumfreezer", aInput1, aDuration)) <= 0) {
-            return false;
-        }
-        new GT_Recipe(aInput1, aOutput1, aDuration, aEUt, 0);//Since all other methods are taken
-        return true;
-    }
-
     public boolean addVacuumFreezerRecipe(ItemStack aInput1, ItemStack aOutput1, int aDuration) {
         if ((aInput1 == null) || (aOutput1 == null)) {
             return false;
@@ -676,6 +658,12 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
         if ((aMold == null) || (aInput == null) || (aOutput == null)) {
             return false;
         }
+        if (aInput.isFluidEqual(Materials.PhasedGold.getMolten(144))) {
+            aInput = Materials.VibrantAlloy.getMolten(aInput.amount);
+        }
+        if (aInput.isFluidEqual(Materials.PhasedIron.getMolten(144))) {
+            aInput = Materials.PulsatingIron.getMolten(aInput.amount);
+        }
         if ((aDuration = GregTech_API.sRecipeFile.get("fluidsolidifier", aOutput, aDuration)) <= 0) {
             return false;
         }
@@ -692,6 +680,12 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
         if ((aInput == null) || (aOutput == null)) {
             return false;
         }
+        if (aOutput.isFluidEqual(Materials.PhasedGold.getMolten(1))) {
+            aOutput = Materials.VibrantAlloy.getMolten(aOutput.amount);
+        }
+        if (aOutput.isFluidEqual(Materials.PhasedIron.getMolten(1))) {
+            aOutput = Materials.PulsatingIron.getMolten(aOutput.amount);
+        }
         if ((aDuration = GregTech_API.sRecipeFile.get("fluidsmelter", aInput, aDuration)) <= 0) {
             return false;
         }
@@ -705,6 +699,12 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
     public boolean addFluidExtractionRecipe(ItemStack aInput, ItemStack aRemains, FluidStack aOutput, int aChance, int aDuration, int aEUt) {
         if ((aInput == null) || (aOutput == null)) {
             return false;
+        }
+        if (aOutput.isFluidEqual(Materials.PhasedGold.getMolten(1))) {
+            aOutput = Materials.VibrantAlloy.getMolten(aOutput.amount);
+        }
+        if (aOutput.isFluidEqual(Materials.PhasedIron.getMolten(1))) {
+            aOutput = Materials.PulsatingIron.getMolten(aOutput.amount);
         }
         if ((aDuration = GregTech_API.sRecipeFile.get("fluidextractor", aInput, aDuration)) <= 0) {
             return false;
@@ -907,23 +907,6 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
         }
         return false;
     }
-    
-    @Override
-    public boolean addRoasterRecipe(ItemStack aInput, FluidStack aFluidInput, ItemStack aOutput1 , ItemStack aOutput2, ItemStack aOutput3, FluidStack aFluidOutput, int[] aChances, int aDuration, int aEUt) {
-        if ((aInput == null) || (aOutput1 == null) || aFluidInput == null) {
-            return false;
-        }
-        if ((aDuration = GregTech_API.sRecipeFile.get("roaster", aInput, aDuration)) <= 0) {
-            return false;
-        }
-                GT_Recipe.GT_Recipe_Map.sRoasterRecipes.addRecipe(
-                		true, new ItemStack[]{aInput},new ItemStack[]{aOutput1, aOutput2, aOutput3},
-                        null, aChances,
-                        new FluidStack[]{aFluidInput},new FluidStack[]{aFluidOutput},
-                        Math.max(1, aDuration), Math.max(1, aEUt), 0);
-                return true;
-            }
-
 
     public boolean addPlasmaArcFurnaceRecipe(ItemStack aInput, FluidStack aFluidInput, ItemStack[] aOutputs, int[] aChances, int aDuration, int aEUt) {
         if ((aInput == null) || (aOutputs == null) || aFluidInput == null) {
@@ -1035,7 +1018,7 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
                 System.out.println("addAssemblingLineRecipe "+aResearchItem.getDisplayName()+" --> "+aOutput.getUnlocalizedName()+" there is some null item in that recipe");
             }
         }
-        GT_Recipe.GT_Recipe_Map.sScannerFakeRecipes.addFakeRecipe(false, new ItemStack[]{aResearchItem}, new ItemStack[]{aOutput}, new ItemStack[]{ItemList.Tool_DataStick.getWithName(1L, "Writes Research result", new Object[0])}, null, null, aResearchTime, 30, 0);
+        GT_Recipe.GT_Recipe_Map.sScannerFakeRecipes.addFakeRecipe(false, new ItemStack[]{aResearchItem}, new ItemStack[]{aOutput}, new ItemStack[]{ItemList.Tool_DataStick.getWithName(1L, "Writes Research result", new Object[0])}, null, null, aResearchTime, 30, -201);
         GT_Recipe.GT_Recipe_Map.sAssemblylineVisualRecipes.addFakeRecipe(false,aInputs,new ItemStack[]{aOutput},new ItemStack[]{ItemList.Tool_DataStick.getWithName(1L, "Reads Research result", new Object[0])},aFluidInputs,null,aDuration,aEUt,0,true);
         GT_Recipe.GT_Recipe_AssemblyLine.sAssemblylineRecipes.add(new GT_Recipe_AssemblyLine( aResearchItem, aResearchTime, aInputs, aFluidInputs, aOutput, aDuration, aEUt));
         return true;
@@ -1085,7 +1068,7 @@ public class GT_RecipeAdder implements IGT_RecipeAdder {
         	}
         	System.out.println("addAssemblingLineRecipe "+aResearchItem.getDisplayName()+" --> "+aOutput.getUnlocalizedName()+" there is some null item in that recipe");
         }
-        GT_Recipe.GT_Recipe_Map.sScannerFakeRecipes.addFakeRecipe(false, new ItemStack[]{aResearchItem}, new ItemStack[]{aOutput}, new ItemStack[]{ItemList.Tool_DataStick.getWithName(1L, "Writes Research result", new Object[0])}, null, null, aResearchTime, 30, 0);
+        GT_Recipe.GT_Recipe_Map.sScannerFakeRecipes.addFakeRecipe(false, new ItemStack[]{aResearchItem}, new ItemStack[]{aOutput}, new ItemStack[]{ItemList.Tool_DataStick.getWithName(1L, "Writes Research result", new Object[0])}, null, null, aResearchTime, 30, -201);
         GT_Recipe.GT_Recipe_Map.sAssemblylineVisualRecipes.addFakeRecipe(false,tInputs,new ItemStack[]{aOutput},new ItemStack[]{ItemList.Tool_DataStick.getWithName(1L, "Reads Research result", new Object[0])},aFluidInputs,null,aDuration,aEUt,0,tAlts,true);
         GT_Recipe.GT_Recipe_AssemblyLine.sAssemblylineRecipes.add(new GT_Recipe_AssemblyLine( aResearchItem, aResearchTime, tInputs, aFluidInputs, aOutput, aDuration, aEUt, tAlts));
         return true;
