@@ -470,12 +470,15 @@ public interface IGT_RecipeAdder {
 
     /**
      * Adds a Vacuum Freezer Recipe
-     *
-     * @param aInput1   must be != null
+     *  @param aInput1   must be != null
      * @param aOutput1  must be != null
      * @param aDuration must be > 0
+     * @param aEUt should be > 0
      */
     public boolean addVacuumFreezerRecipe(ItemStack aInput1, ItemStack aOutput1, int aDuration);
+
+    boolean addVacuumFreezerRecipe(ItemStack aInput1, ItemStack aOutput1, int aDuration, int aEUt);
+
 
     /**
      * Adds a Fuel for My Generators

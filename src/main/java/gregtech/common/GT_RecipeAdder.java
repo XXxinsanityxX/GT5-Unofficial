@@ -27,8 +27,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class GT_RecipeAdder
-        implements IGT_RecipeAdder {
+public class GT_RecipeAdder implements IGT_RecipeAdder {
 	
 	private boolean isAddingDeprecatedRecipes = false;
 	
@@ -484,6 +483,17 @@ public class GT_RecipeAdder
         }
         GT_Recipe.GT_Recipe_Map.sDistillationRecipes.addRecipe(false, null, new ItemStack[]{aOutput2}, null, new FluidStack[]{aInput}, aOutputs, Math.max(1, aDuration), Math.max(1, aEUt), 0);
         return false;
+    }
+
+    public boolean addVacuumFreezerRecipe(ItemStack aInput1, ItemStack aOutput1, int aDuration, int aEUt) {
+        if ((aInput1 == null) || (aOutput1 == null)) {
+            return false;
+        }
+        if ((aDuration = GregTech_API.sRecipeFile.get("vacuumfreezer", aInput1, aDuration)) <= 0) {
+            return false;
+        }
+        new GT_Recipe(aInput1, aOutput1, aDuration, aEUt, 0);//Since all other methods are taken
+        return true;
     }
 
     public boolean addVacuumFreezerRecipe(ItemStack aInput1, ItemStack aOutput1, int aDuration) {
