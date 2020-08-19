@@ -1,7 +1,6 @@
 package gregtech.api.metatileentity.implementations;
 
 import gregtech.GT_Mod;
-import gregtech.api.GregTech_API;
 import gregtech.api.enums.*;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
@@ -25,8 +24,6 @@ import net.minecraft.tileentity.TileEntityHopper;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-
-import static gregtech.api.enums.GT_Values.GT;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,7 @@
 package gregtech.api.util;
 
 import cofh.api.transport.IItemDuct;
+import com.mojang.authlib.GameProfile;
 import cpw.mods.fml.common.FMLCommonHandler;
 import gregtech.api.GregTech_API;
 import gregtech.api.damagesources.GT_DamageSources;
@@ -73,8 +74,6 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.*;
 import java.util.Map.Entry;
-
-import com.mojang.authlib.GameProfile;
 
 import static gregtech.api.enums.GT_Values.*;
 import static gregtech.common.GT_Proxy.GTPOLLUTION;

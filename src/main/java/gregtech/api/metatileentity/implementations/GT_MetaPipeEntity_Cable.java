@@ -1,8 +1,8 @@
 package gregtech.api.metatileentity.implementations;
 
+import appeng.api.parts.IPartHost;
 import cofh.api.energy.IEnergyReceiver;
 import gregtech.GT_Mod;
-import static gregtech.api.enums.GT_Values.D1;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.Dyes;
 import gregtech.api.enums.Materials;
@@ -41,8 +41,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import appeng.api.parts.IPartHost;
-
+import static gregtech.api.enums.GT_Values.D1;
 import static gregtech.api.enums.GT_Values.VN;
 
 public class GT_MetaPipeEntity_Cable extends MetaPipeEntity implements IMetaTileEntityCable {

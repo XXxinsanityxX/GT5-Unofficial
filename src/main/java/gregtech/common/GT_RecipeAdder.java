@@ -1,9 +1,5 @@
 package gregtech.common;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import cpw.mods.fml.common.Loader;
 import gregtech.GT_Mod;
 import gregtech.api.GregTech_API;
@@ -26,6 +22,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class GT_RecipeAdder
         implements IGT_RecipeAdder {
