@@ -12,7 +12,8 @@ import net.minecraftforge.fluids.Fluid;
 
 import java.util.Locale;
 
-import static gregtech.api.enums.GT_Values.*;
+import static gregtech.api.enums.GT_Values.NI;
+import static gregtech.api.enums.GT_Values.W;
 
 /**
  * Class containing all non-OreDict Items of GregTech.

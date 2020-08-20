@@ -1,6 +1,5 @@
 package gregtech.api.interfaces.internal;
 
-import gregtech.api.util.GT_Recipe;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;

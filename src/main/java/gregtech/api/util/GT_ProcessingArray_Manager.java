@@ -1,8 +1,8 @@
 package gregtech.api.util;
 
-import java.util.HashMap;
-
 import gregtech.api.util.GT_Recipe.GT_Recipe_Map;
+
+import java.util.HashMap;
 
 public class GT_ProcessingArray_Manager {
 

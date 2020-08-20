@@ -1,5 +1,6 @@
 package gregtech.api.metatileentity.implementations;
 
+import appeng.api.parts.IPartHost;
 import cofh.api.energy.IEnergyReceiver;
 import com.google.common.collect.Sets;
 import gregtech.GT_Mod;
@@ -30,7 +31,6 @@ import ic2.api.energy.tile.IEnergySource;
 import ic2.api.energy.tile.IEnergyTile;
 import ic2.api.reactor.IReactorChamber;
 import micdoodle8.mods.galacticraft.api.power.EnergySource;
-import micdoodle8.mods.galacticraft.api.power.EnergySource.EnergySourceAdjacent;
 import micdoodle8.mods.galacticraft.api.power.IEnergyHandlerGC;
 import micdoodle8.mods.galacticraft.api.transmission.NetworkType;
 import micdoodle8.mods.galacticraft.api.transmission.tile.IConnector;
@@ -49,8 +49,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-
-import appeng.api.parts.IPartHost;
 
 import static gregtech.api.enums.GT_Values.VN;
 
