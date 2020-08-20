@@ -18,7 +18,7 @@ public class barrelBasic extends GT_MetaTileEntity_TieredMachineBlock {
     public int mItemCount = 0;
     public ItemStack mItemStack = null;
     public barrelBasic(int aID, String aName, String aNameRegional, int aTier) {
-        super(aID, aName, aNameRegional, aTier, 3, "This Chest stores " + ((int) ((Math.pow(2, aTier)) * 2000)) + " Blocks");
+        super(aID, aName, aNameRegional, aTier, 3, "This Chest stores " + ((int) ((Math.pow(2, aTier)) * 4000)) + " Blocks");
     }
 
     public barrelBasic(String aName, int aTier, String aDescription, ITexture[][][] aTextures) {
@@ -163,7 +163,7 @@ public class barrelBasic extends GT_MetaTileEntity_TieredMachineBlock {
     }
 
     public int getMaxItemCount() {
-        return (int) (((Math.pow(2, mTier)) * 2000) - 128);
+        return (int) (((Math.pow(2, mTier)) * 4000) - 128);
     }
 
     @Override

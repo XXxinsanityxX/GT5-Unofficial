@@ -15,7 +15,7 @@ import net.minecraftforge.fluids.IFluidHandler;
 public class tankBasic
         extends GT_MetaTileEntity_BasicTank {
     public tankBasic(int aID, String aName, String aNameRegional, int aTier) {
-        super(aID, aName, aNameRegional, aTier, 3, "Stores " + ((int) (Math.pow(2, aTier) * 8000)) + "L of fluid & outputs front, melts at internal pipe temp");
+        super(aID, aName, aNameRegional, aTier, 3, "Stores " + ((int) (Math.pow(2, aTier) * 16000)) + "L of fluid & outputs front, melts at internal pipe temp");
     }
 
     public tankBasic(String aName, int aTier, String aDescription, ITexture[][][] aTextures) {
@@ -172,7 +172,7 @@ public class tankBasic
 
     @Override
     public int getCapacity() {
-        return (int) (Math.pow(2, mTier) * 8000);
+        return (int) (Math.pow(2, mTier) * 16000);
     }
 
     @Override
