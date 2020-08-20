@@ -673,7 +673,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials Knightmetal = new Materials(362, TextureSet.SET_METALLIC, 	8.0F, 1024, 3, 1|2|64|128, 210, 240, 200, 0, "Knightmetal", "Knightmetal", 5, 24, -1, 0, false, false, 4, 1, 1, Dyes.dyeLime, 2, Arrays.asList(new MaterialStack(Steel, 2), new MaterialStack(Magic, 1)), Arrays.asList(new TC_AspectStack(TC_Aspects.LUCRUM, 1), new TC_AspectStack(TC_Aspects.METALLUM, 2)));
     public static Materials SterlingSilver = new Materials( 350, TextureSet.SET_SHINY, 13.0F, 128, 2, 1|2|64|128, 250, 220, 225, 0, "SterlingSilver", "Sterling Silver", 0, 0, -1, 1700, true, false, 4, 1, 1, Dyes.dyeWhite, 2, Arrays.asList(new MaterialStack(Copper, 1), new MaterialStack(Silver, 4)));
     public static Materials RoseGold = new Materials( 351, TextureSet.SET_SHINY, 	   14.0F, 128, 2, 1|2|64|128, 255, 230, 30, 0, "RoseGold", "Rose Gold", 0, 0, -1, 1600, true, false, 4, 1, 1, Dyes.dyeOrange, 2, Arrays.asList(new MaterialStack(Copper, 1), new MaterialStack(Gold, 4)));
-    public static Materials BlackBronze = new Materials( 352, TextureSet.SET_DULL, 	   12.0F, 256, 2, 1|2|64|128, 100, 50, 125, 0, "BlackBronze", "Black Bronze", 0, 0, -1, 2000, true, false, 4, 1, 1, Dyes.dyePurple, 2, Arrays.asList(new MaterialStack(Gold, 1), new MaterialStack(Silver, 1), new MaterialStack(Copper, 3)));
+    public static Materials BlackBronze = new Materials( 352, TextureSet.SET_DULL, 	   12.0F, 256, 2, 1|2|64|128, 100, 50, 125, 0, "BlackBronze", "Black Bronze", 0, 0, -1, 1000, true, false, 4, 1, 1, Dyes.dyePurple, 2, Arrays.asList(new MaterialStack(Gold, 1), new MaterialStack(Silver, 1), new MaterialStack(Copper, 3)));
     public static Materials BismuthBronze = new Materials( 353, TextureSet.SET_DULL, 	8.0F, 256, 2, 1|2|64|128, 100, 125, 125, 0, "BismuthBronze", "Bismuth Bronze", 0, 0, -1, 1100, true, false, 4, 1, 1, Dyes.dyeCyan, 2, Arrays.asList(new MaterialStack(Bismuth, 1), new MaterialStack(Zinc, 1), new MaterialStack(Copper, 3)));
     public static Materials BlackSteel = new Materials( 334, TextureSet.SET_METALLIC, 	6.5F, 768, 2, 1|2|64, 100, 100, 100, 0, "BlackSteel", "Black Steel", 0, 0, -1, 1200, true, false, 4, 1, 1, Dyes.dyeBlack, 2, Arrays.asList(new MaterialStack(Nickel, 1), new MaterialStack(BlackBronze, 1), new MaterialStack(Steel, 3)));
     public static Materials RedSteel = new Materials( 348, TextureSet.SET_METALLIC, 	7.0F, 896, 2, 1|2|64, 140, 100, 100, 0, "RedSteel", "Red Steel", 0, 0, -1, 1300, true, false, 4, 1, 1, Dyes.dyeRed, 2, Arrays.asList(new MaterialStack(SterlingSilver, 1), new MaterialStack(BismuthBronze, 1), new MaterialStack(Steel, 2), new MaterialStack(BlackSteel, 4)));
@@ -741,7 +741,9 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials SteelMagnetic = new Materials( 355, TextureSet.SET_MAGNETIC,6.0F, 512, 2, 1|2|64|128, 128, 128, 128, 0, "SteelMagnetic", "Magnetic Steel", 0, 0, 1000, 1000, true, false, 4, 51, 50, Dyes.dyeGray, 1, Arrays.asList(new MaterialStack(Steel, 1)), Arrays.asList(new TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_AspectStack(TC_Aspects.ORDO, 1), new TC_AspectStack(TC_Aspects.MAGNETO, 1)));
     public static Materials NeodymiumMagnetic=new Materials(356,TextureSet.SET_MAGNETIC,7.0F, 512, 2, 1|2|64|128, 100, 100, 100, 0, "NeodymiumMagnetic", "Magnetic Neodymium", 0, 0, 1297, 1297, true, false, 4, 51, 50, Dyes.dyeGray, 1, Arrays.asList(new MaterialStack(Neodymium, 1)), Arrays.asList(new TC_AspectStack(TC_Aspects.METALLUM, 1), new TC_AspectStack(TC_Aspects.MAGNETO, 3)));
     public static Materials TungstenCarbide =new Materials(370,TextureSet.SET_METALLIC,14.0F, 1280, 4, 1|2|64|128, 51, 0, 102, 0, "TungstenCarbide", "Tungstencarbide", 0, 0, 2460, 2460, true, false, 4, 1, 1, Dyes.dyeBlack, 2, Arrays.asList(new MaterialStack(Tungsten, 1), new MaterialStack(Carbon, 1)));
-    public static Materials VanadiumSteel = new Materials( 371, TextureSet.SET_METALLIC,3.0F, 1920, 3, 1|2|64|128, 192, 192, 192, 0, "VanadiumSteel", "Vanadiumsteel", 0, 0, 1453, 1453, true, false, 4, 1, 1, Dyes.dyeWhite, 2, Arrays.asList(new MaterialStack(Vanadium, 1), new MaterialStack(Chrome, 1), new MaterialStack(Steel, 7)));
+    // Use GT6 recipe w/o chrome
+    //public static Materials VanadiumSteel = new Materials( 371, TextureSet.SET_METALLIC,3.0F, 1920, 3, 1|2|64|128, 192, 192, 192, 0, "VanadiumSteel", "Vanadiumsteel", 0, 0, 1453, 1453, true, false, 4, 1, 1, Dyes.dyeWhite, 2, Arrays.asList(new MaterialStack(Vanadium, 1), new MaterialStack(Chrome, 1), new MaterialStack(Steel, 7)));
+    public static Materials VanadiumSteel = new Materials( 371, TextureSet.SET_METALLIC,3.0F, 1920, 3, 1|2|64|128, 192, 192, 192, 0, "VanadiumSteel", "Vanadiumsteel", 0, 0, 1453, 1453, true, false, 4, 1, 1, Dyes.dyeWhite, 2, Arrays.asList(new MaterialStack(Vanadium, 1), new MaterialStack(Steel, 4)));
     public static Materials HSSG = new Materials( 372, TextureSet.SET_METALLIC, 	   10.0F, 4000, 3, 1|2|64|128, 153, 153, 0, 0, "HSSG", "HSS-G", 0, 0, 4500, 4500, true, false, 4, 1, 1, Dyes.dyeYellow, 2, Arrays.asList(new MaterialStack(TungstenSteel, 5), new MaterialStack(Chrome, 1), new MaterialStack(Molybdenum, 2), new MaterialStack(Vanadium, 1)));
     public static Materials HSSE = new Materials( 373, TextureSet.SET_METALLIC, 	   10.0F, 5120, 4, 1|2|64|128, 51, 102, 0, 0, "HSSE", "HSS-E", 0, 0, 5400, 5400, true, false, 4, 1, 1, Dyes.dyeBlue, 2, Arrays.asList(new MaterialStack(HSSG, 6), new MaterialStack(Cobalt, 1), new MaterialStack(Manganese, 1), new MaterialStack(Silicon, 1)));
     public static Materials HSSS = new Materials( 374, TextureSet.SET_METALLIC, 	   14.0F, 3000, 4, 1|2|64|128, 102, 0, 51, 0, "HSSS", "HSS-S", 0, 0, 5400, 5400, true, false, 4, 1, 1, Dyes.dyeRed, 2, Arrays.asList(new MaterialStack(HSSG, 6), new MaterialStack(Iridium, 2), new MaterialStack(Osmium, 1)));
@@ -869,30 +871,30 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         Snow					.setSmeltingInto(Water				);
 
         Mercury					.add(SubTag.SMELTING_TO_GEM);
-        Cinnabar				.setDirectSmelting(Mercury		).add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT).add(SubTag.SMELTING_TO_GEM);
-        Tetrahedrite			.setDirectSmelting(Copper		).add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT).add(SubTag.DONT_ADD_DEFAULT_BBF_RECIPE);
-        Chalcopyrite			.setDirectSmelting(Copper		).add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT).add(SubTag.DONT_ADD_DEFAULT_BBF_RECIPE);
-        Malachite				.setDirectSmelting(Copper		).add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT);
-        Pentlandite				.setDirectSmelting(Nickel		).add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT);
-        Sphalerite				.setDirectSmelting(Zinc			).add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT);
-        Pyrite					.setDirectSmelting(Iron			).add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT);
-        BasalticMineralSand		.setDirectSmelting(Iron			).add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT);
-        GraniticMineralSand		.setDirectSmelting(Iron			).add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT);
-        YellowLimonite			.setDirectSmelting(Iron			).add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT);
-        BrownLimonite			.setDirectSmelting(Iron			);
-        BandedIron				.setDirectSmelting(Iron			);
-        Magnetite				.setDirectSmelting(Iron			);
-        Cassiterite				.setDirectSmelting(Tin			);
-        CassiteriteSand			.setDirectSmelting(Tin			);
-        Chromite				.setDirectSmelting(Chrome		);
-        Garnierite				.setDirectSmelting(Nickel		);
-        Cobaltite				.setDirectSmelting(Cobalt		);
-        Stibnite				.setDirectSmelting(Antimony		);
-        Cooperite				.setDirectSmelting(Platinum		).add(SubTag.DONT_ADD_DEFAULT_BBF_RECIPE);
-        Pyrolusite				.setDirectSmelting(Manganese	).add(SubTag.DONT_ADD_DEFAULT_BBF_RECIPE);
-        Magnesite				.setDirectSmelting(Magnesium	).add(SubTag.DONT_ADD_DEFAULT_BBF_RECIPE);
-        Molybdenite				.setDirectSmelting(Molybdenum	).add(SubTag.DONT_ADD_DEFAULT_BBF_RECIPE);
-        Galena 					.setDirectSmelting(Lead			).add(SubTag.DONT_ADD_DEFAULT_BBF_RECIPE);
+		Cinnabar.add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT).add(SubTag.SMELTING_TO_GEM); //Mercury
+		Tetrahedrite.add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT); //Copper
+		Chalcopyrite.add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT); //Copper
+		Malachite.add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT); //Copper
+		Pentlandite.add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT); //Nickel
+		Sphalerite.add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT); //Zinc
+		Pyrite.add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT); //Iron
+		BasalticMineralSand.add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT); //Iron
+		GraniticMineralSand.add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT); //Iron
+		YellowLimonite.add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT); //Iron
+//		BrownLimonite.setDirectSmelting(Iron);
+//		BandedIron.setDirectSmelting(Iron);
+//		Magnetite.setDirectSmelting(Iron);
+//		Cassiterite.setDirectSmelting(Tin);
+//		CassiteriteSand.setDirectSmelting(Tin);
+//		Chromite.setDirectSmelting(Chrome);
+//		Garnierite.setDirectSmelting(Nickel);
+//		Cobaltite.setDirectSmelting(Cobalt);
+//		Stibnite.setDirectSmelting(Antimony);
+//		Cooperite.setDirectSmelting(Platinum);
+//		Pyrolusite.setDirectSmelting(Manganese);
+//		Magnesite.setDirectSmelting(Magnesium);
+//		Molybdenite.setDirectSmelting(Molybdenum);        
+		Galena 					.setDirectSmelting(Lead			).add(SubTag.DONT_ADD_DEFAULT_BBF_RECIPE);
         
         Amber					.setOreMultiplier( 2).setSmeltingMultiplier( 2);
         InfusedAir				.setOreMultiplier( 2).setSmeltingMultiplier( 2);
