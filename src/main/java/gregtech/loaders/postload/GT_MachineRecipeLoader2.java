@@ -14,6 +14,11 @@ public class GT_MachineRecipeLoader2 implements Runnable {
 
     public void run() {
         if (Loader.isModLoaded("EnderIO")) {
+            GT_Values.RA.addForgeHammerRecipe(GT_ModHandler.getModItem("EnderIO", "itemMaterial", 1L, 5), GT_ModHandler.getModItem("EnderIO", "itemMaterial", 1L, 14), 20, 16);
+            GT_Values.RA.addForgeHammerRecipe(GT_ModHandler.getModItem("EnderIO", "itemMaterial", 1L, 6), GT_ModHandler.getModItem("EnderIO", "itemMaterial", 1L, 15), 20, 16);
+            GT_Values.RA.addForgeHammerRecipe(GT_ModHandler.getModItem("EnderIO", "itemMaterial", 1L, 8), GT_ModHandler.getModItem("EnderIO", "itemMaterial", 1L, 16), 20, 16);
+            GT_Values.RA.addForgeHammerRecipe(GT_ModHandler.getModItem("EnderIO", "itemMaterial", 1L, 13), GT_ModHandler.getModItem("EnderIO", "itemMaterial", 1L, 17), 20, 16);
+
             GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Steel, 3L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Silicon, 1L), GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.ElectricalSteel, 4L), GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.DarkAsh, 2L), (int) Math.max(Materials.ElectricalSteel.getMass() / 40L, 1L) * Materials.ElectricalSteel.mBlastFurnaceTemp, 120, Materials.ElectricalSteel.mBlastFurnaceTemp);
             GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Gold, 1L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Glowstone, 1L), Materials.Redstone.getMolten(144), GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.EnergeticAlloy, 1L), null, Materials.EnergeticAlloy.mBlastFurnaceTemp / 10, 120, Materials.EnergeticAlloy.mBlastFurnaceTemp);
             GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.EnergeticAlloy, 1L), GT_OreDictUnificator.get(OrePrefixes.gem, Materials.EnderPearl, 1L), GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.VibrantAlloy, 1L), null, Materials.VibrantAlloy.mBlastFurnaceTemp / 10, 480, Materials.VibrantAlloy.mBlastFurnaceTemp);
@@ -107,8 +112,6 @@ public class GT_MachineRecipeLoader2 implements Runnable {
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.HSSS, 1L), GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.HSSS, 1L), null, 3080, 1920, Materials.HSSS.mBlastFurnaceTemp);
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.HSSS, 4L), GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.HSSS, 1L), null, 3080, 1920, Materials.HSSS.mBlastFurnaceTemp);
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.HSSS, 9L), GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.HSSS, 1L), null, 3080, 1920, Materials.HSSS.mBlastFurnaceTemp);
-
-
 
         //Vacuum Freezer main materials
         GT_Values.RA.addVacuumFreezerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.Titanium, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Titanium, 1L), 140, 480);
