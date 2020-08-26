@@ -68,13 +68,16 @@ public class ProcessingFix implements gregtech.api.interfaces.IOreRecipeRegistra
                 GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, aStack), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Nickel, 3L));
                 break;
             case "Cobaltite":
-                GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, aStack), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Cobalt, 2L));
+                GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, aStack), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Cobalt, 3L));
                 break;
             case "Stibnite":
                 GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, aStack), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Antimony, 2L));
                 break;
             case "Pyrolusite":
                 GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, aStack), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Manganese, 2L));
+                break;
+            case "Galena":
+                GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, aStack), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Lead, 3L));
                 break;
             case "Molybdenite":
                 GT_ModHandler.addSmeltingRecipe(GT_Utility.copyAmount(1L, aStack), GT_OreDictUnificator.get(OrePrefixes.nugget, Materials.Molybdenum, 2L));

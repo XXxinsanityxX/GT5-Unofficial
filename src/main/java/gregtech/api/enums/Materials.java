@@ -888,6 +888,8 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
 		BasalticMineralSand.add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT); //Iron
 		GraniticMineralSand.add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT); //Iron
 		YellowLimonite.add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT); //Iron
+        Galena.add(SubTag.INDUCTIONSMELTING_LOW_OUTPUT); //Lead
+
 //		BrownLimonite.setDirectSmelting(Iron);
 //		BandedIron.setDirectSmelting(Iron);
 //		Magnetite.setDirectSmelting(Iron);
@@ -901,7 +903,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
 //		Pyrolusite.setDirectSmelting(Manganese);
 //		Magnesite.setDirectSmelting(Magnesium);
 //		Molybdenite.setDirectSmelting(Molybdenum);        
-		Galena 					.setDirectSmelting(Lead			).add(SubTag.DONT_ADD_DEFAULT_BBF_RECIPE);
+//		Galena 					.setDirectSmelting(Lead			).add(SubTag.DONT_ADD_DEFAULT_BBF_RECIPE);
         
         Amber					.setOreMultiplier( 2).setSmeltingMultiplier( 2);
         InfusedAir				.setOreMultiplier( 2).setSmeltingMultiplier( 2);
