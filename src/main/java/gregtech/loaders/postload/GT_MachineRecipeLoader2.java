@@ -1,9 +1,7 @@
 package gregtech.loaders.postload;
 
 import cpw.mods.fml.common.Loader;
-import gregtech.api.enums.GT_Values;
-import gregtech.api.enums.Materials;
-import gregtech.api.enums.OrePrefixes;
+import gregtech.api.enums.*;
 import gregtech.api.util.GT_ModHandler;
 import gregtech.api.util.GT_OreDictUnificator;
 import net.minecraft.init.Blocks;
@@ -14,13 +12,21 @@ public class GT_MachineRecipeLoader2 implements Runnable {
 
     public void run() {
         if (Loader.isModLoaded("EnderIO")) {
+            GT_ModHandler.removeRecipeByOutput(GT_ModHandler.getModItem("EnderIO", "itemBasicCapacitor", 1L, 0));
+            GT_ModHandler.removeRecipeByOutput(GT_ModHandler.getModItem("EnderIO", "itemBasicCapacitor", 1L, 7));
+            GT_ModHandler.removeRecipeByOutput(GT_ModHandler.getModItem("EnderIO", "itemMachinePart", 1L, 0));
+
+            GT_ModHandler.addCraftingRecipe(GT_ModHandler.getModItem("EnderIO", "itemBasicCapacitor", 1L, 0), GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{" GR", "GCG", "RG ", 'G', GT_OreDictUnificator.get(OrePrefixes.wireGt02, Materials.Gold, 1L), 'R', GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.RedAlloy, 1L), 'C', GT_OreDictUnificator.get(OrePrefixes.wireGt04, Materials.Copper, 1L) });
+            GT_ModHandler.addCraftingRecipe(GT_ModHandler.getModItem("EnderIO", "itemBasicCapacitor", 1L, 7), GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{" SR", "SLS", "RS ", 'S', GT_OreDictUnificator.get(OrePrefixes.wireGt02, Materials.Silver, 1L), 'R', GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.RedAlloy, 1L), 'L', GT_OreDictUnificator.get(OrePrefixes.wireGt04, Materials.Lead, 1L) });
+            GT_ModHandler.addCraftingRecipe(GT_ModHandler.getModItem("EnderIO", "itemMachinePart", 1L, 0), GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{"FS", "SC", 'F', GT_OreDictUnificator.get(OrePrefixes.frameGt, Materials.Steel, 1L), 'S', GT_OreDictUnificator.get(OrePrefixes.gearGt, Materials.Steel, 1L), 'C', OreDictNames.capacitorBasic});
+
             GT_Values.RA.addForgeHammerRecipe(GT_ModHandler.getModItem("EnderIO", "itemMaterial", 1L, 5), GT_ModHandler.getModItem("EnderIO", "itemMaterial", 1L, 14), 20, 16);
             GT_Values.RA.addForgeHammerRecipe(GT_ModHandler.getModItem("EnderIO", "itemMaterial", 1L, 6), GT_ModHandler.getModItem("EnderIO", "itemMaterial", 1L, 15), 20, 16);
             GT_Values.RA.addForgeHammerRecipe(GT_ModHandler.getModItem("EnderIO", "itemMaterial", 1L, 8), GT_ModHandler.getModItem("EnderIO", "itemMaterial", 1L, 16), 20, 16);
             GT_Values.RA.addForgeHammerRecipe(GT_ModHandler.getModItem("EnderIO", "itemMaterial", 1L, 13), GT_ModHandler.getModItem("EnderIO", "itemMaterial", 1L, 17), 20, 16);
 
             GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Steel, 3L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Silicon, 1L), GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.ElectricalSteel, 4L), GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.DarkAsh, 2L), (int) Math.max(Materials.ElectricalSteel.getMass() / 40L, 1L) * Materials.ElectricalSteel.mBlastFurnaceTemp, 120, Materials.ElectricalSteel.mBlastFurnaceTemp);
-            GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Gold, 1L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Glowstone, 1L), Materials.Redstone.getMolten(144), GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.EnergeticAlloy, 1L), null, Materials.EnergeticAlloy.mBlastFurnaceTemp / 10, 120, Materials.EnergeticAlloy.mBlastFurnaceTemp);
+            GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.RoseGold, 1L), ItemList.Energium_Dust.get(1L), GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.EnergeticAlloy, 1L), null, Materials.EnergeticAlloy.mBlastFurnaceTemp / 10, 120, Materials.EnergeticAlloy.mBlastFurnaceTemp);
             GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.EnergeticAlloy, 1L), GT_OreDictUnificator.get(OrePrefixes.gem, Materials.EnderPearl, 1L), GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.VibrantAlloy, 1L), null, Materials.VibrantAlloy.mBlastFurnaceTemp / 10, 480, Materials.VibrantAlloy.mBlastFurnaceTemp);
             GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Iron, 1L), GT_OreDictUnificator.get(OrePrefixes.gem, Materials.EnderPearl, 1L), GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.PulsatingIron, 1L), null, Materials.PulsatingIron.mBlastFurnaceTemp / 10, 120, Materials.PulsatingIron.mBlastFurnaceTemp);
             GT_Values.RA.addAlloySmelterRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Redstone, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Silicon, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.RedstoneAlloy, 1L), 400, 24);
@@ -36,6 +42,15 @@ public class GT_MachineRecipeLoader2 implements Runnable {
             GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.gem, Materials.EnderEye, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.EndSteel, 1L), Materials.Chrome.getMolten(144), GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.MelodicAlloy, 1L), null, Materials.MelodicAlloy.mBlastFurnaceTemp / 10, 1920, Materials.MelodicAlloy.mBlastFurnaceTemp);
             GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.gem, Materials.NetherStar, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.MelodicAlloy, 1L), Materials.Naquadah.getMolten(144), GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.StellarAlloy, 1L), null, Materials.StellarAlloy.mBlastFurnaceTemp / 10, 30720, Materials.StellarAlloy.mBlastFurnaceTemp);
         }
+        //Lapotron
+        GT_ModHandler.addCraftingRecipe(ItemList.Energium_Dust.get(9L), GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{"RDR", "DRD", "RDR", 'R', OrePrefixes.dust.get(Materials.Redstone), 'D', OrePrefixes.dust.get(Materials.Ruby)});
+        GT_Values.RA.addMixerRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Redstone, 5L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Ruby, 4L), GT_Values.NI, GT_Values.NI, GT_Values.NF, GT_Values.NF, ItemList.Energium_Dust.get(1L, new Object[0]), 100, 120);
+        GT_Values.RA.addMixerRecipe(GT_OreDictUnificator.get(ItemList.Energium_Dust.get(3L,new Object[0])), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Lapis, 2L), GT_Values.NI, GT_Values.NI, GT_Values.NF, GT_Values.NF, ItemList.Lapotron_Dust.get(5L, new Object[0]), 100, 480);
+        GT_Values.RA.addAutoclaveRecipe(ItemList.Energium_Dust.get(9L,new Object[0]), Materials.Water.getFluid(1000L), ItemList.Energy_Crystal.get(1L,new Object[0]), 10000, 500, 120);
+        GT_Values.RA.addAutoclaveRecipe(ItemList.Energium_Dust.get(9L,new Object[0]), GT_ModHandler.getDistilledWater(1000L), ItemList.Energy_Crystal.get(1L,new Object[0]), 10000, 600, 120);
+        GT_Values.RA.addAutoclaveRecipe(ItemList.Lapotron_Dust.get(20L,new Object[0]), Materials.Ultimet.getMolten(36L), ItemList.Inert_Lapotron_Crystal.get(1L,new Object[0]), 10000, 480, 256);
+        GT_Values.RA.addAssemblerRecipe(ItemList.Inert_Lapotron_Crystal.get(1L,new Object[0]), GT_OreDictUnificator.get(OrePrefixes.circuit, Materials.Advanced, 2L), ItemList.Lapotron_Crystal.get(1L,new Object[0]), 300, 1920);
+
         //Blast Furnace main materials
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Titanium, 1L), GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.Titanium, 1L), null, 1980, 1920, Materials.Titanium.mBlastFurnaceTemp);
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.Titanium, 4L), GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.Titanium, 1L), null, 1980, 1920, Materials.Titanium.mBlastFurnaceTemp);

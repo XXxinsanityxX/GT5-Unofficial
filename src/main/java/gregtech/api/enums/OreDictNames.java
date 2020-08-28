@@ -75,4 +75,11 @@ public enum OreDictNames {
     craftingWireIron,
     craftingWireTin,
     craftingWorkBench,
+    capacitorBasic,
+    capacitorAdvanced,
+    capacitorEnder,
+    itemMachineChassi,
+    capacitorCrystalline,
+    capacitorMelodic,
+    capacitorStellar,
 }
