@@ -1,6 +1,5 @@
 package gregtech.loaders.oreprocessing;
 
-
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.util.GT_ModHandler;
@@ -11,7 +10,7 @@ import net.minecraft.item.ItemStack;
 /*Correct processing amounts for mixed ores. - e99999*/
 
 public class ProcessingFix implements gregtech.api.interfaces.IOreRecipeRegistrator {
-    private final OrePrefixes[] mSmeltingPrefixes = {OrePrefixes.ore, OrePrefixes.oreBlackgranite, OrePrefixes.oreNetherrack, OrePrefixes.oreEndstone, OrePrefixes.oreRedgranite, OrePrefixes.crushed, OrePrefixes.crushedPurified, OrePrefixes.crushedCentrifuged, OrePrefixes.dust, OrePrefixes.dustImpure, OrePrefixes.dustPure, OrePrefixes.dustRefined};
+    private final OrePrefixes[] mSmeltingPrefixes = {OrePrefixes.ore, OrePrefixes.oreBasalt, OrePrefixes.oreMarble, OrePrefixes.oreBlackgranite, OrePrefixes.oreRedgranite, OrePrefixes.crushed, OrePrefixes.crushedPurified, OrePrefixes.crushedCentrifuged, OrePrefixes.dust, OrePrefixes.dustImpure, OrePrefixes.dustPure, OrePrefixes.dustRefined};
 
     public ProcessingFix() {
         for (OrePrefixes tPrefix : this.mSmeltingPrefixes) tPrefix.add(this);

@@ -26,31 +26,31 @@ public class ProcessingModSupport implements gregtech.api.interfaces.IMaterialHa
     @Override
     public void onMaterialsInit() {
         //Disable Materials if Parent Mod is not loaded
-        if (!aEnablePFAAMats) {
-            Materials.Alunite.mHasParentMod = false;
-            Materials.Asbestos.mHasParentMod = false;
-            Materials.BasalticMineralSand.mHasParentMod = false;
-            Materials.Borax.mHasParentMod = false;
-            Materials.CassiteriteSand.mHasParentMod = false;
-            Materials.Chromite.mHasParentMod = false;
-            Materials.Chrysotile.mHasParentMod = false;
-            Materials.Diatomite.mHasParentMod = false;
-            Materials.FullersEarth.mHasParentMod = false;
-            Materials.GarnetSand.mHasParentMod = false;
-            Materials.GlauconiteSand.mHasParentMod = false;
-            Materials.GraniticMineralSand.mHasParentMod = false;
-            Materials.Kaolinite.mHasParentMod = false;
-            Materials.Kyanite.mHasParentMod = false;
-            Materials.Mirabilite.mHasParentMod = false;
-            Materials.Perlite.mHasParentMod = false;
-            Materials.Pollucite.mHasParentMod = false;
-            Materials.Pumice.mHasParentMod = false;
-            Materials.QuartzSand.mHasParentMod = false;
-            Materials.Vermiculite.mHasParentMod = false;
-            Materials.VolcanicAsh.mHasParentMod = false;
-            Materials.Wollastonite.mHasParentMod = false;
-            Materials.Zeolite.mHasParentMod = false;
-        }
+        //if (!aEnablePFAAMats) {
+            //Materials.Alunite.mHasParentMod = false;
+            //Materials.Asbestos.mHasParentMod = false;
+            //Materials.BasalticMineralSand.mHasParentMod = false;
+            //Materials.Borax.mHasParentMod = false;
+            //Materials.CassiteriteSand.mHasParentMod = false;
+            //Materials.Chromite.mHasParentMod = false;
+            //Materials.Chrysotile.mHasParentMod = false;
+            //Materials.Diatomite.mHasParentMod = false;
+            //Materials.FullersEarth.mHasParentMod = false;
+            //Materials.GarnetSand.mHasParentMod = false;
+            //Materials.GlauconiteSand.mHasParentMod = false;
+            //Materials.GraniticMineralSand.mHasParentMod = false;
+            //Materials.Kaolinite.mHasParentMod = false;
+            //Materials.Kyanite.mHasParentMod = false;
+            //Materials.Mirabilite.mHasParentMod = false;
+            //Materials.Perlite.mHasParentMod = false;
+            //Materials.Pollucite.mHasParentMod = false;
+            //Materials.Pumice.mHasParentMod = false;
+            //Materials.QuartzSand.mHasParentMod = false;
+            //Materials.Vermiculite.mHasParentMod = false;
+            //Materials.VolcanicAsh.mHasParentMod = false;
+            //Materials.Wollastonite.mHasParentMod = false;
+            //Materials.Zeolite.mHasParentMod = false;
+        //}
         if (!aTGregSupport) {
             Materials.Dysprosium.mHasParentMod = false;
             Materials.Erbium.mHasParentMod = false;
@@ -134,11 +134,11 @@ public class ProcessingModSupport implements gregtech.api.interfaces.IMaterialHa
             Materials.Rhyolite.mHasParentMod = false;
             Materials.Siltstone.mHasParentMod = false;
         }
-        if (!aEnableIHLMats && !aEnablePFAAMats) {
-            Materials.Mica.mHasParentMod = false;
-            Materials.Gypsum.mHasParentMod = false;
-            Materials.Trona.mHasParentMod = false;
-        }
+        //if (!aEnableIHLMats && !aEnablePFAAMats) {
+            //Materials.Mica.mHasParentMod = false;
+            //Materials.Gypsum.mHasParentMod = false;
+            //Materials.Trona.mHasParentMod = false;
+        //}
         if (!aEnableTwilightMats) {
             Materials.FierySteel.mHasParentMod = false;
             Materials.LiveRoot.mHasParentMod = false;

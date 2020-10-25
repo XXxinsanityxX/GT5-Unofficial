@@ -16,6 +16,9 @@ import gregtech.common.tileentities.boilers.GT_MetaTileEntity_Boiler_Lava;
 import gregtech.common.tileentities.boilers.GT_MetaTileEntity_Boiler_Solar;
 import gregtech.common.tileentities.boilers.GT_MetaTileEntity_Boiler_Steel;
 import gregtech.common.tileentities.generators.*;
+import gregtech.common.tileentities.hatches.GT_MetaTileEntity_Primitive_Hatch_Output;
+import gregtech.common.tileentities.hatches.GT_MetaTileEntity_Primitive_InputBus;
+import gregtech.common.tileentities.hatches.GT_MetaTileEntity_Primitive_OutputBus;
 import gregtech.common.tileentities.machines.GT_MetaTileEntity_BasicHull_Bronze;
 import gregtech.common.tileentities.machines.GT_MetaTileEntity_BasicHull_BronzeBricks;
 import gregtech.common.tileentities.machines.GT_MetaTileEntity_BasicHull_Steel;
@@ -293,6 +296,16 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         GT_ModHandler.addCraftingRecipe(ItemList.Hatch_Output_ZPM.get(1L, new Object[0]), bitsd, new Object[]{"M", "G", 'M', ItemList.Hull_ZPM, 'G', Ic2Items.reinforcedGlass});
         GT_ModHandler.addCraftingRecipe(ItemList.Hatch_Output_UV.get(1L, new Object[0]), bitsd, new Object[]{"M", "G", 'M', ItemList.Hull_UV, 'G', Ic2Items.reinforcedGlass});
         GT_ModHandler.addCraftingRecipe(ItemList.Hatch_Output_MAX.get(1L, new Object[0]), bitsd, new Object[]{"M", "G", 'M', ItemList.Hull_MAX, 'G', Ic2Items.reinforcedGlass});
+
+        ItemList.Machine_CokeOven.set(new GT_MetaTileEntity_CokeOven(137, "multimachine.cokeoven", "Coke Oven").getStackForm(1L));
+        ItemList.Hatch_Output_Prim.set(new GT_MetaTileEntity_Primitive_Hatch_Output(138, "primitive.hatchoutput", "Primitive Output Hatch",0).getStackForm(1L));
+        ItemList.Bus_Input_Prim.set(new GT_MetaTileEntity_Primitive_InputBus(139, "primitive.input", "Primitive Input Bus",0).getStackForm(1L));
+        ItemList.Bus_Output_Prim.set(new GT_MetaTileEntity_Primitive_OutputBus(140, "primitive.output", "Primitive Output Bus",0).getStackForm(1L));
+
+        GT_ModHandler.addCraftingRecipe(ItemList.Machine_CokeOven.get(1L), bitsd, new Object[]{"BBB", "BFB", "BBB", 'B', ItemList.CokeOvenBrick, 'F', OreDictNames.craftingFurnace});
+        GT_ModHandler.addCraftingRecipe(ItemList.Hatch_Output_Prim.get(1L),bitsd,new Object[]{"BBB", "B B", "BEB", 'B', ItemList.CokeOvenBrick, 'E', new ItemStack(Items.bucket, 1, 0)});
+        GT_ModHandler.addCraftingRecipe(ItemList.Bus_Input_Prim.get(1L),bitsd,new Object[]{"BEB", "B B", "BBB", 'B', ItemList.CokeOvenBrick, 'E', new ItemStack(Blocks.hopper, 1, 32767)});
+        GT_ModHandler.addCraftingRecipe(ItemList.Bus_Output_Prim.get(1L),bitsd,new Object[]{"BBB", "B B", "BEB", 'B', ItemList.CokeOvenBrick, 'E', new ItemStack(Blocks.hopper, 1, 32767)});
 
         ItemList.Quantum_Tank_LV.set(new GT_MetaTileEntity_QuantumTank(120, "quantum.tank.tier.01", "Quantum Tank I", 1).getStackForm(1L));
         ItemList.Quantum_Tank_MV.set(new GT_MetaTileEntity_QuantumTank(121, "quantum.tank.tier.02", "Quantum Tank II", 2).getStackForm(1L));
@@ -1078,10 +1091,16 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         ItemList.Machine_UV_Oven.set(new GT_MetaTileEntity_BasicMachine_GT_Recipe(678, "basicmachine.e_oven.tier.08", "Advanced Electric Oven VII", 8, "Just a Furnace with a different Design", GT_Recipe.GT_Recipe_Map.sFurnaceRecipes, 1, 1, 0, 0, 1, "E_Oven.png", (String) GregTech_API.sSoundList.get(Integer.valueOf(207)), aBoolConst_0, aBoolConst_0, 0, "ELECTRIC_OVEN", new Object[]{"CEC", aTextCableHull, "WEW", 'M', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.HULL, 'E', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.CIRCUIT, 'W', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.WIRE, 'C', GT_MetaTileEntity_BasicMachine_GT_Recipe.X.COIL_HEATING}).getStackForm(1L));
 
         ItemList.Machine_LV_Miner.set(new GT_MetaTileEntity_Miner(679, "basicmachine.miner.tier.01", "Basic Miner", 1).getStackForm(1L));
-        ItemList.Machine_MV_Miner.set(new GT_MetaTileEntity_Miner(680, "basicmachine.miner.tier.02", "Advanced Miner", 2).getStackForm(1L));
+        ItemList.Machine_MV_Miner.set(new GT_MetaTileEntity_Miner(680, "basicmachine.miner.tier.02", "Good Miner", 2).getStackForm(1L));
+        ItemList.Machine_HV_Miner.set(new GT_MetaTileEntity_Miner(686, "basicmachine.miner.tier.03", "Advanced Miner", 3).getStackForm(1L));
+        ItemList.Machine_EV_Miner.set(new GT_MetaTileEntity_Miner(687, "basicmachine.miner.tier.04", "Extreme Miner", 4).getStackForm(1L));
 
         GT_ModHandler.addCraftingRecipe(ItemList.Machine_LV_Miner.get(1L), bitsd, new Object[]{"EEE", aTextWireHull, "CSC", 'M', ItemList.Hull_LV, 'E', ItemList.Electric_Motor_LV, 'C', OrePrefixes.circuit.get(Materials.Basic), 'W', OrePrefixes.cableGt01.get(Materials.Tin), 'S', ItemList.Sensor_LV});
-        GT_ModHandler.addCraftingRecipe(ItemList.Machine_MV_Miner.get(1L), bitsd, new Object[]{"EEE", aTextWireHull, "CSC", 'M', ItemList.Hull_MV, 'E', ItemList.Electric_Motor_MV, 'C', OrePrefixes.circuit.get(Materials.Good), 'W', OrePrefixes.cableGt01.get(Materials.Copper), 'S', ItemList.Sensor_MV});
+        GT_ModHandler.addCraftingRecipe(ItemList.Machine_MV_Miner.get(1L), bitsd, new Object[]{"EEE", aTextWireHull, "CSC", 'M', ItemList.Hull_MV, 'E', ItemList.Electric_Motor_MV, 'C', OrePrefixes.circuit.get(Materials.Good), 'W', OrePrefixes.cableGt02.get(Materials.Copper), 'S', ItemList.Sensor_MV});
+        GT_ModHandler.addCraftingRecipe(ItemList.Machine_HV_Miner.get(1L), bitsd, new Object[]{"EEE", aTextWireHull, "CSC", 'M', ItemList.Hull_HV, 'E', ItemList.Electric_Motor_HV, 'C', OrePrefixes.circuit.get(Materials.Advanced), 'W', OrePrefixes.cableGt04.get(Materials.Gold), 'S', ItemList.Sensor_HV});
+        GT_ModHandler.addCraftingRecipe(ItemList.Machine_EV_Miner.get(1L), bitsd, new Object[]{"EEE", aTextWireHull, "CSC", 'M', ItemList.Hull_EV, 'E', ItemList.Electric_Motor_EV, 'C', OrePrefixes.circuit.get(Materials.Data), 'W', OrePrefixes.cableGt08.get(Materials.Aluminium), 'S', ItemList.Sensor_EV});
+
+
     }
 
     private static void run3() {

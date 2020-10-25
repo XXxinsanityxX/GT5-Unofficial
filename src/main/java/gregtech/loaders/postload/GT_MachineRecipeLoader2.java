@@ -42,6 +42,19 @@ public class GT_MachineRecipeLoader2 implements Runnable {
             GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.gem, Materials.EnderEye, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.EndSteel, 1L), Materials.Chrome.getMolten(144), GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.MelodicAlloy, 1L), null, Materials.MelodicAlloy.mBlastFurnaceTemp / 10, 1920, Materials.MelodicAlloy.mBlastFurnaceTemp);
             GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.gem, Materials.NetherStar, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.MelodicAlloy, 1L), Materials.Naquadah.getMolten(144), GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.StellarAlloy, 1L), null, Materials.StellarAlloy.mBlastFurnaceTemp / 10, 30720, Materials.StellarAlloy.mBlastFurnaceTemp);
         }
+
+        if (Loader.isModLoaded("exnihilo")) {
+            GT_ModHandler.addCraftingRecipe(new ItemStack(Blocks.end_portal_frame, 1), new Object[]{"X X", " X ", 'X', OrePrefixes.plate.get(Materials.Tungsten)});
+
+            GT_Values.RA.addForgeHammerRecipe(new ItemStack(Blocks.netherrack, 1), GT_ModHandler.getModItem("exnihilo", "exnihilo.gravel_nether", 1L), 100, 16);
+            GT_Values.RA.addForgeHammerRecipe(new ItemStack(Blocks.end_stone, 1), GT_ModHandler.getModItem("exnihilo", "exnihilo.gravel_ender", 1L), 100, 16);
+
+            GT_Values.RA.addMixerRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Sulfur, 1L), GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.Redstone, 1L), GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.Coal, 1L), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.Gold, 1L), GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Netherrack, 1L), 400, 30);
+            GT_Values.RA.addMixerRecipe(new ItemStack(Blocks.sand, 1), GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.Tungstate, 1L), GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.Platinum, 1L), GT_Values.NI, GT_Values.NF, Materials.Helium.getFluid(120L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Endstone, 1L), 400, 60);
+            GT_Values.RA.addCompressorRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Netherrack, 1L), new ItemStack(Blocks.netherrack, 1), 600, 16);
+            GT_Values.RA.addCompressorRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Endstone, 1L), new ItemStack(Blocks.end_stone, 1), 600, 16);
+        }
+
         //Lapotron
         GT_ModHandler.addCraftingRecipe(ItemList.Energium_Dust.get(9L), GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{"RDR", "DRD", "RDR", 'R', OrePrefixes.dust.get(Materials.Redstone), 'D', OrePrefixes.dust.get(Materials.Ruby)});
         GT_Values.RA.addMixerRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Redstone, 5L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Ruby, 4L), GT_Values.NI, GT_Values.NI, GT_Values.NF, GT_Values.NF, ItemList.Energium_Dust.get(1L, new Object[0]), 100, 120);

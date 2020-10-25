@@ -59,5 +59,6 @@ public class GT_Loader_OreProcessing
         new ProcessingWax();
         new ProcessingWire();
         new ProcessingFix();
+        new ProcessingFixRichOres();
     }
 }
