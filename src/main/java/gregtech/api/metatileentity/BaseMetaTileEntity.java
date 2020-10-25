@@ -468,15 +468,17 @@ public class BaseMetaTileEntity extends BaseTileEntity implements IGregTechTileE
                             for (int i = mMetaTileEntity.dechargerSlotStartIndex(), k = mMetaTileEntity.dechargerSlotCount() + i; i < k; i++) {
                                 if (mMetaTileEntity.mInventory[i] != null && getStoredEU() < getEUCapacity()) {
                                     dischargeItem(mMetaTileEntity.mInventory[i]);
-				    if(ic2.api.info.Info.itemEnergy.getEnergyValue(mMetaTileEntity.mInventory[i])>0){
-                                       if((getStoredEU() + ic2.api.info.Info.itemEnergy.getEnergyValue(mMetaTileEntity.mInventory[i]))<getEUCapacity()){
+                                    if(ic2.api.info.Info.itemEnergy.getEnergyValue(mMetaTileEntity.mInventory[i])>0){
+                                        if((getStoredEU() + ic2.api.info.Info.itemEnergy.getEnergyValue(mMetaTileEntity.mInventory[i]))<getEUCapacity()){
                                            increaseStoredEnergyUnits((long)ic2.api.info.Info.itemEnergy.getEnergyValue(mMetaTileEntity.mInventory[i]),false);
                                            mMetaTileEntity.mInventory[i].stackSize--;
+                                            mInventoryChanged = true;
                                        }
                                     }
-                                    if (mMetaTileEntity.mInventory[i].stackSize <= 0)
+                                    if (mMetaTileEntity.mInventory[i].stackSize <= 0) {
                                         mMetaTileEntity.mInventory[i] = null;
-                                    mInventoryChanged = true;
+                                        mInventoryChanged = true;
+                                    }
                                 }
                             }
                         }
@@ -488,9 +490,10 @@ public class BaseMetaTileEntity extends BaseTileEntity implements IGregTechTileE
                             for (int i = mMetaTileEntity.rechargerSlotStartIndex(), k = mMetaTileEntity.rechargerSlotCount() + i; i < k; i++) {
                                 if (getStoredEU() > 0 && mMetaTileEntity.mInventory[i] != null) {
                                     chargeItem(mMetaTileEntity.mInventory[i]);
-                                    if (mMetaTileEntity.mInventory[i].stackSize <= 0)
+                                    if (mMetaTileEntity.mInventory[i].stackSize <= 0){
                                         mMetaTileEntity.mInventory[i] = null;
-                                    mInventoryChanged = true;
+                                        mInventoryChanged = true;
+                                    }
                                 }
                             }
                         }
