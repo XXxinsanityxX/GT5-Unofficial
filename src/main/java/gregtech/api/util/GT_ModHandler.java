@@ -608,7 +608,7 @@ public class GT_ModHandler {
     
     
     public static boolean addImmersiveEngineeringRecipe(ItemStack aInput, ItemStack aOutput1, ItemStack aOutput2, int aChance2, ItemStack aOutput3, int aChance3){
-    	if(GregTech_API.mImmersiveEngineering && GT_Mod.gregtechproxy.mImmersiveEngineeringRecipes){
+    	/*if(GregTech_API.mImmersiveEngineering && GT_Mod.gregtechproxy.mImmersiveEngineeringRecipes){
     		//Get IE Recipe Handler
 			try {				
 				if (mRecipeIE == null) {
@@ -620,7 +620,7 @@ public class GT_ModHandler {
 				 GT_Log.err.println("WARNING: Bad Reflection into Immersive Engineering Crusher recipe handler.");
 				return false;
 			}
-    	}
+    	}*/
     	return true;
     }
     
@@ -634,7 +634,7 @@ public class GT_ModHandler {
     private static Method mRecipeMagGrinder;
     
     public static boolean addMagneticraftRecipe(ItemStack aInput, ItemStack aOutput1, ItemStack aOutput2, int aChance2, ItemStack aOutput3, int aChance3){
-		if(GregTech_API.mMagneticraft && GT_Mod.gregtechproxy.mMagneticraftRecipes){
+		/*if(GregTech_API.mMagneticraft && GT_Mod.gregtechproxy.mMagneticraftRecipes){
 			ItemData  tData = GT_OreDictUnificator.getAssociation(aInput);
 			if(tData!=null&&tData.mPrefix!=null){
 				if(tData.mPrefix==OrePrefixes.ore||tData.mPrefix==OrePrefixes.oreBlackgranite||tData.mPrefix==OrePrefixes.oreEndstone||tData.mPrefix==OrePrefixes.oreNetherrack||tData.mPrefix==OrePrefixes.oreRedgranite){
@@ -643,7 +643,7 @@ public class GT_ModHandler {
 					registerMagneticraftGrinderRecipe(aInput, aOutput1, aOutput2,(float)((float)aChance2/GT_Mod.gregtechproxy.mMagneticraftBonusOutputPercent), aOutput3,(float)((float)aChance3/GT_Mod.gregtechproxy.mMagneticraftBonusOutputPercent));
 				}
 			}
-		}
+		}*/
 		return true;
 	}
 
