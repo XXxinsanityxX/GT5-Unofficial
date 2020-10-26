@@ -1,5 +1,17 @@
 package gregtech.common;
 
+import static gregtech.api.enums.GT_Values.debugOrevein;
+import static gregtech.api.enums.GT_Values.debugWorldGen;
+import static gregtech.api.enums.GT_Values.oreveinAttempts;
+import static gregtech.api.enums.GT_Values.oreveinMaxPlacementAttempts;
+import static gregtech.api.enums.GT_Values.oreveinPercentage;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Random;
+
 import cpw.mods.fml.common.IWorldGenerator;
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregtech.api.GregTech_API;
@@ -11,15 +23,8 @@ import gregtech.common.blocks.GT_TileEntity_Ores;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
-import net.minecraft.world.gen.ChunkProviderEnd;
-import net.minecraft.world.gen.ChunkProviderHell;
-
-import java.util.*;
-
-import static gregtech.api.enums.GT_Values.*;
 
 // Disabled for hardcoded value.    import static gregtech.api.enums.GT_Values.oreveinMaxSize;
 
@@ -37,7 +42,7 @@ public class GT_Worldgenerator
     public static List<Runnable> mList = new ArrayList();
     public static HashSet<Long> ProcChunks = new HashSet<Long>();
     // This is probably not going to work.  Trying to create a fake orevein to put into hashtable when there will be no ores in a vein.
-    public static GT_Worldgen_GT_Ore_Layer noOresInVein = new GT_Worldgen_GT_Ore_Layer( "NoOresInVein", false, 0, 255, 0, 255, 16,  false, false, false, false, false, false, Materials.Aluminium, Materials.Aluminium, Materials.Aluminium, Materials.Aluminium);
+    public static GT_Worldgen_GT_Ore_Layer noOresInVein = new GT_Worldgen_GT_Ore_Layer( "NoOresInVein", false, 0, 255, 0, 255, 16,  false, false, false, Materials.Aluminium, Materials.Aluminium, Materials.Aluminium, Materials.Aluminium);
     public static Hashtable<Long, GT_Worldgen_GT_Ore_Layer> validOreveins = new Hashtable(1024);
     public boolean mIsGenerating = false;
     public static final Object listLock = new Object();
@@ -64,7 +69,7 @@ public class GT_Worldgenerator
     public void generate(Random aRandom, int aX, int aZ, World aWorld, IChunkProvider aChunkGenerator, IChunkProvider aChunkProvider) {
         synchronized (listLock)
         {
-            this.mList.add(new WorldGenContainer(new XSTR(Math.abs(aRandom.nextInt()) +1), aX, aZ, ((aChunkGenerator instanceof ChunkProviderEnd)) || (aWorld.getBiomeGenForCoords(aX * 16 + 8, aZ * 16 + 8) == BiomeGenBase.sky) ? 1 : ((aChunkGenerator instanceof ChunkProviderHell)) || (aWorld.getBiomeGenForCoords(aX * 16 + 8, aZ * 16 + 8) == BiomeGenBase.hell) ? -1 : 0, aWorld, aChunkGenerator, aChunkProvider, aWorld.getBiomeGenForCoords(aX * 16 + 8, aZ * 16 + 8).biomeName));
+            this.mList.add(new WorldGenContainer(new XSTR(Math.abs(aRandom.nextInt()) +1), aX, aZ, aWorld.provider.dimensionId, aWorld, aChunkGenerator, aChunkProvider, aWorld.getBiomeGenForCoords(aX * 16 + 8, aZ * 16 + 8).biomeName));
             if (debugWorldGen) GT_Log.out.println(
                     "ADD WorldSeed:"+aWorld.getSeed() +
                             " DimId" + aWorld.provider.dimensionId +
@@ -323,6 +328,21 @@ public class GT_Worldgenerator
             long startTime = System.nanoTime();
             int oreveinMaxSize;
 
+            // Do GT_Stones and GT_small_ores oregen for this chunk
+            try {
+                for (GT_Worldgen tWorldGen : GregTech_API.sWorldgenList) {
+                    /*
+                    if (debugWorldGen) GT_Log.out.println(
+                        "tWorldGen.mWorldGenName="+tWorldGen.mWorldGenName
+                    );
+                    */
+                    tWorldGen.executeWorldgen(this.mWorld, this.mRandom, this.mBiome, this.mDimensionType, this.mX*16, this.mZ*16, this.mChunkGenerator, this.mChunkProvider);
+                }
+            } catch (Throwable e) {
+                e.printStackTrace(GT_Log.err);
+            }
+            long leftOverTime = System.nanoTime();
+
             // Determine bounding box on how far out to check for oreveins affecting this chunk
             // For now, manually reducing oreveinMaxSize when not in the Underdark for performance
             if(this.mWorld.provider.getDimensionName().equals("Underdark") ) {
@@ -342,7 +362,6 @@ public class GT_Worldgenerator
                     // Determine if this X/Z is an orevein seed
                     if ( ( (Math.abs(x)%3) == 1) && ( (Math.abs(z)%3) == 1 ) ) {
                         if (debugWorldGen) GT_Log.out.println(
-
                                 "Adding seed x="+x+
                                         " z="+z
                         );
@@ -354,7 +373,6 @@ public class GT_Worldgenerator
             // Now process each oreseed vs this requested chunk
             for( ; seedList.size() != 0; seedList.remove(0) ) {
                 if (debugWorldGen) GT_Log.out.println(
-
                         "Processing seed x="+seedList.get(0).mX+
                                 " z="+seedList.get(0).mZ
                 );
@@ -362,22 +380,6 @@ public class GT_Worldgenerator
             }
 
             long oregenTime = System.nanoTime();
-
-            // Do leftover worldgen for this chunk (GT_Stones and GT_small_ores)
-            try {
-                for (GT_Worldgen tWorldGen : GregTech_API.sWorldgenList) {
-                    /*
-                    if (debugWorldGen) GT_Log.out.println(
-                        "tWorldGen.mWorldGenName="+tWorldGen.mWorldGenName
-                    );
-                    */
-                    tWorldGen.executeWorldgen(this.mWorld, this.mRandom, this.mBiome, this.mDimensionType, this.mX*16, this.mZ*16, this.mChunkGenerator, this.mChunkProvider);
-                }
-            } catch (Throwable e) {
-                e.printStackTrace(GT_Log.err);
-            }
-
-            long leftOverTime = System.nanoTime();
 
             //Asteroid Worldgen
             int tDimensionType = this.mWorld.provider.dimensionId;
@@ -414,10 +416,10 @@ public class GT_Worldgenerator
                         }
                     }
                 }
-                //if(GT_Values.D1)System.out.println("do asteroid gen: "+this.mX+" "+this.mZ);
-                int tX = mX + aRandom.nextInt(16);
+                //if(GT_Values.D1)GT_FML_LOGGER.info("do asteroid gen: "+this.mX+" "+this.mZ);
+                int tX = mX * 16 + aRandom.nextInt(16);
                 int tY = 50 + aRandom.nextInt(200 - 50);
-                int tZ = mZ + aRandom.nextInt(16);
+                int tZ = mZ * 16 + aRandom.nextInt(16);
                 if (tDimensionType == 1) {
                     mSize = aRandom.nextInt((int) (endMaxSize - endMinSize));
                     //} else if (tDimensionName.equals("Asteroids")) {
@@ -494,8 +496,8 @@ public class GT_Worldgenerator
             long duration = (endTime - startTime);
             if (debugWorldGen) {
                 GT_Log.out.println(
-                        " Oregen took " + (oregenTime-startTime)+
-                                " Leftover gen took " + (leftOverTime - oregenTime ) +
+                        " Oregen took " + (oregenTime-leftOverTime)+
+                                " Leftover gen took " + (leftOverTime - startTime) +
                                 " Worldgen took " + duration +
                                 " nanoseconds"
                 );
