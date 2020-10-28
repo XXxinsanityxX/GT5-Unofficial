@@ -1,12 +1,10 @@
 package gregtech.common;
 
-import gregtech.GT_Mod;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.Materials;
 import gregtech.api.util.GT_Log;
 import gregtech.api.world.GT_Worldgen;
 import gregtech.common.blocks.GT_TileEntity_Ores;
-import gregtech.loaders.misc.GT_Achievements;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
@@ -16,9 +14,7 @@ import net.minecraft.world.chunk.IChunkProvider;
 import java.util.ArrayList;
 import java.util.Random;
 
-import static gregtech.api.enums.GT_Values.debugOrevein;
-import static gregtech.api.enums.GT_Values.oreveinPlacerOres;
-import static gregtech.api.enums.GT_Values.oreveinPlacerOresMultiplier;
+import static gregtech.api.enums.GT_Values.*;
 
 public class GT_Worldgen_GT_Ore_Layer
         extends GT_Worldgen {

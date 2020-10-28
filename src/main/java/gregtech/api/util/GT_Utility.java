@@ -2082,6 +2082,17 @@ public class GT_Utility {
             return rNBT == null ? new NBTTagCompound() : rNBT;
         }
 
+        public static void setIntegratedAmount(ItemStack aStack, int aMode) {
+            NBTTagCompound tNBT = getNBT(aStack);
+            tNBT.setInteger("GT.IntegratedAmount", aMode);
+            setNBT(aStack, tNBT);
+        }
+
+        public static int getIntegratedAmount(ItemStack aStack) {
+            NBTTagCompound tNBT = getNBT(aStack);
+            return tNBT.getInteger("GT.IntegratedAmount");
+        }
+
         public static void setPunchCardData(ItemStack aStack, String aPunchCardData) {
             NBTTagCompound tNBT = getNBT(aStack);
             tNBT.setString("GT.PunchCardData", aPunchCardData);

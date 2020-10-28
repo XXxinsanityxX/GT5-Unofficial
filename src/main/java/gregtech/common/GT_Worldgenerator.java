@@ -1,17 +1,5 @@
 package gregtech.common;
 
-import static gregtech.api.enums.GT_Values.debugOrevein;
-import static gregtech.api.enums.GT_Values.debugWorldGen;
-import static gregtech.api.enums.GT_Values.oreveinAttempts;
-import static gregtech.api.enums.GT_Values.oreveinMaxPlacementAttempts;
-import static gregtech.api.enums.GT_Values.oreveinPercentage;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Random;
-
 import cpw.mods.fml.common.IWorldGenerator;
 import cpw.mods.fml.common.registry.GameRegistry;
 import gregtech.api.GregTech_API;
@@ -25,6 +13,10 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
+
+import java.util.*;
+
+import static gregtech.api.enums.GT_Values.*;
 
 // Disabled for hardcoded value.    import static gregtech.api.enums.GT_Values.oreveinMaxSize;
 
