@@ -16,9 +16,6 @@ import gregtech.common.tileentities.boilers.GT_MetaTileEntity_Boiler_Lava;
 import gregtech.common.tileentities.boilers.GT_MetaTileEntity_Boiler_Solar;
 import gregtech.common.tileentities.boilers.GT_MetaTileEntity_Boiler_Steel;
 import gregtech.common.tileentities.generators.*;
-import gregtech.common.tileentities.hatches.GT_MetaTileEntity_Primitive_Hatch_Output;
-import gregtech.common.tileentities.hatches.GT_MetaTileEntity_Primitive_InputBus;
-import gregtech.common.tileentities.hatches.GT_MetaTileEntity_Primitive_OutputBus;
 import gregtech.common.tileentities.machines.GT_MetaTileEntity_BasicHull_Bronze;
 import gregtech.common.tileentities.machines.GT_MetaTileEntity_BasicHull_BronzeBricks;
 import gregtech.common.tileentities.machines.GT_MetaTileEntity_BasicHull_Steel;
@@ -298,9 +295,6 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         GT_ModHandler.addCraftingRecipe(ItemList.Hatch_Output_MAX.get(1L, new Object[0]), bitsd, new Object[]{"M", "G", 'M', ItemList.Hull_MAX, 'G', Ic2Items.reinforcedGlass});
 
         ItemList.Machine_CokeOven.set(new GT_MetaTileEntity_CokeOven(137, "multimachine.cokeoven", "Coke Oven").getStackForm(1L));
-        ItemList.Hatch_Output_Prim.set(new GT_MetaTileEntity_Primitive_Hatch_Output(138, "primitive.hatchoutput", "Primitive Output Hatch",0).getStackForm(1L));
-        ItemList.Bus_Input_Prim.set(new GT_MetaTileEntity_Primitive_InputBus(139, "primitive.input", "Primitive Input Bus",0).getStackForm(1L));
-        ItemList.Bus_Output_Prim.set(new GT_MetaTileEntity_Primitive_OutputBus(140, "primitive.output", "Primitive Output Bus",0).getStackForm(1L));
 
         GT_ModHandler.addCraftingRecipe(ItemList.Machine_CokeOven.get(1L), bitsd, new Object[]{"BBB", "BFB", "BBB", 'B', ItemList.CokeOvenBrick, 'F', OreDictNames.craftingFurnace});
         GT_ModHandler.addCraftingRecipe(ItemList.Hatch_Output_Prim.get(1L),bitsd,new Object[]{"BBB", "B B", "BEB", 'B', ItemList.CokeOvenBrick, 'E', new ItemStack(Items.bucket, 1, 0)});
