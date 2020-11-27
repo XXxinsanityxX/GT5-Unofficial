@@ -1051,8 +1051,8 @@ if(Loader.isModLoaded("Railcraft")){
         GT_Values.RA.addForgeHammerRecipe(ItemList.Casing_Firebricks.get(1, new Object[0]), ItemList.Firebrick.get(3, new Object[0]), 10, 16);
 
         //COKE OVEN
-    	GT_Values.RA.addCompressorRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Concrete, 1L), ItemList.CokeOvenBrick.get(1L), 200, 8);
-        GT_ModHandler.addPulverisationRecipe(ItemList.CokeOvenBrick.get(1L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Concrete, 1L));
+    	//GT_Values.RA.addCompressorRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.RedConcrete, 1L), ItemList.CokeOvenBrick.get(1L), 200, 8);
+        //GT_ModHandler.addPulverisationRecipe(ItemList.CokeOvenBrick.get(1L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Concrete, 1L));
 
         GT_ModHandler.addPulverisationRecipe(Materials.Brick.getIngots(1), Materials.Brick.getDustSmall(1));
     	GT_ModHandler.addPulverisationRecipe(ItemList.CompressedFireclay.get(1, new Object[0]), Materials.Fireclay.getDustSmall(1));

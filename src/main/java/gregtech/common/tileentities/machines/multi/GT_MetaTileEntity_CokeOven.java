@@ -37,15 +37,15 @@ public class GT_MetaTileEntity_CokeOven extends GT_MetaTileEntity_MultiBlockBase
                 "1x Input Bus (Any casing)",
                 "1x Output Bus (Any casing)",
                 "1x Output Hatch (Any casing)",
-                "Coke Oven Bricks for the rest"
+                "Firebrick blocks for the rest"
         };
     }
 
     public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, byte aSide, byte aFacing, byte aColorIndex, boolean aActive, boolean aRedstone) {
         if (aSide == aFacing) {
-            return new ITexture[]{Textures.BlockIcons.CASING_BLOCKS[63], new GT_RenderedTexture(aActive ? Textures.BlockIcons.OVERLAY_COKE_OVEN_BRICK_ACTIVE : Textures.BlockIcons.OVERLAY_COKE_OVEN_BRICK)};
+            return new ITexture[]{Textures.BlockIcons.casingTexturePages[1][50], new GT_RenderedTexture(aActive ? Textures.BlockIcons.OVERLAY_COKE_OVEN_BRICK_ACTIVE : Textures.BlockIcons.OVERLAY_COKE_OVEN_BRICK)};
         }
-        return new ITexture[]{Textures.BlockIcons.CASING_BLOCKS[63]};
+        return new ITexture[]{Textures.BlockIcons.casingTexturePages[1][50]};
     }
 
     /*public Object getClientGUI(int aID, InventoryPlayer aPlayerInventory, IGregTechTileEntity aBaseMetaTileEntity) {
@@ -146,11 +146,11 @@ public class GT_MetaTileEntity_CokeOven extends GT_MetaTileEntity_MultiBlockBase
                 for (int h = -1; h < 2; h++) {
                     if ((h != 0) || (((xDir + i != 0) || (zDir + j != 0)) && ((i != 0) || (j != 0)))) {
                         IGregTechTileEntity tTileEntity = aBaseMetaTileEntity.getIGregTechTileEntityOffset(xDir + i, h, zDir + j);
-                        if ((!addInputToMachineList(tTileEntity, 63)) && (!addOutputToMachineList(tTileEntity, 63))) {
-                            if (aBaseMetaTileEntity.getBlockOffset(xDir + i, h, zDir + j) != GregTech_API.sBlockCasings4) {
+                        if ((!addInputToMachineList(tTileEntity, 178)) && (!addOutputToMachineList(tTileEntity, 178))) {
+                            if (aBaseMetaTileEntity.getBlockOffset(xDir + i, h, zDir + j) != GregTech_API.sBlockCasings8) {
                                 return false;
                             }
-                            if (aBaseMetaTileEntity.getMetaIDOffset(xDir + i, h, zDir + j) != 15) {
+                            if (aBaseMetaTileEntity.getMetaIDOffset(xDir + i, h, zDir + j) != 2) {
                                 return false;
                             }
 

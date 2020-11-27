@@ -226,12 +226,12 @@ public class GT_Achievements {
         }
     }
 
-    /*public static void registerOre(Materials aMaterial, int min, int max, int chance, boolean overworld, boolean nether, boolean end) {
-        if (aMaterial != Materials._NULL) {
+    public static void registerOre(Materials aMaterial, int min, int max, int chance, boolean overworld, boolean nether, boolean end) {
+        /*if (aMaterial != Materials._NULL) {
             oreList.add(aMaterial);
         }
-        oreStats.add(new Integer[]{min, max, chance, overworld ? 1 : 0, nether ? 1 : 0, end ? 1 : 0});
-    }*/
+        oreStats.add(new Integer[]{min, max, chance, overworld ? 1 : 0, nether ? 1 : 0, end ? 1 : 0});*/
+    }
 
     public Achievement registerAchievement(String textId, int x, int y, ItemStack icon, Achievement requirement, boolean special) {
         if (!GT_Mod.gregtechproxy.mAchievements) {
@@ -268,14 +268,14 @@ public class GT_Achievements {
         return achievement;
     }
 
-    /*public Achievement registerOreAchievement(Materials aMaterial) {
-        if (this.achievementList.get(aMaterial.mName) == null) {
+    public Achievement registerOreAchievement(Materials aMaterial) {
+        /*if (this.achievementList.get(aMaterial.mName) == null) {
             oreReg++;
             return registerAchievement(aMaterial.mName, -(6 + oreReg % 5), ((oreReg) / 5) - 8, new ItemStack(GregTech_API.sBlockOres1, 1,
                     aMaterial.mMetaItemSubID), AchievementList.openInventory, false);
-        }
+        }*/
         return null;
-    }*/
+    }
 
     public Achievement registerAssAchievement(GT_Recipe recipe) {
         if (this.achievementList.get(recipe.getOutput(0).getUnlocalizedName()) == null) {

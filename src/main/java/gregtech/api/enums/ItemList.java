@@ -542,9 +542,6 @@ public enum ItemList implements IItemContainer {
     Machine_Steel_AlloySmelter,
     Machine_CokeOven,
     CokeOvenBrick,
-    Hatch_Output_Prim,
-    Bus_Input_Prim,
-    Bus_Output_Prim,
     Casing_CokeOvenBrick,
 
     Hull_Bronze, Hull_Steel, Hull_Bronze_Bricks, Hull_Steel_Bricks,

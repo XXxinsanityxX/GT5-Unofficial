@@ -786,8 +786,8 @@ public class GT_CraftingRecipeLoader implements Runnable {
 
         GT_Values.RA.addFluidSolidifierRecipe(ItemList.Shape_Mold_Ball.get(0), new FluidStack(FluidRegistry.getFluid("molten.borosilicateglass"), 144), ItemList.VOLUMETRIC_FLASK.get(1), 44, 24);
 
-        //GT_ModHandler.addCraftingRecipe(GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.Flint, 2L), new Object[]{"h", "F", 'F', new ItemStack(Items.flint, 1)});
-        GT_ModHandler.addCraftingRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Concrete, 3L), new Object[]{"CC", "SC", 'C', GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Clay, 1L), 'S', GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Stone, 1L)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Casing_CokeOvenBrick.get(1L), new Object[] {"BB", "BB", 'B', ItemList.CokeOvenBrick.get(1L)});
+        //GT_ModHandler.addCraftingRecipe(GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.FineSand, 2L), new Object[]{"h", "S", 'S', new ItemStack(Blocks.sand, 1, 0)});
+        //GT_ModHandler.addCraftingRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.RedConcrete, 3L), new Object[]{"BS", "F ", 'B', GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Brick, 1L), 'S', GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Stone, 1L), 'F', GT_OreDictUnificator.get(OrePrefixes.dust, Materials.FineSand, 1L)});
+        //GT_ModHandler.addCraftingRecipe(ItemList.Casing_CokeOvenBrick.get(1L), new Object[] {"BB", "BB", 'B', ItemList.CokeOvenBrick.get(1L)});
     }
 }

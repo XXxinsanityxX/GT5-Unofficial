@@ -106,7 +106,7 @@ public class ProcessingModSupport implements gregtech.api.interfaces.IMaterialHa
             Materials.ShadowSteel.mHasParentMod = false;
             Materials.AstralSilver.mHasParentMod = false;
             Materials.Midasium.mHasParentMod = false;
-            Materials.Adamantium.mHasParentMod = false;
+            //Materials.Adamantium.mHasParentMod = false;
         }
         if (!aEnableThaumcraftMats) {
             Materials.Thaumium.mHasParentMod = false;
@@ -134,11 +134,11 @@ public class ProcessingModSupport implements gregtech.api.interfaces.IMaterialHa
             Materials.Rhyolite.mHasParentMod = false;
             Materials.Siltstone.mHasParentMod = false;
         }
-        //if (!aEnableIHLMats && !aEnablePFAAMats) {
-            //Materials.Mica.mHasParentMod = false;
-            //Materials.Gypsum.mHasParentMod = false;
-            //Materials.Trona.mHasParentMod = false;
-        //}
+        if (!aEnableIHLMats && !aEnablePFAAMats) {
+            Materials.Mica.mHasParentMod = false;
+            Materials.Gypsum.mHasParentMod = false;
+            Materials.Trona.mHasParentMod = false;
+        }
         if (!aEnableTwilightMats) {
             Materials.FierySteel.mHasParentMod = false;
             Materials.LiveRoot.mHasParentMod = false;

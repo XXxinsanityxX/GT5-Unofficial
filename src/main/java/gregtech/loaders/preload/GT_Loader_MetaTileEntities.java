@@ -295,11 +295,7 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         GT_ModHandler.addCraftingRecipe(ItemList.Hatch_Output_MAX.get(1L, new Object[0]), bitsd, new Object[]{"M", "G", 'M', ItemList.Hull_MAX, 'G', Ic2Items.reinforcedGlass});
 
         ItemList.Machine_CokeOven.set(new GT_MetaTileEntity_CokeOven(137, "multimachine.cokeoven", "Coke Oven").getStackForm(1L));
-
-        GT_ModHandler.addCraftingRecipe(ItemList.Machine_CokeOven.get(1L), bitsd, new Object[]{"BBB", "BFB", "BBB", 'B', ItemList.CokeOvenBrick, 'F', OreDictNames.craftingFurnace});
-        GT_ModHandler.addCraftingRecipe(ItemList.Hatch_Output_Prim.get(1L),bitsd,new Object[]{"BBB", "B B", "BEB", 'B', ItemList.CokeOvenBrick, 'E', new ItemStack(Items.bucket, 1, 0)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Bus_Input_Prim.get(1L),bitsd,new Object[]{"BEB", "B B", "BBB", 'B', ItemList.CokeOvenBrick, 'E', new ItemStack(Blocks.hopper, 1, 32767)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Bus_Output_Prim.get(1L),bitsd,new Object[]{"BBB", "B B", "BEB", 'B', ItemList.CokeOvenBrick, 'E', new ItemStack(Blocks.hopper, 1, 32767)});
+        GT_ModHandler.addCraftingRecipe(ItemList.Machine_CokeOven.get(1L), bitsd, new Object[]{"BBB", "BFB", "BBB", 'B', ItemList.Firebrick, 'F', OreDictNames.craftingFurnace});
 
         ItemList.Quantum_Tank_LV.set(new GT_MetaTileEntity_QuantumTank(120, "quantum.tank.tier.01", "Quantum Tank I", 1).getStackForm(1L));
         ItemList.Quantum_Tank_MV.set(new GT_MetaTileEntity_QuantumTank(121, "quantum.tank.tier.02", "Quantum Tank II", 2).getStackForm(1L));
