@@ -139,11 +139,11 @@ public class GT_Worldgenloader implements Runnable {
         //new GT_Worldgen_GT_Ore_Layer("ore.mix.dolomite", true, 150, 200, 40, 4, 24, true, false, false, Materials.Dolomite, Materials.Wollastonite, Materials.Trona, Materials.Andradite);
 
         //Far End Asteroids Veins
-        new GT_Worldgen_GT_Ore_Layer("ore.mix.naquadahasteroid", true, 90, 256, 60, 5, 48, false, false, true, Materials.Naquadah, Materials.Naquadah, Materials.Naquadah, Materials.NaquadahEnriched);
-        new GT_Worldgen_GT_Ore_Layer("ore.mix.platinumasteroid", true, 90, 256, 80, 5, 48, false, false, true, Materials.Cooperite, Materials.Palladium, Materials.Platinum, Materials.Iridium);
-        new GT_Worldgen_GT_Ore_Layer("ore.mix.tungstenasteroid", true, 90, 256, 90, 5, 48, false, false, true, Materials.Scheelite, Materials.Scheelite, Materials.Tungstate, Materials.Lithium);
-        new GT_Worldgen_GT_Ore_Layer("ore.mix.uraniumasteroid", true, 90, 256, 70, 5, 48, false, false, true, Materials.Uraninite, Materials.Pitchblende, Materials.Uranium, Materials.Uranium);
-        new GT_Worldgen_GT_Ore_Layer("ore.mix.ironasteroid", true, 90, 256, 150, 5, 48, false, false, true, Materials.Iron, Materials.Iron, Materials.Oilsands, Materials.Nickel);
+        //new GT_Worldgen_GT_Ore_Layer("ore.mix.naquadahasteroid", true, 75, 256, 60, 5, 48, false, false, true, Materials.Naquadah, Materials.Naquadah, Materials.Naquadah, Materials.NaquadahEnriched);
+        //new GT_Worldgen_GT_Ore_Layer("ore.mix.platinumasteroid", true, 75, 256, 80, 5, 48, false, false, true, Materials.Cooperite, Materials.Palladium, Materials.Platinum, Materials.Iridium);
+        //new GT_Worldgen_GT_Ore_Layer("ore.mix.tungstenasteroid", true, 75, 256, 90, 5, 48, false, false, true, Materials.Scheelite, Materials.Scheelite, Materials.Tungstate, Materials.Lithium);
+        //new GT_Worldgen_GT_Ore_Layer("ore.mix.uraniumasteroid", true, 75, 256, 70, 5, 48, false, false, true, Materials.Uraninite, Materials.Pitchblende, Materials.Uranium, Materials.Uranium);
+        //new GT_Worldgen_GT_Ore_Layer("ore.mix.ironasteroid", true, 75, 256, 150, 5, 48, false, false, true, Materials.Iron, Materials.Iron, Materials.Oilsands, Materials.Nickel);
 
 
         /*i = 0;

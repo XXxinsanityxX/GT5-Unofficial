@@ -233,7 +233,6 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials Eclogite = new Materials(860, TextureSet.SET_DULL, 		1.0F, 0, 2, 1, 255, 255, 255, 0, "Eclogite", "Eclogite", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes._NULL);
     public static Materials ElectrumFlux = new Materials(320, TextureSet.SET_SHINY,16.0F, 512, 3, 1|2|64, 255, 255, 120, 0, "ElectrumFlux", "Fluxed Electrum", 0, 0, 3000, 3000, true, false, 1, 1, 1, Dyes.dyeYellow);
     public static Materials Emery = new Materials(-1/*861*/, TextureSet.SET_DULL, 		1.0F, 0, 2, 1, 255, 255, 255, 0, "Emery", "Emery", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes._NULL);
-    public static Materials EnderiumBase = new Materials(-1, TextureSet.SET_DULL, 	8.0F, 256, 3, 1|2|64, 89, 145, 135, 0, "EnderiumBase", "Enderium Base", 0, 0, 3000, 3000, true, false, 1, 1, 1, Dyes.dyeGreen, Arrays.asList(new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 2), new TC_AspectStack(TC_Aspects.ALIENIS, 1)));
     public static Materials Energized = new Materials(-1, TextureSet.SET_NONE, 		1.0F, 0, 2, 0, 255, 255, 255, 0, "Energized", "Energized", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes._NULL);
     public static Materials Epidote = new Materials(862, TextureSet.SET_DULL, 		1.0F, 0, 2, 1, 255, 255, 255, 0, "Epidote", "Epidote", 0, 0, -1, 0, false, false, 0, 1, 1, Dyes._NULL);
     public static Materials Eximite = new Materials(959, TextureSet.SET_METALLIC, 	5.0F, 2560, 3, 1 | 2 | 8 | 64, 124, 90, 150, 0, "Eximite", "Eximite", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes._NULL);
@@ -759,13 +758,14 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials VividAlloy = new Materials(-1,TextureSet.SET_METALLIC,12.0F,768,4,1|2|64|128,70,188,219,0,"VividAlloy","VividAlloy",0,0,-1,1800,true,false,4,1,1,Dyes.dyeBlue);
     public static Materials MelodicAlloy = new Materials(-1,TextureSet.SET_METALLIC,24.0F,1024,5,1|2|64|128,136,98,136,0,"MelodicAlloy","MelodicAlloy",0,0,5400,5400,true,false,4,1,1,Dyes.dyeMagenta);
     public static Materials StellarAlloy = new Materials(-1,TextureSet.SET_METALLIC,96.0F,10240,7,1|2|64|128,217,220,203,0,"StellarAlloy","StellarAlloy",0,0,7200,7200,true,false,4,1,1,Dyes.dyeWhite);
-    public static Materials Enderium = new Materials(-1,TextureSet.SET_DULL,8.0F,1500,3,1|2|64|128,89,145,135,0,"Enderium","Enderium",0,0,4500,4500,true,false,1,1,1,Dyes.dyeGreen);
 
     //Extra Materials
     //public static Materials FineSand = new MaterialBuilder(539, TextureSet.SET_FINE, "Fine Sand").addDustItems().setRGB(219, 211, 160).setColor(Dyes.dyeYellow).setMaterialList(new MaterialStack(SiliconDioxide, 1)).constructMaterial();
     //public static Materials RedConcrete = new MaterialBuilder(537, TextureSet.SET_FINE, "Red Concrete").addDustItems().setRGB(114, 54, 38).setColor(Dyes.dyeRed).constructMaterial();
     public static Materials Adamantium = new Materials(319, TextureSet.SET_METALLIC, 	10.0F, 5120, 5, 1|2, 255, 255, 255, 0, "Adamantium", "Adamantium", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes._NULL, Element.Ad, Arrays.asList(new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 10), new TC_Aspects.TC_AspectStack(TC_Aspects.PRAECANTATIO, 10)));
-    public static Materials Adamantine = new Materials(539, TextureSet.SET_METALLIC, 	10.0F, 4500, 5, 1|2|8, 255, 0, 64, 0, "Adamantine", "Adamantine", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes.dyeRed, 0, Arrays.asList(new MaterialStack(Adamantium, 3), new MaterialStack(Oxygen, 4)));
+    public static Materials Adamantine = new Materials(539, TextureSet.SET_METALLIC, 	10.0F, 4500, 4, 1|2|8, 255, 0, 64, 0, "Adamantine", "Adamantine", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes.dyeRed, 0, Arrays.asList(new MaterialStack(Adamantium, 3), new MaterialStack(Oxygen, 4)));
+    public static Materials EnderiumBase = new Materials(321, TextureSet.SET_METALLIC, 	8.0F, 256, 2, 1|2, 53, 85, 108, 0, "EnderiumBase", "Enderium Base", 0, 0, -1, 1071, true, false, 1, 1, 1, Dyes.dyeGreen, 0, Arrays.asList(new MaterialStack(Tin, 2), new MaterialStack(Silver, 1), new MaterialStack(Platinum, 1)));
+    public static Materials Enderium = new Materials(323,TextureSet.SET_METALLIC,12.0F,1850,3,1|2|64,60,125,115,0,"Enderium","Enderium",0,0,-1,1897,true,false,1,1,1,Dyes.dyeGreen, 0, Arrays.asList(new MaterialStack(EnderiumBase, 1), new MaterialStack(EnderPearl, 1)));
 
     /**
      * Materials which are renamed automatically
@@ -969,6 +969,8 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         Enderium				.setEnchantmentForTools(Enchantment.silkTouch, 1);
         NetherStar				.setEnchantmentForTools(Enchantment.silkTouch, 1);
         InfusedOrder			.setEnchantmentForTools(Enchantment.silkTouch, 1);
+        Adamantium				.setEnchantmentForTools(Enchantment.silkTouch, 1);
+        Adamantine				.setEnchantmentForTools(Enchantment.silkTouch, 1);
 
         BlackBronze				.setEnchantmentForTools(Enchantment.smite, 2);
         Gold					.setEnchantmentForTools(Enchantment.smite, 3);
@@ -1004,9 +1006,6 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         HSSE					.setEnchantmentForTools(Enchantment.sharpness, 5);
         HSSG					.setEnchantmentForTools(Enchantment.sharpness, 4);
         HSSS					.setEnchantmentForTools(Enchantment.sharpness, 5);
-
-        Adamantium					.setEnchantmentForTools(Enchantment.silkTouch, 1);
-        Adamantine					.setEnchantmentForTools(Enchantment.silkTouch, 1);
 
         InfusedAir				.setEnchantmentForArmors(Enchantment.respiration, 3);
 
