@@ -715,6 +715,7 @@ public class GT_Loader_Item_Block_And_Fluid
             GT_OreDictUnificator.set(OrePrefixes.plate, Materials.Copper, GT_ModHandler.getModItem("Railcraft", "part.plate", 1L, 3), false, false);
         }
 
+        GT_OreDictUnificator.set(OrePrefixes.ingot, Materials.Bedrockium, GT_ModHandler.getModItem("ExtraUtilities", "bedrockiumIngot", 1L, 0));
 
         GT_OreDictUnificator.set(OrePrefixes.dust, Materials.Cocoa, GT_ModHandler.getModItem("harvestcraft", "cocoapowderItem", 1L, 0));
         GT_OreDictUnificator.set(OrePrefixes.dust, Materials.Coffee, ItemList.IC2_CoffeePowder.get(1L, new Object[0]));
