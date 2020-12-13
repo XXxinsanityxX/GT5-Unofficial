@@ -192,6 +192,10 @@ public final class SubTag implements ICondition<ISubTagContainer> {
      */
     public static final SubTag SOLDERING_MATERIAL_GOOD = getNewSubTag("SOLDERING_MATERIAL_GOOD");
     /**
+     * If this Material can be used for frames
+     */
+    public static final SubTag FRAMEWORK = getNewSubTag("FRAMEWORK");
+    /**
      * Energy Tag for Electricity
      * Primary = Voltage
      * Secondary = Amperage

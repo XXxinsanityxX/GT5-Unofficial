@@ -33,6 +33,10 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class GT_Loader_MetaTileEntities implements Runnable {
     private static final String aTextWire1 = "wire."; private static final String aTextCable1 = "cable."; private static final String aTextWire2 = " Wire"; private static final String aTextCable2 = " Cable";
     private final static String aTextPlate = "PPP"; private final static String aTextPlateWrench = "PwP"; private final static String aTextPlateMotor = "PMP"; private final static String aTextCableHull = "CMC";
@@ -1350,11 +1354,31 @@ public class GT_Loader_MetaTileEntities implements Runnable {
     private static void run4() {
     	long bits = GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED;
     	long bitsd = GT_ModHandler.RecipeBits.DISMANTLEABLE | GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE | GT_ModHandler.RecipeBits.BUFFERED;
-        for (int i = 0; i < GregTech_API.sGeneratedMaterials.length; i++) {
-            if (((GregTech_API.sGeneratedMaterials[i] != null) && ((GregTech_API.sGeneratedMaterials[i].mTypes & 0x2) != 0)) || (GregTech_API.sGeneratedMaterials[i] == Materials.Wood)) {
-                new GT_MetaPipeEntity_Frame(4096 + i, "GT_Frame_" + GregTech_API.sGeneratedMaterials[i], (GT_LanguageManager.i18nPlaceholder ? "%material" : GregTech_API.sGeneratedMaterials[i].mDefaultLocalName) + " Frame Box", GregTech_API.sGeneratedMaterials[i]);
-            }
-        }
+
+        new GT_MetaPipeEntity_Frame(4096 + 1, "GT_Frame_" + Materials.Aluminium, (GT_LanguageManager.i18nPlaceholder ? "%material" : Materials.Aluminium.mDefaultLocalName) + " Frame Box", Materials.Aluminium);
+        new GT_MetaPipeEntity_Frame(4096 + 2, "GT_Frame_" + Materials.Titanium, (GT_LanguageManager.i18nPlaceholder ? "%material" : Materials.Titanium.mDefaultLocalName) + " Frame Box", Materials.Titanium);
+        new GT_MetaPipeEntity_Frame(4096 + 3, "GT_Frame_" + Materials.Bronze, (GT_LanguageManager.i18nPlaceholder ? "%material" : Materials.Bronze.mDefaultLocalName) + " Frame Box", Materials.Bronze);
+        new GT_MetaPipeEntity_Frame(4096 + 4, "GT_Frame_" + Materials.Invar, (GT_LanguageManager.i18nPlaceholder ? "%material" : Materials.Invar.mDefaultLocalName) + " Frame Box", Materials.Invar);
+        new GT_MetaPipeEntity_Frame(4096 + 5, "GT_Frame_" + Materials.Steel, (GT_LanguageManager.i18nPlaceholder ? "%material" : Materials.Steel.mDefaultLocalName) + " Frame Box", Materials.Steel);
+        new GT_MetaPipeEntity_Frame(4096 + 6, "GT_Frame_" + Materials.StainlessSteel, (GT_LanguageManager.i18nPlaceholder ? "%material" : Materials.StainlessSteel.mDefaultLocalName) + " Frame Box", Materials.StainlessSteel);
+        new GT_MetaPipeEntity_Frame(4096 + 7, "GT_Frame_" + Materials.TungstenSteel, (GT_LanguageManager.i18nPlaceholder ? "%material" : Materials.TungstenSteel.mDefaultLocalName) + " Frame Box", Materials.TungstenSteel);
+        new GT_MetaPipeEntity_Frame(4096 + 8, "GT_Frame_" + Materials.Osmiridium, (GT_LanguageManager.i18nPlaceholder ? "%material" : Materials.Osmiridium.mDefaultLocalName) + " Frame Box", Materials.Osmiridium);
+        new GT_MetaPipeEntity_Frame(4096 + 9, "GT_Frame_" + Materials.BlueSteel, (GT_LanguageManager.i18nPlaceholder ? "%material" : Materials.BlueSteel.mDefaultLocalName) + " Frame Box", Materials.BlueSteel);
+        new GT_MetaPipeEntity_Frame(4096 + 10, "GT_Frame_" + Materials.Polytetrafluoroethylene, (GT_LanguageManager.i18nPlaceholder ? "%material" : Materials.Polytetrafluoroethylene.mDefaultLocalName) + " Frame Box", Materials.Polytetrafluoroethylene);
+        new GT_MetaPipeEntity_Frame(4096 + 11, "GT_Frame_" + Materials.Wood, (GT_LanguageManager.i18nPlaceholder ? "%material" : Materials.Wood.mDefaultLocalName) + " Frame Box", Materials.Wood);
+        new GT_MetaPipeEntity_Frame(4096 + 12, "GT_Frame_" + Materials.HSSE, (GT_LanguageManager.i18nPlaceholder ? "%material" : Materials.HSSE.mDefaultLocalName) + " Frame Box", Materials.HSSE);
+        new GT_MetaPipeEntity_Frame(4096 + 13, "GT_Frame_" + Materials.HSSG, (GT_LanguageManager.i18nPlaceholder ? "%material" : Materials.HSSG.mDefaultLocalName) + " Frame Box", Materials.HSSG);
+        new GT_MetaPipeEntity_Frame(4096 + 14, "GT_Frame_" + Materials.Tritanium, (GT_LanguageManager.i18nPlaceholder ? "%material" : Materials.Tritanium.mDefaultLocalName) + " Frame Box", Materials.Tritanium);
+        new GT_MetaPipeEntity_Frame(4096 + 15, "GT_Frame_" + Materials.Neutronium, (GT_LanguageManager.i18nPlaceholder ? "%material" : Materials.Neutronium.mDefaultLocalName) + " Frame Box", Materials.Neutronium);
+
+        //for (int i = 0; i < GregTech_API.sGeneratedMaterials.length; i++) {
+        //    if (aMaterial.contains(SubTag.FRAMEWORK)) {
+        //        new GT_MetaPipeEntity_Frame(4096 + i, "GT_Frame_" + GregTech_API.sGeneratedMaterials[i], (GT_LanguageManager.i18nPlaceholder ? "%material" : GregTech_API.sGeneratedMaterials[i].mDefaultLocalName) + " Frame Box", GregTech_API.sGeneratedMaterials[i]);
+        //    }
+        //}
+        //Aluminium, Titanium, Bronze, Invar, Steel, StainlessSteel, TungstenSteel, Osmiridium,
+        // BlueSteel, Polytetrafluoroethylene, Wood, HSSE, HSSG, Tritanium, Neutronium
+
         boolean bEC = !GT_Mod.gregtechproxy.mHardcoreCables;
 
         makeWires(Materials.RedAlloy, 2000, 0L, 1L, 1L, gregtech.api.enums.GT_Values.V[0], true, aBoolConst_0);

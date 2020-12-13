@@ -134,6 +134,7 @@ public class GT_MetaTileEntity_TypeFilter
                         tFix == OrePrefixes.oreRich ||
                         tFix == OrePrefixes.oreSmall ||
                         tFix == OrePrefixes.oreBasalt ||
+                        tFix == OrePrefixes.oreBlackstone ||
                         tFix == OrePrefixes.oreMarble) tAllowPrefix = true;
             }
         }

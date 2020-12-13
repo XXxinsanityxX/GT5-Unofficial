@@ -12,7 +12,7 @@ public class ProcessingModSupport implements gregtech.api.interfaces.IMaterialHa
     public static boolean aEnableThaumcraftMats = Loader.isModLoaded("Thaumcraft") || aTGregSupport;
     public static boolean aEnableRotaryCraftMats = Loader.isModLoaded("RotaryCraft") || aTGregSupport;
     public static boolean aEnableThermalFoundationMats = Loader.isModLoaded("ThermalFoundation") || aTGregSupport;
-    public static boolean aEnableEnderIOMats = Loader.isModLoaded("EnderIO") || aTGregSupport;
+    //public static boolean aEnableEnderIOMats = Loader.isModLoaded("EnderIO") || aTGregSupport;
     public static boolean aEnableRailcraftMats = Loader.isModLoaded(GT_Values.MOD_ID_RC) || aTGregSupport;
     public static boolean aEnableGCMarsMats = Loader.isModLoaded("GalacticraftMars") || aTGregSupport;
     public static boolean aEnableTwilightMats = Loader.isModLoaded(GT_Values.MOD_ID_TF) || aTGregSupport;
@@ -158,9 +158,9 @@ public class ProcessingModSupport implements gregtech.api.interfaces.IMaterialHa
         if (!aEnableRotaryCraftMats) {
             Materials.HSLA.mHasParentMod = false;
         }
-        if (!aEnableEnderIOMats) {
-            Materials.DarkSteel.mHasParentMod = false;
-        }
+        //if (!aEnableEnderIOMats) {
+            //Materials.DarkSteel.mHasParentMod = false;
+        //}
         if (!aEnableRailcraftMats) {
             Materials.Firestone.mHasParentMod = false;
         }

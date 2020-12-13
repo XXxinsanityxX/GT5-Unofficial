@@ -168,6 +168,9 @@ public class GT_Loader_Item_Block_And_Fluid
         if (Loader.isModLoaded("GalacticraftCore") && Loader.isModLoaded("GalacticraftMars") && GT_Mod.gregtechproxy.enableGCOres) {
             GregTech_API.sBlockOresGC = new GT_Block_Ores_GC();
         }
+        if (Loader.isModLoaded("netherlicious") && GT_Mod.gregtechproxy.enableNhLOres) {
+            GregTech_API.sBlockOresNh = new GT_Block_Ores_Nh();
+        }
         GregTech_API.sBlockMetal1 = new GT_Block_Metal("gt.blockmetal1", new Materials[]{
                 Materials.Adamantium,
                 Materials.Aluminium,
@@ -324,7 +327,7 @@ public class GT_Loader_Item_Block_And_Fluid
                 Materials.Dilithium,
                 Materials.EnderEye,
                 Materials.EnderPearl,
-                Materials.FoolsRuby,
+                //Materials.FoolsRuby,
                 Materials.Force,
                 Materials.Forcicium,
                 Materials.Forcillium,
@@ -719,6 +722,58 @@ public class GT_Loader_Item_Block_And_Fluid
 
         GT_OreDictUnificator.set(OrePrefixes.dust, Materials.Cocoa, GT_ModHandler.getModItem("harvestcraft", "cocoapowderItem", 1L, 0));
         GT_OreDictUnificator.set(OrePrefixes.dust, Materials.Coffee, ItemList.IC2_CoffeePowder.get(1L, new Object[0]));
+
+        GT_OreDictUnificator.set(OrePrefixes.block, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "Basalt", 1L, 0));
+        GT_OreDictUnificator.set(OrePrefixes.block, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "Basalt", 1L, 1));
+        GT_OreDictUnificator.set(OrePrefixes.block, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 0));
+        GT_OreDictUnificator.set(OrePrefixes.block, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 1));
+        GT_OreDictUnificator.set(OrePrefixes.block, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 2));
+        GT_OreDictUnificator.set(OrePrefixes.block, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 3));
+        GT_OreDictUnificator.set(OrePrefixes.block, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 4));
+        GT_OreDictUnificator.set(OrePrefixes.block, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 5));
+        GT_OreDictUnificator.set(OrePrefixes.block, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 6));
+        GT_OreDictUnificator.set(OrePrefixes.block, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 7));
+
+        GT_OreDictUnificator.set(OrePrefixes.stone, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "Basalt", 1L, 0));
+        GT_OreDictUnificator.set(OrePrefixes.stone, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "Basalt", 1L, 1));
+        GT_OreDictUnificator.set(OrePrefixes.stone, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 0));
+        GT_OreDictUnificator.set(OrePrefixes.stone, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 1));
+        GT_OreDictUnificator.set(OrePrefixes.stone, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 2));
+        GT_OreDictUnificator.set(OrePrefixes.stone, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 3));
+        GT_OreDictUnificator.set(OrePrefixes.stone, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 4));
+        GT_OreDictUnificator.set(OrePrefixes.stone, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 5));
+        GT_OreDictUnificator.set(OrePrefixes.stone, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 6));
+        GT_OreDictUnificator.set(OrePrefixes.stone, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 7));
+
+        GT_OreDictUnificator.set(OrePrefixes.oreBasalt, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "Basalt", 1L, 0));
+        GT_OreDictUnificator.set(OrePrefixes.oreBasalt, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "Basalt", 1L, 1));
+        GT_OreDictUnificator.set(OrePrefixes.oreBasalt, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 0));
+        GT_OreDictUnificator.set(OrePrefixes.oreBasalt, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 1));
+        GT_OreDictUnificator.set(OrePrefixes.oreBasalt, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 2));
+        GT_OreDictUnificator.set(OrePrefixes.oreBasalt, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 3));
+        GT_OreDictUnificator.set(OrePrefixes.oreBasalt, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 4));
+        GT_OreDictUnificator.set(OrePrefixes.oreBasalt, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 5));
+        GT_OreDictUnificator.set(OrePrefixes.oreBasalt, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 6));
+        GT_OreDictUnificator.set(OrePrefixes.oreBasalt, Materials.Basalt, GT_ModHandler.getModItem("netherlicious", "BasaltBricks", 1L, 7));
+
+        GT_OreDictUnificator.set(OrePrefixes.block, Materials.Blackstone, GT_ModHandler.getModItem("netherlicious", "Blackstone", 1L, 0));
+        GT_OreDictUnificator.set(OrePrefixes.block, Materials.Blackstone, GT_ModHandler.getModItem("netherlicious", "Blackstone", 1L, 1));
+        GT_OreDictUnificator.set(OrePrefixes.block, Materials.Blackstone, GT_ModHandler.getModItem("netherlicious", "Blackstone", 1L, 2));
+        GT_OreDictUnificator.set(OrePrefixes.block, Materials.Blackstone, GT_ModHandler.getModItem("netherlicious", "Blackstone", 1L, 3));
+        GT_OreDictUnificator.set(OrePrefixes.block, Materials.Blackstone, GT_ModHandler.getModItem("netherlicious", "Blackstone", 1L, 4));
+        GT_OreDictUnificator.set(OrePrefixes.block, Materials.Blackstone, GT_ModHandler.getModItem("netherlicious", "Blackstone", 1L, 5));
+        GT_OreDictUnificator.set(OrePrefixes.stone, Materials.Blackstone, GT_ModHandler.getModItem("netherlicious", "Blackstone", 1L, 0));
+        GT_OreDictUnificator.set(OrePrefixes.stone, Materials.Blackstone, GT_ModHandler.getModItem("netherlicious", "Blackstone", 1L, 1));
+        GT_OreDictUnificator.set(OrePrefixes.stone, Materials.Blackstone, GT_ModHandler.getModItem("netherlicious", "Blackstone", 1L, 2));
+        GT_OreDictUnificator.set(OrePrefixes.stone, Materials.Blackstone, GT_ModHandler.getModItem("netherlicious", "Blackstone", 1L, 3));
+        GT_OreDictUnificator.set(OrePrefixes.stone, Materials.Blackstone, GT_ModHandler.getModItem("netherlicious", "Blackstone", 1L, 4));
+        GT_OreDictUnificator.set(OrePrefixes.stone, Materials.Blackstone, GT_ModHandler.getModItem("netherlicious", "Blackstone", 1L, 5));
+        GT_OreDictUnificator.set(OrePrefixes.oreBlackstone, Materials.Blackstone, GT_ModHandler.getModItem("netherlicious", "Blackstone", 1L, 0));
+        GT_OreDictUnificator.set(OrePrefixes.oreBlackstone, Materials.Blackstone, GT_ModHandler.getModItem("netherlicious", "Blackstone", 1L, 1));
+        GT_OreDictUnificator.set(OrePrefixes.oreBlackstone, Materials.Blackstone, GT_ModHandler.getModItem("netherlicious", "Blackstone", 1L, 2));
+        GT_OreDictUnificator.set(OrePrefixes.oreBlackstone, Materials.Blackstone, GT_ModHandler.getModItem("netherlicious", "Blackstone", 1L, 3));
+        GT_OreDictUnificator.set(OrePrefixes.oreBlackstone, Materials.Blackstone, GT_ModHandler.getModItem("netherlicious", "Blackstone", 1L, 4));
+        GT_OreDictUnificator.set(OrePrefixes.oreBlackstone, Materials.Blackstone, GT_ModHandler.getModItem("netherlicious", "Blackstone", 1L, 5));
 
         FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.Naquadah.getMolten(1000L), GT_OreDictUnificator.get(OrePrefixes.cell, Materials.Naquadah, 1L), GT_OreDictUnificator.get(OrePrefixes.cell, Materials.Empty, 1L)));
         FluidContainerRegistry.registerFluidContainer(new FluidContainerRegistry.FluidContainerData(Materials.NaquadahEnriched.getMolten(1000L), GT_OreDictUnificator.get(OrePrefixes.cell, Materials.NaquadahEnriched, 1L), GT_OreDictUnificator.get(OrePrefixes.cell, Materials.Empty, 1L)));

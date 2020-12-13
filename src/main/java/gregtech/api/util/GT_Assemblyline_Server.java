@@ -178,7 +178,7 @@ public class GT_Assemblyline_Server {
                             i = Integer.parseInt(t);
                             switch(i) {
                                 case 1:
-                                    mMats = new Materials[]{Materials.InfusedAir, Materials.Amber, Materials.Amethyst, Materials.InfusedWater, Materials.BlueTopaz, Materials.CertusQuartz, Materials.Dilithium, Materials.EnderEye, Materials.EnderPearl, Materials.FoolsRuby, Materials.Force, Materials.Forcicium, Materials.Forcillium, Materials.GreenSapphire, Materials.InfusedFire, Materials.Jasper};
+                                    mMats = new Materials[]{Materials.InfusedAir, Materials.Amber, Materials.Amethyst, Materials.InfusedWater, Materials.BlueTopaz, Materials.CertusQuartz, Materials.Dilithium, Materials.EnderEye, Materials.EnderPearl, Materials.Force, Materials.Forcicium, Materials.Forcillium, Materials.GreenSapphire, Materials.InfusedFire, Materials.Jasper};
                                     break;
                                 case 2:
                                     mMats = new Materials[]{Materials.Lazurite, Materials.Lignite, Materials.Monazite, Materials.Niter, Materials.Olivine, Materials.Opal, Materials.InfusedOrder, Materials.InfusedEntropy, Materials.Phosphorus, Materials.Quartzite, Materials.GarnetRed, Materials.Ruby, Materials.Sapphire, Materials.Sodalite, Materials.Tanzanite, Materials.InfusedEarth};

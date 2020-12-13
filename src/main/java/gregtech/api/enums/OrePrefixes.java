@@ -1,5 +1,6 @@
 package gregtech.api.enums;
 
+import com.sun.org.apache.bcel.internal.generic.ICONST;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.TC_Aspects.TC_AspectStack;
 import gregtech.api.interfaces.ICondition;
@@ -26,6 +27,7 @@ public enum OrePrefixes {
     oreRedgranite("Red Granite Ores", "Granite ", " Ore", true, true, false, false, false, true, false, false, false, true, B[3], -1, 64, -1), // In case of an End-Ores Mod. Ore -> Material is a Oneway Operation!
     oreMarble("Marble Ores", "Marble ", " Ore", true, true, false, false, false, true, false, false, false, true, B[3], -1, 64, -1), // In case of an End-Ores Mod. Ore -> Material is a Oneway Operation!
     oreBasalt("Basalt Ores", "Basalt ", " Ore", true, true, false, false, false, true, false, false, false, true, B[3], -1, 64, -1), // In case of an End-Ores Mod. Ore -> Material is a Oneway Operation!
+    oreBlackstone("Blackstone Ores", "Blackstone ", " Ore", true, true, false, false, false, true, false, false, false, true, B[3], -1, 64, -1), // In case of an End-Ores Mod. Ore -> Material is a Oneway Operation!
     oreNetherrack("Netherrack Ores", "Nether ", " Ore", true, true, false, false, false, true, false, false, false, true, B[3], -1, 64, -1), // Prefix of the Nether-Ores Mod. Causes Ores to double. Ore -> Material is a Oneway Operation!
     oreNether("Nether Ores", "Nether ", " Ore", true, true, false, false, false, true, false, false, false, true, B[3], -1, 64, -1), // Prefix of the Nether-Ores Mod. Causes Ores to double. Ore -> Material is a Oneway Operation!
     @Deprecated denseore("Dense Ores", "", "", false, false, false, false, false, true, false, false, false, true, B[3], -1, 64, -1),
@@ -513,6 +515,7 @@ public enum OrePrefixes {
         oreEnd.mSecondaryMaterial = new MaterialStack(Materials.Endstone, dust.mMaterialAmount);
         oreMarble.mSecondaryMaterial = new MaterialStack(Materials.Marble, dust.mMaterialAmount);
         oreBasalt.mSecondaryMaterial = new MaterialStack(Materials.Basalt, dust.mMaterialAmount);
+        oreBlackstone.mSecondaryMaterial = new MaterialStack(Materials.Blackstone, dust.mMaterialAmount);
         oreDense.mSecondaryMaterial = new MaterialStack(Materials.Stone, dust.mMaterialAmount);
         orePoor.mSecondaryMaterial = new MaterialStack(Materials.Stone, dust.mMaterialAmount * 2);
         oreSmall.mSecondaryMaterial = new MaterialStack(Materials.Stone, dust.mMaterialAmount * 2);
@@ -639,6 +642,7 @@ public enum OrePrefixes {
         boolean enableUnusedRods = GregTech_API.sMaterialComponents.get("globalcomponents", "enableUnusedRods", false);
         boolean enableUnusedLongRods = GregTech_API.sMaterialComponents.get("globalcomponents", "enableUnusedLongRods", false);
         boolean enableUnusedGems = GregTech_API.sMaterialComponents.get("globalcomponents", "enableUnusedGems", false);
+        //boolean enableUnusedFrames = GregTech_API.sMaterialComponents.get("globalcomponents", "enableUnusedFrames", false);
 
         //TODO possibly use OrePrefix mNotGeneratedItems/mGeneratedItems instead of a static List for every material instance?
         //TODO Make sure stuff like gem plates / standard plates / paper plates all generate with the current condition
@@ -750,7 +754,25 @@ public enum OrePrefixes {
                         aMaterial == Materials.Neutronium || aMaterial == Materials.Americium || aMaterial == Materials.WroughtIron || aMaterial == Materials.Magnalium ||
                         aMaterial == Materials.TungstenSteel))
                     stickLong.mDisabledItems.add(aMaterial);
-
+                //Frames
+                /*
+                if (!enableUnusedFrames && ((aMaterial.mTypes & 0x40) == 0) && !(aMaterial == Materials.Aluminium || aMaterial == Materials.Titanium || aMaterial == Materials.Bronze || aMaterial == Materials.Invar || aMaterial == Materials.Steel
+                        || aMaterial == Materials.StainlessSteel || aMaterial == Materials.TungstenSteel || aMaterial == Materials.Osmiridium || aMaterial == Materials.BlueSteel || aMaterial == Materials.Polytetrafluoroethylene || aMaterial == Materials.Wood
+                        || aMaterial == Materials.HSSE || aMaterial == Materials.HSSG || aMaterial == Materials.Tritanium || aMaterial == Materials.Neutronium))
+                    frameGt.mDisabledItems.add(aMaterial);*/
+                /*if (!enableUnusedFrames && ((aMaterial.mTypes & 0x40) == 0) && !(aMaterial == Materials.Titanium || aMaterial == Materials.Chrome || aMaterial == Materials.Iron ||
+                        aMaterial == Materials.Tin || aMaterial == Materials.Osmium || aMaterial == Materials.Iridium || aMaterial == Materials.Neutronium ||
+                        aMaterial == Materials.Bronze || aMaterial == Materials.WroughtIron || aMaterial == Materials.Steel || aMaterial == Materials.StainlessSteel ||
+                        aMaterial == Materials.PigIron || aMaterial == Materials.TungstenSteel || aMaterial == Materials.HSSE || aMaterial == Materials.HSSG ||
+                        aMaterial == Materials.Aluminium || aMaterial == Materials.Copper || aMaterial == Materials.Neodymium || aMaterial == Materials.Europium ||
+                        aMaterial == Materials.Platinum || aMaterial == Materials.Gold || aMaterial == Materials.Uranium235 || aMaterial == Materials.Plutonium241 ||
+                        aMaterial == Materials.Americium || aMaterial == Materials.Neutronium || aMaterial == Materials.Bronze || aMaterial == Materials.Brass ||
+                        aMaterial == Materials.Electrum || aMaterial == Materials.NaquadahEnriched || aMaterial == Materials.CobaltBrass || aMaterial == Materials.IronMagnetic ||
+                        aMaterial == Materials.SteelMagnetic || aMaterial == Materials.NeodymiumMagnetic || aMaterial == Materials.VanadiumGallium || aMaterial == Materials.Diamond ||
+                        aMaterial == Materials.Wood || aMaterial == Materials.Plastic || aMaterial == Materials.Lead || aMaterial == Materials.SolderingAlloy || aMaterial == Materials.Lapis ||
+                        aMaterial == Materials.Lazurite || aMaterial == Materials.Sodalite|| aMaterial == Materials.PolyvinylChloride))
+                    frameGt.mDisabledItems.add(aMaterial);*/
+                //Gems
                 if (!enableUnusedGems && ((aMaterial.mTypes & 0x04) == 0)) {
                     gem.mDisabledItems.add(aMaterial);
                     gemChipped.mDisabledItems.add(aMaterial);

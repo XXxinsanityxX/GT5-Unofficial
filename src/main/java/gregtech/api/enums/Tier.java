@@ -16,7 +16,7 @@ public class Tier {
             new Tier(SubTag.ENERGY_ELECTRICITY, 7, 131072, 1, 1, 1, Materials.Iridium, ItemList.Hull_ZPM, OrePrefixes.cableGt01.get(Materials.Naquadah), OrePrefixes.cableGt04.get(Materials.Naquadah), OrePrefixes.circuit.get(Materials.Ultimate), OrePrefixes.circuit.get(Materials.Superconductor)),
             new Tier(SubTag.ENERGY_ELECTRICITY, 8, 524288, 1, 1, 1, Materials.Osmium, ItemList.Hull_UV, OrePrefixes.wireGt04.get(Materials.NaquadahAlloy), OrePrefixes.cableGt01.get(Materials.Superconductor), OrePrefixes.circuit.get(Materials.Superconductor), OrePrefixes.circuit.get(Materials.Infinite)),
             new Tier(SubTag.ENERGY_ELECTRICITY, 9, Integer.MAX_VALUE, 1, 1, 1, Materials.Neutronium, ItemList.Hull_MAX, OrePrefixes.wireGt01.get(Materials.Superconductor), OrePrefixes.wireGt04.get(Materials.Superconductor), OrePrefixes.circuit.get(Materials.Infinite), OrePrefixes.circuit.get(Materials.Infinite)),
-    }, ROTATIONAL = new Tier[]{
+    }/*, ROTATIONAL = new Tier[]{
             new Tier(SubTag.ENERGY_ROTATIONAL, 1, 32, 1, 1, 1, Materials.Wood, OrePrefixes.frameGt.get(Materials.Wood), OrePrefixes.stick.get(Materials.Wood), OrePrefixes.ingot.get(Materials.Wood), OrePrefixes.gearGt.get(Materials.Wood), OrePrefixes.gearGt.get(Materials.Stone)),
             new Tier(SubTag.ENERGY_ROTATIONAL, 1, 32, 1, 2, 2, Materials.WoodSealed, OrePrefixes.frameGt.get(Materials.WoodSealed), OrePrefixes.stick.get(Materials.WoodSealed), OrePrefixes.ingot.get(Materials.WoodSealed), OrePrefixes.gearGt.get(Materials.WoodSealed), OrePrefixes.gearGt.get(Materials.Stone)),
             new Tier(SubTag.ENERGY_ROTATIONAL, 2, 128, 1, 1, 1, Materials.Stone, OrePrefixes.frameGt.get(Materials.Stone), OrePrefixes.stick.get(Materials.Stone), OrePrefixes.ingot.get(Materials.Stone), OrePrefixes.gearGt.get(Materials.Stone), OrePrefixes.gearGt.get(Materials.Bronze)),
@@ -35,7 +35,7 @@ public class Tier {
             new Tier(SubTag.ENERGY_STEAM, 4, 2048, 1, 1, 1, Materials.TungstenSteel, OrePrefixes.frameGt.get(Materials.TungstenSteel), OrePrefixes.pipeMedium.get(Materials.TungstenSteel), OrePrefixes.pipeHuge.get(Materials.TungstenSteel), OrePrefixes.pipeMedium.get(Materials.TungstenSteel), OrePrefixes.pipeLarge.get(Materials.TungstenSteel)),
             new Tier(SubTag.ENERGY_STEAM, 5, 8192, 1, 1, 1, Materials.Iridium, OrePrefixes.frameGt.get(Materials.Iridium), OrePrefixes.pipeMedium.get(Materials.Iridium), OrePrefixes.pipeHuge.get(Materials.Iridium), OrePrefixes.pipeMedium.get(Materials.Iridium), OrePrefixes.pipeLarge.get(Materials.Iridium)),
             new Tier(SubTag.ENERGY_STEAM, 9, Integer.MAX_VALUE, 1, 1, 1, Materials.Neutronium, OrePrefixes.frameGt.get(Materials.Neutronium), OrePrefixes.pipeMedium.get(Materials.Neutronium), OrePrefixes.pipeHuge.get(Materials.Neutronium), OrePrefixes.pipeMedium.get(Materials.Neutronium), OrePrefixes.pipeLarge.get(Materials.Neutronium)),
-    };
+    }*/;
     /**
      * Used for Crafting Recipes
      */

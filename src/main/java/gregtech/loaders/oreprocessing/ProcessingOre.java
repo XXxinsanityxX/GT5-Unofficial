@@ -19,12 +19,12 @@ public class ProcessingOre implements gregtech.api.interfaces.IOreRecipeRegistra
     }
 
     public void registerOre(OrePrefixes aPrefix, Materials aMaterial, String aOreDictName, String aModName, ItemStack aStack) {
-        boolean tIsRich = (aPrefix == OrePrefixes.oreNetherrack) || (aPrefix == OrePrefixes.oreNether) || (aPrefix == OrePrefixes.oreEndstone) || (aPrefix == OrePrefixes.oreEnd) || (aPrefix == OrePrefixes.oreRich) || (aPrefix == OrePrefixes.oreDense);
+        boolean tIsRich = (aPrefix == OrePrefixes.oreNetherrack) || (aPrefix == OrePrefixes.oreNether) || (aPrefix == OrePrefixes.oreEndstone) || (aPrefix == OrePrefixes.oreEnd) || (aPrefix == OrePrefixes.oreRich) || (aPrefix == OrePrefixes.oreDense || (aPrefix == OrePrefixes.oreBlackstone));
+        registerStandardOreRecipes(aPrefix, aMaterial, GT_Utility.copyAmount(1L, new Object[]{aStack}), Math.max(1, gregtech.api.GregTech_API.sOPStuff.get(gregtech.api.enums.ConfigCategories.Materials.oreprocessingoutputmultiplier, aMaterial.toString(), 1)) * (tIsRich ? 2 : 1));
 
         if (aMaterial == Materials.Oilsands) {
             GT_Values.RA.addCentrifugeRecipe(GT_Utility.copyAmount(1L, new Object[]{aStack}), null, null, Materials.Oil.getFluid(tIsRich ? 1000L : 500L), new ItemStack(net.minecraft.init.Blocks.sand, 1, 0), null, null, null, null, null, new int[]{tIsRich ? 2500 : 5000}, tIsRich ? 2000 : 1000, 5);
-        } else {
-            registerStandardOreRecipes(aPrefix, aMaterial, GT_Utility.copyAmount(1L, new Object[]{aStack}), Math.max(1, gregtech.api.GregTech_API.sOPStuff.get(gregtech.api.enums.ConfigCategories.Materials.oreprocessingoutputmultiplier, aMaterial.toString(), 1)) * (tIsRich ? 2 : 1));
+            GT_Values.RA.addCentrifugeRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Oilsands, 1L), null, null, Materials.Oil.getFluid(500L), null, null, null, null, null, null, null, 1000, 5);
         }
     }
 

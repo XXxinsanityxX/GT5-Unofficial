@@ -89,7 +89,7 @@ public class GT_Worldgenloader implements Runnable {
         new GT_Worldgen_GT_Ore_SmallPieces("ore.small.jasper", true, 5, 250, 2, true, false, false, Materials.Jasper);
         new GT_Worldgen_GT_Ore_SmallPieces("ore.small.bluetopaz", true, 5, 250, 2, false, false, false, Materials.BlueTopaz);
         new GT_Worldgen_GT_Ore_SmallPieces("ore.small.amber", true, 5, 250, 2, false, false, false, Materials.Amber);
-        new GT_Worldgen_GT_Ore_SmallPieces("ore.small.foolsruby", true, 5, 250, 2, false, false, false, Materials.FoolsRuby);
+        //new GT_Worldgen_GT_Ore_SmallPieces("ore.small.foolsruby", true, 5, 250, 2, false, false, false, Materials.FoolsRuby);
         new GT_Worldgen_GT_Ore_SmallPieces("ore.small.garnetred", true, 5, 250, 2, false, false, true, Materials.GarnetRed);
         new GT_Worldgen_GT_Ore_SmallPieces("ore.small.garnetyellow", true, 5, 250, 2, false, false, true, Materials.GarnetYellow);
         new GT_Worldgen_GT_Ore_SmallPieces("ore.small.redstone", true, 5, 25, 8, true, true, false, Materials.Redstone);

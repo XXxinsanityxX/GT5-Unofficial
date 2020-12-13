@@ -59,7 +59,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Mod(modid = "gregtech", name = "GregTech", version = "MC1710", useMetadata = false, dependencies = "required-after:IC2; after:Forestry; after:PFAAGeologica; after:Thaumcraft; after:Railcraft; after:appliedenergistics2; after:ThermalExpansion; after:TwilightForest; after:harvestcraft; after:magicalcrops; after:BuildCraft|Transport; after:BuildCraft|Silicon; after:BuildCraft|Factory; after:BuildCraft|Energy; after:BuildCraft|Core; after:BuildCraft|Builders; after:GalacticraftCore; after:GalacticraftMars; after:GalacticraftPlanets; after:ThermalExpansion|Transport; after:ThermalExpansion|Energy; after:ThermalExpansion|Factory; after:RedPowerCore; after:RedPowerBase; after:RedPowerMachine; after:RedPowerCompat; after:RedPowerWiring; after:RedPowerLogic; after:RedPowerLighting; after:RedPowerWorld; after:RedPowerControl; after:UndergroundBiomes; after:TConstruct;  after:Translocator;  after:exnihilo;")
+@Mod(modid = "gregtech", name = "GregTech", version = "MC1710", useMetadata = false, dependencies = "required-after:IC2; after:Forestry; after:PFAAGeologica; after:Thaumcraft; after:Railcraft; after:appliedenergistics2; after:ThermalExpansion; after:TwilightForest; after:harvestcraft; after:magicalcrops; after:BuildCraft|Transport; after:BuildCraft|Silicon; after:BuildCraft|Factory; after:BuildCraft|Energy; after:BuildCraft|Core; after:BuildCraft|Builders; after:GalacticraftCore; after:GalacticraftMars; after:GalacticraftPlanets; after:ThermalExpansion|Transport; after:ThermalExpansion|Energy; after:ThermalExpansion|Factory; after:RedPowerCore; after:RedPowerBase; after:RedPowerMachine; after:RedPowerCompat; after:RedPowerWiring; after:RedPowerLogic; after:RedPowerLighting; after:RedPowerWorld; after:RedPowerControl; after:UndergroundBiomes; after:TConstruct;  after:Translocator;  after:exnihilo; after:netherlicious;")
 public class GT_Mod implements IGT_Mod {
     public static final int VERSION = 509, SUBVERSION = 33;
     public static final int TOTAL_VERSION = calculateTotalGTVersion(VERSION, SUBVERSION);
@@ -301,6 +301,7 @@ public class GT_Mod implements IGT_Mod {
         gregtechproxy.enableRedGraniteOres = GregTech_API.sWorldgenFile.get("general", "enableRedGraniteOres", gregtechproxy.enableRedGraniteOres);
         gregtechproxy.enableMarbleOres = GregTech_API.sWorldgenFile.get("general", "enableMarbleOres", gregtechproxy.enableMarbleOres);
         gregtechproxy.enableBasaltOres = GregTech_API.sWorldgenFile.get("general", "enableBasaltOres", gregtechproxy.enableBasaltOres);
+        gregtechproxy.enableNhLOres = GregTech_API.sWorldgenFile.get("general", "enableNhLOres", gregtechproxy.enableNhLOres);
         gregtechproxy.enableGCOres = GregTech_API.sWorldgenFile.get("general", "enableGCOres", gregtechproxy.enableGCOres);
         gregtechproxy.enableUBOres = GregTech_API.sWorldgenFile.get("general", "enableUBOres", gregtechproxy.enableUBOres);
         gregtechproxy.gt6Pipe = tMainConfig.get("general", "GT6StyledPipesConnection", true).getBoolean(true);
@@ -471,6 +472,10 @@ public class GT_Mod implements IGT_Mod {
         	OrePrefixes.ring.mDisabledItems.remove(tName);
         	OrePrefixes.ring.mGeneratedItems.add(tName);
         }
+        //if(tPrefix == OrePrefixes.frameGt){
+        //    OrePrefixes.stick.mDisabledItems.remove(tName);
+        //    OrePrefixes.stick.mGeneratedItems.add(tName);
+        //}
         }else{System.out.println("noMaterial "+reEnable);}
         }else{System.out.println("noPrefix "+reEnable);}}
 

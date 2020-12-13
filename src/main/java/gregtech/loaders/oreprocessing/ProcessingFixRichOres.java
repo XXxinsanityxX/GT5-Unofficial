@@ -8,7 +8,7 @@ import gregtech.api.util.GT_Utility;
 import net.minecraft.item.ItemStack;
 
 public class ProcessingFixRichOres implements gregtech.api.interfaces.IOreRecipeRegistrator {
-    private final OrePrefixes[] tIsRich = {OrePrefixes.oreNetherrack, OrePrefixes.oreNether, OrePrefixes.oreEndstone, OrePrefixes.oreEnd, OrePrefixes.oreRich, OrePrefixes.oreDense};
+    private final OrePrefixes[] tIsRich = {OrePrefixes.oreNetherrack, OrePrefixes.oreNether, OrePrefixes.oreEndstone, OrePrefixes.oreBlackstone, OrePrefixes.oreEnd, OrePrefixes.oreRich, OrePrefixes.oreDense};
 
     public ProcessingFixRichOres() {
         for (OrePrefixes tPrefix : this.tIsRich) tPrefix.add(this);
