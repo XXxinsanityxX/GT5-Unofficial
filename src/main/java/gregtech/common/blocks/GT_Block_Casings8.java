@@ -22,7 +22,7 @@ public class GT_Block_Casings8
 
         ItemList.Casing_Chemically_Inert.set(new ItemStack(this, 1, 0));
         ItemList.Casing_Pipe_Polytetrafluoroethylene.set(new ItemStack(this, 1, 1));
-        ItemList.Casing_CokeOvenBrick.set(new ItemStack(this, 1, 2));
+        //ItemList.Casing_CokeOvenBrick.set(new ItemStack(this, 1, 2));
     }
     @Override
     @SideOnly(Side.CLIENT)
@@ -32,8 +32,8 @@ public class GT_Block_Casings8
             return Textures.BlockIcons.MACHINE_CASING_CHEMICALLY_INERT.getIcon();
         case 1:
             return Textures.BlockIcons.MACHINE_CASING_PIPE_POLYTETRAFLUOROETHYLENE.getIcon();
-        case 2:
-            return Textures.BlockIcons.BLOCK_COKE_OVEN_BRICK.getIcon();
+        //case 2:
+        //    return Textures.BlockIcons.BLOCK_COKE_OVEN_BRICK.getIcon();
         }
         return Textures.BlockIcons.MACHINE_CASING_ROBUST_TUNGSTENSTEEL.getIcon();
     }

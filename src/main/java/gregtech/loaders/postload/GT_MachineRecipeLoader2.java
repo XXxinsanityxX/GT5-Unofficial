@@ -12,9 +12,6 @@ public class GT_MachineRecipeLoader2 implements Runnable {
 
     public void run() {
         if (Loader.isModLoaded("EnderIO")) {
-            GT_ModHandler.removeRecipeByOutput(GT_ModHandler.getModItem("EnderIO", "itemBasicCapacitor", 1L, 0));
-            GT_ModHandler.removeRecipeByOutput(GT_ModHandler.getModItem("EnderIO", "itemMachinePart", 1L, 0));
-
             GT_ModHandler.addCraftingRecipe(GT_ModHandler.getModItem("EnderIO", "itemBasicCapacitor", 1L, 0), GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{" GR", "GCG", "RG ", 'G', GT_OreDictUnificator.get(OrePrefixes.wireGt02, Materials.Gold, 1L), 'R', GT_OreDictUnificator.get(OrePrefixes.wireFine, Materials.RedAlloy, 1L), 'C', GT_OreDictUnificator.get(OrePrefixes.wireGt04, Materials.Copper, 1L) });
             GT_ModHandler.addCraftingRecipe(GT_ModHandler.getModItem("EnderIO", "itemMachinePart", 1L, 0), GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{"FS", "SC", 'F', GT_OreDictUnificator.get(OrePrefixes.frameGt, Materials.Steel, 1L), 'S', GT_OreDictUnificator.get(OrePrefixes.gearGt, Materials.Steel, 1L), 'C', OreDictNames.capacitorBasic});
 

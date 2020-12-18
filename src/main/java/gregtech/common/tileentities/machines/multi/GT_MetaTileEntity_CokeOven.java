@@ -2,6 +2,8 @@ package gregtech.common.tileentities.machines.multi;
 
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.Textures;
+import gregtech.api.gui.GT_GUIContainer;
+import gregtech.api.gui.GT_GUIContainer_MultiMachine;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
@@ -10,6 +12,7 @@ import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.api.util.GT_Recipe;
 import gregtech.api.util.GT_Utility;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidStack;
@@ -18,6 +21,8 @@ import java.util.ArrayList;
 
 
 public class GT_MetaTileEntity_CokeOven extends GT_MetaTileEntity_MultiBlockBase {
+    private static final int CASING_INDEX = 63;
+
     public GT_MetaTileEntity_CokeOven(int aID, String aName, String aNameRegional) {
         super(aID, aName, aNameRegional);
     }
@@ -43,20 +48,19 @@ public class GT_MetaTileEntity_CokeOven extends GT_MetaTileEntity_MultiBlockBase
 
     public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, byte aSide, byte aFacing, byte aColorIndex, boolean aActive, boolean aRedstone) {
         if (aSide == aFacing) {
-            return new ITexture[]{Textures.BlockIcons.casingTexturePages[1][50], new GT_RenderedTexture(aActive ? Textures.BlockIcons.OVERLAY_COKE_OVEN_BRICK_ACTIVE : Textures.BlockIcons.OVERLAY_COKE_OVEN_BRICK)};
+            return new ITexture[]{Textures.BlockIcons.CASING_BLOCKS[CASING_INDEX], new GT_RenderedTexture(aActive ? Textures.BlockIcons.OVERLAY_COKE_OVEN_BRICK_ACTIVE : Textures.BlockIcons.OVERLAY_COKE_OVEN_BRICK)};
         }
-        return new ITexture[]{Textures.BlockIcons.casingTexturePages[1][50]};
+        return new ITexture[]{Textures.BlockIcons.CASING_BLOCKS[CASING_INDEX]};
     }
 
-    /*public Object getClientGUI(int aID, InventoryPlayer aPlayerInventory, IGregTechTileEntity aBaseMetaTileEntity) {
-        return new GT_GUIContainer_CokeOven(aPlayerInventory, aBaseMetaTileEntity, getLocalName(), "CokeOven.png", GT_Recipe.GT_Recipe_Map.sCokeOvenRecipes.mNEIName);
-    }*/
-    @Override
-    public boolean onRightclick(IGregTechTileEntity aBaseMetaTileEntity, EntityPlayer aPlayer) {
-        if (aBaseMetaTileEntity.isClientSide()) return true;
-
-        return true;
+    public Object getClientGUI(int aID, InventoryPlayer aPlayerInventory, IGregTechTileEntity aBaseMetaTileEntity) {
+        return new GT_GUIContainer_MultiMachine(aPlayerInventory, aBaseMetaTileEntity, getLocalName(), "CokeOven.png");
     }
+    //@Override
+    //public boolean onRightclick(IGregTechTileEntity aBaseMetaTileEntity, EntityPlayer aPlayer) {
+    //    if (aBaseMetaTileEntity.isClientSide()) return true;
+    //    return true;
+    //}
 
 
     public GT_Recipe.GT_Recipe_Map getRecipeMap() {
@@ -146,11 +150,11 @@ public class GT_MetaTileEntity_CokeOven extends GT_MetaTileEntity_MultiBlockBase
                 for (int h = -1; h < 2; h++) {
                     if ((h != 0) || (((xDir + i != 0) || (zDir + j != 0)) && ((i != 0) || (j != 0)))) {
                         IGregTechTileEntity tTileEntity = aBaseMetaTileEntity.getIGregTechTileEntityOffset(xDir + i, h, zDir + j);
-                        if ((!addInputToMachineList(tTileEntity, 178)) && (!addOutputToMachineList(tTileEntity, 178))) {
-                            if (aBaseMetaTileEntity.getBlockOffset(xDir + i, h, zDir + j) != GregTech_API.sBlockCasings8) {
+                        if ((!addInputToMachineList(tTileEntity, CASING_INDEX)) && (!addOutputToMachineList(tTileEntity, CASING_INDEX))) {
+                            if (aBaseMetaTileEntity.getBlockOffset(xDir + i, h, zDir + j) != GregTech_API.sBlockCasings4) {
                                 return false;
                             }
-                            if (aBaseMetaTileEntity.getMetaIDOffset(xDir + i, h, zDir + j) != 2) {
+                            if (aBaseMetaTileEntity.getMetaIDOffset(xDir + i, h, zDir + j) != 15) {
                                 return false;
                             }
 
