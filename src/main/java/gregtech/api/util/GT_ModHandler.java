@@ -206,6 +206,22 @@ public class GT_ModHandler {
         return FluidRegistry.getFluidStack("lava", (int) aAmount);
     }
 
+
+    /**
+     * Returns if that Liquid is Lava
+     */
+    public static boolean isCreosote(FluidStack aFluid) {
+        if (aFluid == null) return false;
+        return aFluid.isFluidEqual(getCreosote(1));
+    }
+
+    /**
+     * Returns a Liquid Stack with given amount of Lava.
+     */
+    public static FluidStack getCreosote(long aAmount) {
+        return FluidRegistry.getFluidStack("creosote", (int) aAmount);
+    }
+
     /**
      * Returns if that Liquid is Steam
      */

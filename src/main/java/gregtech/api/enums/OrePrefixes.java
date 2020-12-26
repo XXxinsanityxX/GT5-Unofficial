@@ -415,6 +415,7 @@ public enum OrePrefixes {
 
         dustImpure.mGeneratedItems.add(Materials.GraniteRed);
         dustImpure.mGeneratedItems.add(Materials.GraniteBlack);
+        dustImpure.mGeneratedItems.add(Materials.Blackstone);
         dustImpure.mGeneratedItems.add(Materials.Quartzite);
         dustImpure.mGeneratedItems.add(Materials.Flint);
         dustImpure.mGeneratedItems.add(Materials.Redrock);

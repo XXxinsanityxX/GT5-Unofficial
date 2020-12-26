@@ -11,10 +11,7 @@ import gregtech.api.interfaces.ITexture;
 import gregtech.api.metatileentity.implementations.*;
 import gregtech.api.util.*;
 import gregtech.common.tileentities.automation.*;
-import gregtech.common.tileentities.boilers.GT_MetaTileEntity_Boiler_Bronze;
-import gregtech.common.tileentities.boilers.GT_MetaTileEntity_Boiler_Lava;
-import gregtech.common.tileentities.boilers.GT_MetaTileEntity_Boiler_Solar;
-import gregtech.common.tileentities.boilers.GT_MetaTileEntity_Boiler_Steel;
+import gregtech.common.tileentities.boilers.*;
 import gregtech.common.tileentities.generators.*;
 import gregtech.common.tileentities.machines.GT_MetaTileEntity_BasicHull_Bronze;
 import gregtech.common.tileentities.machines.GT_MetaTileEntity_BasicHull_BronzeBricks;
@@ -408,6 +405,7 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         ItemList.Machine_Steel_Boiler.set(new GT_MetaTileEntity_Boiler_Steel(101, "boiler.steel", "High Pressure Coal Boiler").getStackForm(1L));
         ItemList.Machine_Steel_Boiler_Lava.set(new GT_MetaTileEntity_Boiler_Lava(102, "boiler.lava", "High Pressure Lava Boiler").getStackForm(1L));
         ItemList.Machine_Bronze_Boiler_Solar.set(new GT_MetaTileEntity_Boiler_Solar(105, "boiler.solar", "Simple Solar Boiler").getStackForm(1L));
+        ItemList.Machine_Steel_Boiler_Semifluids.set(new GT_MetaTileEntity_Boiler_Semifluids(108, "boiler.creosote", "High Pressure Fluid Boiler").getStackForm(1L));
 
         GT_ModHandler.addCraftingRecipe(ItemList.Machine_Bronze_Boiler.get(1L, new Object[0]), bits, new Object[]{aTextPlate, "P P", "BFB", 'F', OreDictNames.craftingFurnace, 'P', OrePrefixes.plate.get(Materials.Bronze), 'B', new ItemStack(Blocks.brick_block, 1)});
         GT_ModHandler.addCraftingRecipe(ItemList.Machine_Steel_Boiler.get(1L, new Object[0]), bits, new Object[]{aTextPlate, "P P", "BFB", 'F', OreDictNames.craftingFurnace, 'P', OrePrefixes.plate.get(Materials.Steel), 'B', new ItemStack(Blocks.brick_block, 1)});
@@ -1399,7 +1397,6 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         makeWires(Materials.Gold, 1420, bEC ? 2L : 6L, bEC ? 4L : 12L, 3L, gregtech.api.enums.GT_Values.V[3], true, aBoolConst_0);
         makeWires(Materials.Electrum, 1440, bEC ? 2L : 5L, bEC ? 4L : 10L, 2L, gregtech.api.enums.GT_Values.V[3], true, aBoolConst_0);
         makeWires(Materials.Silver, 1460, bEC ? 1L : 4L, bEC ? 2L : 8L, 1L, gregtech.api.enums.GT_Values.V[3], true, aBoolConst_0);
-        makeWires(Materials.BlueAlloy, 1480, bEC ? 1L : 4L, bEC ? 2L : 8L, 2L, gregtech.api.enums.GT_Values.V[3], true, aBoolConst_0);
 
         makeWires(Materials.Nichrome, 1500, bEC ? 4L : 32L, bEC ? 8L : 64L, 3L, gregtech.api.enums.GT_Values.V[4], true, aBoolConst_0);
         makeWires(Materials.Steel, 1520, bEC ? 2L : 16L, bEC ? 4L : 32L, 2L, gregtech.api.enums.GT_Values.V[4], true, aBoolConst_0);
@@ -1435,37 +1432,6 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         GT_OreDictUnificator.registerOre(OrePrefixes.pipeSmall.get(Materials.Wood), new GT_MetaPipeEntity_Fluid(5101, "GT_Pipe_Wood_Small", "Small Wooden Fluid Pipe", 0.375F, Materials.Wood, 10, 350, aBoolConst_0).getStackForm(1L));
         GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.Wood), new GT_MetaPipeEntity_Fluid(5102, "GT_Pipe_Wood", "Wooden Fluid Pipe", 0.5F, Materials.Wood, 30, 350, aBoolConst_0).getStackForm(1L));
         GT_OreDictUnificator.registerOre(OrePrefixes.pipeLarge.get(Materials.Wood), new GT_MetaPipeEntity_Fluid(5103, "GT_Pipe_Wood_Large", "Large Wooden Fluid Pipe", 0.75F, Materials.Wood, 60, 350, aBoolConst_0).getStackForm(1L));
-
-        /*GT_OreDictUnificator.registerOre(OrePrefixes.pipeTiny.get(Materials.Copper), new GT_MetaPipeEntity_Fluid(5110, "GT_Pipe_Copper_Tiny", "Tiny Copper Fluid Pipe", 0.25F, Materials.Copper, 10, 1000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeSmall.get(Materials.Copper), new GT_MetaPipeEntity_Fluid(5111, "GT_Pipe_Copper_Small", "Small Copper Fluid Pipe", 0.375F, Materials.Copper, 20, 1000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.Copper), new GT_MetaPipeEntity_Fluid(5112, "GT_Pipe_Copper", "Copper Fluid Pipe", 0.5F, Materials.Copper, 60, 1000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeLarge.get(Materials.Copper), new GT_MetaPipeEntity_Fluid(5113, "GT_Pipe_Copper_Large", "Large Copper Fluid Pipe", 0.75F, Materials.Copper, 120, 1000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeHuge.get(Materials.Copper), new GT_MetaPipeEntity_Fluid(5114, "GT_Pipe_Copper_Huge", "Huge Copper Fluid Pipe", 0.875F, Materials.Copper, 240, 1000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeTiny.get(Materials.Bronze), new GT_MetaPipeEntity_Fluid(5120, "GT_Pipe_Bronze_Tiny", "Tiny Bronze Fluid Pipe", 0.25F, Materials.Bronze, 20, 2000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeSmall.get(Materials.Bronze), new GT_MetaPipeEntity_Fluid(5121, "GT_Pipe_Bronze_Small", "Small Bronze Fluid Pipe", 0.375F, Materials.Bronze, 40, 2000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.Bronze), new GT_MetaPipeEntity_Fluid(5122, "GT_Pipe_Bronze", "Bronze Fluid Pipe", 0.5F, Materials.Bronze, 120, 2000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeLarge.get(Materials.Bronze), new GT_MetaPipeEntity_Fluid(5123, "GT_Pipe_Bronze_Large", "Large Bronze Fluid Pipe", 0.75F, Materials.Bronze, 240, 2000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeHuge.get(Materials.Bronze), new GT_MetaPipeEntity_Fluid(5124, "GT_Pipe_Bronze_Huge", "Huge Bronze Fluid Pipe", 0.875F, Materials.Bronze, 480, 2000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeTiny.get(Materials.Steel), new GT_MetaPipeEntity_Fluid(5130, "GT_Pipe_Steel_Tiny", "Tiny Steel Fluid Pipe", 0.25F, Materials.Steel, 40, 2500, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeSmall.get(Materials.Steel), new GT_MetaPipeEntity_Fluid(5131, "GT_Pipe_Steel_Small", "Small Steel Fluid Pipe", 0.375F, Materials.Steel, 80, 2500, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.Steel), new GT_MetaPipeEntity_Fluid(5132, "GT_Pipe_Steel", "Steel Fluid Pipe", 0.5F, Materials.Steel, 240, 2500, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeLarge.get(Materials.Steel), new GT_MetaPipeEntity_Fluid(5133, "GT_Pipe_Steel_Large", "Large Steel Fluid Pipe", 0.75F, Materials.Steel, 480, 2500, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeHuge.get(Materials.Steel), new GT_MetaPipeEntity_Fluid(5134, "GT_Pipe_Steel_Huge", "Huge Steel Fluid Pipe", 0.875F, Materials.Steel, 960, 2500, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeTiny.get(Materials.StainlessSteel), new GT_MetaPipeEntity_Fluid(5140, "GT_Pipe_StainlessSteel_Tiny", "Tiny Stainless Steel Fluid Pipe", 0.25F, Materials.StainlessSteel, 60, 3000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeSmall.get(Materials.StainlessSteel), new GT_MetaPipeEntity_Fluid(5141, "GT_Pipe_StainlessSteel_Small", "Small Stainless Steel Fluid Pipe", 0.375F, Materials.StainlessSteel, 120, 3000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.StainlessSteel), new GT_MetaPipeEntity_Fluid(5142, "GT_Pipe_StainlessSteel", "Stainless Steel Fluid Pipe", 0.5F, Materials.StainlessSteel, 360, 3000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeLarge.get(Materials.StainlessSteel), new GT_MetaPipeEntity_Fluid(5143, "GT_Pipe_StainlessSteel_Large", "Large Stainless Steel Fluid Pipe", 0.75F, Materials.StainlessSteel, 720, 3000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeHuge.get(Materials.StainlessSteel), new GT_MetaPipeEntity_Fluid(5144, "GT_Pipe_StainlessSteel_Huge", "Huge Stainless Steel Fluid Pipe", 0.875F, Materials.StainlessSteel, 1440, 3000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeTiny.get(Materials.Titanium), new GT_MetaPipeEntity_Fluid(5150, "GT_Pipe_Titanium_Tiny", "Tiny Titanium Fluid Pipe", 0.25F, Materials.Titanium, 80, 5000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeSmall.get(Materials.Titanium), new GT_MetaPipeEntity_Fluid(5151, "GT_Pipe_Titanium_Small", "Small Titanium Fluid Pipe", 0.375F, Materials.Titanium, 160, 5000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.Titanium), new GT_MetaPipeEntity_Fluid(5152, "GT_Pipe_Titanium", "Titanium Fluid Pipe", 0.5F, Materials.Titanium, 480, 5000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeLarge.get(Materials.Titanium), new GT_MetaPipeEntity_Fluid(5153, "GT_Pipe_Titanium_Large", "Large Titanium Fluid Pipe", 0.75F, Materials.Titanium, 960, 5000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeHuge.get(Materials.Titanium), new GT_MetaPipeEntity_Fluid(5154, "GT_Pipe_Titanium_Huge", "Huge Titanium Fluid Pipe", 0.875F, Materials.Titanium, 1920, 5000, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeTiny.get(Materials.TungstenSteel), new GT_MetaPipeEntity_Fluid(5160, "GT_Pipe_TungstenSteel_Tiny", "Tiny Tungstensteel Fluid Pipe", 0.25F, Materials.TungstenSteel, 100, 7500, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeSmall.get(Materials.TungstenSteel), new GT_MetaPipeEntity_Fluid(5161, "GT_Pipe_TungstenSteel_Small", "Small Tungstensteel Fluid Pipe", 0.375F, Materials.TungstenSteel, 200, 7500, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.TungstenSteel), new GT_MetaPipeEntity_Fluid(5162, "GT_Pipe_TungstenSteel", "Tungstensteel Fluid Pipe", 0.5F, Materials.TungstenSteel, 600, 7500, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeLarge.get(Materials.TungstenSteel), new GT_MetaPipeEntity_Fluid(5163, "GT_Pipe_TungstenSteel_Large", "Large Tungstensteel Fluid Pipe", 0.75F, Materials.TungstenSteel, 1200, 7500, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeHuge.get(Materials.TungstenSteel), new GT_MetaPipeEntity_Fluid(5164, "GT_Pipe_TungstenSteel_Huge", "Huge Tungstensteel Fluid Pipe", 0.875F, Materials.TungstenSteel, 2400, 7500, true).getStackForm(1L));*/
         generateFluidPipes(Materials.Copper, Materials.Copper.mName, 5110, 60, 1000, true);
         generateFluidPipes(Materials.Bronze, Materials.Bronze.mName, 5120, 120, 2000, true);
         generateFluidPipes(Materials.Steel, Materials.Steel.mName, 5130, 240, 2500, true);
@@ -1476,13 +1442,16 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.Ultimate), new GT_MetaPipeEntity_Fluid(5166, "GT_Pipe_HighPressure", "High Pressure Fluid Pipe", 0.5F, Materials.Redstone, 7200, 1500, true).getStackForm(1L));
         GT_OreDictUnificator.registerOre(OrePrefixes.pipeLarge.get(Materials.Ultimate), new GT_MetaPipeEntity_Fluid(5167, "GT_Pipe_HighPressure_Large", "Large High Pressure Fluid Pipe", 0.75F, Materials.Redstone, 9600, 1500, true).getStackForm(1L));
         GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.Superconductor), new GT_MetaPipeEntity_Fluid(5168, "GT_Pipe_PlasmaContain", "Plasma Containment Pipe", 0.5F, Materials.Glowstone, 240, 100000, true).getStackForm(1L));
-        /*GT_OreDictUnificator.registerOre(OrePrefixes.pipeTiny.get(Materials.Plastic), new GT_MetaPipeEntity_Fluid(5170, "GT_Pipe_Plastic_Tiny", "Tiny Plastic Fluid Pipe", 0.25F, Materials.Plastic, 60, 350, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeSmall.get(Materials.Plastic), new GT_MetaPipeEntity_Fluid(5171, "GT_Pipe_Plastic_Small", "Small Plastic Fluid Pipe", 0.375F, Materials.Plastic, 120, 350, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.Plastic), new GT_MetaPipeEntity_Fluid(5172, "GT_Pipe_Plastic", "Plastic Fluid Pipe", 0.5F, Materials.Plastic, 360, 350, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeLarge.get(Materials.Plastic), new GT_MetaPipeEntity_Fluid(5173, "GT_Pipe_Plastic_Large", "Large Plastic Fluid Pipe", 0.75F, Materials.Plastic, 720, 350, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeHuge.get(Materials.Plastic), new GT_MetaPipeEntity_Fluid(5174, "GT_Pipe_Plastic_Huge", "Huge Plastic Fluid Pipe", 0.875F, Materials.Plastic, 1440, 350, true).getStackForm(1L));*/
         generateFluidPipes(Materials.Plastic, Materials.Plastic.mName, "Plastic", 5170, 360, 350, true);
         generateFluidPipes(Materials.Polytetrafluoroethylene, Materials.Polytetrafluoroethylene.mName, "PTFE", 5175, 480, 600, true);
+        generateFluidPipes(Materials.Invar, Materials.Invar.mName, "Invar", 5245, 240, 2395, true);
+        generateFluidPipes(Materials.Rubber, Materials.Rubber.mName, "Rubber", 5250, 30, 350, true);
+        generateFluidPipes(Materials.TinAlloy, Materials.TinAlloy.mName, "Tin Alloy", 5255, 37, 1572, true);
+        generateFluidPipes(Materials.Iridium, Materials.Iridium.mName, "Iridium", 5260, 150, 3398, true);
+        generateFluidPipes(Materials.Aluminium, Materials.Aluminium.mName, "Aluminium", 5265, 30, 1166, true);
+        generateFluidPipes(Materials.TungstenCarbide, Materials.TungstenCarbide.mName, "Tungsten Carbide", 5275, 135, 3837, true);
+        generateFluidPipes(Materials.TitaniumNiobiumCarbide, Materials.TitaniumNiobiumCarbide.mName, "Titanium Niobium Carbide", 5180, 520, 5250, true);
+
         generateFluidMultiPipes(Materials.Copper, Materials.Copper.mName, "Copper", 5200, 60, 1000, true);
         generateFluidMultiPipes(Materials.Bronze, Materials.Bronze.mName, "Bronze", 5205, 120, 2000, true);
         generateFluidMultiPipes(Materials.Steel, Materials.Steel.mName, "Steel", 5210, 240, 2500, true);
@@ -1491,18 +1460,14 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         generateFluidMultiPipes(Materials.TungstenSteel, Materials.TungstenSteel.mName, "Tungstensteel", 5225, 600, 7500, true);
         generateFluidMultiPipes(Materials.Plastic, Materials.Plastic.mName, "Plastic", 5230, 360, 350, true);
         generateFluidMultiPipes(Materials.Polytetrafluoroethylene, Materials.Polytetrafluoroethylene.mName, "PTFE", 5235, 480, 600, true);
-        //generateFluidPipes(Materials.IronWood, Materials.IronWood.mName,"IronWood", 5240, 120, 1977, true);
-        generateFluidPipes(Materials.Invar, Materials.Invar.mName, "Invar", 5245, 240, 2395, true);
         generateFluidMultiPipes(Materials.Invar, Materials.Invar.mName, "Invar", 5285, 60, 5335, true);
-        generateFluidPipes(Materials.Rubber, Materials.Rubber.mName, "Rubber", 5250, 30, 350, true);
-        generateFluidPipes(Materials.TinAlloy, Materials.TinAlloy.mName, "Tin Alloy", 5255, 37, 1572, true);
         generateFluidMultiPipes(Materials.TinAlloy, Materials.TinAlloy.mName, "Tin Alloy", 5290, 37, 1572, true);
-        generateFluidPipes(Materials.Iridium, Materials.Iridium.mName, "Iridium", 5260, 150, 3398, true);
         generateFluidMultiPipes(Materials.Iridium, Materials.Iridium.mName, "Iridium", 5295, 150, 3398, true);
-        generateFluidPipes(Materials.Aluminium, Materials.Aluminium.mName, "Aluminium", 5265, 30, 1166, true);
         generateFluidMultiPipes(Materials.Aluminium, Materials.Aluminium.mName, "Aluminium", 5300, 30, 1166, true);
-        generateFluidPipes(Materials.TungstenCarbide, Materials.TungstenCarbide.mName, "Tungsten Carbide", 5275, 135, 3837, true);
         generateFluidMultiPipes(Materials.TungstenCarbide, Materials.TungstenCarbide.mName, "Tungsten Carbide", 5310, 135, 3837, true);
+        generateFluidMultiPipes(Materials.TitaniumNiobiumCarbide, Materials.TitaniumNiobiumCarbide.mName, "Titanium Niobium Carbide", 5315, 520, 5250, true);
+
+
 
         GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(OrePrefixes.pipeSmall, Materials.TungstenSteel, 1L), ItemList.Electric_Pump_EV.get(1L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.pipeSmall, Materials.Ultimate, 1L), 300, 96);
         GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(OrePrefixes.pipeMedium, Materials.TungstenSteel, 1L), ItemList.Electric_Pump_IV.get(1L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.pipeMedium, Materials.Ultimate, 1L), 400, 148);

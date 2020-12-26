@@ -34,15 +34,8 @@ public class GT_Cover_Pump
                     if (tLiquid != null) {
                         tLiquid = tLiquid.copy();
                         tLiquid.amount = tTank2.fill(ForgeDirection.getOrientation(aSide).getOpposite(), tLiquid, false);
-                        if (tLiquid.amount > 0) {
-                            if (((aCoverVariable % 2 == 0) || (aSide != 1)) && ((aCoverVariable % 2 != 0) || (aSide != 0)) && (aTileEntity.getUniversalEnergyCapacity() >= Math.min(1, tLiquid.amount / 10))) {
-                                if (aTileEntity.isUniversalEnergyStored(Math.min(1, tLiquid.amount / 10))) {
-                                    aTileEntity.decreaseStoredEnergyUnits(Math.min(1, tLiquid.amount / 10), true);
-                                    tTank2.fill(ForgeDirection.getOrientation(aSide).getOpposite(), tTank1.drain(ForgeDirection.getOrientation(aSide), tLiquid.amount, true), true);
-                                }
-                            } else {
-                                tTank2.fill(ForgeDirection.getOrientation(aSide).getOpposite(), tTank1.drain(ForgeDirection.getOrientation(aSide), tLiquid.amount, true), true);
-                            }
+                        if (tLiquid.amount > 0 && canTransferFluid(tLiquid)) {
+                            tTank2.fill(ForgeDirection.getOrientation(aSide).getOpposite(), tTank1.drain(ForgeDirection.getOrientation(aSide), tLiquid.amount, true), true);
                         }
                     }
                 } else {
@@ -50,15 +43,8 @@ public class GT_Cover_Pump
                     if (tLiquid != null) {
                         tLiquid = tLiquid.copy();
                         tLiquid.amount = tTank1.fill(ForgeDirection.getOrientation(aSide), tLiquid, false);
-                        if (tLiquid.amount > 0) {
-                            if (((aCoverVariable % 2 == 0) || (aSide != 1)) && ((aCoverVariable % 2 != 0) || (aSide != 0)) && (aTileEntity.getUniversalEnergyCapacity() >= Math.min(1, tLiquid.amount / 10))) {
-                                if (aTileEntity.isUniversalEnergyStored(Math.min(1, tLiquid.amount / 10))) {
-                                    aTileEntity.decreaseStoredEnergyUnits(Math.min(1, tLiquid.amount / 10), true);
-                                    tTank1.fill(ForgeDirection.getOrientation(aSide), tTank2.drain(ForgeDirection.getOrientation(aSide).getOpposite(), tLiquid.amount, true), true);
-                                }
-                            } else {
-                                tTank1.fill(ForgeDirection.getOrientation(aSide), tTank2.drain(ForgeDirection.getOrientation(aSide).getOpposite(), tLiquid.amount, true), true);
-                            }
+                        if (tLiquid.amount > 0 && canTransferFluid(tLiquid)) {
+                            tTank1.fill(ForgeDirection.getOrientation(aSide), tTank2.drain(ForgeDirection.getOrientation(aSide).getOpposite(), tLiquid.amount, true), true);
                         }
                     }
                 }
@@ -67,22 +53,52 @@ public class GT_Cover_Pump
         return aCoverVariable;
     }
 
+    protected boolean canTransferFluid(FluidStack fluid) {
+        return true;
+    }
+
     public int onCoverScrewdriverclick(byte aSide, int aCoverID, int aCoverVariable, ICoverable aTileEntity, EntityPlayer aPlayer, float aX, float aY, float aZ) {
-        aCoverVariable = (aCoverVariable + (aPlayer.isSneaking()? -1 : 1)) % 12;
-        if(aCoverVariable <0){aCoverVariable = 11;}
-        switch(aCoverVariable) {
-        case 0: GT_Utility.sendChatToPlayer(aPlayer, trans("006", "Export")); break;
-        case 1: GT_Utility.sendChatToPlayer(aPlayer, trans("007", "Import")); break;
-        case 2: GT_Utility.sendChatToPlayer(aPlayer, trans("008", "Export (conditional)")); break;
-        case 3: GT_Utility.sendChatToPlayer(aPlayer, trans("009", "Import (conditional)")); break;
-        case 4: GT_Utility.sendChatToPlayer(aPlayer, trans("010", "Export (invert cond)")); break;
-        case 5: GT_Utility.sendChatToPlayer(aPlayer, trans("011", "Import (invert cond)")); break;
-        case 6: GT_Utility.sendChatToPlayer(aPlayer, trans("012", "Export allow Input")); break;
-        case 7: GT_Utility.sendChatToPlayer(aPlayer, trans("013", "Import allow Output")); break;
-        case 8: GT_Utility.sendChatToPlayer(aPlayer, trans("014", "Export allow Input (conditional)")); break;
-        case 9: GT_Utility.sendChatToPlayer(aPlayer, trans("015", "Import allow Output (conditional)")); break;
-        case 10: GT_Utility.sendChatToPlayer(aPlayer, trans("016", "Export allow Input (invert cond)")); break;
-        case 11: GT_Utility.sendChatToPlayer(aPlayer, trans("017", "Import allow Output (invert cond)")); break;
+        aCoverVariable = (aCoverVariable + (aPlayer.isSneaking() ? -1 : 1)) % 12;
+        if (aCoverVariable < 0) {
+            aCoverVariable = 11;
+        }
+        switch (aCoverVariable) {
+            case 0:
+                GT_Utility.sendChatToPlayer(aPlayer, trans("006", "Export"));
+                break;
+            case 1:
+                GT_Utility.sendChatToPlayer(aPlayer, trans("007", "Import"));
+                break;
+            case 2:
+                GT_Utility.sendChatToPlayer(aPlayer, trans("008", "Export (conditional)"));
+                break;
+            case 3:
+                GT_Utility.sendChatToPlayer(aPlayer, trans("009", "Import (conditional)"));
+                break;
+            case 4:
+                GT_Utility.sendChatToPlayer(aPlayer, trans("010", "Export (invert cond)"));
+                break;
+            case 5:
+                GT_Utility.sendChatToPlayer(aPlayer, trans("011", "Import (invert cond)"));
+                break;
+            case 6:
+                GT_Utility.sendChatToPlayer(aPlayer, trans("012", "Export allow Input"));
+                break;
+            case 7:
+                GT_Utility.sendChatToPlayer(aPlayer, trans("013", "Import allow Output"));
+                break;
+            case 8:
+                GT_Utility.sendChatToPlayer(aPlayer, trans("014", "Export allow Input (conditional)"));
+                break;
+            case 9:
+                GT_Utility.sendChatToPlayer(aPlayer, trans("015", "Import allow Output (conditional)"));
+                break;
+            case 10:
+                GT_Utility.sendChatToPlayer(aPlayer, trans("016", "Export allow Input (invert cond)"));
+                break;
+            case 11:
+                GT_Utility.sendChatToPlayer(aPlayer, trans("017", "Import allow Output (invert cond)"));
+                break;
         }
         return aCoverVariable;
     }
