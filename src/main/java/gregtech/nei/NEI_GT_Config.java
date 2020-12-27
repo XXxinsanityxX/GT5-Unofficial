@@ -2,7 +2,6 @@ package gregtech.nei;
 
 import codechicken.nei.api.IConfigureNEI;
 import cpw.mods.fml.common.FMLCommonHandler;
-import gregtech.api.enums.ItemList;
 import gregtech.api.util.GT_Recipe;
 
 public class NEI_GT_Config
@@ -19,7 +18,6 @@ public class NEI_GT_Config
         }
         if (FMLCommonHandler.instance().getEffectiveSide().isClient()) {
             ALH = new GT_NEI_AssLineHandler(GT_Recipe.GT_Recipe_Map.sAssemblylineVisualRecipes);
-            codechicken.nei.api.API.addItemListEntry(ItemList.VOLUMETRIC_FLASK.get(1));
         }
         sIsAdded = true;
     }

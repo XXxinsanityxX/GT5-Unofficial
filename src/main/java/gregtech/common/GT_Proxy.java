@@ -23,8 +23,6 @@ import gregtech.api.net.GT_Packet_Pollution;
 import gregtech.api.objects.*;
 import gregtech.api.util.*;
 import gregtech.common.entities.GT_Entity_Arrow;
-import gregtech.common.gui.GT_ContainerVolumetricFlask;
-import gregtech.common.gui.GT_GUIContainerVolumetricFlask;
 import gregtech.common.items.GT_MetaGenerated_Tool_01;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
@@ -1353,13 +1351,6 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
     }
 
     public Object getServerGuiElement(int aID, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ) {
-        if(aID>=1000){
-            int ID = aID-1000;
-            if (ID == 0) {
-                return new GT_ContainerVolumetricFlask(aPlayer.inventory);
-            }
-            return getRightItem(aPlayer, ID);
-        }
         if(aID>=100){
             int ID = aID%100;
             return getRightItem(aPlayer, ID);
@@ -1379,13 +1370,6 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
     }
 
     public Object getClientGuiElement(int aID, EntityPlayer aPlayer, World aWorld, int aX, int aY, int aZ) {
-        if(aID>=1000){
-            int ID = aID-1000;
-            if (ID == 10) {
-                return new GT_GUIContainerVolumetricFlask(new GT_ContainerVolumetricFlask(aPlayer.inventory));
-            }
-            return getRightItemGui(aPlayer, ID);
-        }
         if(aID>=100){
             int ID = aID%100;
             return getRightItem(aPlayer, ID);
@@ -1398,11 +1382,6 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
             }
         }
         return null;
-    }
-
-    public Object getRightItemGui(EntityPlayer player, int ID){
-        return null;
-
     }
 
     public int getBurnTime(ItemStack aFuel) {

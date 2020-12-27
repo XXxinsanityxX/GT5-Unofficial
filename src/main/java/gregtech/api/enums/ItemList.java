@@ -533,7 +533,6 @@ public enum ItemList implements IItemContainer {
     Machine_Bronze_BlastFurnace,
     Machine_Bricked_BlastFurnace,
     Machine_Steel_Boiler_Lava,
-    Machine_Steel_Boiler_Semifluids,
     Machine_Steel_Boiler,
     Machine_Steel_Furnace,
     Machine_Steel_Macerator,
@@ -646,8 +645,7 @@ public enum ItemList implements IItemContainer {
     Energy_Module, Energy_Cluster,
     ZPM2, Quantum_Tank_LV, Quantum_Tank_MV, Quantum_Tank_HV, Quantum_Tank_EV, Quantum_Tank_IV, Quantum_Chest_LV, Quantum_Chest_MV, Quantum_Chest_HV, Quantum_Chest_EV, Quantum_Chest_IV,
 
-    Basic_Tank,Basic_Tank_Steam, Basic_Tank_LV, Basic_Tank_MV, Basic_Tank_HV,
-    Basic_Barrel,Basic_Barrel_Steam, Basic_Barrel_LV, Basic_Barrel_MV, Basic_Barrel_HV, Vent_Air,
+    Basic_Tank,Basic_Tank_Steam, Basic_Tank_LV, Basic_Tank_MV, Basic_Tank_HV, Vent_Air,
     NULL, Cover_RedstoneTransmitterExternal, Cover_RedstoneTransmitterInternal, Cover_RedstoneReceiverExternal, Cover_RedstoneReceiverInternal,
     LargeSteamTurbine, LargeGasTurbine, LargeHPSteamTurbine, LargePlasmaTurbine,
     Ingot_Heavy1, Ingot_Heavy2, Ingot_Heavy3,
@@ -671,7 +669,7 @@ public enum ItemList implements IItemContainer {
     Circuit_Microprocessor, Circuit_Processor, Circuit_Computer, Circuit_Nanoprocessor, Circuit_Nanocomputer, Circuit_Elitenanocomputer, Circuit_Quantumprocessor, Circuit_Quantumcomputer, Circuit_Masterquantumcomputer, 
     Circuit_Quantummainframe, Circuit_Crystalprocessor, Circuit_Crystalcomputer, Circuit_Ultimatecrystalcomputer, Circuit_Crystalmainframe, Circuit_Neuroprocessor, Circuit_Wetwarecomputer, Circuit_Wetwaresupercomputer, Circuit_Wetwaremainframe, Circuit_Parts_RawCrystalChip,
     Machine_LV_CircuitAssembler, Machine_MV_CircuitAssembler, Machine_HV_CircuitAssembler, Machine_EV_CircuitAssembler, Machine_IV_CircuitAssembler, Machine_LuV_CircuitAssembler, Machine_ZPM_CircuitAssembler, Machine_UV_CircuitAssembler, Circuit_Integrated_Good, Machine_IV_LightningRod, Machine_HV_LightningRod, Machine_EV_LightningRod,
-    VOLUMETRIC_FLASK, Machine_DigitalTransformer_EV, Machine_DigitalTransformer_IV, Machine_DigitalTransformer_LuV, Machine_DigitalTransformer_ZPM, Machine_DigitalTransformer_UV, Machine_DigitalTransformer_MAX
+    Machine_DigitalTransformer_EV, Machine_DigitalTransformer_IV, Machine_DigitalTransformer_LuV, Machine_DigitalTransformer_ZPM, Machine_DigitalTransformer_UV, Machine_DigitalTransformer_MAX
     ;
 
     public static final ItemList[]
