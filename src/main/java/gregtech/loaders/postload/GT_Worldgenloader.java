@@ -66,7 +66,7 @@ public class GT_Worldgenloader implements Runnable {
         new GT_Worldgen_GT_Ore_SmallPieces("ore.small.bismuth", true, 80, 120, 8, true, true, true, Materials.Bismuth);
         new GT_Worldgen_GT_Ore_SmallPieces("ore.small.coal", true, 120, 250, 24, true, false, false, Materials.Coal);
         new GT_Worldgen_GT_Ore_SmallPieces("ore.small.iron", true, 40, 100, 16, true, true, true, Materials.Iron);
-        new GT_Worldgen_GT_Ore_SmallPieces("ore.small.lead", true, 40, 180, 16, true, true, false, Materials.Lead);
+        new GT_Worldgen_GT_Ore_SmallPieces("ore.small.lead", true, 20, 180, 24, true, true, false, Materials.Lead);
         new GT_Worldgen_GT_Ore_SmallPieces("ore.small.zinc", true, 80, 210, 24, true, true, true, Materials.Zinc);
         new GT_Worldgen_GT_Ore_SmallPieces("ore.small.gold", true, 20, 60, 8, true, true, false, Materials.Gold);
         new GT_Worldgen_GT_Ore_SmallPieces("ore.small.silver", true, 20, 60, 20, true, true, true, Materials.Silver);
@@ -134,17 +134,6 @@ public class GT_Worldgenloader implements Runnable {
         //NEW VEINS
         new GT_Worldgen_GT_Ore_Layer("ore.mix.mineralsandtin", true, 50, 60, 70, 5, 32, true, false, false, Materials.BasalticMineralSand, Materials.GraniticMineralSand, Materials.CassiteriteSand, Materials.CassiteriteSand);
         new GT_Worldgen_GT_Ore_Layer("ore.mix.coppertin", true, 80, 200, 80, 3, 24, true, false, true, Materials.Chalcopyrite, Materials.Vermiculite, Materials.Cassiterite, Materials.Alunite);
-        //new GT_Worldgen_GT_Ore_Layer("ore.mix.mineralsand", true, 50, 60, 80, 3, 24, true, false, false, Materials.BasalticMineralSand, Materials.GraniticMineralSand, Materials.FullersEarth, Materials.Gypsum);
-        //new GT_Worldgen_GT_Ore_Layer("ore.mix.kaolinitezeolite", true, 50, 70, 60, 4, 16, true, false, false, Materials.Kaolinite, Materials.Zeolite, Materials.FullersEarth, Materials.GlauconiteSand);
-        //new GT_Worldgen_GT_Ore_Layer("ore.mix.dolomite", true, 150, 200, 40, 4, 24, true, false, false, Materials.Dolomite, Materials.Wollastonite, Materials.Trona, Materials.Andradite);
-
-        //Far End Asteroids Veins
-        //new GT_Worldgen_GT_Ore_Layer("ore.mix.naquadahasteroid", true, 75, 256, 60, 5, 48, false, false, true, Materials.Naquadah, Materials.Naquadah, Materials.Naquadah, Materials.NaquadahEnriched);
-        //new GT_Worldgen_GT_Ore_Layer("ore.mix.platinumasteroid", true, 75, 256, 80, 5, 48, false, false, true, Materials.Cooperite, Materials.Palladium, Materials.Platinum, Materials.Iridium);
-        //new GT_Worldgen_GT_Ore_Layer("ore.mix.tungstenasteroid", true, 75, 256, 90, 5, 48, false, false, true, Materials.Scheelite, Materials.Scheelite, Materials.Tungstate, Materials.Lithium);
-        //new GT_Worldgen_GT_Ore_Layer("ore.mix.uraniumasteroid", true, 75, 256, 70, 5, 48, false, false, true, Materials.Uraninite, Materials.Pitchblende, Materials.Uranium, Materials.Uranium);
-        //new GT_Worldgen_GT_Ore_Layer("ore.mix.ironasteroid", true, 75, 256, 150, 5, 48, false, false, true, Materials.Iron, Materials.Iron, Materials.Oilsands, Materials.Nickel);
-
 
         /*i = 0;
         for (int j = GregTech_API.sWorldgenFile.get("worldgen", "AmountOfCustomLargeVeinSlots", 16); i < j; i++) {

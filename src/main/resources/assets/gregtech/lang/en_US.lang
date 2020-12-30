@@ -11,6 +11,8 @@ item.gregtech:modularelectric2_chestplate.name=Modular Nanosuit Chestplate
 item.gregtech:modularelectric2_leggings.name=Modular Nanosuit Leggings
 item.gregtech:modularelectric2_boots.name=Modular Nanosuit Boots
 
+GT5U.machines.separatebus=Input busses are separated
+
 achievement.Naquadah=Find Naquadah Ore
 achievement.Naquadah.desc=Height: 10-60, Chance: 10, End
 achievement.NaquadahEnriched=Find NaquadahEnriched Ore

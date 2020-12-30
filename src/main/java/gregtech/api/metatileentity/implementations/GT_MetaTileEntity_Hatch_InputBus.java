@@ -6,22 +6,18 @@ import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.objects.GT_RenderedTexture;
-import gregtech.api.util.GT_LanguageManager;
 import gregtech.api.util.GT_Recipe.GT_Recipe_Map;
 import gregtech.api.util.GT_Utility;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 
 public class GT_MetaTileEntity_Hatch_InputBus extends GT_MetaTileEntity_Hatch {
     public GT_Recipe_Map mRecipeMap = null;
-    public boolean disableSort;
 
     public GT_MetaTileEntity_Hatch_InputBus(int aID, String aName, String aNameRegional, int aTier) {
         super(aID, aName, aNameRegional, aTier, getSlots(aTier), new String[]{
                 "Item Input for Multiblocks",
-                "Shift + right click with screwdriver to toggle automatic item shuffling",
                 "Capacity: " + getSlots(aTier) + " stack" + (getSlots(aTier) >= 2 ? "s" : "")});
     }
 
@@ -35,33 +31,18 @@ public class GT_MetaTileEntity_Hatch_InputBus extends GT_MetaTileEntity_Hatch {
 
     @Override
     public ITexture[] getTexturesActive(ITexture aBaseTexture) {
-        return new ITexture[]{aBaseTexture, new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_PIPE_IN)};
+        return new ITexture[] {aBaseTexture, new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_PIPE_IN)};
     }
 
     @Override
     public ITexture[] getTexturesInactive(ITexture aBaseTexture) {
-        return new ITexture[]{aBaseTexture, new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_PIPE_IN)};
+        return new ITexture[] {aBaseTexture, new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_PIPE_IN)};
     }
 
-    @Override
-    public boolean isSimpleMachine() {
-        return true;
-    }
-
-    @Override
-    public boolean isFacingValid(byte aFacing) {
-        return true;
-    }
-
-    @Override
-    public boolean isAccessAllowed(EntityPlayer aPlayer) {
-        return true;
-    }
-
-    @Override
-    public boolean isValidSlot(int aIndex) {
-        return true;
-    }
+    @Override public boolean isSimpleMachine()						{return true;}
+    @Override public boolean isFacingValid(byte aFacing)			{return true;}
+    @Override public boolean isAccessAllowed(EntityPlayer aPlayer)	{return true;}
+    @Override public boolean isValidSlot(int aIndex)				{return true;}
 
     @Override
     public MetaTileEntity newMetaEntity(IGregTechTileEntity aTileEntity) {
@@ -78,30 +59,21 @@ public class GT_MetaTileEntity_Hatch_InputBus extends GT_MetaTileEntity_Hatch {
     @Override
     public Object getServerGUI(int aID, InventoryPlayer aPlayerInventory, IGregTechTileEntity aBaseMetaTileEntity) {
         switch (mTier) {
-            case 0:
-                return new GT_Container_1by1(aPlayerInventory, aBaseMetaTileEntity);
-            case 1:
-                return new GT_Container_2by2(aPlayerInventory, aBaseMetaTileEntity);
-            case 2:
-                return new GT_Container_3by3(aPlayerInventory, aBaseMetaTileEntity);
-            default:
-                return new GT_Container_4by4(aPlayerInventory, aBaseMetaTileEntity);
+            case  0: return new GT_Container_1by1(aPlayerInventory, aBaseMetaTileEntity);
+            case  1: return new GT_Container_2by2(aPlayerInventory, aBaseMetaTileEntity);
+            case  2: return new GT_Container_3by3(aPlayerInventory, aBaseMetaTileEntity);
+            default: return new GT_Container_4by4(aPlayerInventory, aBaseMetaTileEntity);
         }
     }
 
     @Override
     public Object getClientGUI(int aID, InventoryPlayer aPlayerInventory, IGregTechTileEntity aBaseMetaTileEntity) {
         switch (mInventory.length) {
-            case 1:
-                return new GT_GUIContainer_1by1(aPlayerInventory, aBaseMetaTileEntity, "Input Bus");
-            case 4:
-                return new GT_GUIContainer_2by2(aPlayerInventory, aBaseMetaTileEntity, "Input Bus");
-            case 9:
-                return new GT_GUIContainer_3by3(aPlayerInventory, aBaseMetaTileEntity, "Input Bus");
-            case 16:
-                return new GT_GUIContainer_4by4(aPlayerInventory, aBaseMetaTileEntity, "Input Bus");
-            default:
-                return new GT_GUIContainer_4by4(aPlayerInventory, aBaseMetaTileEntity, "Input Bus");
+            case  1: return new GT_GUIContainer_1by1(aPlayerInventory, aBaseMetaTileEntity, "Input Bus");
+            case  4: return new GT_GUIContainer_2by2(aPlayerInventory, aBaseMetaTileEntity, "Input Bus");
+            case  9: return new GT_GUIContainer_3by3(aPlayerInventory, aBaseMetaTileEntity, "Input Bus");
+            case 16: return new GT_GUIContainer_4by4(aPlayerInventory, aBaseMetaTileEntity, "Input Bus");
+            default: return new GT_GUIContainer_4by4(aPlayerInventory, aBaseMetaTileEntity, "Input Bus");
         }
     }
 
@@ -113,46 +85,14 @@ public class GT_MetaTileEntity_Hatch_InputBus extends GT_MetaTileEntity_Hatch {
     }
 
     public void updateSlots() {
-        for (int i = 0; i < mInventory.length; i++)
-            if (mInventory[i] != null && mInventory[i].stackSize <= 0) mInventory[i] = null;
+        for (int i = 0; i < mInventory.length; i++) if (mInventory[i] != null && mInventory[i].stackSize <= 0) mInventory[i] = null;
         fillStacksIntoFirstSlots();
     }
 
     protected void fillStacksIntoFirstSlots() {
-        if (disableSort) {
-            for (int i = 0; i < mInventory.length; i++)
-                if (mInventory[i] != null && mInventory[i].stackSize <= 0)
-                    mInventory[i] = null;
-        } else {
-            for (int i = 0; i < mInventory.length; i++)
-                for (int j = i + 1; j < mInventory.length; j++)
-                    if (mInventory[j] != null && (mInventory[i] == null || GT_Utility.areStacksEqual(mInventory[i], mInventory[j])))
-                        GT_Utility.moveStackFromSlotAToSlotB(getBaseMetaTileEntity(), getBaseMetaTileEntity(), j, i, (byte) 64, (byte) 1, (byte) 64, (byte) 1);
+        for (int i = 0; i < mInventory.length; i++) for (int j = i + 1; j < mInventory.length; j++) if (mInventory[j] != null && (mInventory[i] == null || GT_Utility.areStacksEqual(mInventory[i], mInventory[j]))) {
+            GT_Utility.moveStackFromSlotAToSlotB(getBaseMetaTileEntity(), getBaseMetaTileEntity(), j, i, (byte)64, (byte)1, (byte)64, (byte)1);
         }
-    }
-
-    @Override
-    public void saveNBTData(NBTTagCompound aNBT) {
-        super.saveNBTData(aNBT);
-        aNBT.setBoolean("disableSort", disableSort);
-    }
-
-    @Override
-    public void loadNBTData(NBTTagCompound aNBT) {
-        super.loadNBTData(aNBT);
-        disableSort = aNBT.getBoolean("disableSort");
-    }
-
-    @Override
-    public void onScrewdriverRightClick(byte aSide, EntityPlayer aPlayer, float aX, float aY, float aZ) {
-        if (aPlayer.isSneaking()) {
-            disableSort = !disableSort;
-            GT_Utility.sendChatToPlayer(aPlayer, trans("200", "Automatic Item Shuffling: " + (disableSort ? "Disabled" : "Enabled")));
-        }
-    }
-
-    public String trans(String aKey, String aEnglish) {
-        return GT_LanguageManager.addStringLocalization("Interaction_DESCRIPTION_Index_" + aKey, aEnglish, false);
     }
 
     @Override

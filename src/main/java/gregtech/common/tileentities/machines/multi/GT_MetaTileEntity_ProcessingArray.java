@@ -7,13 +7,18 @@ import gregtech.api.gui.GT_GUIContainer_MultiMachine;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
+import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_Hatch_InputBus;
 import gregtech.api.metatileentity.implementations.GT_MetaTileEntity_MultiBlockBase;
 import gregtech.api.objects.GT_RenderedTexture;
 import gregtech.api.util.GT_ProcessingArray_Manager;
 import gregtech.api.util.GT_Recipe;
 import gregtech.api.util.GT_Recipe.GT_Recipe_Map;
+import gregtech.api.util.GT_Utility;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.ArrayUtils;
@@ -28,7 +33,10 @@ import static gregtech.api.metatileentity.implementations.GT_MetaTileEntity_Basi
 
 public class GT_MetaTileEntity_ProcessingArray extends GT_MetaTileEntity_MultiBlockBase {
 
-    GT_Recipe mLastRecipe;
+    private GT_Recipe mLastRecipe;
+    private int tTier = 0;
+    private int mMult = 0;
+    private boolean mSeparate = false;
 
     public GT_MetaTileEntity_ProcessingArray(int aID, String aName, String aNameRegional) {
         super(aID, aName, aNameRegional);
@@ -52,14 +60,15 @@ public class GT_MetaTileEntity_ProcessingArray extends GT_MetaTileEntity_MultiBl
                 "1x Maintenance Hatch (Any casing)",
                 "1x Energy Hatch (Any casing)",
                 "Robust Tungstensteel Machine Casings for the rest (14 at least!)",
-                "Place up to 64 Single Block GT Machines into the Controller Inventory"};
+                "Place up to 64 Single Block GT Machines into the Controller Inventory",
+                "Use screwdriver to enable separate input busses"};
     }
 
     public ITexture[] getTexture(IGregTechTileEntity aBaseMetaTileEntity, byte aSide, byte aFacing, byte aColorIndex, boolean aActive, boolean aRedstone) {
         if (aSide == aFacing) {
-            return new ITexture[]{Textures.BlockIcons.CASING_BLOCKS[48], new GT_RenderedTexture(aActive ? Textures.BlockIcons.OVERLAY_FRONT_PROCESSING_ARRAY_ACTIVE : Textures.BlockIcons.OVERLAY_FRONT_PROCESSING_ARRAY)};
+            return new ITexture[]{Textures.BlockIcons.casingTexturePages[0][48], new GT_RenderedTexture(aActive ? Textures.BlockIcons.OVERLAY_FRONT_PROCESSING_ARRAY_ACTIVE : Textures.BlockIcons.OVERLAY_FRONT_PROCESSING_ARRAY)};
         }
-        return new ITexture[]{Textures.BlockIcons.CASING_BLOCKS[48]};
+        return new ITexture[]{Textures.BlockIcons.casingTexturePages[0][48]};
     }
 
     public Object getClientGUI(int aID, InventoryPlayer aPlayerInventory, IGregTechTileEntity aBaseMetaTileEntity) {
@@ -94,45 +103,76 @@ public class GT_MetaTileEntity_ProcessingArray extends GT_MetaTileEntity_MultiBl
         }
         GT_Recipe.GT_Recipe_Map map = getRecipeMap();
         if (map == null) return false;
-        ArrayList<ItemStack> tInputList = getStoredInputs();
-        int tTier = 0;
+
         if (mInventory[1].getUnlocalizedName().endsWith("1")) {
             tTier = 1;
-        }else if (mInventory[1].getUnlocalizedName().endsWith("2")) {
+            mMult = 0;//*1
+        } else if (mInventory[1].getUnlocalizedName().endsWith("2")) {
             tTier = 2;
-        }else if (mInventory[1].getUnlocalizedName().endsWith("3")) {
+            mMult = 0;//*1
+        } else if (mInventory[1].getUnlocalizedName().endsWith("3")) {
             tTier = 3;
-        }else if (mInventory[1].getUnlocalizedName().endsWith("4")) {
+            mMult = 0;//*1
+        } else if (mInventory[1].getUnlocalizedName().endsWith("4")) {
             tTier = 4;
-        }else if (mInventory[1].getUnlocalizedName().endsWith("5")) {
+            mMult = 0;//*1
+        } else if (mInventory[1].getUnlocalizedName().endsWith("5")) {
             tTier = 5;
-        }else if (mInventory[1].getUnlocalizedName().endsWith("6")) {
+            mMult = 0;//*1
+        } else if (mInventory[1].getUnlocalizedName().endsWith("6")) {
             tTier = 6;
-        }else if (mInventory[1].getUnlocalizedName().endsWith("7")) {
+            mMult = 0;//*1
+        } else if (mInventory[1].getUnlocalizedName().endsWith("7")) {
             tTier = 7;
-        }else if (mInventory[1].getUnlocalizedName().endsWith("8")) {
+            mMult = 0;//*1
+        } else if (mInventory[1].getUnlocalizedName().endsWith("8")) {
             tTier = 8;
+            mMult = 0;//*1
+        } else {
+            tTier = 0;
+            mMult = 0;//*1
         }
-        
-        if(!mMachine.equals(mInventory[1].getUnlocalizedName()))mLastRecipe=null;
+
+        if (!mMachine.equals(mInventory[1].getUnlocalizedName())) mLastRecipe = null;
         mMachine = mInventory[1].getUnlocalizedName();
-        ItemStack[] tInputs = (ItemStack[]) tInputList.toArray(new ItemStack[tInputList.size()]);
 
         ArrayList<FluidStack> tFluidList = getStoredFluids();
-        
-        FluidStack[] tFluids = (FluidStack[]) tFluidList.toArray(new FluidStack[tFluidList.size()]); 
-        if (tInputList.size() > 0 || tFluids.length > 0) {
+        FluidStack[] tFluids = (FluidStack[]) tFluidList.toArray(new FluidStack[tFluidList.size()]);
+        if (mSeparate) {
+            ArrayList<ItemStack> tInputList = new ArrayList<ItemStack>();
+            for (GT_MetaTileEntity_Hatch_InputBus tHatch : mInputBusses) {
+                IGregTechTileEntity tInpuBus = tHatch.getBaseMetaTileEntity();
+                for (int i = tInpuBus.getSizeInventory() - 1; i >= 0; i--) {
+                    if (tInpuBus.getStackInSlot(i) != null)
+                        tInputList.add(tInpuBus.getStackInSlot(i));
+                }
+                ItemStack[] tInputs = (ItemStack[]) tInputList.toArray(new ItemStack[tInputList.size()]);
+                if (processRecipe(tInputs, tFluids, map))
+                    return true;
+                else
+                    tInputList.clear();
+            }
+        } else {
+            ArrayList<ItemStack> tInputList = getStoredInputs();
+            ItemStack[] tInputs = (ItemStack[]) tInputList.toArray(new ItemStack[tInputList.size()]);
+            return processRecipe(tInputs, tFluids, map);
+        }
+        return false;
+    }
+
+    public boolean processRecipe(ItemStack[] tInputs, FluidStack[] tFluids, GT_Recipe.GT_Recipe_Map map) {
+        if (tInputs.length > 0 || tFluids.length > 0) {
             GT_Recipe tRecipe = map.findRecipe(getBaseMetaTileEntity(), mLastRecipe, false, gregtech.api.enums.GT_Values.V[tTier], tFluids, tInputs);
             if (tRecipe != null) {
                 if (GT_Mod.gregtechproxy.mLowGravProcessing && tRecipe.mSpecialValue == -100 &&
-                        !isValidForLowGravity(tRecipe,getBaseMetaTileEntity().getWorld().provider.dimensionId))
+                        !isValidForLowGravity(tRecipe, getBaseMetaTileEntity().getWorld().provider.dimensionId))
                     return false;
 
                 mLastRecipe = tRecipe;
                 this.mEUt = 0;
                 this.mOutputItems = null;
                 this.mOutputFluids = null;
-                int machines = Math.min(64, mInventory[1].stackSize);
+                int machines = Math.min(64, mInventory[1].stackSize << mMult); //Upped max Cap to 64
                 int i = 0;
                 for (; i < machines; i++) {
                     if (!tRecipe.isRecipeInputEqual(true, tFluids, tInputs)) {
@@ -210,7 +250,7 @@ public class GT_MetaTileEntity_ProcessingArray extends GT_MetaTileEntity_MultiBl
         }
         return false;
     }
-    
+
     public static ItemStack[] clean(final ItemStack[] v) {
         List<ItemStack> list = new ArrayList<ItemStack>(Arrays.asList(v));
         list.removeAll(Collections.singleton(null));
@@ -243,6 +283,24 @@ public class GT_MetaTileEntity_ProcessingArray extends GT_MetaTileEntity_MultiBl
             }
         }
         return tAmount >= 14;
+    }
+
+    @Override
+    public void saveNBTData(NBTTagCompound aNBT) {
+        super.saveNBTData(aNBT);
+        aNBT.setBoolean("mSeparate", mSeparate);
+    }
+
+    @Override
+    public void loadNBTData(final NBTTagCompound aNBT) {
+        super.loadNBTData(aNBT);
+        mSeparate = aNBT.getBoolean("mSeparate");
+    }
+
+    @Override
+    public final void onScrewdriverRightClick(byte aSide, EntityPlayer aPlayer, float aX, float aY, float aZ) {
+        mSeparate = !mSeparate;
+        GT_Utility.sendChatToPlayer(aPlayer, StatCollector.translateToLocal("GT5U.machines.separatebus") +" "+mSeparate);
     }
 
     public int getMaxEfficiency(ItemStack aStack) {

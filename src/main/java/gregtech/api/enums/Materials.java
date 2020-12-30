@@ -15,6 +15,7 @@ import gregtech.api.util.GT_OreDictUnificator;
 import gregtech.api.util.GT_Utility;
 import gregtech.loaders.materialprocessing.ProcessingConfig;
 import gregtech.loaders.materialprocessing.ProcessingModSupport;
+import javafx.scene.paint.Material;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
@@ -542,7 +543,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials Quicklime = new MaterialBuilder(622, TextureSet.SET_DULL, "Quicklime").addDustItems().setRGB(240, 240, 240).setColor(Dyes.dyeWhite).setMaterialList(new MaterialStack(Calcium, 1), new MaterialStack(Oxygen, 1)).addElectrolyzerRecipe().constructMaterial();
     public static Materials Potash = new MaterialBuilder(623, TextureSet.SET_DULL, "Potash").addDustItems().setRGB(120, 66, 55).setColor(Dyes.dyeBrown).setMaterialList(new MaterialStack(Potassium, 2), new MaterialStack(Oxygen, 1)).addElectrolyzerRecipe().constructMaterial();
     public static Materials SodaAsh = new MaterialBuilder(624, TextureSet.SET_DULL, "Soda Ash").addDustItems().setRGB(220, 220, 255).setColor(Dyes.dyeWhite).setMaterialList(new MaterialStack(Sodium, 2), new MaterialStack(Carbon, 1), new MaterialStack(Oxygen, 3)).addElectrolyzerRecipe().constructMaterial();
-    public static Materials Brick = new MaterialBuilder(625, TextureSet.SET_ROUGH, "Ceramic").addDustItems().setRGB(155, 86, 67).setColor(Dyes.dyeBrown).setMaterialList(new MaterialStack(Aluminium, 4), new MaterialStack(Silicon, 3), new MaterialStack(Oxygen, 12)).constructMaterial();
+    public static Materials Brick = new MaterialBuilder(625, TextureSet.SET_ROUGH, "Ceramic").addDustItems().setRGB(155, 86, 67).setColor(Dyes.dyeBrown).setMaterialList(new MaterialStack(Aluminium, 2), new MaterialStack(Silicon, 2)).constructMaterial();
     public static Materials Fireclay = new MaterialBuilder(626, TextureSet.SET_ROUGH, "Fireclay").addDustItems().setRGB(173, 160, 155).setColor(Dyes.dyeBrown).setMaterialList(new MaterialStack(Brick, 1)).constructMaterial();
     public static Materials BioDiesel = new MaterialBuilder(627, TextureSet.SET_FLUID, "Bio Diesel").addCell().addFluid().setRGB(255, 128, 0).setColor(Dyes.dyeOrange).setFuelType(MaterialBuilder.DIESEL).setFuelPower(192).constructMaterial();
     public static Materials NitrationMixture = new MaterialBuilder(628, TextureSet.SET_FLUID, "Nitration Mixture").addCell().setRGB(230, 226, 171).setColor(Dyes.dyeBrown).constructMaterial();
@@ -743,30 +744,32 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials GasolinePremium = new MaterialBuilder(998, TextureSet.SET_FLUID, "High Octane Gasoline").addCell().addFluid().setRGB(255,165,0).setColor(Dyes.dyeOrange).setFuelType(MaterialBuilder.DIESEL).setFuelPower(768).constructMaterial();
 
     // EnderIO Materials
-    public static Materials RedstoneAlloy = new Materials(759,TextureSet.SET_METALLIC,0.0F,0,0,1|2,140,50,50,0,"RedstoneAlloy","Redstone Alloy",0,0,-1,0,false,false,3,1,1,Dyes._NULL);
-    public static Materials ConductiveIron = new Materials(758,TextureSet.SET_METALLIC,0.0F,0,0,1|2,170,140,140,0,"ConductiveIron","Conductive Iron",0,0,-1,0,false,false,3,1,1,Dyes._NULL);
-    public static Materials PulsatingIron = new Materials(751,TextureSet.SET_METALLIC,0.0F,0,0,1|2,130,240,155,0,"PulsatingIron","Pulsating Iron",0,0,-1,0,false,false,3,1,1,Dyes._NULL);
-    public static Materials ElectricalSteel = new Materials(757,TextureSet.SET_METALLIC,0.0F,0,0,1|2,160,160,160,0,"ElectricalSteel","Electrical Steel",0,0,-1,0,false,false,3,1,1,Dyes._NULL);
-    public static Materials Soularium = new Materials(756,TextureSet.SET_METALLIC,0.0F,0,2,1|2,90,70,50,0,"Soularium","Soularium",0,0,-1,0,false,false,3,1,1,Dyes._NULL);
-    public static Materials DarkSteel = new Materials(755,TextureSet.SET_METALLIC,0.0F,0,0,1|2,70,70,70,0,"DarkSteel","Dark Steel",0,0,-1,0,false,false,5,1,1,Dyes.dyePurple);
-    public static Materials EnergeticAlloy = new Materials(754,TextureSet.SET_METALLIC,0.0F,0,0,1|2,200,120,50,0,"EnergeticAlloy","Energetic Alloy",0,0,-1,0,false,false,3,1,1,Dyes._NULL);
-    public static Materials VibrantAlloy = new Materials(752,TextureSet.SET_METALLIC,0.0F,0,0,1|2,215,245,130,0,"VibrantAlloy","Vibrant Alloy",0,0,-1,0,false,false,3,1,1,Dyes._NULL);
-    public static Materials EndSteel = new Materials(753,TextureSet.SET_METALLIC,0.0F,0,0,1|2,245,245,195,0,"EndSteel","End Steel",0,0,-1,0,false,false,3,1,1,Dyes.dyeYellow);
+    public static Materials RedstoneAlloy = new MaterialBuilder(759, TextureSet.SET_METALLIC, "Redstone Alloy").addDustItems().addMetalItems().setRGB(140, 50, 50).constructMaterial();
+    public static Materials ConductiveIron = new MaterialBuilder(758, TextureSet.SET_METALLIC, "Conductive Iron").addDustItems().addMetalItems().setRGB(170, 140, 140).constructMaterial();
+    public static Materials PulsatingIron = new MaterialBuilder(751, TextureSet.SET_METALLIC, "Pulsating Iron").addDustItems().addMetalItems().setRGB(130, 240, 155).constructMaterial();
+    public static Materials ElectricalSteel = new MaterialBuilder(757, TextureSet.SET_METALLIC, "Electrical Steel").addDustItems().addMetalItems().setRGB(160, 160, 160).setBlastFurnaceRequired(true).constructMaterial();
+    public static Materials Soularium = new MaterialBuilder(756, TextureSet.SET_METALLIC, "Soularium").addDustItems().addMetalItems().setRGB(90, 70, 50).constructMaterial();
+    public static Materials DarkSteel = new MaterialBuilder(755, TextureSet.SET_METALLIC, "Dark Steel").addDustItems().addMetalItems().setRGB(70, 70, 70).setBlastFurnaceRequired(true).constructMaterial();
+    public static Materials EnergeticAlloy = new MaterialBuilder(754, TextureSet.SET_METALLIC, "Energetic Alloy").addDustItems().addMetalItems().setRGB(200, 120, 50).setBlastFurnaceRequired(true).constructMaterial();
+    public static Materials VibrantAlloy = new MaterialBuilder(752, TextureSet.SET_METALLIC, "Vibrant Alloy").addDustItems().addMetalItems().setRGB(215, 245, 130).setBlastFurnaceRequired(true).constructMaterial();
+    public static Materials EndSteel = new MaterialBuilder(753, TextureSet.SET_METALLIC, "End Steel").addDustItems().addMetalItems().setRGB(254, 245, 195).setBlastFurnaceRequired(true).constructMaterial();
 
     //Netherlicious Materials
-    public static Materials Blackstone = new Materials( 359, TextureSet.SET_ROUGH,1.0F, 0, 1, 1, 30, 20, 20, 0, "Blackstone", "Blackstone", 0, 0, -1, 0, false, false, 2, 1, 1, Dyes.dyeBlack, 2, Arrays.asList(new MaterialStack(Stone, 4), new MaterialStack(Biotite, 1)), null);
+    public static Materials Blackstone = new MaterialBuilder(359, TextureSet.SET_ROUGH, "Blackstone").addDustItems().setRGB(30, 20, 20).setColor(Dyes.dyeBlack).setMaterialList(new MaterialStack(Stone, 4), new MaterialStack(Biotite, 1)).constructMaterial();
 
     //EXU Materials
-    public static Materials Bedrockium = new Materials(-1,TextureSet.SET_METALLIC,36.0F,102400,7,1|2|64|128,88,88,88,0,"Bedrockium","Bedrockium",0,0,4000,2000,true,false,4,1,1,Dyes.dyeBlack);
+    public static Materials Bedrockium = new MaterialBuilder(-1, TextureSet.SET_METALLIC, "Bedrockium").addDustItems().addMetalItems().setRGB(88, 88, 88).constructMaterial();
 
     //Extra Materials
     public static Materials Adamantium = new Materials(319, TextureSet.SET_METALLIC, 	36.0F, 512000, 6, 1|2, 255, 255, 255, 0, "Adamantium", "Adamantium", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes._NULL, Element.Ad, Arrays.asList(new TC_Aspects.TC_AspectStack(TC_Aspects.METALLUM, 10), new TC_Aspects.TC_AspectStack(TC_Aspects.PRAECANTATIO, 10)));
-    public static Materials Adamantine = new Materials(539, TextureSet.SET_METALLIC, 	24.0F, 45000, 4, 1|2|8, 255, 0, 64, 0, "Adamantine", "Adamantine", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes.dyeRed, 0, Arrays.asList(new MaterialStack(Adamantium, 3), new MaterialStack(Oxygen, 4)));
-    public static Materials EnderiumBase = new Materials(321, TextureSet.SET_METALLIC, 	8.0F, 256, 2, 1|2, 53, 85, 108, 0, "EnderiumBase", "Enderium Base", 0, 0, -1, 1071, true, false, 1, 1, 1, Dyes.dyeGreen, 0, Arrays.asList(new MaterialStack(Tin, 2), new MaterialStack(Silver, 1), new MaterialStack(Platinum, 1)));
-    public static Materials Enderium = new Materials(323,TextureSet.SET_METALLIC,12.0F,1024,3,1|2|64,60,125,115,0,"Enderium","Enderium",0,0,-1,1897,true,false,1,1,1,Dyes.dyeGreen, 0, Arrays.asList(new MaterialStack(EnderiumBase, 1), new MaterialStack(EnderPearl, 1)));
+    public static Materials Adamantine = new MaterialBuilder(539, TextureSet.SET_METALLIC, "Adamantine").addDustItems().addMetalItems().addOreItems().setToolSpeed(24).setDurability(45000).setToolQuality(4).setRGB(255, 0, 64).setMaterialList(new MaterialStack(Adamantium, 3), new MaterialStack(Oxygen, 4)).constructMaterial();
+
+    public static Materials EnderiumBase = new MaterialBuilder(321, TextureSet.SET_METALLIC, "Enderium Base").addDustItems().addMetalItems().setRGB(53, 85, 108).setBlastFurnaceRequired(true).setBlastFurnaceTemp(1071).setMaterialList(new MaterialStack(Tin, 2), new MaterialStack(Silver, 1), new MaterialStack(Platinum, 1)).constructMaterial();
+    public static Materials Enderium = new MaterialBuilder(323, TextureSet.SET_METALLIC, "Enderium").addDustItems().addMetalItems().addToolHeadItems().setToolSpeed(12.0f).setDurability(1024).setToolQuality(3).setRGB(60, 125, 115).setColor(Dyes.dyeGreen).setBlastFurnaceRequired(true).setBlastFurnaceTemp(1897).setMaterialList(new MaterialStack(EnderiumBase, 1), new MaterialStack(EnderPearl, 1)).constructMaterial();
 
     //GT6 Materials - IDS 761 to 769
-    public static Materials TitaniumNiobiumCarbide = new Materials(760,TextureSet.SET_METALLIC,16.0F,7680,4,1|2|64,153,153,204,0,"TitaniumNiobiumCarbide","Titanium Niobium Carbide",0,0,-1,5200,true,false,1,1,1,Dyes._NULL, 0, Arrays.asList(new MaterialStack(NiobiumTitanium, 3), new MaterialStack(Carbon, 2))).disableAutoGeneratedBlastFurnaceRecipes();
+    //public static Materials TitaniumNiobiumCarbide = new Materials(760,TextureSet.SET_METALLIC,16.0F,7680,4,1|2|64,153,153,204,0,"TitaniumNiobiumCarbide","Titanium Niobium Carbide",0,0,-1,5200,true,false,1,1,1,Dyes._NULL, 0, Arrays.asList(new MaterialStack(NiobiumTitanium, 3), new MaterialStack(Carbon, 2))).disableAutoGeneratedBlastFurnaceRecipes();
+    public static Materials TitaniumNiobiumCarbide = new MaterialBuilder(760, TextureSet.SET_METALLIC, "Titanium Niobium Carbide").addDustItems().addMetalItems().addToolHeadItems().setToolSpeed(16.0f).setDurability(7680).setToolQuality(4).setRGB(153, 153, 204).setBlastFurnaceRequired(true).setBlastFurnaceTemp(5200).setMaterialList(new MaterialStack(NiobiumTitanium, 3), new MaterialStack(Carbon, 2)).constructMaterial().disableAutoGeneratedBlastFurnaceRecipes();
 
     /**
      * Materials which are renamed automatically
