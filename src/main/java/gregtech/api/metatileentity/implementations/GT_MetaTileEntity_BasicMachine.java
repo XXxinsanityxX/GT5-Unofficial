@@ -489,10 +489,16 @@ public abstract class GT_MetaTileEntity_BasicMachine extends GT_MetaTileEntity_B
 
             if (doesAutoOutput() && !isOutputEmpty() && aBaseMetaTileEntity.getFrontFacing() != mMainFacing && (tSucceeded || mOutputBlocked % 300 == 1 || aBaseMetaTileEntity.hasInventoryBeenModified() || aTick % 600 == 0)) {
                 TileEntity tTileEntity2 = aBaseMetaTileEntity.getTileEntityAtSide(aBaseMetaTileEntity.getFrontFacing());
-                for (int i = 0, tCosts = 1; i < mOutputItems.length && tCosts > 0 && aBaseMetaTileEntity.isUniversalEnergyStored(128); i++) {
-                    tCosts = GT_Utility.moveOneItemStack(aBaseMetaTileEntity, tTileEntity2, aBaseMetaTileEntity.getFrontFacing(), aBaseMetaTileEntity.getBackFacing(), null, false, (byte) 64, (byte) 1, (byte) 64, (byte) 1);
-                    if (tCosts > 0) aBaseMetaTileEntity.decreaseStoredEnergyUnits(tCosts, true);
-                }
+                long tStoredEnergy = aBaseMetaTileEntity.getUniversalEnergyStored();
+                int tMaxStacks = (int)(tStoredEnergy/64l);
+                if (tMaxStacks > mOutputItems.length)
+                    tMaxStacks = mOutputItems.length;
+
+                GT_Utility.moveMultipleItemStacks(aBaseMetaTileEntity, tTileEntity2, aBaseMetaTileEntity.getFrontFacing(), aBaseMetaTileEntity.getBackFacing(), null, false, (byte) 64, (byte) 1, (byte) 64, (byte) 1,tMaxStacks);
+                //for (int i = 0, tCosts = 1; i < mOutputItems.length && tCosts > 0 && aBaseMetaTileEntity.isUniversalEnergyStored(128); i++) {
+                //    tCosts = GT_Utility.moveOneItemStack(aBaseMetaTileEntity, tTileEntity2, aBaseMetaTileEntity.getFrontFacing(), aBaseMetaTileEntity.getBackFacing(), null, false, (byte) 64, (byte) 1, (byte) 64, (byte) 1);
+                //    if (tCosts > 0) aBaseMetaTileEntity.decreaseStoredEnergyUnits(tCosts, true);
+                //}
             }
 
             if (mOutputBlocked != 0) if (isOutputEmpty()) mOutputBlocked = 0;
