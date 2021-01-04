@@ -1,16 +1,3 @@
-item.gregtech:modulararmor_helmet.name=Basic Modular Armor Helmet
-item.gregtech:modulararmor_chestplate.name=Basic Modular Armor Chestplate
-item.gregtech:modulararmor_leggings.name=Basic Modular Armor Leggings
-item.gregtech:modulararmor_boots.name=Basic Modular Armor Boots
-item.gregtech:modularelectric1_helmet.name=Modular Exoskeleton Helmet
-item.gregtech:modularelectric1_chestplate.name=Modular Exoskeleton Chestplate
-item.gregtech:modularelectric1_leggings.name=Modular Exoskeleton Leggings
-item.gregtech:modularelectric1_boots.name=Modular Exoskeleton Boots
-item.gregtech:modularelectric2_helmet.name=Modular Nanosuit Helmet
-item.gregtech:modularelectric2_chestplate.name=Modular Nanosuit Chestplate
-item.gregtech:modularelectric2_leggings.name=Modular Nanosuit Leggings
-item.gregtech:modularelectric2_boots.name=Modular Nanosuit Boots
-
 GT5U.machines.separatebus=Input busses are separated
 
 achievement.Naquadah=Find Naquadah Ore
@@ -419,12 +406,12 @@ achievement.uvage.desc=Craft a Energy Cluster
 achievement.whatnow=What now?
 achievement.whatnow.desc=Craft a Ultimate Battery
 
-achievement.gt.metaitem.01.32606=Electric Motor LuV tier
+achievement.gt.metaitem.01.32605=Electric Motor LuV tier
+achievement.gt.metaitem.01.32605.desc=Pickup this item to see the recipe in NEI
+achievement.gt.metaitem.01.32606=Electric Motor ZPM tier
 achievement.gt.metaitem.01.32606.desc=Pickup this item to see the recipe in NEI
-achievement.gt.metaitem.01.32607=Electric Motor ZPM tier
+achievement.gt.metaitem.01.32607=Electric Motor UV tier
 achievement.gt.metaitem.01.32607.desc=Pickup this item to see the recipe in NEI
-achievement.gt.metaitem.01.32608=Electric Motor UV tier
-achievement.gt.metaitem.01.32608.desc=Pickup this item to see the recipe in NEI
 
 achievement.gt.metaitem.01.32620=Electric Pump LuV tier
 achievement.gt.metaitem.01.32620.desc=Pickup this item to see the recipe in NEI
@@ -494,16 +481,16 @@ achievement.item.PikoCircuit.desc=Pickup this item to see the recipe in NEI
 achievement.item.QuantumCircuit=Quantum Circuit
 achievement.item.QuantumCircuit.desc=Pickup this item to see the recipe in NEI
 
-achievement.gt.metaitem.01.32605=Ultimate Battery
-achievement.gt.metaitem.01.32605.desc=Pickup this item to see the recipe in NEI
+achievement.gt.metaitem.01.32550=Ultimate Battery
+achievement.gt.metaitem.01.32550.desc=Pickup this item to see the recipe in NEI
 achievement.gt.metaitem.01.32609=Really Ultimate Battery
 achievement.gt.metaitem.01.32609.desc=Pickup this item to see the recipe in NEI
-achievement.gt.metaitem.01.32736=Energy Module
-achievement.gt.metaitem.01.32736.desc=Pickup this item to see the recipe in NEI
-achievement.gt.metaitem.01.32737=Energy Cluster
-achievement.gt.metaitem.01.32737.desc=Pickup this item to see the recipe in NEI
-achievement.gt.metaitem.01.32599=Lapotronic Energy Orb Cluster
-achievement.gt.metaitem.01.32599.desc=Pickup this item to see the recipe in NEI
+achievement.gt.metaitem.01.32548=Energy Module
+achievement.gt.metaitem.01.32548.desc=Pickup this item to see the recipe in NEI
+achievement.gt.metaitem.01.32549=Energy Cluster
+achievement.gt.metaitem.01.32549.desc=Pickup this item to see the recipe in NEI
+achievement.gt.metaitem.01.32547=Lapotronic Energy Orb Cluster
+achievement.gt.metaitem.01.32547.desc=Pickup this item to see the recipe in NEI
 
 achievement.ic2.itemArmorQuantumHelmet=Quantum Helmet
 achievement.ic2.itemArmorQuantumHelmet.desc=Pickup this item to see the recipe in NEI
