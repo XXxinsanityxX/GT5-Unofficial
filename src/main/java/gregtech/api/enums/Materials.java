@@ -750,8 +750,8 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials ElectricalSteel = new MaterialBuilder(757, TextureSet.SET_METALLIC, "Electrical Steel").addDustItems().addMetalItems().setRGB(160, 160, 160).setBlastFurnaceRequired(true).constructMaterial();
     public static Materials Soularium = new MaterialBuilder(756, TextureSet.SET_METALLIC, "Soularium").addDustItems().addMetalItems().setRGB(90, 70, 50).constructMaterial();
     public static Materials DarkSteel = new MaterialBuilder(755, TextureSet.SET_METALLIC, "Dark Steel").addDustItems().addMetalItems().setRGB(70, 70, 70).setBlastFurnaceRequired(true).constructMaterial();
-    public static Materials EnergeticAlloy = new MaterialBuilder(754, TextureSet.SET_METALLIC, "Energetic Alloy").addDustItems().addMetalItems().setRGB(200, 120, 50).setBlastFurnaceRequired(true).constructMaterial();
-    public static Materials VibrantAlloy = new MaterialBuilder(752, TextureSet.SET_METALLIC, "Vibrant Alloy").addDustItems().addMetalItems().setRGB(215, 245, 130).setBlastFurnaceRequired(true).constructMaterial();
+    public static Materials EnergeticAlloy = new MaterialBuilder(754, TextureSet.SET_METALLIC, "Energetic Alloy").addDustItems().addMetalItems().setRGB(200, 120, 50).constructMaterial();
+    public static Materials VibrantAlloy = new MaterialBuilder(752, TextureSet.SET_METALLIC, "Vibrant Alloy").addDustItems().addMetalItems().setRGB(215, 245, 130).constructMaterial();
     public static Materials EndSteel = new MaterialBuilder(753, TextureSet.SET_METALLIC, "End Steel").addDustItems().addMetalItems().setRGB(254, 245, 195).setBlastFurnaceRequired(true).constructMaterial();
 
     //Netherlicious Materials
