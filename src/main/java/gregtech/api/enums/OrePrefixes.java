@@ -1,6 +1,5 @@
 package gregtech.api.enums;
 
-import com.sun.org.apache.bcel.internal.generic.ICONST;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.TC_Aspects.TC_AspectStack;
 import gregtech.api.interfaces.ICondition;

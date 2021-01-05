@@ -10,7 +10,10 @@ import gregtech.api.interfaces.ITexture;
 import gregtech.api.metatileentity.implementations.*;
 import gregtech.api.util.*;
 import gregtech.common.tileentities.automation.*;
-import gregtech.common.tileentities.boilers.*;
+import gregtech.common.tileentities.boilers.GT_MetaTileEntity_Boiler_Bronze;
+import gregtech.common.tileentities.boilers.GT_MetaTileEntity_Boiler_Lava;
+import gregtech.common.tileentities.boilers.GT_MetaTileEntity_Boiler_Solar;
+import gregtech.common.tileentities.boilers.GT_MetaTileEntity_Boiler_Steel;
 import gregtech.common.tileentities.generators.*;
 import gregtech.common.tileentities.machines.GT_MetaTileEntity_BasicHull_Bronze;
 import gregtech.common.tileentities.machines.GT_MetaTileEntity_BasicHull_BronzeBricks;
@@ -28,10 +31,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class GT_Loader_MetaTileEntities implements Runnable {
     private static final String aTextWire1 = "wire."; private static final String aTextCable1 = "cable."; private static final String aTextWire2 = " Wire"; private static final String aTextCable2 = " Cable";
