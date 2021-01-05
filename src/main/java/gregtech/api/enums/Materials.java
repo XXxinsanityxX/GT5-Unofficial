@@ -202,7 +202,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials Bitumen = new Materials(-1, TextureSet.SET_NONE, 		1.0F, 0, 2, 1 |8 , 255, 255, 255, 0, "Bitumen", "Bitumen", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes._NULL);
     public static Materials Black = new Materials(-1, TextureSet.SET_NONE, 			1.0F, 0, 2, 0, 0, 0, 0, 0, "Black", "Black", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes.dyeBlack);
     public static Materials Blizz = new Materials(851, TextureSet.SET_SHINY, 		1.0F, 0, 2, 1, 220, 233, 255, 0, "Blizz", "Blizz", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes._NULL);
-    public static Materials Blueschist = new Materials(852, TextureSet.SET_DULL, 	1.0F, 0, 2, 1, 255, 255, 255, 0, "Blueschist", "Blueschist", 0, 0, -1, 0, false, false, 0, 1, 1, Dyes.dyeLightBlue);
+    //public static Materials Cryotheum = new Materials(852, TextureSet.SET_SHINY, 	1.0F, 0, 2, 1, 255, 255, 255, 0, "Blueschist", "Blueschist", 0, 0, -1, 0, false, false, 0, 1, 1, Dyes.dyeLightBlue);
     public static Materials Bluestone = new Materials(-1/*813*/, TextureSet.SET_DULL, 	1.0F, 0, 2, 1, 255, 255, 255, 0, "Bluestone", "Bluestone", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes.dyeBlue);
     public static Materials Bloodstone = new Materials(-1, TextureSet.SET_NONE, 	1.0F, 0, 2, 1, 255, 255, 255, 0, "Bloodstone", "Bloodstone", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes.dyeRed);
     public static Materials Blutonium = new Materials(-1, TextureSet.SET_SHINY, 	1.0F, 0, 2, 1|2|8, 0, 0, 255, 0, "Blutonium", "Blutonium", 0, 0, -1, 0, false, false, 3, 1, 1, Dyes.dyeBlue);
@@ -650,6 +650,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
     public static Materials VolcanicAsh = new Materials( 940, TextureSet.SET_FLINT, 	1.0F, 0, 0, 1, 60, 50, 50, 0, "VolcanicAsh", "Volcanic Ashes", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes.dyeBlack, 2, Arrays.asList(new MaterialStack(Flint, 6), new MaterialStack(Iron, 1), new MaterialStack(Magnesium, 1)));
     public static Materials Niter = new Materials( 531, TextureSet.SET_FLINT, 			1.0F, 0, 1, 1|4, 255, 200, 200, 0, "Niter", "Niter", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes.dyePink, 2, Arrays.asList(new MaterialStack(Saltpeter, 1)));
     public static Materials Pyrotheum = new Materials( 843, TextureSet.SET_FIERY, 		1.0F, 0, 1, 1, 255, 128, 0, 0, "Pyrotheum", "Pyrotheum", 2, 62, -1, 0, false, false, 2, 3, 1, Dyes.dyeYellow, 2, Arrays.asList(new MaterialStack(Coal, 1), new MaterialStack(Redstone, 1), new MaterialStack(Blaze, 1)), Arrays.asList(new TC_AspectStack(TC_Aspects.PRAECANTATIO, 2), new TC_AspectStack(TC_Aspects.IGNIS, 1)));
+    public static Materials Cryotheum = new Materials(898,TextureSet.SET_FROZEN,1.0F,0,1,1,0,148,203,0,"Cryotheum","Cryotheum",2,62,-1,0,false,false,2,3,1,Dyes.dyeLightBlue,2,Arrays.asList(new MaterialStack(Saltpeter, 1), new MaterialStack(Redstone,1), new MaterialStack(Snow,1), new MaterialStack(Blizz,1)), null);
     public static Materials HydratedCoal = new Materials( 818, TextureSet.SET_ROUGH, 	1.0F, 0, 1, 1, 70, 70, 100, 0, "HydratedCoal", "Hydrated Coal", 0, 0, -1, 0, false, false, 1, 9, 8, Dyes.dyeBlack, 2, Arrays.asList(new MaterialStack(Coal, 8), new MaterialStack(Water, 1)));
     public static Materials Apatite = new Materials(530, TextureSet.SET_DIAMOND, 		1.0F, 0, 1, 1|4|8, 200, 200, 255, 0, "Apatite", "Apatite", 0, 0, -1, 0, false, false, 2, 1, 1, Dyes.dyeCyan, 1, Arrays.asList(new MaterialStack(Calcium, 5), new MaterialStack(Phosphate, 3), new MaterialStack(Chlorine, 1)), Arrays.asList(new TC_AspectStack(TC_Aspects.MESSIS, 2)));
     public static Materials Alumite = new Materials(-1, TextureSet.SET_METALLIC, 		1.5F, 64, 0, 1|2|64, 255, 255, 255, 0, "Alumite", "Alumite", 0, 0, -1, 0, false, false, 1, 1, 1, Dyes.dyePink, 2, Arrays.asList(new MaterialStack(Aluminium, 5), new MaterialStack(Iron, 2), new MaterialStack(Obsidian, 2)), Arrays.asList(new TC_AspectStack(TC_Aspects.STRONTIO, 2)));
@@ -1033,6 +1034,7 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         Lava					.setHeatDamage(3.0F);
         Firestone				.setHeatDamage(5.0F);
         Pyrotheum				.setHeatDamage(5.0F);
+        Cryotheum				.setHeatDamage(5.0F);
 
         Chalcopyrite			.addOreByProducts(Pyrite				, Cobalt				, Cadmium				, Gold			);
         Sphalerite				.addOreByProducts(GarnetYellow			, Cadmium				, Gallium				, Zinc			);
@@ -1385,6 +1387,8 @@ public class Materials implements IColorModulationContainer, ISubTagContainer {
         Infinite.add(SubTag.NO_SMASHING, SubTag.NO_SMELTING);
 
         Blaze.add(SubTag.MAGICAL, SubTag.NO_SMELTING, SubTag.SMELTING_TO_FLUID, SubTag.MORTAR_GRINDABLE, SubTag.UNBURNABLE, SubTag.BURNING);
+        Pyrotheum.add(SubTag.SMELTING_TO_FLUID, SubTag.UNBURNABLE, SubTag.BURNING);
+        Cryotheum.add(SubTag.SMELTING_TO_FLUID);
         FierySteel.add(SubTag.MAGICAL, SubTag.UNBURNABLE, SubTag.BURNING);
         ElvenElementium.add(SubTag.MAGICAL);
         DarkThaumium.add(SubTag.MAGICAL);

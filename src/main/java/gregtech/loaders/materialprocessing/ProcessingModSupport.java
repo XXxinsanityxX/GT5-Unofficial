@@ -121,7 +121,7 @@ public class ProcessingModSupport implements gregtech.api.interfaces.IMaterialHa
             Materials.InfusedDull.mHasParentMod = false;
         }
         if (!aEnableUBCMats) {
-            Materials.Blueschist.mHasParentMod = false;
+            //Materials.Blueschist.mHasParentMod = false;
             Materials.Chert.mHasParentMod = false;
             Materials.Dacite.mHasParentMod = false;
             Materials.Epidote.mHasParentMod = false;
@@ -152,7 +152,7 @@ public class ProcessingModSupport implements gregtech.api.interfaces.IMaterialHa
             Materials.MeteoricSteel.mHasParentMod = false;
         }
         if (!aEnableThermalFoundationMats) {
-            Materials.Blizz.mHasParentMod = false;
+            //Materials.Blizz.mHasParentMod = false;
             //Materials.Enderium.mHasParentMod = false;
         }
         if (!aEnableRotaryCraftMats) {
