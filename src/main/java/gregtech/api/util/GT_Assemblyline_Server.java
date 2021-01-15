@@ -151,7 +151,7 @@ public class GT_Assemblyline_Server {
                                     mMats = new Materials[]{Materials.Knightmetal, Materials.Lanthanum, Materials.Lead, Materials.Lutetium, Materials.Magnalium, Materials.Magnesium, Materials.Manganese, Materials.MeteoricIron, Materials.MeteoricSteel, Materials.Mithril, Materials.Molybdenum, Materials.Naquadah, Materials.NaquadahAlloy, Materials.NaquadahEnriched, Materials.Naquadria};
                                     break;
                                 case 5:
-                                    mMats = new Materials[]{Materials.Neodymium, Materials.NeodymiumMagnetic, Materials.Neutronium, Materials.Nichrome, Materials.Nickel, Materials.Niobium, Materials.NiobiumTitanium, Materials.Osmiridium, Materials.Osmium, Materials.Palladium, Materials.PigIron, Materials.Platinum, Materials.Plutonium, Materials.Plutonium241, Materials.Praseodymium};
+                                    mMats = new Materials[]{Materials.Neodymium, Materials.NeodymiumMagnetic, Materials.Neutronium, Materials.Nichrome, Materials.Nickel, Materials.Niobium, Materials.NiobiumTitanium, Materials.Osmiridium, Materials.Osmium, Materials.Palladium, Materials.Platinum, Materials.Plutonium, Materials.Plutonium241, Materials.Praseodymium};
                                     break;
                                 case 6:
                                     mMats = new Materials[]{Materials.Promethium, Materials.RedAlloy, Materials.RedSteel, Materials.RoseGold, Materials.Rubidium, Materials.Samarium, Materials.Scandium, Materials.ShadowIron, Materials.ShadowSteel, Materials.Silicon, Materials.Silver, Materials.SolderingAlloy, Materials.StainlessSteel, Materials.Steel, Materials.SteelMagnetic, Materials.SterlingSilver};

@@ -310,8 +310,7 @@ public class GT_Mod implements IGT_Mod {
         gregtechproxy.mHardRadonRecipe = tMainConfig.get("general","HardRadonRecipe",false).getBoolean(false);
         GT_LanguageManager.i18nPlaceholder = tMainConfig.get("general", "UsePlaceholderForMaterialNamesInLangFile", true).getBoolean(true);
 
-        Materials[] tDisableOres = new Materials[]{Materials.Chrome, Materials.Naquadria, Materials.Silicon, Materials.Cobalt, Materials.Cadmium, Materials.Indium, Materials.Tungsten,
-        		Materials.Adamantium, Materials.Mithril, Materials.DarkIron, Materials.Rutile, Materials.Alduorite, Materials.Magnesium, Materials.Nikolite};
+        Materials[] tDisableOres = new Materials[]{Materials.Chrome, Materials.Naquadria, Materials.Silicon, Materials.Cobalt, Materials.Cadmium, Materials.Indium, Materials.Tungsten, Materials.Mithril, Materials.DarkIron, Materials.Rutile, Materials.Magnesium, Materials.Nikolite, Materials.Adamantium};
         for(Materials tMat : tDisableOres){
         	if(!GregTech_API.sMaterialComponents.get("disableLaserDrillOres", tMat.mName, false))
         		GT_Block_Ores_Abstract.aBlockedOres.add(tMat);
@@ -520,7 +519,7 @@ public class GT_Mod implements IGT_Mod {
         if (GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "SolarPanelUV", false)) {
             GT_ModHandler.addCraftingRecipe(ItemList.Cover_SolarPanel_UV.get(1L, new Object[0]), GT_ModHandler.RecipeBits.NOT_REMOVABLE | GT_ModHandler.RecipeBits.REVERSIBLE, new Object[]{" S ", "STS", " S ", 'S', ItemList.Cover_SolarPanel_ZPM, 'T', ItemList.Transformer_UV_ZPM});
         }
-    	double outputMultiplier = Math.min(GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "StoneDustOutputMultiplier", 0.6), 1.0);
+    	/*double outputMultiplier = Math.min(GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "StoneDustOutputMultiplier", 0.6), 1.0);
         if (GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "StoneDustCentrifugation", false)) {
         	int fullChance = (int)(10000 * outputMultiplier);
         	int[] chances = new int[]{fullChance, fullChance, fullChance, fullChance, fullChance, (int)(5500 * outputMultiplier)};
@@ -532,7 +531,7 @@ public class GT_Mod implements IGT_Mod {
 					Materials.BandedIron.getDustSmall(1), 	Materials.Bauxite.getDustSmall(1), Materials.Pyrolusite.getDustTiny(2),
 					Materials.Barite.getDustTiny(1), 		Materials.Chromite.getDustTiny(1), Materials.Ilmenite.getDustTiny(1), 
 					new int[]{10000, 10000, 10000, 10000, 10000, 6000}, 500, 120);
-        }
+        }*/
         double ashOutputMultiplier = Math.min(GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "AshOutputMultiplier", 1.0), 1.0);
         if (GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "AshYieldsAlkaliMetalOxides", true)) {
         	int[] outputChances = new int[]{(int) (9900 * ashOutputMultiplier), (int) (6400 * ashOutputMultiplier), 

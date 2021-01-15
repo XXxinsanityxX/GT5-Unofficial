@@ -379,8 +379,6 @@ public enum ItemList implements IItemContainer {
     Energy_Crystal,
     Lapotron_Crystal,
     Inert_Lapotron_Crystal,
-    Energium_Dust,
-    Lapotron_Dust,
     ZPM,
     Fuel_Can_Plastic_Empty,
     Fuel_Can_Plastic_Filled,

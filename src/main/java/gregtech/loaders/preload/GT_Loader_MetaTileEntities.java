@@ -1447,7 +1447,7 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         generateFluidPipes(Materials.Iridium, Materials.Iridium.mName, "Iridium", 5260, 150, 3398, true);
         generateFluidPipes(Materials.Aluminium, Materials.Aluminium.mName, "Aluminium", 5265, 30, 1166, true);
         generateFluidPipes(Materials.TungstenCarbide, Materials.TungstenCarbide.mName, "Tungsten Carbide", 5275, 135, 3837, true);
-        generateFluidPipes(Materials.TitaniumNiobiumCarbide, Materials.TitaniumNiobiumCarbide.mName, "Titanium Niobium Carbide", 5180, 520, 5250, true);
+        //generateFluidPipes(Materials.TitaniumNiobiumCarbide, Materials.TitaniumNiobiumCarbide.mName, "Titanium Niobium Carbide", 5180, 520, 5250, true);
 
         generateFluidMultiPipes(Materials.Copper, Materials.Copper.mName, "Copper", 5200, 60, 1000, true);
         generateFluidMultiPipes(Materials.Bronze, Materials.Bronze.mName, "Bronze", 5205, 120, 2000, true);
@@ -1462,7 +1462,7 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         generateFluidMultiPipes(Materials.Iridium, Materials.Iridium.mName, "Iridium", 5295, 150, 3398, true);
         generateFluidMultiPipes(Materials.Aluminium, Materials.Aluminium.mName, "Aluminium", 5300, 30, 1166, true);
         generateFluidMultiPipes(Materials.TungstenCarbide, Materials.TungstenCarbide.mName, "Tungsten Carbide", 5310, 135, 3837, true);
-        generateFluidMultiPipes(Materials.TitaniumNiobiumCarbide, Materials.TitaniumNiobiumCarbide.mName, "Titanium Niobium Carbide", 5315, 520, 5250, true);
+        //generateFluidMultiPipes(Materials.TitaniumNiobiumCarbide, Materials.TitaniumNiobiumCarbide.mName, "Titanium Niobium Carbide", 5315, 520, 5250, true);
 
 
 

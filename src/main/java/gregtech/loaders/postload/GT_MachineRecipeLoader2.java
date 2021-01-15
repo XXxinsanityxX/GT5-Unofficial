@@ -27,7 +27,7 @@ public class GT_MachineRecipeLoader2 implements Runnable {
             GT_Values.RA.addAlloySmelterRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Redstone, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Iron, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.ConductiveIron, 1L), 400, 24);
             GT_Values.RA.addAlloySmelterRecipe(new ItemStack(Blocks.soul_sand), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Gold, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Soularium, 1L), 400, 48);
             GT_Values.RA.addAlloySmelterRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.EnderPearl, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Iron, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.PulsatingIron, 1L), 400, 48);
-            GT_Values.RA.addAlloySmelterRecipe(ItemList.Energium_Dust.get(1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Electrum, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.EnergeticAlloy, 1L), 195, 120);
+            GT_Values.RA.addAlloySmelterRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Energium, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Electrum, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.EnergeticAlloy, 1L), 195, 120);
             GT_Values.RA.addAlloySmelterRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.EnderPearl, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.EnergeticAlloy, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.VibrantAlloy, 1L), 330, 480);
 
             GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.ElectricalSteel, 1L), GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.ElectricalSteel, 1L), null, 1200, 120, 1100);
@@ -54,13 +54,13 @@ public class GT_MachineRecipeLoader2 implements Runnable {
         }
 
         //Energy and lapotron crystals
-        GT_ModHandler.addCraftingRecipe(ItemList.Energium_Dust.get(9L), GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{"RDR", "DRD", "RDR", 'R', OrePrefixes.dust.get(Materials.Redstone), 'D', OrePrefixes.dust.get(Materials.Ruby)});
-        GT_Values.RA.addMixerRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Redstone, 5L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Ruby, 4L), GT_Values.NI, GT_Values.NI, GT_Values.NF, GT_Values.NF, ItemList.Energium_Dust.get(9L, new Object[0]), 100, 120);
-        GT_Values.RA.addMixerRecipe(GT_OreDictUnificator.get(ItemList.Energium_Dust.get(3L,new Object[0])), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Lapis, 2L), GT_Values.NI, GT_Values.NI, GT_Values.NF, GT_Values.NF, ItemList.Lapotron_Dust.get(5L, new Object[0]), 100, 480);
-        GT_Values.RA.addAutoclaveRecipe(ItemList.Energium_Dust.get(9L,new Object[0]), Materials.Water.getFluid(1000L), ItemList.Energy_Crystal.get(1L,new Object[0]), 10000, 500, 120);
-        GT_Values.RA.addAutoclaveRecipe(ItemList.Energium_Dust.get(9L,new Object[0]), GT_ModHandler.getDistilledWater(1000L), ItemList.Energy_Crystal.get(1L,new Object[0]), 10000, 600, 120);
-        GT_Values.RA.addAutoclaveRecipe(ItemList.Lapotron_Dust.get(20L,new Object[0]), Materials.VibrantAlloy.getMolten(36L), ItemList.Inert_Lapotron_Crystal.get(1L,new Object[0]), 10000, 480, 256);
-        GT_Values.RA.addAutoclaveRecipe(ItemList.Lapotron_Dust.get(20L,new Object[0]), Materials.EnergeticAlloy.getMolten(144L), ItemList.Inert_Lapotron_Crystal.get(1L,new Object[0]), 10000, 560, 256);
+        GT_ModHandler.addCraftingRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Energium, 9L), GT_ModHandler.RecipeBits.NOT_REMOVABLE, new Object[]{"RDR", "DRD", "RDR", 'R', OrePrefixes.dust.get(Materials.Redstone), 'D', OrePrefixes.dust.get(Materials.Ruby)});
+        GT_Values.RA.addMixerRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Redstone, 5L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Ruby, 4L), GT_Values.NI, GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Energium, 9L), 100, 120);
+        GT_Values.RA.addMixerRecipe(GT_OreDictUnificator.get(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Energium, 3L)), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Lapis, 2L), GT_Values.NI, GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Lapotron, 5L), 100, 480);
+        GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Energium, 9L), Materials.Water.getFluid(1000L), ItemList.Energy_Crystal.get(1L,new Object[0]), 10000, 500, 120);
+        GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Energium, 9L), GT_ModHandler.getDistilledWater(1000L), ItemList.Energy_Crystal.get(1L,new Object[0]), 10000, 600, 120);
+        GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Lapotron, 20L), Materials.VibrantAlloy.getMolten(36L), ItemList.Inert_Lapotron_Crystal.get(1L,new Object[0]), 10000, 480, 256);
+        GT_Values.RA.addAutoclaveRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Lapotron, 20L), Materials.EnergeticAlloy.getMolten(144L), ItemList.Inert_Lapotron_Crystal.get(1L,new Object[0]), 10000, 560, 360);
         GT_Values.RA.addAssemblerRecipe(ItemList.Inert_Lapotron_Crystal.get(1L,new Object[0]), GT_OreDictUnificator.get(OrePrefixes.circuit, Materials.Advanced, 2L), ItemList.Lapotron_Crystal.get(1L,new Object[0]), 300, 1920);
 
         //Blast Furnace main materials
@@ -139,9 +139,9 @@ public class GT_MachineRecipeLoader2 implements Runnable {
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.HSSS, 1L), GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.HSSS, 1L), null, 3080, 1920, Materials.HSSS.mBlastFurnaceTemp);
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.HSSS, 4L), GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.HSSS, 1L), null, 3080, 1920, Materials.HSSS.mBlastFurnaceTemp);
         GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.HSSS, 9L), GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.HSSS, 1L), null, 3080, 1920, Materials.HSSS.mBlastFurnaceTemp);
-        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.TitaniumNiobiumCarbide, 1L), GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.TitaniumNiobiumCarbide, 1L), null, 4100, 1920, Materials.TitaniumNiobiumCarbide.mBlastFurnaceTemp);
-        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.TitaniumNiobiumCarbide, 4L), GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.TitaniumNiobiumCarbide, 1L), null, 4100, 1920, Materials.TitaniumNiobiumCarbide.mBlastFurnaceTemp);
-        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.TitaniumNiobiumCarbide, 9L), GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.TitaniumNiobiumCarbide, 1L), null, 4100, 1920, Materials.TitaniumNiobiumCarbide.mBlastFurnaceTemp);
+        //GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.TitaniumNiobiumCarbide, 1L), GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.TitaniumNiobiumCarbide, 1L), null, 4100, 1920, Materials.TitaniumNiobiumCarbide.mBlastFurnaceTemp);
+        //GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dustSmall, Materials.TitaniumNiobiumCarbide, 4L), GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.TitaniumNiobiumCarbide, 1L), null, 4100, 1920, Materials.TitaniumNiobiumCarbide.mBlastFurnaceTemp);
+        //GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.dustTiny, Materials.TitaniumNiobiumCarbide, 9L), GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.TitaniumNiobiumCarbide, 1L), null, 4100, 1920, Materials.TitaniumNiobiumCarbide.mBlastFurnaceTemp);
 
 
 
@@ -173,8 +173,11 @@ public class GT_MachineRecipeLoader2 implements Runnable {
         GT_Values.RA.addVacuumFreezerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.HSSS, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.HSSS, 1L), 300, 7860);
 
         //CustomStuff
+        GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.EnderiumBase, 1L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.EnderPearl, 1L), GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.Enderium, 1L), null, 800, 480, Materials.Enderium.mBlastFurnaceTemp + 200);
+        //GT_Values.RA.addBlastRecipe(GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.NiobiumTitanium,3L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Carbon, 2L), GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.TitaniumNiobiumCarbide, 5L), null, 4200, 1920, Materials.TitaniumNiobiumCarbide.mBlastFurnaceTemp);
+
         GT_Values.RA.addVacuumFreezerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.Enderium, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Enderium, 1L), 140, 480);
-        GT_Values.RA.addVacuumFreezerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.TitaniumNiobiumCarbide, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.TitaniumNiobiumCarbide, 1L), 300, 1920);
+        //GT_Values.RA.addVacuumFreezerRecipe(GT_OreDictUnificator.get(OrePrefixes.ingotHot, Materials.TitaniumNiobiumCarbide, 1L), GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.TitaniumNiobiumCarbide, 1L), 300, 1920);
 
         //Pyro & Cryo Stuff
         GT_Values.RA.addMixerRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Coal, 1L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Redstone, 1L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Blaze, 1L), GT_Values.NI, GT_Values.NF, GT_Values.NF, GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Pyrotheum, 1L), 400, 256);

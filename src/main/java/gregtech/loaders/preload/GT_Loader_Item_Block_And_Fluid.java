@@ -253,7 +253,7 @@ public class GT_Loader_Item_Block_And_Fluid
                 Materials.Osmiridium,
                 Materials.Osmium,
                 Materials.Palladium,
-                Materials.PigIron,
+                //Materials.PigIron,
                 Materials.Platinum,
                 Materials.Plutonium,
                 Materials.Plutonium241,
@@ -485,7 +485,7 @@ public class GT_Loader_Item_Block_And_Fluid
         GT_Mod.gregtechproxy.addFluid("molten.blaze", "Molten Blaze", Materials.Blaze, 4, 6400);
         GT_Mod.gregtechproxy.addFluid("molten.concrete", "Wet Concrete", Materials.Concrete, 4, 300);
         GT_Mod.gregtechproxy.addFluid("pyrotheum", "Blazing Pyrotheum", Materials.Pyrotheum, 4, 9600);
-        GT_Mod.gregtechproxy.addFluid("cryotheum", "Freezing Cryotheum", Materials.Cryotheum, 4, -1000);
+        GT_Mod.gregtechproxy.addFluid("cryotheum", "Gelid Cryotheum", Materials.Cryotheum, 4, -1000);
 
 
         for (Materials tMaterial : Materials.values()) {

@@ -440,8 +440,6 @@ public class GT_MetaGenerated_Item_01 extends GT_MetaGenerated_Item_X32 {
         GT_Values.RA.addCannerRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Lithium, 32L), ItemList.Battery_Hull_HV.get(1L, new Object[0]), ItemList.Battery_RE_HV_Lithium.get(1L, new Object[0]), null, 1600, 2);
         GT_Values.RA.addCannerRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Sodium, 32L), ItemList.Battery_Hull_HV.get(1L, new Object[0]), ItemList.Battery_RE_HV_Sodium.get(1L, new Object[0]), null, 1600, 2);
 
-        ItemList.Energium_Dust.set(addItem(tLastID = 542, "Energium Dust", null, new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 4L)}));
-        ItemList.Lapotron_Dust.set(addItem(tLastID = 543, "Lapotron Dust", null, new Object[]{new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 8L)}));
         ItemList.Inert_Lapotron_Crystal.set(addItem(tLastID = 544, "Inert Lapotron Crystal", null,new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 8L)));
 
         ItemList.Energy_Crystal.set(addItem(tLastID = 540, "Energy Crystal", "Reusable", new TC_Aspects.TC_AspectStack(TC_Aspects.ELECTRUM, 4L), new TC_Aspects.TC_AspectStack(TC_Aspects.VITREUS, 4L), new TC_Aspects.TC_AspectStack(TC_Aspects.POTENTIA, 4L), OrePrefixes.battery.get(Materials.Elite)));
