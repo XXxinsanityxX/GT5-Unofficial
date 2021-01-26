@@ -23,7 +23,7 @@ import net.minecraft.nbt.NBTTagString;
 public class GT_MetaTileEntity_Scanner
         extends GT_MetaTileEntity_BasicMachine {
     public GT_MetaTileEntity_Scanner(int aID, String aName, String aNameRegional, int aTier) {
-        super(aID, aName, aNameRegional, aTier, 1, "Scans Crops and other things.", 1, 1, "Scanner.png", "", new ITexture[]{new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_SIDE_SCANNER_ACTIVE), new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_SIDE_SCANNER), new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_FRONT_SCANNER_ACTIVE), new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_FRONT_SCANNER), new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_TOP_SCANNER_ACTIVE), new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_TOP_SCANNER), new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_BOTTOM_SCANNER_ACTIVE), new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_BOTTOM_SCANNER)});
+        super(aID, aName, aNameRegional, aTier, 1, "Scans Crops and other things.", 1, 1, "Scanner.png", "", new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_SIDE_SCANNER_ACTIVE), new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_SIDE_SCANNER), new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_FRONT_SCANNER_ACTIVE), new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_FRONT_SCANNER), new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_TOP_SCANNER_ACTIVE), new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_TOP_SCANNER), new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_BOTTOM_SCANNER_ACTIVE), new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_BOTTOM_SCANNER));
     }
 
     public GT_MetaTileEntity_Scanner(String aName, int aTier, String aDescription, ITexture[][][] aTextures, String aGUIName, String aNEIName) {
@@ -49,7 +49,7 @@ public class GT_MetaTileEntity_Scanner
                     if (tIndividual != null) {
                         if (((IIndividual) tIndividual).analyze()) {
                             getFillableStack().amount -= 100;
-                            this.mOutputItems[0] = GT_Utility.copy(new Object[]{aStack});
+                            this.mOutputItems[0] = GT_Utility.copy(aStack);
                             aStack.stackSize = 0;
                             NBTTagCompound tNBT = new NBTTagCompound();
                             ((IIndividual) tIndividual).writeToNBT(tNBT);
@@ -58,7 +58,7 @@ public class GT_MetaTileEntity_Scanner
                             this.mEUt = (2 * (1 << this.mTier - 1) * (1 << this.mTier - 1));
                             return 2;
                         }
-                        this.mOutputItems[0] = GT_Utility.copy(new Object[]{aStack});
+                        this.mOutputItems[0] = GT_Utility.copy(aStack);
                         aStack.stackSize = 0;
                         this.mMaxProgresstime = 1;
                         this.mEUt = 1;
@@ -84,14 +84,14 @@ public class GT_MetaTileEntity_Scanner
                     this.mEUt = 1;
                 }
                 aStack.stackSize -= 1;
-                this.mOutputItems[0] = GT_Utility.copyAmount(1L, new Object[]{aStack});
+                this.mOutputItems[0] = GT_Utility.copyAmount(1L, aStack);
                 this.mOutputItems[0].setTagCompound(tNBT);
                 return 2;
             }
             if (ItemList.Tool_DataOrb.isStackEqual(getSpecialSlot(), false, true)) {
                 if (ItemList.Tool_DataOrb.isStackEqual(aStack, false, true)) {
                     aStack.stackSize -= 1;
-                    this.mOutputItems[0] = GT_Utility.copyAmount(1L, new Object[]{getSpecialSlot()});
+                    this.mOutputItems[0] = GT_Utility.copyAmount(1L, getSpecialSlot());
                     this.mMaxProgresstime = (512 / (1 << this.mTier - 1));
                     this.mEUt = (32 * (1 << this.mTier - 1) * (1 << this.mTier - 1));
                     return 2;
@@ -101,7 +101,7 @@ public class GT_MetaTileEntity_Scanner
                     getSpecialSlot().stackSize -= 1;
                     aStack.stackSize -= 1;
 
-                    this.mOutputItems[0] = ItemList.Tool_DataOrb.get(1L, new Object[0]);
+                    this.mOutputItems[0] = ItemList.Tool_DataOrb.get(1L);
                     Behaviour_DataOrb.setDataTitle(this.mOutputItems[0], "Elemental-Scan");
                     Behaviour_DataOrb.setDataName(this.mOutputItems[0], tData.mMaterial.mMaterial.mElement.name());
                     this.mMaxProgresstime = ((int) (tData.mMaterial.mMaterial.getMass() * 8192L / (1 << this.mTier - 1)));
@@ -112,7 +112,7 @@ public class GT_MetaTileEntity_Scanner
             if (ItemList.Tool_DataStick.isStackEqual(getSpecialSlot(), false, true)) {
                 if (ItemList.Tool_DataStick.isStackEqual(aStack, false, true)) {
                     aStack.stackSize -= 1;
-                    this.mOutputItems[0] = GT_Utility.copyAmount(1L, new Object[]{ItemList.Tool_DataStick.get(1, new Object[]{})});
+                    this.mOutputItems[0] = GT_Utility.copyAmount(1L, ItemList.Tool_DataStick.get(1));
                     this.mMaxProgresstime = (128 / (1 << this.mTier - 1));
                     this.mEUt = (32 * (1 << this.mTier - 1) * (1 << this.mTier - 1));
                     return 2;
@@ -121,7 +121,7 @@ public class GT_MetaTileEntity_Scanner
                     getSpecialSlot().stackSize -= 1;
                     aStack.stackSize -= 1;
 
-                    this.mOutputItems[0] = GT_Utility.copyAmount(1L, new Object[]{getSpecialSlot()});
+                    this.mOutputItems[0] = GT_Utility.copyAmount(1L, getSpecialSlot());
                     this.mOutputItems[0].setTagCompound(aStack.getTagCompound());
                     this.mMaxProgresstime = (128 / (1 << this.mTier - 1));
                     this.mEUt = (32 * (1 << this.mTier - 1) * (1 << this.mTier - 1));
@@ -131,7 +131,7 @@ public class GT_MetaTileEntity_Scanner
                     getSpecialSlot().stackSize -= 1;
                     aStack.stackSize -= 1;
 
-                    this.mOutputItems[0] = GT_Utility.copyAmount(1L, new Object[]{getSpecialSlot()});
+                    this.mOutputItems[0] = GT_Utility.copyAmount(1L, getSpecialSlot());
                     this.mOutputItems[0].setTagCompound(GT_Utility.getNBTContainingShort(new NBTTagCompound(), "map_id", (short) aStack.getItemDamage()));
                     this.mMaxProgresstime = (128 / (1 << this.mTier - 1));
                     this.mEUt = (32 * (1 << this.mTier - 1) * (1 << this.mTier - 1));
@@ -144,7 +144,7 @@ public class GT_MetaTileEntity_Scanner
                     GT_Utility.ItemNBT.convertProspectionData(aStack);
                     aStack.stackSize -= 1;
 
-                    this.mOutputItems[0] = GT_Utility.copyAmount(1L, new Object[]{aStack});
+                    this.mOutputItems[0] = GT_Utility.copyAmount(1L, aStack);
                     this.mMaxProgresstime = (1000 / (1 << this.mTier - 1));
                     this.mEUt = (32 * (1 << this.mTier - 1) * (1 << this.mTier - 1));
                     return 2;
@@ -161,7 +161,7 @@ public class GT_MetaTileEntity_Scanner
                             if (s==null)
                                 s=tRecipe.mOutput.getDisplayName();
                         }
-                        this.mOutputItems[0] = GT_Utility.copyAmount(1L, new Object[]{getSpecialSlot()});
+                        this.mOutputItems[0] = GT_Utility.copyAmount(1L, getSpecialSlot());
                         GT_Utility.ItemNBT.setBookTitle(this.mOutputItems[0], s+" Construction Data");
 
                         NBTTagCompound tNBT = this.mOutputItems[0].getTagCompound();
@@ -257,7 +257,7 @@ public class GT_MetaTileEntity_Scanner
     public void onPostTick(IGregTechTileEntity aBaseMetaTileEntity, long aTick) {
         if (mProgresstime >= (mMaxProgresstime - 1)) {
             if ((this.mOutputItems[0] != null) && (this.mOutputItems[0].getUnlocalizedName().equals("gt.metaitem.01.32707"))) {
-                GT_Mod.instance.achievements.issueAchievement(aBaseMetaTileEntity.getWorld().getPlayerEntityByName(aBaseMetaTileEntity.getOwnerName()), "scanning");
+                GT_Mod.achievements.issueAchievement(aBaseMetaTileEntity.getWorld().getPlayerEntityByName(aBaseMetaTileEntity.getOwnerName()), "scanning");
             }
         }
         super.onPostTick(aBaseMetaTileEntity, aTick);
@@ -279,7 +279,7 @@ public class GT_MetaTileEntity_Scanner
     public void startSoundLoop(byte aIndex, double aX, double aY, double aZ) {
         super.startSoundLoop(aIndex, aX, aY, aZ);
         if (aIndex == 1) {
-            GT_Utility.doSoundAtClient((String) GregTech_API.sSoundList.get(Integer.valueOf(212)), 10, 1.0F, aX, aY, aZ);
+            GT_Utility.doSoundAtClient(GregTech_API.sSoundList.get(Integer.valueOf(212)), 10, 1.0F, aX, aY, aZ);
         }
     }
 

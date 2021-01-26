@@ -17,7 +17,7 @@ import java.util.Map;
 public class GT_FluidStack extends FluidStack {
     private static final Collection<GT_FluidStack> sAllFluidStacks = new ArrayList<GT_FluidStack>(5000);
     private static volatile boolean lock = false;
-    private Fluid mFluid;
+    private final Fluid mFluid;
 
     public GT_FluidStack(Fluid aFluid, int aAmount) {
         super(aFluid, aAmount);

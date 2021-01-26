@@ -26,7 +26,7 @@ public class tankBasic extends GT_MetaTileEntity_BasicTank {
     }
 
     public tankBasic(String aName, int aTier, String aDescription, ITexture[][][] aTextures) {
-    	super(aName, aTier, 3, aDescription, aTextures);
+        super(aName, aTier, 3, aDescription, aTextures);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class tankBasic extends GT_MetaTileEntity_BasicTank {
     public void onPostTick(IGregTechTileEntity aBaseMetaTileEntity, long aTick) {
         super.onPostTick(aBaseMetaTileEntity, aTick);
         //if (this.getBaseMetaTileEntity().isServerSide() && (aTick&0x7)==0) {
-        if (getDrainableStack() != null){
+        if (getDrainableStack() != null) {
             IFluidHandler tTank = aBaseMetaTileEntity.getITankContainerAtSide(aBaseMetaTileEntity.getFrontFacing());
             if (tTank != null) {
                 if (this.OutputFluid) {
@@ -190,17 +190,17 @@ public class tankBasic extends GT_MetaTileEntity_BasicTank {
 
         if (mFluid == null) {
             return new String[]{
-                EnumChatFormatting.BLUE + "Basic Tank"+ EnumChatFormatting.RESET, "Stored Fluid:",
-                EnumChatFormatting.GOLD + "No Fluid"+ EnumChatFormatting.RESET,
-                EnumChatFormatting.GREEN + Integer.toString(0) + " L"+ EnumChatFormatting.RESET+" "+
-                EnumChatFormatting.YELLOW + Integer.toString(getCapacity()) + " L"+ EnumChatFormatting.RESET
+                    EnumChatFormatting.BLUE + "Basic Tank" + EnumChatFormatting.RESET, "Stored Fluid:",
+                    EnumChatFormatting.GOLD + "No Fluid" + EnumChatFormatting.RESET,
+                    EnumChatFormatting.GREEN + Integer.toString(0) + " L" + EnumChatFormatting.RESET + " " +
+                            EnumChatFormatting.YELLOW + getCapacity() + " L" + EnumChatFormatting.RESET
             };
         }
         return new String[]{
-                EnumChatFormatting.BLUE + "Basic Tank"+ EnumChatFormatting.RESET, "Stored Fluid:",
-                EnumChatFormatting.GOLD + mFluid.getLocalizedName()+ EnumChatFormatting.RESET,
-                EnumChatFormatting.GREEN + Integer.toString(mFluid.amount) + " L"+ EnumChatFormatting.RESET+" "+
-                EnumChatFormatting.YELLOW+ Integer.toString(getCapacity()) + " L"+ EnumChatFormatting.RESET
+                EnumChatFormatting.BLUE + "Basic Tank" + EnumChatFormatting.RESET, "Stored Fluid:",
+                EnumChatFormatting.GOLD + mFluid.getLocalizedName() + EnumChatFormatting.RESET,
+                EnumChatFormatting.GREEN + Integer.toString(mFluid.amount) + " L" + EnumChatFormatting.RESET + " " +
+                        EnumChatFormatting.YELLOW + getCapacity() + " L" + EnumChatFormatting.RESET
         };
     }
 
@@ -209,14 +209,14 @@ public class tankBasic extends GT_MetaTileEntity_BasicTank {
         return true;
     }
 
-    private static int CommonSizeCompute(int tier){
-        switch(tier){
+    private static int CommonSizeCompute(int tier) {
+        switch (tier) {
             case 0:
-                return  16000;
+                return 16000;
             case 1:
-                return  32000;
+                return 32000;
             case 2:
-                return  64000;
+                return 64000;
             case 3:
                 return 128000;
             case 4:

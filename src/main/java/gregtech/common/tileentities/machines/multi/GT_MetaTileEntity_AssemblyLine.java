@@ -82,7 +82,7 @@ public class GT_MetaTileEntity_AssemblyLine
     	if (tDataStickList.size() == 0) return false;
     	if(GT_Values.D1)System.out.println("Stick accepted, " + tDataStickList.size() + " Data Sticks found");
 
-        ItemStack tStack[] = new ItemStack[15];
+        ItemStack[] tStack = new ItemStack[15];
     	FluidStack[] tFluids = new FluidStack[4];
     	boolean findRecipe = false;
     	nextDS:for (ItemStack tDataStick : tDataStickList){
@@ -336,8 +336,7 @@ public class GT_MetaTileEntity_AssemblyLine
     private boolean isCorrectDataItem(ItemStack aStack, int state){
     	if ((state & 1) != 0 && ItemList.Circuit_Integrated.isStackEqual(aStack, true, true)) return true;
     	if ((state & 2) != 0 && ItemList.Tool_DataStick.isStackEqual(aStack, false, true)) return true;
-    	if ((state & 4) != 0 && ItemList.Tool_DataOrb.isStackEqual(aStack, false, true)) return true;
-    	return false;
+        return (state & 4) != 0 && ItemList.Tool_DataOrb.isStackEqual(aStack, false, true);
     }
     
     /**

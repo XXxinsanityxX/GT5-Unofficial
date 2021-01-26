@@ -5,7 +5,7 @@ import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import net.minecraft.entity.player.InventoryPlayer;
 
 public class GT_GUIContainer_PrimitiveBlastFurnace extends GT_GUIContainerMetaTile_Machine {
-	private String name;
+	private final String name;
 	public String mNEI;
 	
 	public GT_GUIContainer_PrimitiveBlastFurnace(InventoryPlayer inventoryPlayer, IGregTechTileEntity tileEntity, String name, String aNEI) {

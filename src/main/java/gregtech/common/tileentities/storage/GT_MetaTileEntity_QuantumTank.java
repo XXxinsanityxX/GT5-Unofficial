@@ -175,14 +175,14 @@ public class GT_MetaTileEntity_QuantumTank extends GT_MetaTileEntity_BasicTank {
                 EnumChatFormatting.BLUE + "Quantum Tank"+ EnumChatFormatting.RESET, "Stored Fluid:",
                 EnumChatFormatting.GOLD + "No Fluid"+ EnumChatFormatting.RESET,
                 EnumChatFormatting.GREEN + Integer.toString(0) + " L"+ EnumChatFormatting.RESET+" "+
-                EnumChatFormatting.YELLOW + Integer.toString(getCapacity()) + " L"+ EnumChatFormatting.RESET
+                EnumChatFormatting.YELLOW + getCapacity() + " L"+ EnumChatFormatting.RESET
             };
         }
         return new String[]{
                 EnumChatFormatting.BLUE + "Quantum Tank"+ EnumChatFormatting.RESET, "Stored Fluid:",
                 EnumChatFormatting.GOLD + mFluid.getLocalizedName()+ EnumChatFormatting.RESET,
                 EnumChatFormatting.GREEN + Integer.toString(mFluid.amount) + " L"+ EnumChatFormatting.RESET+" "+
-                EnumChatFormatting.YELLOW+ Integer.toString(getCapacity()) + " L"+ EnumChatFormatting.RESET
+                EnumChatFormatting.YELLOW+ getCapacity() + " L"+ EnumChatFormatting.RESET
         };
     }
 

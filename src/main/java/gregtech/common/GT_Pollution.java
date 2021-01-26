@@ -57,7 +57,7 @@ public class GT_Pollution {
 	 * Muffler Hatch Pollution reduction:
 	 * LV (0%), MV (30%), HV (52%), EV (66%), IV (76%), LuV (84%), ZPM (89%), UV (92%), MAX (95%)
 	 */
-	private static XSTR tRan = new XSTR();
+	private static final XSTR tRan = new XSTR();
 	private List<ChunkCoordIntPair> pollutionList = new ArrayList<>();//chunks left to process
 	private HashMap<ChunkCoordIntPair,int[]> chunkData;//link to chunk data that is saved/loaded
 	private int operationsPerTick=0;//how much chunks should be processed in each cycle

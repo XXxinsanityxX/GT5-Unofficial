@@ -18,7 +18,7 @@ public class GT_Assemblyline_Server {
     private static LinkedHashMap<String, String> internal2 = new LinkedHashMap();
     private static LinkedHashMap<String, String> internal3 = new LinkedHashMap();
     private static LinkedHashMap<String, String> internal4 = new LinkedHashMap();
-    private static LinkedHashMap<String, String> internal_meta = new LinkedHashMap();
+    private static final LinkedHashMap<String, String> internal_meta = new LinkedHashMap();
     private static HashMap<String, Property> internal = new HashMap();
 
     public GT_Assemblyline_Server() {
@@ -26,7 +26,7 @@ public class GT_Assemblyline_Server {
 
     public static void fillMap(FMLPreInitializationEvent aEvent) {
         System.out.println("SONCE FIX ENABLED");
-        String s = new String(aEvent.getModConfigurationDirectory().getAbsolutePath());
+        String s = aEvent.getModConfigurationDirectory().getAbsolutePath();
         s = s.substring(0, aEvent.getModConfigurationDirectory().getAbsolutePath().length() - 6);
         s = s + "GregTech.lang";
         File f = new File(s);
@@ -64,7 +64,6 @@ public class GT_Assemblyline_Server {
                         i = Integer.parseInt(((String)entry.getKey()).substring("gt.metaitem.01.".length(), ((String)entry.getKey()).length() - ".name".length()));
                         lServerNames.put((String)entry.getKey(),(String) entry.getValue());
                     } catch (Exception var14) {
-                        ;
                     }
                 }
             }
@@ -80,7 +79,6 @@ public class GT_Assemblyline_Server {
                     try {
                         lServerNames.put((String)entry.getKey(), ((String)entry.getValue()).replace("material", GregTech_API.sGeneratedMaterials[i].toString()));
                     } catch (Exception var13) {
-                        ;
                     }
                 }
             }
@@ -127,7 +125,6 @@ public class GT_Assemblyline_Server {
                             i %= 1000;
                             lServerNames.put((String)entry.getKey(), ((String)entry.getValue()).replace("material", GregTech_API.sGeneratedMaterials[i].toString()));
                         } catch (Exception var11) {
-                            ;
                         }
                     } else {
                         String t;

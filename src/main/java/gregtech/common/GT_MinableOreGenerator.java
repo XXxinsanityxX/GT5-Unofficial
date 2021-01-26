@@ -10,10 +10,10 @@ import java.util.Random;
 
 public class GT_MinableOreGenerator
         extends WorldGenerator {
-    private Block minableBlockId;
+    private final Block minableBlockId;
     private Block mBlock;
     private int minableBlockMeta = 0;
-    private int numberOfBlocks;
+    private final int numberOfBlocks;
     private boolean allowVoid = false;
 
     public GT_MinableOreGenerator(Block par1, int par2) {

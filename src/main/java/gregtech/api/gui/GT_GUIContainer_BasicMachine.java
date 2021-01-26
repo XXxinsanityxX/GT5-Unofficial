@@ -34,8 +34,8 @@ public class GT_GUIContainer_BasicMachine extends GT_GUIContainerMetaTile_Machin
 
     @Override
     public void drawScreen(int par1, int par2, float par3) {
-    	super.drawScreen(par1, par2, par3);
-    	drawTooltip(par1, par2);
+        super.drawScreen(par1, par2, par3);
+        drawTooltip(par1, par2);
     }
 
     @Override

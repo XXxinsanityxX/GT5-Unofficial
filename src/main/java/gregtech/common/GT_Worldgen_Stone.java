@@ -22,7 +22,7 @@ import static gregtech.api.enums.GT_Values.debugStones;
 public class GT_Worldgen_Stone
         extends GT_Worldgen_Ore {
 
-    static final double sizeConversion[] = { 1, 1, 1.333333, 1.333333, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 }; // Bias the sizes towards skinnier boulders, ie more "shafts" than dikes or sills.
+    static final double[] sizeConversion = { 1, 1, 1.333333, 1.333333, 2, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 }; // Bias the sizes towards skinnier boulders, ie more "shafts" than dikes or sills.
 
     public Hashtable<Long, StoneSeeds> validStoneSeeds = new Hashtable(1024);
 
@@ -32,7 +32,7 @@ public class GT_Worldgen_Stone
         StoneSeeds( boolean exists ) {
             mExists = exists;
         }
-    };
+    }
 
     class ValidSeeds {
         public int mX;
@@ -41,7 +41,8 @@ public class GT_Worldgen_Stone
             this.mX = x;
             this.mZ = z;
         }
-    };
+    }
+
     public GT_Worldgen_Stone(String aName, boolean aDefault, Block aBlock, int aBlockMeta, int aDimensionType, int aAmount, int aSize, int aProbability, int aMinY, int aMaxY, Collection<String> aBiomeList, boolean aAllowToGenerateinVoid) {
         super(aName, aDefault, aBlock, aBlockMeta, aDimensionType, aAmount, aSize, aProbability, aMinY, aMaxY, aBiomeList, aAllowToGenerateinVoid);
     }
@@ -63,10 +64,10 @@ public class GT_Worldgen_Stone
         // Check stone seeds to see if they have been added
         for( int x = aChunkX/16 - windowWidth; x < (aChunkX/16 + windowWidth + 1); x++ ) {
             for( int z = aChunkZ/16 - windowWidth; z < (aChunkZ/16 + windowWidth + 1); z++ ) {
-                long hash = ((long)((aWorld.provider.dimensionId & 0xffL)<<56) |( ((long)x & 0x000000000fffffffL) << 28) | ( (long)z & 0x000000000fffffffL ));
+                long hash = (((aWorld.provider.dimensionId & 0xffL)<<56) |( ((long)x & 0x000000000fffffffL) << 28) | ( (long)z & 0x000000000fffffffL ));
                 if( !validStoneSeeds.containsKey(hash) ) {
                     // Determine if RNG says to add stone at this chunk
-                    stoneRNG.setSeed((long)aWorld.getSeed() ^  hash + Math.abs(mBlockMeta) + Math.abs(mSize) + ((GregTech_API.sBlockGranites==mBlock)?(32768):(0)));  //Don't judge me. Want different values for different block types
+                    stoneRNG.setSeed(aWorld.getSeed() ^  hash + Math.abs(mBlockMeta) + Math.abs(mSize) + ((GregTech_API.sBlockGranites==mBlock)?(32768):(0)));  //Don't judge me. Want different values for different block types
                     if ( (this.mProbability <= 1) || (stoneRNG.nextInt(this.mProbability) == 0) ) {
                         // Add stone at this chunk
                         validStoneSeeds.put( hash, new StoneSeeds(true) );
@@ -100,7 +101,7 @@ public class GT_Worldgen_Stone
             int x = stones.get(0).mX*16;
             int z = stones.get(0).mZ*16;
 
-            stoneRNG.setSeed((long)aWorld.getSeed() ^  ((long)((aWorld.provider.dimensionId & 0xffL)<<56) |( ((long)x & 0x000000000fffffffL)<< 28) | ( (long)z & 0x000000000fffffffL )) + Math.abs(mBlockMeta) + Math.abs(mSize) + ((GregTech_API.sBlockGranites==mBlock)?(32768):(0)));  //Don't judge me
+            stoneRNG.setSeed(aWorld.getSeed() ^  (((aWorld.provider.dimensionId & 0xffL)<<56) |( ((long)x & 0x000000000fffffffL)<< 28) | ( (long)z & 0x000000000fffffffL )) + Math.abs(mBlockMeta) + Math.abs(mSize) + ((GregTech_API.sBlockGranites==mBlock)?(32768):(0)));  //Don't judge me
             for (int i = 0; i < this.mAmount; i++) { // Not sure why you would want more than one in a chunk! Left alone though.
                 // Locate the stoneseed XYZ. Original code would request an isAir at the seed location, causing a chunk generation request.
                 // To reduce potential worldgen cascade, we just always try to place a ball and use the check inside the for loop to prevent
@@ -142,7 +143,7 @@ public class GT_Worldgen_Stone
                                     " tMaxY=" + tMaxY +
                                     " - Skipped because first requesting chunk would not contain this stone"
                     );
-                    long hash = ((long)((aWorld.provider.dimensionId & 0xffL)<<56) |( ((long)x & 0x000000000fffffffL) << 28) | ( (long)z & 0x000000000fffffffL ));
+                    long hash = (((aWorld.provider.dimensionId & 0xffL)<<56) |( ((long)x & 0x000000000fffffffL) << 28) | ( (long)z & 0x000000000fffffffL ));
                     validStoneSeeds.remove(hash);
                     validStoneSeeds.put( hash, new StoneSeeds(false) );
                 }

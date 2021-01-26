@@ -60,15 +60,15 @@ public class GT_ModHandler {
     public static Collection<String> sNativeRecipeClasses = new HashSet<String>(), sSpecialRecipeClasses = new HashSet<String>();
     public static GT_HashSet<GT_ItemStack> sNonReplaceableItems = new GT_HashSet<GT_ItemStack>();
     public static Object sBoxableWrapper = GT_Utility.callConstructor("gregtechmod.api.util.GT_IBoxableWrapper", 0, null, false);
-    private static Map<IRecipeInput, RecipeOutput> sExtractorRecipes = new /*Concurrent*/HashMap<IRecipeInput, RecipeOutput>();
-    private static Map<IRecipeInput, RecipeOutput> sMaceratorRecipes = new /*Concurrent*/HashMap<IRecipeInput, RecipeOutput>();
-    private static Map<IRecipeInput, RecipeOutput> sCompressorRecipes = new /*Concurrent*/HashMap<IRecipeInput, RecipeOutput>();
-    private static Map<IRecipeInput, RecipeOutput> sOreWashingRecipes = new /*Concurrent*/HashMap<IRecipeInput, RecipeOutput>();
-    private static Map<IRecipeInput, RecipeOutput> sThermalCentrifugeRecipes = new /*Concurrent*/HashMap<IRecipeInput, RecipeOutput>();
-    private static Map<IRecipeInput, RecipeOutput> sMassfabRecipes = new /*Concurrent*/HashMap<IRecipeInput, RecipeOutput>();
+    private static final Map<IRecipeInput, RecipeOutput> sExtractorRecipes = new /*Concurrent*/HashMap<IRecipeInput, RecipeOutput>();
+    private static final Map<IRecipeInput, RecipeOutput> sMaceratorRecipes = new /*Concurrent*/HashMap<IRecipeInput, RecipeOutput>();
+    private static final Map<IRecipeInput, RecipeOutput> sCompressorRecipes = new /*Concurrent*/HashMap<IRecipeInput, RecipeOutput>();
+    private static final Map<IRecipeInput, RecipeOutput> sOreWashingRecipes = new /*Concurrent*/HashMap<IRecipeInput, RecipeOutput>();
+    private static final Map<IRecipeInput, RecipeOutput> sThermalCentrifugeRecipes = new /*Concurrent*/HashMap<IRecipeInput, RecipeOutput>();
+    private static final Map<IRecipeInput, RecipeOutput> sMassfabRecipes = new /*Concurrent*/HashMap<IRecipeInput, RecipeOutput>();
     private static boolean sBufferCraftingRecipes = true;
     public static List<Integer> sSingleNonBlockDamagableRecipeList_list = new ArrayList<Integer>(100);
-    private static boolean sSingleNonBlockDamagableRecipeList_create = true;
+    private static final boolean sSingleNonBlockDamagableRecipeList_create = true;
     private static final ItemStack sMt1 = new ItemStack(Blocks.dirt, 1, 0), sMt2 = new ItemStack(Blocks.dirt, 1, 0);
     private static final String s_H = "h", s_F = "f", s_I = "I", s_P = "P", s_R = "R";
     private static final ItemStack[][]
@@ -687,7 +687,7 @@ public class GT_ModHandler {
 			if (mRecipeMagCrusher == null) {
 				mRecipeMagCrusher = mRecipeMag.getDeclaredMethod("registerCrusherRecipe", ItemStack.class, ItemStack.class, ItemStack.class, float.class, ItemStack.class, float.class);
 			}				
-			return (boolean) mRecipeMagCrusher.invoke(null, in, out0, out1,(float)((float)prob1/GT_Mod.gregtechproxy.mMagneticraftBonusOutputPercent), out2,(float)((float)prob2/GT_Mod.gregtechproxy.mMagneticraftBonusOutputPercent));
+			return (boolean) mRecipeMagCrusher.invoke(null, in, out0, out1,(float)(prob1 /GT_Mod.gregtechproxy.mMagneticraftBonusOutputPercent), out2,(float)(prob2 /GT_Mod.gregtechproxy.mMagneticraftBonusOutputPercent));
 		}
 		catch (ClassNotFoundException | NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			 GT_Log.err.println("WARNING: Bad Reflection into Magneticraft Crusher recipe handler.");
@@ -703,7 +703,7 @@ public class GT_ModHandler {
 			if (mRecipeMagGrinder == null) {
 				mRecipeMagGrinder = mRecipeMag.getDeclaredMethod("registerGrinderRecipe", ItemStack.class, ItemStack.class, ItemStack.class, float.class, ItemStack.class, float.class);
 			}				
-			return (boolean) mRecipeMagGrinder.invoke(null, in, out0, out1,(float)((float)prob1/GT_Mod.gregtechproxy.mMagneticraftBonusOutputPercent), out2,(float)((float)prob2/GT_Mod.gregtechproxy.mMagneticraftBonusOutputPercent));
+			return (boolean) mRecipeMagGrinder.invoke(null, in, out0, out1,(float)(prob1 /GT_Mod.gregtechproxy.mMagneticraftBonusOutputPercent), out2,(float)(prob2 /GT_Mod.gregtechproxy.mMagneticraftBonusOutputPercent));
 		}
 		catch (ClassNotFoundException | NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 			 GT_Log.err.println("WARNING: Bad Reflection into Magneticraft Grinder recipe handler.");
@@ -1106,7 +1106,7 @@ public class GT_ModHandler {
                 Character chr = (Character) aRecipe[idx];
                 Object in = aRecipe[idx + 1];
                 if (in instanceof ItemStack) {
-                    tItemStackMap.put(chr, GT_Utility.copy((ItemStack) in));
+                    tItemStackMap.put(chr, GT_Utility.copy(in));
                     tItemDataMap.put(chr, GT_OreDictUnificator.getItemData((ItemStack) in));
                 } else if (in instanceof ItemData) {
                     String tString = in.toString();
@@ -1630,7 +1630,7 @@ public class GT_ModHandler {
             for (Entry<IRecipeInput, RecipeOutput> tEntry : aRecipeList.entrySet()) {
                 if (tEntry.getKey().matches(aInput)) {
                     if (tEntry.getKey().getAmount() <= aInput.stackSize) {
-                        ItemStack[] tList = (ItemStack[]) tEntry.getValue().items.toArray(new ItemStack[tEntry.getValue().items.size()]);
+                        ItemStack[] tList = tEntry.getValue().items.toArray(new ItemStack[tEntry.getValue().items.size()]);
                         if (tList.length == 0) break;
                         ItemStack[] rList = new ItemStack[aOutputSlots.length];
                         rRecipeMetaData.setTag("return", tEntry.getValue().metadata);

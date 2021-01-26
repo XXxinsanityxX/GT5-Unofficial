@@ -47,7 +47,7 @@ public enum CombType {
     PLUTONIUM("plutonium", true, Materials.Plutonium, 10),
     NAQUADAH("stargatium", true, Materials.Naquadah, 10),;
 
-    private static int[][] colours = new int[][]{
+    private static final int[][] colours = new int[][]{
             {0x906237, 0x58300B},
             {0x666666, 0x525252},
             {0x2E8F5B, 0xDCC289},
@@ -85,8 +85,8 @@ public enum CombType {
     public boolean showInList;
     public Materials material;
     public int chance;
-    private String name;
-    private CombType(String pName, boolean show, Materials material, int chance) {
+    private final String name;
+    CombType(String pName, boolean show, Materials material, int chance) {
         this.name = pName;
         this.material = material;
         this.chance = chance;

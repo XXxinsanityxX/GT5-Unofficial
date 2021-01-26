@@ -190,7 +190,7 @@ public class GT_TileEntity_Ores extends TileEntity implements ITexturedTileEntit
     }
 
     public void convertOreBlock(World aWorld, int aX, int aY, int aZ) {
-        short aMeta = ((short) (int) (this.mMetaData % 1000 + (this.mMetaData / 16000 * 16000)));
+        short aMeta = ((short) (this.mMetaData % 1000 + (this.mMetaData / 16000 * 16000)));
         aWorld.setBlock(aX, aY, aZ, GregTech_API.sBlockOres1);
         TileEntity tTileEntity = aWorld.getTileEntity(aX, aY, aZ);
         if (tTileEntity instanceof GT_TileEntity_Ores) {
@@ -274,7 +274,7 @@ public class GT_TileEntity_Ores extends TileEntity implements ITexturedTileEntit
             if (tSelector.size() > 0) {
                 int i = 0;
                 for (int j = Math.max(1, aMaterial.mOreMultiplier + (aFortune > 0 ? tRandom.nextInt(1 + aFortune * aMaterial.mOreMultiplier) : 0) / 2); i < j; i++) {
-                    rList.add(GT_Utility.copyAmount(1L, new Object[]{tSelector.get(tRandom.nextInt(tSelector.size()))}));
+                    rList.add(GT_Utility.copyAmount(1L, tSelector.get(tRandom.nextInt(tSelector.size()))));
                 }
             }
             if (tRandom.nextInt(3 + aFortune) > 1) {

@@ -101,7 +101,7 @@ public class GT_MetaTileEntity_Hatch_Muffler extends GT_MetaTileEntity_Hatch {
             pollutionParticles(this.getBaseMetaTileEntity().getWorld(),"largesmoke");
     }
 
-    private static XSTR floatGen=new XSTR();
+    private static final XSTR floatGen=new XSTR();
 
     public void pollutionParticles(World aWorld,String name){
         boolean chk1,chk2,chk3;

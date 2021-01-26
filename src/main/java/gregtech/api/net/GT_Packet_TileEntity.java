@@ -31,7 +31,7 @@ public class GT_Packet_TileEntity extends GT_Packet {
         mC5 = aC5;
         mID = aID;
         mTexture = aTexture;
-        mTexturePage=aTexturePage;
+        mTexturePage = aTexturePage;
         mUpdate = aUpdate;
         mRedstone = aRedstone;
         mColor = aColor;
@@ -51,7 +51,7 @@ public class GT_Packet_TileEntity extends GT_Packet {
         mC5 = aC5;
         mID = aID;
         mTexture = aTexture;
-        mTexturePage=0;
+        mTexturePage = 0;
         mUpdate = aUpdate;
         mRedstone = aRedstone;
         mColor = aColor;

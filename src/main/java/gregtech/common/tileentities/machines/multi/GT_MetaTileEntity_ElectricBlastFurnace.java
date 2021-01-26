@@ -25,7 +25,7 @@ public class GT_MetaTileEntity_ElectricBlastFurnace
         extends GT_MetaTileEntity_MultiBlockBase {
     private int mHeatingCapacity = 0;
     private int controllerY;
-    private FluidStack[] pollutionFluidStacks = new FluidStack[]{Materials.CarbonDioxide.getGas(1000), 
+    private final FluidStack[] pollutionFluidStacks = new FluidStack[]{Materials.CarbonDioxide.getGas(1000),
     		Materials.CarbonMonoxide.getGas(1000), Materials.SulfurDioxide.getGas(1000)};
 
     public GT_MetaTileEntity_ElectricBlastFurnace(int aID, String aName, String aNameRegional) {
@@ -259,7 +259,7 @@ public class GT_MetaTileEntity_ElectricBlastFurnace
         int xDir = ForgeDirection.getOrientation(aBaseMetaTileEntity.getBackFacing()).offsetX;
         int zDir = ForgeDirection.getOrientation(aBaseMetaTileEntity.getBackFacing()).offsetZ;
         int tX = aBaseMetaTileEntity.getXCoord() + xDir;
-        int tY = (int) aBaseMetaTileEntity.getYCoord();
+        int tY = aBaseMetaTileEntity.getYCoord();
         int tZ = aBaseMetaTileEntity.getZCoord() + zDir;
         int tUsedMeta;
         for (int xPos = tX - 1; xPos <= tX + 1; xPos++) {

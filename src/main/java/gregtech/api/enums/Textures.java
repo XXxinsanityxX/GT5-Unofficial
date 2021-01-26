@@ -576,8 +576,8 @@ public class Textures {
         public static ITexture[]
                 ERROR_RENDERING = new ITexture[]{
                 new GT_RenderedTexture(RENDERING_ERROR)
-        },
-                OVERLAYS_ENERGY_IN = new ITexture[]{
+        };
+        public static ITexture[] OVERLAYS_ENERGY_IN = new ITexture[]{
                         new GT_RenderedTexture(OVERLAY_ENERGY_IN, new short[]{220, 220, 220, 0}),
                         new GT_RenderedTexture(OVERLAY_ENERGY_IN, new short[]{220, 220, 220, 0}),
                         new GT_RenderedTexture(OVERLAY_ENERGY_IN, new short[]{255, 100, 0, 0}),
@@ -588,8 +588,8 @@ public class Textures {
                         new GT_RenderedTexture(OVERLAY_ENERGY_IN, new short[]{240, 240, 245, 0}),
                         new GT_RenderedTexture(OVERLAY_ENERGY_IN, new short[]{240, 240, 245, 0}),
                         new GT_RenderedTexture(OVERLAY_ENERGY_IN, new short[]{240, 240, 245, 0}),
-                },
-                OVERLAYS_ENERGY_OUT = new ITexture[]{
+                };
+        public static ITexture[] OVERLAYS_ENERGY_OUT = new ITexture[]{
                         new GT_RenderedTexture(OVERLAY_ENERGY_OUT, new short[]{220, 220, 220, 0}),
                         new GT_RenderedTexture(OVERLAY_ENERGY_OUT, new short[]{220, 220, 220, 0}),
                         new GT_RenderedTexture(OVERLAY_ENERGY_OUT, new short[]{255, 100, 0, 0}),
@@ -600,8 +600,8 @@ public class Textures {
                         new GT_RenderedTexture(OVERLAY_ENERGY_OUT, new short[]{240, 240, 245, 0}),
                         new GT_RenderedTexture(OVERLAY_ENERGY_OUT, new short[]{240, 240, 245, 0}),
                         new GT_RenderedTexture(OVERLAY_ENERGY_OUT, new short[]{240, 240, 245, 0}),
-                },
-                OVERLAYS_ENERGY_IN_MULTI = new ITexture[]{
+                };
+        public static ITexture[] OVERLAYS_ENERGY_IN_MULTI = new ITexture[]{
                         new GT_RenderedTexture(OVERLAY_ENERGY_IN_MULTI, new short[]{220, 220, 220, 0}),
                         new GT_RenderedTexture(OVERLAY_ENERGY_IN_MULTI, new short[]{220, 220, 220, 0}),
                         new GT_RenderedTexture(OVERLAY_ENERGY_IN_MULTI, new short[]{255, 100, 0, 0}),
@@ -612,8 +612,8 @@ public class Textures {
                         new GT_RenderedTexture(OVERLAY_ENERGY_IN_MULTI, new short[]{240, 240, 245, 0}),
                         new GT_RenderedTexture(OVERLAY_ENERGY_IN_MULTI, new short[]{240, 240, 245, 0}),
                         new GT_RenderedTexture(OVERLAY_ENERGY_IN_MULTI, new short[]{240, 240, 245, 0}),
-                },
-                OVERLAYS_ENERGY_OUT_MULTI = new ITexture[]{
+                };
+        public static ITexture[] OVERLAYS_ENERGY_OUT_MULTI = new ITexture[]{
                         new GT_RenderedTexture(OVERLAY_ENERGY_OUT_MULTI, new short[]{220, 220, 220, 0}),
                         new GT_RenderedTexture(OVERLAY_ENERGY_OUT_MULTI, new short[]{220, 220, 220, 0}),
                         new GT_RenderedTexture(OVERLAY_ENERGY_OUT_MULTI, new short[]{255, 100, 0, 0}),
@@ -624,8 +624,8 @@ public class Textures {
                         new GT_RenderedTexture(OVERLAY_ENERGY_OUT_MULTI, new short[]{240, 240, 245, 0}),
                         new GT_RenderedTexture(OVERLAY_ENERGY_OUT_MULTI, new short[]{240, 240, 245, 0}),
                         new GT_RenderedTexture(OVERLAY_ENERGY_OUT_MULTI, new short[]{240, 240, 245, 0}),
-                },
-                LOCKERS = new ITexture[]{
+                };
+        public static ITexture[] LOCKERS = new ITexture[]{
                         new GT_RenderedTexture(OVERLAY_LOCKER_000),
                         new GT_RenderedTexture(OVERLAY_LOCKER_001),
                         new GT_RenderedTexture(OVERLAY_LOCKER_002),
@@ -640,10 +640,10 @@ public class Textures {
                         new GT_RenderedTexture(OVERLAY_LOCKER_011),
                         new GT_RenderedTexture(OVERLAY_LOCKER_012),
                         new GT_RenderedTexture(OVERLAY_LOCKER_013),
-                },
-                CASING_BLOCKS = new ITexture[128],//original variable still limited to 128
-                MACHINE_CASINGS[] = new ITexture[10][17],
-        		STORAGESTUFF[] = new ITexture [5][3];
+                };
+        public static ITexture[] CASING_BLOCKS = new ITexture[128];//original variable still limited to 128
+                public static ITexture[][] MACHINE_CASINGS = new ITexture[10][17];
+        public static ITexture[][] STORAGESTUFF = new ITexture [5][3];
 
         public static ITexture[][] casingTexturePages = new ITexture[128][];//page holder so we don't make an short long array
 
@@ -663,7 +663,7 @@ public class Textures {
 
         protected IIcon mIcon;
 
-        private BlockIcons() {
+        BlockIcons() {
             GregTech_API.sGTBlockIconload.add(this);
         }
 
@@ -750,7 +750,7 @@ public class Textures {
 
         protected IIcon mIcon, mOverlay;
 
-        private ItemIcons() {
+        ItemIcons() {
             GregTech_API.sGTItemIconload.add(this);
         }
 

@@ -19,7 +19,7 @@ public class ventAir
             }
         }
         if (aSide != 6) {
-        	Block tBlock = aTileEntity.getBlockAtSide(aSide);
+            Block tBlock = aTileEntity.getBlockAtSide(aSide);
             if ((aCoverVariable < 3) && ((aTileEntity instanceof IFluidHandler))) {
                 if (
 

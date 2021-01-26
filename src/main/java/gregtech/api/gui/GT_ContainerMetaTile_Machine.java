@@ -34,6 +34,7 @@ public class GT_ContainerMetaTile_Machine extends GT_Container {
             aInventoryPlayer.player.openContainer = aInventoryPlayer.player.inventoryContainer;
         }
     }
+
     public GT_ContainerMetaTile_Machine(InventoryPlayer aInventoryPlayer, IGregTechTileEntity aTileEntity, boolean doesBindInventory) {
         super(aInventoryPlayer, aTileEntity);
         mTileEntity = aTileEntity;
@@ -183,8 +184,8 @@ public class GT_ContainerMetaTile_Machine extends GT_Container {
     public boolean canInteractWith(EntityPlayer player) {
         return mTileEntity.isUseableByPlayer(player);
     }
-    
-    public String trans(String aKey, String aEnglish){
-    	return GT_LanguageManager.addStringLocalization("Interaction_DESCRIPTION_Index_"+aKey, aEnglish, false);
+
+    public String trans(String aKey, String aEnglish) {
+        return GT_LanguageManager.addStringLocalization("Interaction_DESCRIPTION_Index_" + aKey, aEnglish, false);
     }
 }

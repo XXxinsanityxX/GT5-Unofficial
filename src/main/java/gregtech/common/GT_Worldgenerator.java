@@ -61,33 +61,33 @@ public class GT_Worldgenerator
     public void generate(Random aRandom, int aX, int aZ, World aWorld, IChunkProvider aChunkGenerator, IChunkProvider aChunkProvider) {
         synchronized (listLock)
         {
-            this.mList.add(new WorldGenContainer(new XSTR(Math.abs(aRandom.nextInt()) +1), aX, aZ, aWorld.provider.dimensionId, aWorld, aChunkGenerator, aChunkProvider, aWorld.getBiomeGenForCoords(aX * 16 + 8, aZ * 16 + 8).biomeName));
+            mList.add(new WorldGenContainer(new XSTR(Math.abs(aRandom.nextInt()) +1), aX, aZ, aWorld.provider.dimensionId, aWorld, aChunkGenerator, aChunkProvider, aWorld.getBiomeGenForCoords(aX * 16 + 8, aZ * 16 + 8).biomeName));
             if (debugWorldGen) GT_Log.out.println(
                     "ADD WorldSeed:"+aWorld.getSeed() +
                             " DimId" + aWorld.provider.dimensionId +
                             " chunk x:" + aX +
                             " z:" + aZ +
-                            " SIZE: " + this.mList.size()
+                            " SIZE: " + mList.size()
             );
         }
 
         if (!this.mIsGenerating) {
             this.mIsGenerating = true;
-            int mList_sS=this.mList.size();
+            int mList_sS= mList.size();
             mList_sS = Math.min(mList_sS, 5); // Run a maximum of 5 chunks at a time through worldgen. Extra chunks get done later.
             for (int i = 0; i < mList_sS; i++) {
-                WorldGenContainer toRun = (WorldGenContainer) this.mList.get(0);
+                WorldGenContainer toRun = (WorldGenContainer) mList.get(0);
                 if (debugWorldGen) GT_Log.out.println(
                         "RUN WorldSeed:"+aWorld.getSeed()+
                                 " DimId" + aWorld.provider.dimensionId +
                                 " chunk x:" + toRun.mX +
                                 " z:" + toRun.mZ +
-                                " SIZE: " + this.mList.size() +
+                                " SIZE: " + mList.size() +
                                 " i: " + i
                 );
                 synchronized (listLock)
                 {
-                    this.mList.remove(0);
+                    mList.remove(0);
                 }
                 toRun.run();
             }
@@ -119,7 +119,8 @@ public class GT_Worldgenerator
                 this.mX = x;
                 this.mZ = z;
             }
-        };
+        }
+
         public static ArrayList<NearbySeeds> seedList = new ArrayList();
 
         // aX and aZ are now the by-chunk X and Z for the chunk of interest
@@ -164,7 +165,7 @@ public class GT_Worldgenerator
             // ((this.mWorld.provider.dimensionId & 0xffL)<<56)    Puts the dimension in the top bits of the hash, to make sure to get unique hashes per dimension
             // ((long)oreseedX & 0x000000000fffffffL) << 28)    Puts the chunk X in the bits 29-55. Cuts off the top few bits of the chunk so we have bits for dimension.
             // ( (long)oreseedZ & 0x000000000fffffffL ))    Puts the chunk Z in the bits 0-27. Cuts off the top few bits of the chunk so we have bits for dimension.
-            long oreveinSeed = ((long)this.mWorld.getSeed()<<16) ^  ((long)((this.mWorld.provider.dimensionId & 0xffL)<<56) |( ((long)oreseedX & 0x000000000fffffffL) << 28) | ( (long)oreseedZ & 0x000000000fffffffL )); // Use an RNG that is identical every time it is called for this oreseed.
+            long oreveinSeed = (this.mWorld.getSeed() <<16) ^  (((this.mWorld.provider.dimensionId & 0xffL)<<56) |( ((long)oreseedX & 0x000000000fffffffL) << 28) | ( (long)oreseedZ & 0x000000000fffffffL )); // Use an RNG that is identical every time it is called for this oreseed.
             XSTR oreveinRNG = new XSTR( oreveinSeed );
             int oreveinPercentageRoll = oreveinRNG.nextInt(100); // Roll the dice, see if we get an orevein here at all
             int noOrePlacedCount=0;
@@ -389,7 +390,7 @@ public class GT_Worldgenerator
                     for (int i = 0; (i < oreveinAttempts) && (temp); i++) {
                         tRandomWeight = aRandom.nextInt(GT_Worldgen_GT_Ore_Layer.sWeight);
                         for (GT_Worldgen_GT_Ore_Layer tWorldGen : GT_Worldgen_GT_Ore_Layer.sList) {
-                            tRandomWeight -= ((GT_Worldgen_GT_Ore_Layer) tWorldGen).mWeight;
+                            tRandomWeight -= tWorldGen.mWeight;
                             if (tRandomWeight <= 0) {
                                 try {
                                     //if ((tWorldGen.mEndAsteroid && tDimensionType == 1) || (tWorldGen.mAsteroid && tDimensionType == -30)) {
@@ -413,7 +414,7 @@ public class GT_Worldgenerator
                 int tY = 50 + aRandom.nextInt(200 - 50);
                 int tZ = mZ * 16 + aRandom.nextInt(16);
                 if (tDimensionType == 1) {
-                    mSize = aRandom.nextInt((int) (endMaxSize - endMinSize));
+                    mSize = aRandom.nextInt(endMaxSize - endMinSize);
                     //} else if (tDimensionName.equals("Asteroids")) {
                     //    mSize = aRandom.nextInt((int) (gcMaxSize - gcMinSize));
                 }

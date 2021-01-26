@@ -60,8 +60,8 @@ public class GT_MetaPipeEntity_Cable extends MetaPipeEntity implements IMetaTile
     public long mTransferredAmperage = 0, mTransferredAmperageLast20 = 0, mTransferredVoltageLast20 = 0;
     public long mRestRF;
     public short mOverheat;
-    private boolean mCheckConnections = !GT_Mod.gregtechproxy.gt6Cable;
-    private byte[] IC2RectorAtSide = new byte[]{-1,-1,-1,-1,-1};
+    private final boolean mCheckConnections = !GT_Mod.gregtechproxy.gt6Cable;
+    private final byte[] IC2RectorAtSide = new byte[]{-1,-1,-1,-1,-1};
 
     public GT_MetaPipeEntity_Cable(int aID, String aName, String aNameRegional, float aThickNess, Materials aMaterial, long aCableLossPerMeter, long aAmperage, long aVoltage, boolean aInsulated, boolean aCanShock) {
         super(aID, aName, aNameRegional, 0);
@@ -311,7 +311,7 @@ public class GT_MetaPipeEntity_Cable extends MetaPipeEntity implements IMetaTile
             }
             else if (rfReceiver.receiveEnergy(tDirection, rfOut, true) > 0) {
                 if (mRestRF == 0) {
-                    int RFtrans = rfReceiver.receiveEnergy(tDirection, (int) rfOut, false);
+                    int RFtrans = rfReceiver.receiveEnergy(tDirection, rfOut, false);
                     rUsedAmperes++;
                     mRestRF = rfOut - RFtrans;
                 } else {
@@ -450,11 +450,7 @@ public class GT_MetaPipeEntity_Cable extends MetaPipeEntity implements IMetaTile
             return true;
 
         // RF Input Compat
-        if (GregTech_API.mInputRF && (tTileEntity instanceof IEnergyEmitter && ((IEnergyEmitter) tTileEntity).emitsEnergyTo((TileEntity)baseMetaTile, tDir)))
-            return true;
-
-
-        return false;
+        return GregTech_API.mInputRF && (tTileEntity instanceof IEnergyEmitter && ((IEnergyEmitter) tTileEntity).emitsEnergyTo((TileEntity) baseMetaTile, tDir));
     }
 
     @Override

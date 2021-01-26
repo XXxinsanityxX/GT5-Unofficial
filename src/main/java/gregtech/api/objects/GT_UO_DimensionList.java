@@ -10,7 +10,7 @@ public class GT_UO_DimensionList {
 
 	private Configuration fConfig;
 	private String fCategory;
-	private BiMap<String, GT_UO_Dimension> fDimensionList;
+	private final BiMap<String, GT_UO_Dimension> fDimensionList;
 
 	public int[] BlackList;
 	
@@ -29,8 +29,7 @@ public class GT_UO_DimensionList {
 	
 	public boolean CheckBlackList(int aDimensionId){
 		try {
-			if (java.util.Arrays.binarySearch(BlackList, aDimensionId) >= 0) return true;
-			else return false;
+			return java.util.Arrays.binarySearch(BlackList, aDimensionId) >= 0;
 		} catch (Exception e) {
 			return false;
 		}

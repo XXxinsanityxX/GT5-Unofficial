@@ -50,7 +50,7 @@ public class GT_Worldgen_GT_Ore_SmallPieces
         this.mAmount = ((short) Math.max(1, GregTech_API.sWorldgenFile.get(aTextWorldgen + this.mWorldGenName, "Amount", aAmount)));
         this.mMeta = ((short) GregTech_API.sWorldgenFile.get(aTextWorldgen + this.mWorldGenName, "Ore", aPrimary.mMetaItemSubID));
         this.mBiome = GregTech_API.sWorldgenFile.get(aTextWorldgen + this.mWorldGenName, "BiomeName", "None");
-        this.sList.add(this);
+        sList.add(this);
     }
 
 

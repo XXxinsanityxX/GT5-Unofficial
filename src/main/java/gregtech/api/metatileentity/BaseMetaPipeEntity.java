@@ -43,9 +43,11 @@ public class BaseMetaPipeEntity extends BaseTileEntity implements IGregTechTileE
     public byte mConnections = 0;
     protected MetaPipeEntity mMetaTileEntity;
     private byte[] mSidedRedstone = new byte[]{0, 0, 0, 0, 0, 0};
-    private int[] mCoverSides = new int[]{0, 0, 0, 0, 0, 0}, mCoverData = new int[]{0, 0, 0, 0, 0, 0}, mTimeStatistics = new int[GregTech_API.TICKS_FOR_LAG_AVERAGING];
+    private int[] mCoverSides = new int[]{0, 0, 0, 0, 0, 0};
+    private int[] mCoverData = new int[]{0, 0, 0, 0, 0, 0};
+    private final int[] mTimeStatistics = new int[GregTech_API.TICKS_FOR_LAG_AVERAGING];
     private boolean mInventoryChanged = false, mWorkUpdate = false, mWorks = true, mNeedsUpdate = true, mNeedsBlockUpdate = true, mSendClientData = false;
-    private boolean mCheckConnections = false;
+    private final boolean mCheckConnections = false;
     private byte mColor = 0, oColor = 0, mStrongRedstone = 0, oRedstoneData = 63, oTextureData = 0, oUpdateData = 0, mLagWarningCount = 0;
     private int oX = 0, oY = 0, oZ = 0, mTimeStatisticsIndex = 0;
     private short mID = 0;
@@ -562,7 +564,7 @@ public class BaseMetaPipeEntity extends BaseTileEntity implements IGregTechTileE
 
     @Override
     public boolean increaseProgress(int aProgressAmountInTicks) {
-        return canAccessData() ? mMetaTileEntity.increaseProgress(aProgressAmountInTicks) != aProgressAmountInTicks : false;
+        return canAccessData() && mMetaTileEntity.increaseProgress(aProgressAmountInTicks) != aProgressAmountInTicks;
     }
 
     @Override
@@ -1198,11 +1200,8 @@ public class BaseMetaPipeEntity extends BaseTileEntity implements IGregTechTileE
                 && getCoverBehaviorAtSide((byte) aSide.ordinal()).letsFluidIn((byte) aSide.ordinal(), getCoverIDAtSide((byte) aSide.ordinal()), getCoverDataAtSide((byte) aSide.ordinal()), aFluid, this))
             return true;
 
-        if (!isFill && mMetaTileEntity.isLiquidOutput((byte) aSide.ordinal()) 
-                && getCoverBehaviorAtSide((byte) aSide.ordinal()).letsFluidOut((byte) aSide.ordinal(), getCoverIDAtSide((byte) aSide.ordinal()), getCoverDataAtSide((byte) aSide.ordinal()), aFluid, this))
-            return true;
-
-    	return false;
+        return !isFill && mMetaTileEntity.isLiquidOutput((byte) aSide.ordinal())
+                && getCoverBehaviorAtSide((byte) aSide.ordinal()).letsFluidOut((byte) aSide.ordinal(), getCoverIDAtSide((byte) aSide.ordinal()), getCoverDataAtSide((byte) aSide.ordinal()), aFluid, this);
     }
 
     @Override

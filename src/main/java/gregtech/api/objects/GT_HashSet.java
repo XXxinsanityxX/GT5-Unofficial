@@ -8,7 +8,7 @@ import java.util.*;
 
 public class GT_HashSet<E extends GT_ItemStack> extends AbstractSet<E> {
     private static final Object OBJECT = new Object();
-    private transient HashMap<GT_ItemStack, Object> map;
+    private final transient HashMap<GT_ItemStack, Object> map;
 
     public GT_HashSet() {
         map = new HashMap<GT_ItemStack, Object>();

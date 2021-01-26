@@ -55,9 +55,12 @@ public class BaseMetaTileEntity extends BaseTileEntity implements IGregTechTileE
     protected int mAverageEUInputIndex = 0, mAverageEUOutputIndex = 0;
     protected boolean mReleaseEnergy = false;
     protected int[] mAverageEUInput = new int[11], mAverageEUOutput = new int[11];
-    private boolean[] mActiveEUInputs = new boolean[]{false, false, false, false, false, false}, mActiveEUOutputs = new boolean[]{false, false, false, false, false, false};
+    private final boolean[] mActiveEUInputs = new boolean[]{false, false, false, false, false, false};
+    private final boolean[] mActiveEUOutputs = new boolean[]{false, false, false, false, false, false};
     private byte[] mSidedRedstone = new byte[]{15, 15, 15, 15, 15, 15};
-    private int[] mCoverSides = new int[]{0, 0, 0, 0, 0, 0}, mCoverData = new int[]{0, 0, 0, 0, 0, 0}, mTimeStatistics = new int[GregTech_API.TICKS_FOR_LAG_AVERAGING];
+    private int[] mCoverSides = new int[]{0, 0, 0, 0, 0, 0};
+    private int[] mCoverData = new int[]{0, 0, 0, 0, 0, 0};
+    private final int[] mTimeStatistics = new int[GregTech_API.TICKS_FOR_LAG_AVERAGING];
     private boolean mHasEnoughEnergy = true, mRunningThroughTick = false, mInputDisabled = false, mOutputDisabled = false, mMuffler = false, mLockUpgrade = false, mActive = false, mRedstone = false, mWorkUpdate = false, mSteamConverter = false, mInventoryChanged = false, mWorks = true, mNeedsUpdate = true, mNeedsBlockUpdate = true, mSendClientData = false, oRedstone = false;
     private byte mColor = 0, oColor = 0, mStrongRedstone = 0, oRedstoneData = 63, oTextureData = 0, oUpdateData = 0, oTexturePage=0, oLightValueClient = -1, oLightValue = -1, mLightValue = 0, mOtherUpgrades = 0, mFacing = 0, oFacing = 0, mWorkData = 0;
     private int mDisplayErrorCode = 0, oX = 0, oY = 0, oZ = 0, mTimeStatisticsIndex = 0, mLagWarningCount = 0;
@@ -439,7 +442,8 @@ public class BaseMetaTileEntity extends BaseTileEntity implements IGregTechTileE
                                             || (getCoverIDAtSide((byte) 5) == 0 && worldObj.getPrecipitationHeight(xCoord + 1, zCoord) - 1 < yCoord)) {
                                         if (GregTech_API.sMachineRainExplosions && worldObj.isRaining() && getBiome().rainfall > 0) {
                                             if (getRandomNumber(10) == 0) {
-                                                try{GT_Mod.instance.achievements.issueAchievement(this.getWorldObj().getPlayerEntityByName(mOwnerName), "badweather");}catch(Exception e){}
+                                                try{
+                                                    GT_Mod.achievements.issueAchievement(this.getWorldObj().getPlayerEntityByName(mOwnerName), "badweather");}catch(Exception e){}
                                                 doEnergyExplosion();
                                             } else setOnFire();
                                         }
@@ -448,7 +452,8 @@ public class BaseMetaTileEntity extends BaseTileEntity implements IGregTechTileE
                                             return;
                                         }
                                         if (GregTech_API.sMachineThunderExplosions && worldObj.isThundering() && getBiome().rainfall > 0 && getRandomNumber(3) == 0) {
-                                        	try{GT_Mod.instance.achievements.issueAchievement(this.getWorldObj().getPlayerEntityByName(mOwnerName), "badweather");}catch(Exception e){}
+                                        	try{
+                                                GT_Mod.achievements.issueAchievement(this.getWorldObj().getPlayerEntityByName(mOwnerName), "badweather");}catch(Exception e){}
                                             doEnergyExplosion();
                                         }
                                     }
@@ -887,7 +892,7 @@ public class BaseMetaTileEntity extends BaseTileEntity implements IGregTechTileE
 
     @Override
     public boolean increaseProgress(int aProgressAmountInTicks) {
-        return canAccessData() ? mMetaTileEntity.increaseProgress(aProgressAmountInTicks) != aProgressAmountInTicks : false;
+        return canAccessData() && mMetaTileEntity.increaseProgress(aProgressAmountInTicks) != aProgressAmountInTicks;
     }
 
     @Override
@@ -1157,8 +1162,7 @@ public class BaseMetaTileEntity extends BaseTileEntity implements IGregTechTileE
         if (!canAccessData()) return false;
         if (aCheckPrecicely || privateAccess() || (mOwnerName.length() == 0))
             if ((mOwnerName.length() == 0) && isServerSide()) setOwnerName(aPlayer.getDisplayName());
-            else if (privateAccess() && !aPlayer.getDisplayName().equals("Player") && !mOwnerName.equals("Player") && !mOwnerName.equals(aPlayer.getDisplayName()))
-                return false;
+            else return !privateAccess() || aPlayer.getDisplayName().equals("Player") || mOwnerName.equals("Player") || mOwnerName.equals(aPlayer.getDisplayName());
         return true;
     }
 
@@ -1170,7 +1174,7 @@ public class BaseMetaTileEntity extends BaseTileEntity implements IGregTechTileE
     public void doEnergyExplosion() {
         if (getUniversalEnergyCapacity() > 0 && getUniversalEnergyStored() >= getUniversalEnergyCapacity() / 5) {
             doExplosion(oOutput * (getUniversalEnergyStored() >= getUniversalEnergyCapacity() ? 4 : getUniversalEnergyStored() >= getUniversalEnergyCapacity() / 2 ? 2 : 1));
-            GT_Mod.instance.achievements.issueAchievement(this.getWorldObj().getPlayerEntityByName(mOwnerName), "electricproblems");
+            GT_Mod.achievements.issueAchievement(this.getWorldObj().getPlayerEntityByName(mOwnerName), "electricproblems");
         }
     }
 

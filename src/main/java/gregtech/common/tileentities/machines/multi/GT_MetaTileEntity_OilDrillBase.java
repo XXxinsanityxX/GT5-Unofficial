@@ -18,9 +18,9 @@ import static gregtech.common.GT_UndergroundOil.undergroundOilReadInformation;
 
 public abstract class GT_MetaTileEntity_OilDrillBase extends GT_MetaTileEntity_DrillerBase {
 
-    private boolean completedCycle = false;
+    private final boolean completedCycle = false;
 
-    private ArrayList<Chunk> mOilFieldChunks = new ArrayList<Chunk>();
+    private final ArrayList<Chunk> mOilFieldChunks = new ArrayList<Chunk>();
     private int mOilId = 0;
 
     public GT_MetaTileEntity_OilDrillBase(int aID, String aName, String aNameRegional) {
@@ -127,8 +127,7 @@ public abstract class GT_MetaTileEntity_OilDrillBase extends GT_MetaTileEntity_D
                 }
             }
         }
-        if (mOilFieldChunks.isEmpty()) return false;
-        return true;
+        return !mOilFieldChunks.isEmpty();
     }
 
     private FluidStack pumpOil(float speed){

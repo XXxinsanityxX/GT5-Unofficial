@@ -78,18 +78,13 @@ public class GT_MetaTileEntity_ProcessingArray extends GT_MetaTileEntity_MultiBl
     public GT_Recipe_Map getRecipeMap() {
     	if (isCorrectMachinePart(mInventory[1])) {
     		GT_Recipe_Map aTemp = GT_ProcessingArray_Manager.getRecipeMapForMeta(mInventory[1].getItemDamage());
-            if (aTemp != null) {
-            	return aTemp;
-            }
+            return aTemp;
     	}        
         return null;
     }
 
     public boolean isCorrectMachinePart(ItemStack aStack) {
-        if (aStack != null && aStack.getUnlocalizedName().startsWith("gt.blockmachines.basicmachine.")) {
-            return true;
-        }
-        return false;
+        return aStack != null && aStack.getUnlocalizedName().startsWith("gt.blockmachines.basicmachine.");
     }
 
     public boolean isFacingValid(byte aFacing) {
@@ -137,7 +132,7 @@ public class GT_MetaTileEntity_ProcessingArray extends GT_MetaTileEntity_MultiBl
         mMachine = mInventory[1].getUnlocalizedName();
 
         ArrayList<FluidStack> tFluidList = getStoredFluids();
-        FluidStack[] tFluids = (FluidStack[]) tFluidList.toArray(new FluidStack[tFluidList.size()]);
+        FluidStack[] tFluids = tFluidList.toArray(new FluidStack[tFluidList.size()]);
         if (mSeparate) {
             ArrayList<ItemStack> tInputList = new ArrayList<ItemStack>();
             for (GT_MetaTileEntity_Hatch_InputBus tHatch : mInputBusses) {
@@ -146,7 +141,7 @@ public class GT_MetaTileEntity_ProcessingArray extends GT_MetaTileEntity_MultiBl
                     if (tInpuBus.getStackInSlot(i) != null)
                         tInputList.add(tInpuBus.getStackInSlot(i));
                 }
-                ItemStack[] tInputs = (ItemStack[]) tInputList.toArray(new ItemStack[tInputList.size()]);
+                ItemStack[] tInputs = tInputList.toArray(new ItemStack[tInputList.size()]);
                 if (processRecipe(tInputs, tFluids, map))
                     return true;
                 else
@@ -154,7 +149,7 @@ public class GT_MetaTileEntity_ProcessingArray extends GT_MetaTileEntity_MultiBl
             }
         } else {
             ArrayList<ItemStack> tInputList = getStoredInputs();
-            ItemStack[] tInputs = (ItemStack[]) tInputList.toArray(new ItemStack[tInputList.size()]);
+            ItemStack[] tInputs = tInputList.toArray(new ItemStack[tInputList.size()]);
             return processRecipe(tInputs, tFluids, map);
         }
         return false;
