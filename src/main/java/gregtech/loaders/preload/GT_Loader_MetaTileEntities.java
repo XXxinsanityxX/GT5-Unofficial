@@ -2,7 +2,7 @@ package gregtech.loaders.preload;
 
 import codechicken.nei.api.API;
 import cpw.mods.fml.common.Loader;
-import e99999.tankBasic;
+import gregtech.common.tileentities.storage.tankBasic;
 import gregtech.GT_Mod;
 import gregtech.api.GregTech_API;
 import gregtech.api.enums.*;

@@ -1,4 +1,4 @@
-package e99999;
+package gregtech.common.covers;
 
 import gregtech.api.enums.Materials;
 import gregtech.api.interfaces.tileentity.ICoverable;

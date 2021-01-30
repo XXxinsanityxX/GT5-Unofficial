@@ -1,4 +1,4 @@
-package e99999;
+package gregtech.common.tileentities.storage;
 
 import gregtech.api.enums.Textures;
 import gregtech.api.interfaces.ITexture;
