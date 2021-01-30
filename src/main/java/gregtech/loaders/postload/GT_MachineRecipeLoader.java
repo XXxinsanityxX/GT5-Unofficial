@@ -1749,9 +1749,9 @@ public class GT_MachineRecipeLoader implements Runnable {
         if (!GT_Mod.gregtechproxy.mDisableOldChemicalRecipes) {
             addOldChemicalRecipes();
         } else if (GT_Mod.gregtechproxy.mMoreComplicatedChemicalRecipes) {
-            //GT_Values.RA.addChemicalRecipe(Materials.Sodium.getDust(2), Materials.Sulfur.getDust(1), Materials.SodiumSulfide.getDust(3), 60);
-            GT_Values.RA.addChemicalRecipe(Materials.HydricSulfide.getCells(1), GT_Values.NI, Materials.Water.getFluid(1000), Materials.DilutedSulfuricAcid.getFluid(2000), Materials.Empty.getCells(1), 60);
-            GT_Values.RA.addChemicalRecipe(Materials.Water.getCells(1), GT_Values.NI, Materials.HydricSulfide.getGas(1000), Materials.DilutedSulfuricAcid.getFluid(2000), Materials.Empty.getCells(1), 60);
+            GT_Values.RA.addChemicalRecipe(Materials.Sodium.getDust(2), Materials.Sulfur.getDust(1), Materials.SodiumSulfide.getDust(3), 60);
+            //GT_Values.RA.addChemicalRecipe(Materials.HydricSulfide.getCells(1), GT_Values.NI, Materials.Water.getFluid(1000), Materials.DilutedSulfuricAcid.getFluid(2000), Materials.Empty.getCells(1), 60);
+            //GT_Values.RA.addChemicalRecipe(Materials.Water.getCells(1), GT_Values.NI, Materials.HydricSulfide.getGas(1000), Materials.DilutedSulfuricAcid.getFluid(2000), Materials.Empty.getCells(1), 60);
         }
         addChemicalRecipesShared();
 
@@ -2822,8 +2822,6 @@ public class GT_MachineRecipeLoader implements Runnable {
         GT_Values.RA.addChemicalRecipe(Materials.Ammonia.getCells(1), GT_Utility.getIntegratedCircuit(12), Materials.Oxygen.getGas(1000), GT_Values.NF, Materials.NitricAcid.getCells(1), 160);
         GT_Values.RA.addChemicalRecipe(Materials.Oxygen.getCells(1), GT_Utility.getIntegratedCircuit(12), Materials.Ammonia.getGas(1000), GT_Values.NF, Materials.NitricAcid.getCells(1), 160);
 
-
-        //Sulfuric Acid Chain
         GT_Values.RA.addChemicalRecipe(Materials.Ethylene.getCells(5), GT_Utility.getIntegratedCircuit(1), Materials.Chlorine.getGas(1000), Materials.VinylChloride.getGas(6000), Materials.Empty.getCells(5), 240);
         GT_Values.RA.addChemicalRecipe(Materials.Chlorine.getCells(1), GT_Utility.getIntegratedCircuit(1), Materials.Ethylene.getGas(5000), Materials.VinylChloride.getGas(6000), Materials.Empty.getCells(1), 240);
         GT_Values.RA.addChemicalRecipeForBasicMachineOnly(Materials.Ethylene.getCells(5), Materials.Empty.getCells(1), Materials.Chlorine.getGas(1000), GT_Values.NF, Materials.VinylChloride.getCells(6), GT_Values.NI, 240, 30);
@@ -2840,7 +2838,7 @@ public class GT_MachineRecipeLoader implements Runnable {
         GT_Values.RA.addChemicalRecipe(Materials.Sulfur.getDust(1), GT_Utility.getIntegratedCircuit(1), Materials.Benzene.getFluid(1000), Materials.PolyphenyleneSulfide.getMolten(2000), GT_Values.NI, 320, 30);
         GT_Values.RA.addChemicalRecipeForBasicMachineOnly(Materials.Sulfur.getDust(1), Materials.Benzene.getCells(1), GT_Values.NF, Materials.PolyphenyleneSulfide.getMolten(2000), Materials.Empty.getCells(1), GT_Values.NI, 320, 30);
 
-        GT_Values.RA.addChemicalRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Sulfur, 1L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Sodium, 1L), Materials.Oxygen.getGas(4000L), Materials.SodiumPersulfate.getFluid(6000L), GT_Values.NI, 8000);
+        //GT_Values.RA.addChemicalRecipe(GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Sulfur, 1L), GT_OreDictUnificator.get(OrePrefixes.dust, Materials.Sodium, 1L), Materials.Oxygen.getGas(4000L), Materials.SodiumPersulfate.getFluid(6000L), GT_Values.NI, 8000);
 
     }
 
@@ -3085,10 +3083,9 @@ public class GT_MachineRecipeLoader implements Runnable {
         GT_Values.RA.addChemicalRecipe(Materials.Benzene.getCells(3), GT_Utility.getIntegratedCircuit(12), Materials.Chlorine.getGas(1000), Materials.HydrochloricAcid.getFluid(1000), Materials.Dichlorobenzene.getCells(3), 240);
         GT_Values.RA.addChemicalRecipeForBasicMachineOnly(Materials.Chlorine.getCells(1), Materials.Empty.getCells(2), Materials.Benzene.getFluid(3000), Materials.HydrochloricAcid.getFluid(1000), Materials.Dichlorobenzene.getCells(3), GT_Values.NI, 240, 30);
 
-        //GT_Values.RA.addChemicalRecipe(Materials.SodiumSulfide.getDust(1), Materials.Oxygen.getCells(8), Materials.Dichlorobenzene.getFluid(1000), Materials.PolyphenyleneSulfide.getMolten(1000), Materials.Salt.getDust(1), Materials.Empty.getCells(8), 240, 360);
-
-        //GT_Values.RA.addChemicalRecipe(Materials.Salt.getDust(2), GT_Utility.getIntegratedCircuit(1), Materials.SulfuricAcid.getFluid(7000), Materials.HydrochloricAcid.getFluid(2000), Materials.SodiumBisulfate.getDust(7), 60);
-        //GT_Values.RA.addElectrolyzerRecipe(Materials.SodiumBisulfate.getDust(7), Materials.Empty.getCells(2), null, Materials.SodiumPersulfate.getFluid(12000), Materials.Hydrogen.getCells(2), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, null, 600, 30);
+        GT_Values.RA.addChemicalRecipe(Materials.SodiumSulfide.getDust(1), Materials.Oxygen.getCells(8), Materials.Dichlorobenzene.getFluid(1000), Materials.PolyphenyleneSulfide.getMolten(1000), Materials.Salt.getDust(1), Materials.Empty.getCells(8), 240, 360);
+        GT_Values.RA.addChemicalRecipe(Materials.Salt.getDust(2), GT_Utility.getIntegratedCircuit(1), Materials.SulfuricAcid.getFluid(7000), Materials.HydrochloricAcid.getFluid(2000), Materials.SodiumBisulfate.getDust(7), 60);
+        GT_Values.RA.addElectrolyzerRecipe(Materials.SodiumBisulfate.getDust(7), Materials.Empty.getCells(2), null, Materials.SodiumPersulfate.getFluid(12000), Materials.Hydrogen.getCells(2), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, null, 600, 30);
 
         GT_Values.RA.addChemicalRecipe(Materials.Benzene.getCells(6), GT_Utility.getIntegratedCircuit(1), Materials.Chlorine.getGas(1000), Materials.Chlorobenzene.getFluid(6000), Materials.HydrochloricAcid.getCells(1), Materials.Empty.getCells(5), 240);
         GT_Values.RA.addChemicalRecipe(Materials.Chlorine.getCells(1), GT_Utility.getIntegratedCircuit(1), Materials.Benzene.getFluid(6000), Materials.Chlorobenzene.getFluid(6000), Materials.HydrochloricAcid.getCells(1), 240);
@@ -3110,6 +3107,10 @@ public class GT_MachineRecipeLoader implements Runnable {
     }
 
     private void addChemicalRecipesShared() {
+
+        GT_Values.RA.addElectrolyzerRecipe(GT_Utility.getIntegratedCircuit(1), GT_Values.NI, Materials.CarbonDioxide.getGas(3000), Materials.Oxygen.getGas(2000), Materials.Carbon.getDust(1), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, null, 300, 120);
+        GT_Values.RA.addElectrolyzerRecipe(GT_Utility.getIntegratedCircuit(11), Materials.Empty.getCells(2), Materials.CarbonDioxide.getGas(3000), GT_Values.NF, Materials.Carbon.getDust(1), Materials.Oxygen.getCells(2), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, null, 300, 120);
+
         GT_Values.RA.addUniversalDistillationRecipe(FluidRegistry.getFluidStack("potion.vinegar", 40), new FluidStack[]{Materials.AceticAcid.getFluid(5), Materials.Water.getFluid(35)}, GT_Values.NI, 20, 64);
         GT_Values.RA.addElectrolyzerRecipe(Materials.Salt.getDust(2), GT_Values.NI, GT_Values.NF, Materials.Chlorine.getGas(1000), Materials.Sodium.getDust(1), GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, GT_Values.NI, null, 320, 30);
         GT_Values.RA.addMixerRecipe(Materials.Salt.getDust(1), GT_Values.NI, GT_Values.NI, GT_Values.NI, Materials.Water.getFluid(3000), Materials.SaltWater.getFluid(4000), GT_Values.NI, 80, 8);
@@ -3218,8 +3219,9 @@ public class GT_MachineRecipeLoader implements Runnable {
         GT_Values.RA.addChemicalRecipeForBasicMachineOnly(Materials.Hydrogen.getCells(3), Materials.Empty.getCells(1), Materials.Nitrogen.getGas(1000), GT_Values.NF, Materials.Ammonia.getCells(4), GT_Values.NI, 320, 384);
         GT_Values.RA.addChemicalRecipeForBasicMachineOnly(Materials.Nitrogen.getCells(1), Materials.Hydrogen.getCells(3), GT_Values.NF, GT_Values.NF, Materials.Ammonia.getCells(4), GT_Values.NI, 320, 384);
 
-        GT_Values.RA.addChemicalRecipe(Materials.Sulfur.getDust(2), GT_Utility.getIntegratedCircuit(1), Materials.Hydrogen.getGas(1000), Materials.HydricSulfide.getGas(3000), GT_Values.NI, 60, 8);
-        GT_Values.RA.addChemicalRecipeForBasicMachineOnly(Materials.Sulfur.getDust(2), Materials.Empty.getCells(3), Materials.Hydrogen.getGas(1000), GT_Values.NF, Materials.HydricSulfide.getCells(3), GT_Values.NI, 60, 8);
+        GT_Values.RA.addChemicalRecipe(Materials.Sulfur.getDust(1), GT_Utility.getIntegratedCircuit(1), Materials.Hydrogen.getGas(2000), Materials.HydricSulfide.getGas(3000), GT_Values.NI, 60, 8);
+        GT_Values.RA.addChemicalRecipeForBasicMachineOnly(Materials.Sulfur.getDust(1), Materials.Empty.getCells(3), Materials.Hydrogen.getGas(2000), GT_Values.NF, Materials.HydricSulfide.getCells(3), GT_Values.NI, 60, 8);
+        GT_Values.RA.addChemicalRecipeForBasicMachineOnly(Materials.Sulfur.getDust(1), Materials.Empty.getCells(3), Materials.Hydrogen.getGas(2000), GT_Values.NF, Materials.HydricSulfide.getCells(3), GT_Values.NI, 60, 8);
 
         GT_Values.RA.addUniversalDistillationRecipe(Materials.DilutedSulfuricAcid.getFluid(2000), new FluidStack[]{Materials.SulfuricAcid.getFluid(1000), Materials.Water.getFluid(1000)}, GT_Values.NI, 600, 120);
 
