@@ -144,7 +144,7 @@ processResources
     }
 	exclude '**/Thumbs.db'
 }
-
+/*
 task sourceJar(type: Jar) {
     from sourceSets.main.allSource
     classifier = 'sources'
@@ -161,4 +161,4 @@ task devJar(type: Jar) {
 
 artifacts {
     archives devJar
-}
+}*/
