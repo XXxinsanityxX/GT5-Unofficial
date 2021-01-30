@@ -83,7 +83,7 @@ public class GT_MetaPipeEntity_Fluid extends MetaPipeEntity {
 
     @Override
     public byte getTileEntityBaseType() {
-        return (byte) (mMaterial == null ? 4 : (byte) (4) + Math.max(0, Math.min(3, mMaterial.mToolQuality)));
+        return mMaterial == null ? 4 : (byte) ((mMaterial.contains(SubTag.WOOD) ? 12 : 4) + Math.max(0, Math.min(3, mMaterial.mToolQuality)));
     }
 
     @Override
@@ -327,8 +327,7 @@ public class GT_MetaPipeEntity_Fluid extends MetaPipeEntity {
 
         // Now distribute
         for (MutableTriple<IFluidHandler, ForgeDirection, Integer> tEntry: tTanks) {
-            if (availableCapacity > tAmount) tEntry.right = (int) Math.floor(tEntry.right * tAmount / availableCapacity); // Distribue fluids based on percentage available space at destination
-            if (tEntry.right == 0) tEntry.right = (int)Math.min(1, tAmount); // If the percent is not enough to give at least 1L, try to give 1L
+            if (availableCapacity > tAmount) tEntry.right = (int) Math.floor(tEntry.right * tAmount / availableCapacity);
             if (tEntry.right <= 0) continue;
 
             int tFilledAmount = tEntry.left.fill(tEntry.middle, drainFromIndex(tEntry.right, false, index), false);
@@ -671,23 +670,10 @@ public class GT_MetaPipeEntity_Fluid extends MetaPipeEntity {
 
     @Override
     public void addCollisionBoxesToList(World aWorld, int aX, int aY, int aZ, AxisAlignedBB inputAABB, List<AxisAlignedBB> outputAABB, Entity collider) {
-        super.addCollisionBoxesToList(aWorld, aX, aY, aZ, inputAABB, outputAABB, collider);
-        if (GT_Mod.instance.isClientSide() && (GT_Client.hideValue & 0x2) != 0) {
-            AxisAlignedBB aabb = getActualCollisionBoundingBoxFromPool(aWorld, aX, aY, aZ);
-            if (inputAABB.intersectsWith(aabb)) outputAABB.add(aabb);
-        }
-    }
-    
-    @Override
-    public FluidStack drain(ForgeDirection aSide, FluidStack aFluid, boolean doDrain) {
-        if (aFluid == null)
-            return null;
-        for (int i = 0; i < mFluids.length; ++i) {
-            final FluidStack f = mFluids[i];
-            if (f == null || !f.isFluidEqual(aFluid))
-                continue;
-            return drainFromIndex(aFluid.amount, doDrain, i);
-        }
-        return null;
+    	super.addCollisionBoxesToList(aWorld, aX, aY, aZ, inputAABB, outputAABB, collider);
+    	if (GT_Mod.instance.isClientSide() && (GT_Client.hideValue & 0x2) != 0) {
+    		AxisAlignedBB aabb = getActualCollisionBoundingBoxFromPool(aWorld, aX, aY, aZ);
+    		if (inputAABB.intersectsWith(aabb)) outputAABB.add(aabb);
+    	}
     }
 }
