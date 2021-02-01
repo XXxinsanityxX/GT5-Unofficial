@@ -129,8 +129,6 @@ public class GT_Mod implements IGT_Mod {
 
         GregTech_API.sClientDataFile = new GT_Config(new Configuration(new File(aEvent.getModConfigurationDirectory().getParentFile(), "GregTech.cfg")));
         GregTech_API.mIC2Classic = Loader.isModLoaded("IC2-Classic-Spmod");
-        //GregTech_API.mMagneticraft = Loader.isModLoaded("Magneticraft");
-        //GregTech_API.mImmersiveEngineering = Loader.isModLoaded("ImmersiveEngineering");
         GregTech_API.mGTPlusPlus = Loader.isModLoaded("miscutils");
         GregTech_API.mTranslocator = Loader.isModLoaded("Translocator");
         GregTech_API.mTConstruct = Loader.isModLoaded("TConstruct");
@@ -237,7 +235,7 @@ public class GT_Mod implements IGT_Mod {
         gregtechproxy.mFlintChance = tMainConfig.get(aTextGeneral, "FlintAndSteelChance", 30).getInt(30);
         gregtechproxy.mItemDespawnTime = tMainConfig.get(aTextGeneral, "ItemDespawnTime", 6000).getInt(6000);
         gregtechproxy.mNerfStorageBlocks = tMainConfig.get(aTextGeneral,"NerfStorageBlocks",true).getBoolean(true);
-        gregtechproxy.mAllowSmallBoilerAutomation = tMainConfig.get(aTextGeneral,"AllowSmallBoilerAutomation",false).getBoolean(false);
+        gregtechproxy.mAllowSmallBoilerAutomation = tMainConfig.get(aTextGeneral,"AllowSmallBoilerAutomation",true).getBoolean(false);
         gregtechproxy.mHardMachineCasings= tMainConfig.get(aTextGeneral,"HardMachineCasings",true).getBoolean(true);
         gregtechproxy.mDisableVanillaOres = tMainConfig.get(aTextGeneral, "DisableVanillaOres", true).getBoolean(true);
         gregtechproxy.mNerfDustCrafting = tMainConfig.get(aTextGeneral, "NerfDustCrafting", true).getBoolean(true);
@@ -263,9 +261,6 @@ public class GT_Mod implements IGT_Mod {
         gregtechproxy.mHideUnusedOres = tMainConfig.get(aTextGeneral, "HideUnusedOres", true).getBoolean(true);
         gregtechproxy.mHideRecyclingRecipes = tMainConfig.get(aTextGeneral, "HideRecyclingRecipes", true).getBoolean(true);
         gregtechproxy.mArcSmeltIntoAnnealed = tMainConfig.get(aTextGeneral, "ArcSmeltIntoAnnealedWrought", true).getBoolean(true);
-        gregtechproxy.mMagneticraftRecipes = tMainConfig.get(aTextGeneral, "EnableMagneticraftSupport", true).getBoolean(true);
-        gregtechproxy.mImmersiveEngineeringRecipes = tMainConfig.get(aTextGeneral, "EnableImmersiveEngineeringRSupport", true).getBoolean(true);
-        gregtechproxy.mMagneticraftBonusOutputPercent = tMainConfig.get(aTextGeneral, "MagneticraftBonusOutputPercent", 100.0f).getDouble();
         gregtechproxy.mTEMachineRecipes = tMainConfig.get("general", "TEMachineRecipes", false).getBoolean(false);
         gregtechproxy.mEnableAllMaterials = tMainConfig.get("general", "EnableAllMaterials", false).getBoolean(false);
         gregtechproxy.mEnableAllComponents = tMainConfig.get("general", "EnableAllComponents", false).getBoolean(false);
@@ -282,8 +277,6 @@ public class GT_Mod implements IGT_Mod {
         Calendar now = Calendar.getInstance();
         gregtechproxy.mAprilFool = GregTech_API.sSpecialFile.get(ConfigCategories.general, "AprilFool", now.get(Calendar.MONTH) == Calendar.APRIL && now.get(Calendar.DAY_OF_MONTH) == 1);
         gregtechproxy.mCropNeedBlock = tMainConfig.get("general", "CropNeedBlockBelow", true).getBoolean(true);
-        gregtechproxy.mDisableOldChemicalRecipes = tMainConfig.get("general", "DisableOldChemicalRecipes", false).getBoolean(false);
-        gregtechproxy.mMoreComplicatedChemicalRecipes = tMainConfig.get("general", "MoreComplicatedChemicalRecipes", false).getBoolean(false);
         gregtechproxy.mAMHInteraction = tMainConfig.get("general", "AllowAutoMaintenanceHatchInteraction", false).getBoolean(false);
         GregTech_API.mOutputRF = GregTech_API.sOPStuff.get(ConfigCategories.general, "OutputRF", true);
         GregTech_API.mInputRF = GregTech_API.sOPStuff.get(ConfigCategories.general, "InputRF", false);
@@ -294,7 +287,6 @@ public class GT_Mod implements IGT_Mod {
         gregtechproxy.mForceFreeFace = GregTech_API.sMachineFile.get(ConfigCategories.machineconfig, "forceFreeFace",false);
         gregtechproxy.mEasierIVPlusCables = tMainConfig.get("general", "EasierIVPlusCables", false).getBoolean(false);
         gregtechproxy.mBrickedBlastFurnace = tMainConfig.get("general", "BrickedBlastFurnace", true).getBoolean(true);
-        gregtechproxy.mMixedOreOnlyYieldsTwoThirdsOfPureOre = tMainConfig.get("general", "MixedOreOnlyYieldsTwoThirdsOfPureOre", false).getBoolean(false);
         gregtechproxy.enableBlackGraniteOres = GregTech_API.sWorldgenFile.get("general", "enableBlackGraniteOres", gregtechproxy.enableBlackGraniteOres);
         gregtechproxy.enableRedGraniteOres = GregTech_API.sWorldgenFile.get("general", "enableRedGraniteOres", gregtechproxy.enableRedGraniteOres);
         gregtechproxy.enableMarbleOres = GregTech_API.sWorldgenFile.get("general", "enableMarbleOres", gregtechproxy.enableMarbleOres);
@@ -306,7 +298,6 @@ public class GT_Mod implements IGT_Mod {
         gregtechproxy.gt6Cable = tMainConfig.get("general", "GT6StyledWiresConnection", true).getBoolean(true);
         gregtechproxy.ic2EnergySourceCompat = tMainConfig.get("general", "Ic2EnergySourceCompat", true).getBoolean(true);
         gregtechproxy.costlyCableConnection = tMainConfig.get("general", "CableConnectionRequiresSolderingMaterial", false).getBoolean(false);
-        gregtechproxy.mHardRadonRecipe = tMainConfig.get("general","HardRadonRecipe",false).getBoolean(false);
         GT_LanguageManager.i18nPlaceholder = tMainConfig.get("general", "UsePlaceholderForMaterialNamesInLangFile", true).getBoolean(true);
 
         Materials[] tDisableOres = new Materials[]{Materials.Chrome, Materials.Naquadria, Materials.Silicon, Materials.Cobalt, Materials.Cadmium, Materials.Indium, Materials.Tungsten, Materials.Mithril, Materials.DarkIron, Materials.Rutile, Materials.Magnesium, Materials.Nikolite, Materials.Adamantium};

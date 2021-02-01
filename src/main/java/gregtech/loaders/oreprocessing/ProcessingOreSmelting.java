@@ -35,24 +35,11 @@ public class ProcessingOreSmelting implements gregtech.api.interfaces.IOreRecipe
                     		outputSize = 10;
                         	outputPrefix = OrePrefixes.nugget;
                     	} else {
-                    		if (GT_Mod.gregtechproxy.mMixedOreOnlyYieldsTwoThirdsOfPureOre) {
-                    			outputSize = 6;
-                    			outputPrefix = OrePrefixes.nugget;
-                    		} else {
-                    			outputSize = 1;
-                    			outputPrefix = OrePrefixes.ingot;                    			
-                    		}
+                    		outputSize = 6;
+                    		outputPrefix = OrePrefixes.nugget;
                     	}
                     	break;
                     case dust:
-            			int outputAmount = GT_Mod.gregtechproxy.mMixedOreOnlyYieldsTwoThirdsOfPureOre ? 2 : 3;
-                    	if (aMaterial.mDirectSmelting != aMaterial) {
-                    		if (!aMaterial.contains(SubTag.DONT_ADD_DEFAULT_BBF_RECIPE)) {
-                    			GT_Values.RA.addPrimitiveBlastRecipe(GT_Utility.copyAmount(2, aStack), GT_Values.NI,            2, aMaterial.mDirectSmelting.getIngots(outputAmount), GT_Values.NI,                                         2400);
-                    		} else if (aMaterial == Materials.Tetrahedrite) {
-                    	    	GT_Values.RA.addPrimitiveBlastRecipe(aMaterial.getDust(2), GT_Values.NI,                        2, aMaterial.mDirectSmelting.getIngots(outputAmount), Materials.Antimony.getNuggets(3 * outputAmount),      2400);
-                    		}
-                    	}
                     case dustImpure:
                     case dustPure:
                     case dustRefined:
@@ -60,13 +47,8 @@ public class ProcessingOreSmelting implements gregtech.api.interfaces.IOreRecipe
                     		outputPrefix = OrePrefixes.ingot;
                     		outputSize = 1;
                     	} else {
-                    		if (GT_Mod.gregtechproxy.mMixedOreOnlyYieldsTwoThirdsOfPureOre) {
-                    			outputSize = 6;
-                    			outputPrefix = OrePrefixes.nugget;
-                    		} else {
-                    			outputSize = 1;
-                    			outputPrefix = OrePrefixes.ingot;                    			
-                    		}
+                    		outputSize = 6;
+                    		outputPrefix = OrePrefixes.nugget;
                     	}
                         break;
                     default:

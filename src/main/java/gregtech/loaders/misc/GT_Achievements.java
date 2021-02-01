@@ -201,14 +201,9 @@ public class GT_Achievements {
         registerAchievement("over9000", 7, 7, ItemList.Casing_Coil_NaquadahAlloy.get(1), "alienmetallurgy", false);
         registerAchievement("finalpreparations", 7, 9, GT_OreDictUnificator.get(OrePrefixes.ingot, Materials.Naquadria, 1L), "over9000", false);
         registerAchievement("denseaspossible", 6, 10, ItemList.FusionComputer_UV.get(1), "finalpreparations", false);
-        if(GregTech_API.sOPStuff.get(ConfigCategories.Recipes.gregtechrecipes, "EnableZPMandUVBatteries", false)) {
-        	registerAchievement("zpmage", 8, 10, ItemList.Energy_Module.get(1), "denseaspossible", false);
-        	registerAchievement("uvage", 10, 10, ItemList.Energy_Cluster.get(1), "zpmage", false);
-        	registerAchievement("whatnow", 12, 10, ItemList.ZPM2.get(1), "uvage", false);
-        }else {
-        	registerAchievement("whatnow", 8, 10, ItemList.ZPM2.get(1), "denseaspossible", false);
-        }
-
+        registerAchievement("zpmage", 8, 10, ItemList.Energy_Module.get(1), "denseaspossible", false);
+        registerAchievement("uvage", 10, 10, ItemList.Energy_Cluster.get(1), "zpmage", false);
+        registerAchievement("whatnow", 12, 10, ItemList.ZPM2.get(1), "uvage", false);
 
 //        if(Loader.isModLoaded("NotEnoughItems") && GT_Mod.gregtechproxy.mHideUnusedOres){
 //            for (int i = 1; i < GregTech_API.sGeneratedMaterials.length; i++) {
@@ -217,6 +212,7 @@ public class GT_Achievements {
 //                }
 //            }
 //        }
+
         if (GT_Mod.gregtechproxy.mAchievements) {
             AchievementPage.registerAchievementPage(new AchievementPage("GregTech 5", this.achievementList.values().toArray(
                     new Achievement[this.achievementList.size()])));

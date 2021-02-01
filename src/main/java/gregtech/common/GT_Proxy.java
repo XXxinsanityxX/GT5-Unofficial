@@ -137,7 +137,7 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
     public boolean mDisableVanillaOres = true;
     public boolean mNerfStorageBlocks = true;
     public boolean mHardMachineCasings = true;
-    public boolean mAllowSmallBoilerAutomation = false;
+    public boolean mAllowSmallBoilerAutomation = true;
     public boolean mNerfDustCrafting = true;
     public boolean mSortToTheEnd = true;
     public boolean mCraftingUnification = true;
@@ -156,8 +156,6 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
     public boolean mAE2Integration = true;
     public boolean mAE2Tunnel = true;
     public boolean mArcSmeltIntoAnnealed = true;
-    public boolean mMagneticraftRecipes = true;
-    public boolean mImmersiveEngineeringRecipes = true;
     private boolean isFirstServerWorldTick = true;
     private boolean mOreDictActivated = false;
     public boolean mChangeHarvestLevels=false;
@@ -183,7 +181,6 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
     public int mPollutionSourRainLimit = 2000000;
     public final GT_UO_DimensionList mUndergroundOil = new GT_UO_DimensionList();
     public int mTicksUntilNextCraftSound = 0;
-    public double mMagneticraftBonusOutputPercent = 100.0d;
     private World mUniverse = null;
     private final String aTextThermalExpansion = "ThermalExpansion";
     private final String aTextRailcraft = "Railcraft";
@@ -198,12 +195,10 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
     public boolean mLowGravProcessing = false;
     public boolean mAprilFool = false;
     public boolean mCropNeedBlock = true;
-    public boolean mDisableOldChemicalRecipes = true;
     public boolean mAMHInteraction = true;
     public boolean mForceFreeFace = false;
     public boolean mEasierIVPlusCables = false;
     public boolean mBrickedBlastFurnace = true;
-    public boolean mMixedOreOnlyYieldsTwoThirdsOfPureOre = false;
     public boolean enableBlackGraniteOres = true;
     public boolean enableRedGraniteOres = true;
     public boolean enableMarbleOres = true;
@@ -215,9 +210,7 @@ public abstract class GT_Proxy implements IGT_Mod, IGuiHandler, IFuelHandler {
     public boolean gt6Cable = true;
     public boolean ic2EnergySourceCompat = true;
     public boolean costlyCableConnection = false;
-    public boolean mMoreComplicatedChemicalRecipes = true;
-    public boolean mHardRadonRecipe = true;
-    
+
     public GT_Proxy() {
         GameRegistry.registerFuelHandler(this);
         MinecraftForge.EVENT_BUS.register(this);
