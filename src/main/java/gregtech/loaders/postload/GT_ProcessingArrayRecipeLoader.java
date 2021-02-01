@@ -25,10 +25,7 @@ public class GT_ProcessingArrayRecipeLoader {
 
 		//Macerator
 		registerMapBetweenRange(301, 308, GT_Recipe.GT_Recipe_Map.sMaceratorRecipes);
-		
-		// Microwave (New)
-		registerMapBetweenRange(311, 318, GT_Recipe.GT_Recipe_Map.sMicrowaveRecipes);
-		
+
 		//Recycler
 		registerMapBetweenRange(331, 338, GT_Recipe.GT_Recipe_Map.sRecyclerRecipes);
 		
@@ -73,10 +70,7 @@ public class GT_ProcessingArrayRecipeLoader {
 		
 		// Arc Furnace
 		registerMapBetweenRange(651, 658, GT_Recipe.GT_Recipe_Map.sArcFurnaceRecipes);
-		
-		// Plasma Arc Furnace
-		registerMapBetweenRange(661, 668, GT_Recipe.GT_Recipe_Map.sPlasmaArcFurnaceRecipes);
-		
+
 		// Brewery
 		registerMapBetweenRange(491, 498, GT_Recipe.GT_Recipe_Map.sBrewingRecipes);
 		

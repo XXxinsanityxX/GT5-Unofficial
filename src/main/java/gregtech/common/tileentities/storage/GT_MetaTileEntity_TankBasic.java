@@ -15,23 +15,22 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidHandler;
 
-public class tankBasic extends GT_MetaTileEntity_BasicTank {
+public class GT_MetaTileEntity_TankBasic extends GT_MetaTileEntity_BasicTank {
     public boolean OutputFluid = false;
 
-    public tankBasic(int aID, String aName, String aNameRegional, int aTier) {
+    public GT_MetaTileEntity_TankBasic(int aID, String aName, String aNameRegional, int aTier) {
         super(aID, aName, aNameRegional, aTier, 3, new String[]{
                 "Stores " + CommonSizeCompute(aTier) + "L of fluid",
-                "Melts above the internal pipe temperature",
-                "Use Shift + Screwdriver to enable auto output mode"});
+                "Use Screwdriver to enable output mode"});
     }
 
-    public tankBasic(String aName, int aTier, String aDescription, ITexture[][][] aTextures) {
+    public GT_MetaTileEntity_TankBasic(String aName, int aTier, String aDescription, ITexture[][][] aTextures) {
         super(aName, aTier, 3, aDescription, aTextures);
     }
 
     @Override
     public MetaTileEntity newMetaEntity(IGregTechTileEntity aTileEntity) {
-        return new tankBasic(mName, mTier, mDescription, mTextures);
+        return new GT_MetaTileEntity_TankBasic(mName, mTier, mDescription, mTextures);
     }
 
     @Override
@@ -60,12 +59,11 @@ public class tankBasic extends GT_MetaTileEntity_BasicTank {
 
     public void onPostTick(IGregTechTileEntity aBaseMetaTileEntity, long aTick) {
         super.onPostTick(aBaseMetaTileEntity, aTick);
-        //if (this.getBaseMetaTileEntity().isServerSide() && (aTick&0x7)==0) {
-        if (getDrainableStack() != null) {
+        if (aBaseMetaTileEntity.isServerSide() && aBaseMetaTileEntity.isAllowedToWork() && (aTick&0x7)==0){
             IFluidHandler tTank = aBaseMetaTileEntity.getITankContainerAtSide(aBaseMetaTileEntity.getFrontFacing());
             if (tTank != null) {
                 if (this.OutputFluid) {
-                    FluidStack tDrained = drain(ForgeDirection.getOrientation(aBaseMetaTileEntity.getFrontFacing()), 256, false);
+                    FluidStack tDrained = aBaseMetaTileEntity.drain(ForgeDirection.getOrientation(aBaseMetaTileEntity.getFrontFacing()), Math.max(1, mFluid.amount), false);
                     if (tDrained != null) {
                         int tFilledAmount = tTank.fill(ForgeDirection.getOrientation(aBaseMetaTileEntity.getBackFacing()), tDrained, false);
                         if (tFilledAmount > 0) {
@@ -73,27 +71,6 @@ public class tankBasic extends GT_MetaTileEntity_BasicTank {
                         }
                     }
                 }
-            }
-        }
-        if (mFluid != null && mFluid.amount > 0) {
-            int tLimit = 350; //default limit
-            if (mTier == 1) {
-                tLimit = 2000;
-            } else if (mTier == 2) {
-                tLimit = 2500;
-            } else if (mTier == 3) {
-                tLimit = 3000;
-            } else if (mTier == 4) {
-                tLimit = 5000;
-            }
-
-            int tTemperature = mFluid.getFluid().getTemperature(mFluid);
-            if (tTemperature > tLimit) {
-                if (aBaseMetaTileEntity.getRandomNumber(100) == 0) {
-                    aBaseMetaTileEntity.setToFire();
-                    return;
-                }
-                aBaseMetaTileEntity.setOnFire();
             }
         }
     }
@@ -133,6 +110,19 @@ public class tankBasic extends GT_MetaTileEntity_BasicTank {
     @Override
     public boolean allowPutStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, byte aSide, ItemStack aStack) {
         return true;
+    }
+
+    @Override
+    public boolean isLiquidInput(byte aSide) {
+        if (this.OutputFluid) {
+            return aSide != getBaseMetaTileEntity().getFrontFacing();
+        }
+        return true;
+    }
+
+    @Override
+    public boolean isLiquidOutput(byte aSide) {
+        return aSide == getBaseMetaTileEntity().getFrontFacing() && OutputFluid;
     }
 
     @Override
