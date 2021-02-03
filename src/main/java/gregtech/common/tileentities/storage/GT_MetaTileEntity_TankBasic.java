@@ -104,12 +104,12 @@ public class GT_MetaTileEntity_TankBasic extends GT_MetaTileEntity_BasicTank {
 
     @Override
     public boolean allowPullStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, byte aSide, ItemStack aStack) {
-        return true;
+        return aIndex == 1;
     }
 
     @Override
     public boolean allowPutStack(IGregTechTileEntity aBaseMetaTileEntity, int aIndex, byte aSide, ItemStack aStack) {
-        return true;
+        return aIndex == 0;
     }
 
     @Override
