@@ -1406,16 +1406,17 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         GT_OreDictUnificator.registerOre(OrePrefixes.pipeSmall.get(Materials.Wood), new GT_MetaPipeEntity_Fluid(5101, "GT_Pipe_Wood_Small", "Small Wooden Fluid Pipe", 0.375F, Materials.Wood, 10, 350, aBoolConst_0).getStackForm(1L));
         GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.Wood), new GT_MetaPipeEntity_Fluid(5102, "GT_Pipe_Wood", "Wooden Fluid Pipe", 0.5F, Materials.Wood, 30, 350, aBoolConst_0).getStackForm(1L));
         GT_OreDictUnificator.registerOre(OrePrefixes.pipeLarge.get(Materials.Wood), new GT_MetaPipeEntity_Fluid(5103, "GT_Pipe_Wood_Large", "Large Wooden Fluid Pipe", 0.75F, Materials.Wood, 60, 350, aBoolConst_0).getStackForm(1L));
+        GT_OreDictUnificator.registerOre(OrePrefixes.pipeSmall.get(Materials.Ultimate), new GT_MetaPipeEntity_Fluid(5165, "GT_Pipe_HighPressure_Small", "Small High Pressure Fluid Pipe", 0.375F, Materials.Redstone, 4800, 1500, true).getStackForm(1L));
+        GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.Ultimate), new GT_MetaPipeEntity_Fluid(5166, "GT_Pipe_HighPressure", "High Pressure Fluid Pipe", 0.5F, Materials.Redstone, 7200, 1500, true).getStackForm(1L));
+        GT_OreDictUnificator.registerOre(OrePrefixes.pipeLarge.get(Materials.Ultimate), new GT_MetaPipeEntity_Fluid(5167, "GT_Pipe_HighPressure_Large", "Large High Pressure Fluid Pipe", 0.75F, Materials.Redstone, 9600, 1500, true).getStackForm(1L));
+        GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.Superconductor), new GT_MetaPipeEntity_Fluid(5168, "GT_Pipe_PlasmaContain", "Plasma Containment Pipe", 0.5F, Materials.Glowstone, 240, 100000, true).getStackForm(1L));
+
         generateFluidPipes(Materials.Copper, Materials.Copper.mName, 5110, 60, 1000, true);
         generateFluidPipes(Materials.Bronze, Materials.Bronze.mName, 5120, 120, 2000, true);
         generateFluidPipes(Materials.Steel, Materials.Steel.mName, 5130, 240, 2500, true);
         generateFluidPipes(Materials.StainlessSteel, Materials.StainlessSteel.mName, 5140, 360, 3000, true);
         generateFluidPipes(Materials.Titanium, Materials.Titanium.mName, 5150, 480, 5000, true);
         generateFluidPipes(Materials.TungstenSteel, Materials.TungstenSteel.mName, 5160, 600, 7500, true);
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeSmall.get(Materials.Ultimate), new GT_MetaPipeEntity_Fluid(5165, "GT_Pipe_HighPressure_Small", "Small High Pressure Fluid Pipe", 0.375F, Materials.Redstone, 4800, 1500, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.Ultimate), new GT_MetaPipeEntity_Fluid(5166, "GT_Pipe_HighPressure", "High Pressure Fluid Pipe", 0.5F, Materials.Redstone, 7200, 1500, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeLarge.get(Materials.Ultimate), new GT_MetaPipeEntity_Fluid(5167, "GT_Pipe_HighPressure_Large", "Large High Pressure Fluid Pipe", 0.75F, Materials.Redstone, 9600, 1500, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.Superconductor), new GT_MetaPipeEntity_Fluid(5168, "GT_Pipe_PlasmaContain", "Plasma Containment Pipe", 0.5F, Materials.Glowstone, 240, 100000, true).getStackForm(1L));
         generateFluidPipes(Materials.Plastic, Materials.Plastic.mName, "Plastic", 5170, 360, 350, true);
         generateFluidPipes(Materials.Polytetrafluoroethylene, Materials.Polytetrafluoroethylene.mName, "PTFE", 5175, 480, 600, true);
         generateFluidPipes(Materials.Invar, Materials.Invar.mName, "Invar", 5245, 240, 2395, true);
@@ -1424,8 +1425,8 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         generateFluidPipes(Materials.Iridium, Materials.Iridium.mName, "Iridium", 5260, 150, 3398, true);
         generateFluidPipes(Materials.Aluminium, Materials.Aluminium.mName, "Aluminium", 5265, 30, 1166, true);
         generateFluidPipes(Materials.TungstenCarbide, Materials.TungstenCarbide.mName, "Tungsten Carbide", 5275, 135, 3837, true);
-        //generateFluidPipes(Materials.TitaniumNiobiumCarbide, Materials.TitaniumNiobiumCarbide.mName, "Titanium Niobium Carbide", 5180, 520, 5250, true);
 
+        /*
         generateFluidMultiPipes(Materials.Copper, Materials.Copper.mName, "Copper", 5200, 60, 1000, true);
         generateFluidMultiPipes(Materials.Bronze, Materials.Bronze.mName, "Bronze", 5205, 120, 2000, true);
         generateFluidMultiPipes(Materials.Steel, Materials.Steel.mName, "Steel", 5210, 240, 2500, true);
@@ -1439,206 +1440,58 @@ public class GT_Loader_MetaTileEntities implements Runnable {
         generateFluidMultiPipes(Materials.Iridium, Materials.Iridium.mName, "Iridium", 5295, 150, 3398, true);
         generateFluidMultiPipes(Materials.Aluminium, Materials.Aluminium.mName, "Aluminium", 5300, 30, 1166, true);
         generateFluidMultiPipes(Materials.TungstenCarbide, Materials.TungstenCarbide.mName, "Tungsten Carbide", 5310, 135, 3837, true);
-        //generateFluidMultiPipes(Materials.TitaniumNiobiumCarbide, Materials.TitaniumNiobiumCarbide.mName, "Titanium Niobium Carbide", 5315, 520, 5250, true);
-
-
+        */
 
         GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(OrePrefixes.pipeSmall, Materials.TungstenSteel, 1L), ItemList.Electric_Pump_EV.get(1L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.pipeSmall, Materials.Ultimate, 1L), 300, 96);
         GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(OrePrefixes.pipeMedium, Materials.TungstenSteel, 1L), ItemList.Electric_Pump_IV.get(1L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.pipeMedium, Materials.Ultimate, 1L), 400, 148);
         GT_Values.RA.addAssemblerRecipe(GT_OreDictUnificator.get(OrePrefixes.pipeLarge, Materials.TungstenSteel, 1L), ItemList.Electric_Pump_IV.get(2L, new Object[0]), GT_OreDictUnificator.get(OrePrefixes.pipeLarge, Materials.Ultimate, 1L), 600, 256);
-
         GT_ModHandler.addCraftingRecipe(GT_OreDictUnificator.get(OrePrefixes.pipeMedium, Materials.Superconductor, 1L), bitsd, new Object[]{"WSW", aTextCableHull, "WSW", 'M', OrePrefixes.pipeSmall.get(Materials.Titanium), 'C', OrePrefixes.plate.get(Materials.NeodymiumMagnetic), 'W', OrePrefixes.plate.get(Materials.Plastic), 'S', OrePrefixes.wireGt02.get(Materials.Superconductor)});
 
-
-        /*GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.Brass), new GT_MetaPipeEntity_Item(5602, "GT_Pipe_Brass", "Brass Item Pipe", 0.5F, Materials.Brass, 1, 32768, aBoolConst_0).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeLarge.get(Materials.Brass), new GT_MetaPipeEntity_Item(5603, "GT_Pipe_Brass_Large", "Large Brass Item Pipe", 0.75F, Materials.Brass, 2, 16384, aBoolConst_0).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeHuge.get(Materials.Brass), new GT_MetaPipeEntity_Item(5604, "GT_Pipe_Brass_Huge", "Huge Brass Item Pipe", 0.875F, Materials.Brass, 4, 8192, aBoolConst_0).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeRestrictiveMedium.get(Materials.Brass), new GT_MetaPipeEntity_Item(5607, "GT_Pipe_Restrictive_Brass", "Restrictive Brass Item Pipe", 0.5F, Materials.Brass, 1, 3276800, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeRestrictiveLarge.get(Materials.Brass), new GT_MetaPipeEntity_Item(5608, "GT_Pipe_Restrictive_Brass_Large", "Large Restrictive Brass Item Pipe", 0.75F, Materials.Brass, 2, 1638400, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeRestrictiveHuge.get(Materials.Brass), new GT_MetaPipeEntity_Item(5609, "GT_Pipe_Restrictive_Brass_Huge", "Huge Restrictive Brass Item Pipe", 0.875F, Materials.Brass, 4, 819200, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.Electrum), new GT_MetaPipeEntity_Item(5612, "GT_Pipe_Electrum", "Electrum Item Pipe", 0.5F, Materials.Electrum, 2, 16384, aBoolConst_0).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeLarge.get(Materials.Electrum), new GT_MetaPipeEntity_Item(5613, "GT_Pipe_Electrum_Large", "Large Electrum Item Pipe", 0.75F, Materials.Electrum, 4, 8192, aBoolConst_0).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeHuge.get(Materials.Electrum), new GT_MetaPipeEntity_Item(5614, "GT_Pipe_Electrum_Huge", "Huge Electrum Item Pipe", 0.875F, Materials.Electrum, 8, 4096, aBoolConst_0).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeRestrictiveMedium.get(Materials.Electrum), new GT_MetaPipeEntity_Item(5617, "GT_Pipe_Restrictive_Electrum", "Restrictive Electrum Item Pipe", 0.5F, Materials.Electrum, 2, 1638400, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeRestrictiveLarge.get(Materials.Electrum), new GT_MetaPipeEntity_Item(5618, "GT_Pipe_Restrictive_Electrum_Large", "Large Restrictive Electrum Item Pipe", 0.75F, Materials.Electrum, 4, 819200, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeRestrictiveHuge.get(Materials.Electrum), new GT_MetaPipeEntity_Item(5619, "GT_Pipe_Restrictive_Electrum_Huge", "Huge Restrictive Electrum Item Pipe", 0.875F, Materials.Electrum, 8, 409600, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.Platinum), new GT_MetaPipeEntity_Item(5622, "GT_Pipe_Platinum", "Platinum Item Pipe", 0.5F, Materials.Platinum, 4, 8192, aBoolConst_0).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeLarge.get(Materials.Platinum), new GT_MetaPipeEntity_Item(5623, "GT_Pipe_Platinum_Large", "Large Platinum Item Pipe", 0.75F, Materials.Platinum, 8, 4096, aBoolConst_0).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeHuge.get(Materials.Platinum), new GT_MetaPipeEntity_Item(5624, "GT_Pipe_Platinum_Huge", "Huge Platinum Item Pipe", 0.875F, Materials.Platinum, 16, 2048, aBoolConst_0).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeRestrictiveMedium.get(Materials.Platinum), new GT_MetaPipeEntity_Item(5627, "GT_Pipe_Restrictive_Platinum", "Restrictive Platinum Item Pipe", 0.5F, Materials.Platinum, 4, 819200, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeRestrictiveLarge.get(Materials.Platinum), new GT_MetaPipeEntity_Item(5628, "GT_Pipe_Restrictive_Platinum_Large", "Large Restrictive Platinum Item Pipe", 0.75F, Materials.Platinum, 8, 409600, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeRestrictiveHuge.get(Materials.Platinum), new GT_MetaPipeEntity_Item(5629, "GT_Pipe_Restrictive_Platinum_Huge", "Huge Restrictive Platinum Item Pipe", 0.875F, Materials.Platinum, 16, 204800, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeMedium.get(Materials.Osmium), new GT_MetaPipeEntity_Item(5632, "GT_Pipe_Osmium", "Osmium Item Pipe", 0.5F, Materials.Osmium, 8, 4096, aBoolConst_0).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeLarge.get(Materials.Osmium), new GT_MetaPipeEntity_Item(5633, "GT_Pipe_Osmium_Large", "Large Osmium Item Pipe", 0.75F, Materials.Osmium, 16, 2048, aBoolConst_0).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeHuge.get(Materials.Osmium), new GT_MetaPipeEntity_Item(5634, "GT_Pipe_Osmium_Huge", "Huge Osmium Item Pipe", 0.875F, Materials.Osmium, 32, 1024, aBoolConst_0).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeRestrictiveMedium.get(Materials.Osmium), new GT_MetaPipeEntity_Item(5637, "GT_Pipe_Restrictive_Osmium", "Restrictive Osmium Item Pipe", 0.5F, Materials.Osmium, 8, 409600, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeRestrictiveLarge.get(Materials.Osmium), new GT_MetaPipeEntity_Item(5638, "GT_Pipe_Restrictive_Osmium_Large", "Large Restrictive Osmium Item Pipe", 0.75F, Materials.Osmium, 16, 204800, true).getStackForm(1L));
-        GT_OreDictUnificator.registerOre(OrePrefixes.pipeRestrictiveHuge.get(Materials.Osmium), new GT_MetaPipeEntity_Item(5639, "GT_Pipe_Restrictive_Osmium_Huge", "Huge Restrictive Osmium Item Pipe", 0.875F, Materials.Osmium, 32, 102400, true).getStackForm(1L));*/
+        generateItemPipes(Materials.WroughtIron, Materials.WroughtIron.mName, 5592, 1);
         generateItemPipes(Materials.Brass, Materials.Brass.mName, 5602, 1);
-        generateItemPipes(Materials.Electrum, Materials.Electrum.mName, 5612, 2);
-        generateItemPipes(Materials.Platinum, Materials.Platinum.mName, 5622, 4);
-        generateItemPipes(Materials.Osmium, Materials.Osmium.mName, 5632, 8);
-        generateItemPipes(Materials.PolyvinylChloride, Materials.PolyvinylChloride.mName, "PVC", 5640, 4);
-        //generateItemPipes(Materials.WroughtIron, Materials.WroughtIron.mName, 5646, 1);
+        generateItemPipes(Materials.Cupronickel, Materials.Cupronickel.mName, 5612, 1);
+        generateItemPipes(Materials.CobaltBrass, Materials.CobaltBrass.mName, 5622, 2);
+        generateItemPipes(Materials.Electrum, Materials.Electrum.mName, 5632, 2);
+        generateItemPipes(Materials.SterlingSilver, Materials.SterlingSilver.mName, 5642, 2);
+        generateItemPipes(Materials.RoseGold, Materials.RoseGold.mName, 5652, 2);
+        generateItemPipes(Materials.BlackBronze, Materials.BlackBronze.mName, 5662, 2);
+        generateItemPipes(Materials.Magnalium, Materials.Magnalium.mName, 5672, 2);
+        generateItemPipes(Materials.Platinum, Materials.Platinum.mName, 5682, 4);
+        generateItemPipes(Materials.Osmium, Materials.Osmium.mName, 5692, 8);
+        generateItemPipes(Materials.Enderium, Materials.Enderium.mName, 5702, 16);
+        generateItemPipes(Materials.Ultimet, Materials.Ultimet.mName, 5712, 16);
+        generateItemPipes(Materials.Osmiridium, Materials.Osmiridium.mName, 5722, 32);
+        generateItemPipes(Materials.PolyvinylChloride, Materials.PolyvinylChloride.mName, "PVC", 5732, 4);
+
         //generateItemPipes(Materials.Nickel, Materials.Nickel.mName, 5652, 1);
         //generateItemPipes(Materials.Cobalt, Materials.Cobalt.mName, 5658, 2);
         //generateItemPipes(Materials.Aluminium, Materials.Aluminium.mName, 5664, 2);
-        generateItemPipes(Materials.Cupronickel, Materials.Cupronickel.mName, 5646, 1);
-        generateItemPipes(Materials.CobaltBrass, Materials.CobaltBrass.mName, 5658, 1);
-        generateItemPipes(Materials.RoseGold, Materials.RoseGold.mName, 5682, 2);
-        generateItemPipes(Materials.SterlingSilver, Materials.SterlingSilver.mName, 5670, 2);
-        generateItemPipes(Materials.Ultimet, Materials.Ultimet.mName, 5676, 16);
-        generateItemPipes(Materials.BlackBronze, Materials.BlackBronze.mName, 5688, 2);
-        //generateItemPipes(Materials.AluminiumBrass, Materials.AluminiumBrass.mName, 5694, 2);
-        generateItemPipes(Materials.Enderium, Materials.Enderium.mName, 5700, 16);
-        generateItemPipes(Materials.Osmiridium, Materials.Osmiridium.mName, 5706, 16);
 
+        //9231 - 9239
+        ItemList.Automation_ChestBuffer_ULV.set(new GT_MetaTileEntity_ChestBuffer(9230, "automation.chestbuffer.tier.00", "Automation Chest Buffer", 8).getStackForm(1L));
+        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ChestBuffer_ULV.get(1L, new Object[0]), bitsd, new Object[]{"CMV", " X ", 'M', ItemList.Hull_ULV, 'V', ItemList.Conveyor_Module_ULV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Basic)});
 
-        ItemList.Automation_ChestBuffer_ULV.set(new GT_MetaTileEntity_ChestBuffer(9230, "automation.chestbuffer.tier.00", "Ultra Low Voltage Chest Buffer", 0).getStackForm(1L));
-        ItemList.Automation_ChestBuffer_LV.set(new GT_MetaTileEntity_ChestBuffer(9231, "automation.chestbuffer.tier.01", "Low Voltage Chest Buffer", 1).getStackForm(1L));
-        ItemList.Automation_ChestBuffer_MV.set(new GT_MetaTileEntity_ChestBuffer(9232, "automation.chestbuffer.tier.02", "Medium Voltage Chest Buffer", 2).getStackForm(1L));
-        ItemList.Automation_ChestBuffer_HV.set(new GT_MetaTileEntity_ChestBuffer(9233, "automation.chestbuffer.tier.03", "High Voltage Chest Buffer", 3).getStackForm(1L));
-        ItemList.Automation_ChestBuffer_EV.set(new GT_MetaTileEntity_ChestBuffer(9234, "automation.chestbuffer.tier.04", "Extreme Voltage Chest Buffer", 4).getStackForm(1L));
-        ItemList.Automation_ChestBuffer_IV.set(new GT_MetaTileEntity_ChestBuffer(9235, "automation.chestbuffer.tier.05", "Insane Voltage Chest Buffer", 5).getStackForm(1L));
-        ItemList.Automation_ChestBuffer_LuV.set(new GT_MetaTileEntity_ChestBuffer(9236, "automation.chestbuffer.tier.06", "Ludicrous Voltage Chest Buffer", 6).getStackForm(1L));
-        ItemList.Automation_ChestBuffer_ZPM.set(new GT_MetaTileEntity_ChestBuffer(9237, "automation.chestbuffer.tier.07", "ZPM Voltage Chest Buffer", 7).getStackForm(1L));
-        ItemList.Automation_ChestBuffer_UV.set(new GT_MetaTileEntity_ChestBuffer(9238, "automation.chestbuffer.tier.08", "Ultimate Voltage Chest Buffer", 8).getStackForm(1L));
-        ItemList.Automation_ChestBuffer_MAX.set(new GT_MetaTileEntity_ChestBuffer(9239, "automation.chestbuffer.tier.09", "MAX Voltage Chest Buffer", 9).getStackForm(1L));
+        //9241 - 9249
+        ItemList.Automation_Filter_ULV.set(new GT_MetaTileEntity_Filter(9240, "automation.filter.tier.00", "Automation Item Filter", 8).getStackForm(1L));
+        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Filter_ULV.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_ULV, 'V', ItemList.Conveyor_Module_ULV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Basic)});
 
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ChestBuffer_ULV.get(1L, new Object[0]), bitsd, new Object[]{"CMV", " X ", 'M', ItemList.Hull_ULV, 'V', ItemList.Conveyor_Module_LV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ChestBuffer_LV.get(1L, new Object[0]), bitsd, new Object[]{"CMV", " X ", 'M', ItemList.Hull_LV, 'V', ItemList.Conveyor_Module_LV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ChestBuffer_MV.get(1L, new Object[0]), bitsd, new Object[]{"CMV", " X ", 'M', ItemList.Hull_MV, 'V', ItemList.Conveyor_Module_MV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ChestBuffer_HV.get(1L, new Object[0]), bitsd, new Object[]{"CMV", " X ", 'M', ItemList.Hull_HV, 'V', ItemList.Conveyor_Module_HV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ChestBuffer_EV.get(1L, new Object[0]), bitsd, new Object[]{"CMV", " X ", 'M', ItemList.Hull_EV, 'V', ItemList.Conveyor_Module_EV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ChestBuffer_IV.get(1L, new Object[0]), bitsd, new Object[]{"CMV", " X ", 'M', ItemList.Hull_IV, 'V', ItemList.Conveyor_Module_IV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ChestBuffer_LuV.get(1L, new Object[0]), bitsd, new Object[]{"CMV", " X ", 'M', ItemList.Hull_LuV, 'V', ItemList.Conveyor_Module_LuV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ChestBuffer_ZPM.get(1L, new Object[0]), bitsd, new Object[]{"CMV", " X ", 'M', ItemList.Hull_ZPM, 'V', ItemList.Conveyor_Module_ZPM, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ChestBuffer_UV.get(1L, new Object[0]), bitsd, new Object[]{"CMV", " X ", 'M', ItemList.Hull_UV, 'V', ItemList.Conveyor_Module_UV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ChestBuffer_MAX.get(1L, new Object[0]), bitsd, new Object[]{"CMV", " X ", 'M', ItemList.Hull_MAX, 'V', ItemList.Conveyor_Module_UV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Basic)});
+        //9551 - 9559
+        ItemList.Automation_TypeFilter_ULV.set(new GT_MetaTileEntity_TypeFilter(9250, "automation.typefilter.tier.00", "Automation Type Filter", 8).getStackForm(1L));
+        GT_ModHandler.addCraftingRecipe(ItemList.Automation_TypeFilter_ULV.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_ULV, 'V', ItemList.Conveyor_Module_ULV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
 
-        //ItemList.Automation_Filter_ULV.set(new GT_MetaTileEntity_FilterTEST(9240, "automation.filter.tier.00", "Ultra Low Voltage Item Filter", 0).getStackForm(1L));
-
-        ItemList.Automation_Filter_ULV.set(new GT_MetaTileEntity_Filter(9240, "automation.filter.tier.00", "Ultra Low Voltage Item Filter", 0).getStackForm(1L));
-        ItemList.Automation_Filter_LV.set(new GT_MetaTileEntity_Filter(9241, "automation.filter.tier.01", "Low Voltage Item Filter", 1).getStackForm(1L));
-        ItemList.Automation_Filter_MV.set(new GT_MetaTileEntity_Filter(9242, "automation.filter.tier.02", "Medium Voltage Item Filter", 2).getStackForm(1L));
-        ItemList.Automation_Filter_HV.set(new GT_MetaTileEntity_Filter(9243, "automation.filter.tier.03", "High Voltage Item Filter", 3).getStackForm(1L));
-        ItemList.Automation_Filter_EV.set(new GT_MetaTileEntity_Filter(9244, "automation.filter.tier.04", "Extreme Voltage Item Filter", 4).getStackForm(1L));
-        ItemList.Automation_Filter_IV.set(new GT_MetaTileEntity_Filter(9245, "automation.filter.tier.05", "Insane Voltage Item Filter", 5).getStackForm(1L));
-        ItemList.Automation_Filter_LuV.set(new GT_MetaTileEntity_Filter(9246, "automation.filter.tier.06", "Ludicrous Voltage Item Filter", 6).getStackForm(1L));
-        ItemList.Automation_Filter_ZPM.set(new GT_MetaTileEntity_Filter(9247, "automation.filter.tier.07", "ZPM Voltage Item Filter", 7).getStackForm(1L));
-        ItemList.Automation_Filter_UV.set(new GT_MetaTileEntity_Filter(9248, "automation.filter.tier.08", "Ultimate Voltage Item Filter", 8).getStackForm(1L));
-        ItemList.Automation_Filter_MAX.set(new GT_MetaTileEntity_Filter(9249, "automation.filter.tier.09", "MAX Voltage Item Filter", 9).getStackForm(1L));
-
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Filter_ULV.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_ULV, 'V', ItemList.Conveyor_Module_LV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Filter_LV.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_LV, 'V', ItemList.Conveyor_Module_LV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Filter_MV.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_MV, 'V', ItemList.Conveyor_Module_MV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Filter_HV.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_HV, 'V', ItemList.Conveyor_Module_HV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Filter_EV.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_EV, 'V', ItemList.Conveyor_Module_EV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Filter_IV.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_IV, 'V', ItemList.Conveyor_Module_IV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Filter_LuV.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_LuV, 'V', ItemList.Conveyor_Module_LuV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Filter_ZPM.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_ZPM, 'V', ItemList.Conveyor_Module_ZPM, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Filter_UV.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_UV, 'V', ItemList.Conveyor_Module_UV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Filter_MAX.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_MAX, 'V', ItemList.Conveyor_Module_UV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Basic)});
-
-        ItemList.Automation_TypeFilter_ULV.set(new GT_MetaTileEntity_TypeFilter(9250, "automation.typefilter.tier.00", "Ultra Low Voltage Type Filter", 0).getStackForm(1L));
-        ItemList.Automation_TypeFilter_LV.set(new GT_MetaTileEntity_TypeFilter(9251, "automation.typefilter.tier.01", "Low Voltage Type Filter", 1).getStackForm(1L));
-        ItemList.Automation_TypeFilter_MV.set(new GT_MetaTileEntity_TypeFilter(9252, "automation.typefilter.tier.02", "Medium Voltage Type Filter", 2).getStackForm(1L));
-        ItemList.Automation_TypeFilter_HV.set(new GT_MetaTileEntity_TypeFilter(9253, "automation.typefilter.tier.03", "High Voltage Type Filter", 3).getStackForm(1L));
-        ItemList.Automation_TypeFilter_EV.set(new GT_MetaTileEntity_TypeFilter(9254, "automation.typefilter.tier.04", "Extreme Voltage Type Filter", 4).getStackForm(1L));
-        ItemList.Automation_TypeFilter_IV.set(new GT_MetaTileEntity_TypeFilter(9255, "automation.typefilter.tier.05", "Insane Voltage Type Filter", 5).getStackForm(1L));
-        ItemList.Automation_TypeFilter_LuV.set(new GT_MetaTileEntity_TypeFilter(9256, "automation.typefilter.tier.06", "Ludicrous Voltage Type Filter", 6).getStackForm(1L));
-        ItemList.Automation_TypeFilter_ZPM.set(new GT_MetaTileEntity_TypeFilter(9257, "automation.typefilter.tier.07", "ZPM Voltage Type Filter", 7).getStackForm(1L));
-        ItemList.Automation_TypeFilter_UV.set(new GT_MetaTileEntity_TypeFilter(9258, "automation.typefilter.tier.08", "Ultimate Voltage Type Filter", 8).getStackForm(1L));
-        ItemList.Automation_TypeFilter_MAX.set(new GT_MetaTileEntity_TypeFilter(9259, "automation.typefilter.tier.09", "MAX Voltage Type Filter", 9).getStackForm(1L));
-
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_TypeFilter_ULV.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_ULV, 'V', ItemList.Conveyor_Module_LV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_TypeFilter_LV.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_LV, 'V', ItemList.Conveyor_Module_LV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_TypeFilter_MV.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_MV, 'V', ItemList.Conveyor_Module_MV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_TypeFilter_HV.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_HV, 'V', ItemList.Conveyor_Module_HV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_TypeFilter_EV.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_EV, 'V', ItemList.Conveyor_Module_EV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_TypeFilter_IV.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_IV, 'V', ItemList.Conveyor_Module_IV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_TypeFilter_LuV.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_LuV, 'V', ItemList.Conveyor_Module_LuV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_TypeFilter_ZPM.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_ZPM, 'V', ItemList.Conveyor_Module_ZPM, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_TypeFilter_UV.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_UV, 'V', ItemList.Conveyor_Module_UV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_TypeFilter_MAX.get(1L, new Object[0]), bitsd, new Object[]{" F ", "CMV", " X ", 'M', ItemList.Hull_MAX, 'V', ItemList.Conveyor_Module_UV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-
-        ItemList.Automation_Regulator_ULV.set(new GT_MetaTileEntity_Regulator(9270, "automation.regulator.tier.00", "Ultra Low Voltage Regulator", 0).getStackForm(1L));
-        ItemList.Automation_Regulator_LV.set(new GT_MetaTileEntity_Regulator(9271, "automation.regulator.tier.01", "Low Voltage Regulator", 1).getStackForm(1L));
-        ItemList.Automation_Regulator_MV.set(new GT_MetaTileEntity_Regulator(9272, "automation.regulator.tier.02", "Medium Voltage Regulator", 2).getStackForm(1L));
-        ItemList.Automation_Regulator_HV.set(new GT_MetaTileEntity_Regulator(9273, "automation.regulator.tier.03", "High Voltage Regulator", 3).getStackForm(1L));
-        ItemList.Automation_Regulator_EV.set(new GT_MetaTileEntity_Regulator(9274, "automation.regulator.tier.04", "Extreme Voltage Regulator", 4).getStackForm(1L));
-        ItemList.Automation_Regulator_IV.set(new GT_MetaTileEntity_Regulator(9275, "automation.regulator.tier.05", "Insane Voltage Regulator", 5).getStackForm(1L));
-        ItemList.Automation_Regulator_LuV.set(new GT_MetaTileEntity_Regulator(9276, "automation.regulator.tier.06", "Ludicrous Voltage Regulator", 6).getStackForm(1L));
-        ItemList.Automation_Regulator_ZPM.set(new GT_MetaTileEntity_Regulator(9277, "automation.regulator.tier.07", "ZPM Voltage Regulator", 7).getStackForm(1L));
-        ItemList.Automation_Regulator_UV.set(new GT_MetaTileEntity_Regulator(9278, "automation.regulator.tier.08", "Ultimate Voltage Regulator", 8).getStackForm(1L));
-        ItemList.Automation_Regulator_MAX.set(new GT_MetaTileEntity_Regulator(9279, "automation.regulator.tier.09", "MAX Voltage Regulator", 9).getStackForm(1L));
-
+        //9271 - 9279
+        ItemList.Automation_Regulator_ULV.set(new GT_MetaTileEntity_Regulator(9270, "automation.regulator.tier.00", "Automation Regulator", 8).getStackForm(1L));
         GT_ModHandler.addCraftingRecipe(ItemList.Automation_Regulator_ULV.get(1L, new Object[0]), bitsd, new Object[]{"XFX", "VMV", "XCX", 'M', ItemList.Hull_ULV, 'V', ItemList.Robot_Arm_LV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Regulator_LV.get(1L, new Object[0]), bitsd, new Object[]{"XFX", "VMV", "XCX", 'M', ItemList.Hull_LV, 'V', ItemList.Robot_Arm_LV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Regulator_MV.get(1L, new Object[0]), bitsd, new Object[]{"XFX", "VMV", "XCX", 'M', ItemList.Hull_MV, 'V', ItemList.Robot_Arm_MV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Regulator_HV.get(1L, new Object[0]), bitsd, new Object[]{"XFX", "VMV", "XCX", 'M', ItemList.Hull_HV, 'V', ItemList.Robot_Arm_HV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Regulator_EV.get(1L, new Object[0]), bitsd, new Object[]{"XFX", "VMV", "XCX", 'M', ItemList.Hull_EV, 'V', ItemList.Robot_Arm_EV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Regulator_IV.get(1L, new Object[0]), bitsd, new Object[]{"XFX", "VMV", "XCX", 'M', ItemList.Hull_IV, 'V', ItemList.Robot_Arm_IV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Regulator_LuV.get(1L, new Object[0]), bitsd, new Object[]{"XFX", "VMV", "XCX", 'M', ItemList.Hull_LuV, 'V', ItemList.Robot_Arm_LuV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Regulator_ZPM.get(1L, new Object[0]), bitsd, new Object[]{"XFX", "VMV", "XCX", 'M', ItemList.Hull_ZPM, 'V', ItemList.Robot_Arm_ZPM, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Regulator_UV.get(1L, new Object[0]), bitsd, new Object[]{"XFX", "VMV", "XCX", 'M', ItemList.Hull_UV, 'V', ItemList.Robot_Arm_UV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_Regulator_MAX.get(1L, new Object[0]), bitsd, new Object[]{"XFX", "VMV", "XCX", 'M', ItemList.Hull_MAX, 'V', ItemList.Robot_Arm_UV, 'C', OreDictNames.craftingChest, 'F', OreDictNames.craftingFilter, 'X', OrePrefixes.circuit.get(Materials.Advanced)});
 
-        ItemList.Automation_SuperBuffer_ULV.set(new GT_MetaTileEntity_SuperBuffer(9300, "automation.superbuffer.tier.00", "Ultra Low Voltage Super Buffer", 0).getStackForm(1L));
-        ItemList.Automation_SuperBuffer_LV.set(new GT_MetaTileEntity_SuperBuffer(9301, "automation.superbuffer.tier.01", "Low Voltage Super Buffer", 1).getStackForm(1L));
-        ItemList.Automation_SuperBuffer_MV.set(new GT_MetaTileEntity_SuperBuffer(9302, "automation.superbuffer.tier.02", "Medium Voltage Super Buffer", 2).getStackForm(1L));
-        ItemList.Automation_SuperBuffer_HV.set(new GT_MetaTileEntity_SuperBuffer(9303, "automation.superbuffer.tier.03", "High Voltage Super Buffer", 3).getStackForm(1L));
-        ItemList.Automation_SuperBuffer_EV.set(new GT_MetaTileEntity_SuperBuffer(9304, "automation.superbuffer.tier.04", "Extreme Voltage Super Buffer", 4).getStackForm(1L));
-        ItemList.Automation_SuperBuffer_IV.set(new GT_MetaTileEntity_SuperBuffer(9305, "automation.superbuffer.tier.05", "Insane Voltage Super Buffer", 5).getStackForm(1L));
-        ItemList.Automation_SuperBuffer_LuV.set(new GT_MetaTileEntity_SuperBuffer(9306, "automation.superbuffer.tier.06", "Ludicrous Voltage Super Buffer", 6).getStackForm(1L));
-        ItemList.Automation_SuperBuffer_ZPM.set(new GT_MetaTileEntity_SuperBuffer(9307, "automation.superbuffer.tier.07", "ZPM Voltage Super Buffer", 7).getStackForm(1L));
-        ItemList.Automation_SuperBuffer_UV.set(new GT_MetaTileEntity_SuperBuffer(9308, "automation.superbuffer.tier.08", "Ultimate Voltage Super Buffer", 8).getStackForm(1L));
-        ItemList.Automation_SuperBuffer_MAX.set(new GT_MetaTileEntity_SuperBuffer(9309, "automation.superbuffer.tier.09", "MAX Voltage Super Buffer", 9).getStackForm(1L));
+        //9301 - 9309
+        ItemList.Automation_SuperBuffer_ULV.set(new GT_MetaTileEntity_SuperBuffer(9300, "automation.superbuffer.tier.00", "Automation Super Buffer", 8).getStackForm(1L));
+        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_ULV.get(1L, new Object[0]), bitsd, new Object[]{"DMV", 'M', ItemList.Hull_ULV, 'V', ItemList.Conveyor_Module_ULV, 'D', ItemList.Tool_DataOrb});
+        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_ULV.get(1L, new Object[0]), bitsd, new Object[]{"DMV", "DDD", 'M', ItemList.Hull_ULV, 'V', ItemList.Conveyor_Module_ULV, 'D', ItemList.Tool_DataStick});
 
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_ULV.get(1L, new Object[0]), bitsd, new Object[]{"DMV", 'M', ItemList.Hull_ULV, 'V', ItemList.Conveyor_Module_LV, 'D', ItemList.Tool_DataOrb});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_LV.get(1L, new Object[0]), bitsd, new Object[]{"DMV", 'M', ItemList.Hull_LV, 'V', ItemList.Conveyor_Module_LV, 'D', ItemList.Tool_DataOrb});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_MV.get(1L, new Object[0]), bitsd, new Object[]{"DMV", 'M', ItemList.Hull_MV, 'V', ItemList.Conveyor_Module_MV, 'D', ItemList.Tool_DataOrb});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_HV.get(1L, new Object[0]), bitsd, new Object[]{"DMV", 'M', ItemList.Hull_HV, 'V', ItemList.Conveyor_Module_HV, 'D', ItemList.Tool_DataOrb});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_EV.get(1L, new Object[0]), bitsd, new Object[]{"DMV", 'M', ItemList.Hull_EV, 'V', ItemList.Conveyor_Module_EV, 'D', ItemList.Tool_DataOrb});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_IV.get(1L, new Object[0]), bitsd, new Object[]{"DMV", 'M', ItemList.Hull_IV, 'V', ItemList.Conveyor_Module_IV, 'D', ItemList.Tool_DataOrb});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_LuV.get(1L, new Object[0]), bitsd, new Object[]{"DMV", 'M', ItemList.Hull_LuV, 'V', ItemList.Conveyor_Module_LuV, 'D', ItemList.Tool_DataOrb});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_ZPM.get(1L, new Object[0]), bitsd, new Object[]{"DMV", 'M', ItemList.Hull_ZPM, 'V', ItemList.Conveyor_Module_ZPM, 'D', ItemList.Tool_DataOrb});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_UV.get(1L, new Object[0]), bitsd, new Object[]{"DMV", 'M', ItemList.Hull_UV, 'V', ItemList.Conveyor_Module_UV, 'D', ItemList.Tool_DataOrb});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_MAX.get(1L, new Object[0]), bitsd, new Object[]{"DMV", 'M', ItemList.Hull_MAX, 'V', ItemList.Conveyor_Module_UV, 'D', ItemList.Tool_DataOrb});
+        //9321 - 9329
+        ItemList.Automation_ItemDistributor_ULV.set(new GT_MetaTileEntity_ItemDistributor(9320, "automation.itemdistributor.tier.00", "Automation Item Distributor", 8).getStackForm(1L));
+        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ItemDistributor_ULV.get(1L, new Object[0]), bitsd, new Object[]{"XCX", "VMV", " V ", 'M', ItemList.Hull_ULV, 'V', ItemList.Conveyor_Module_ULV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Good)});
 
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_ULV.get(1L, new Object[0]), bitsd, new Object[]{"DMV", "DDD", 'M', ItemList.Hull_ULV, 'V', ItemList.Conveyor_Module_LV, 'D', ItemList.Tool_DataStick});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_LV.get(1L, new Object[0]), bitsd, new Object[]{"DMV", "DDD", 'M', ItemList.Hull_LV, 'V', ItemList.Conveyor_Module_LV, 'D', ItemList.Tool_DataStick});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_MV.get(1L, new Object[0]), bitsd, new Object[]{"DMV", "DDD", 'M', ItemList.Hull_MV, 'V', ItemList.Conveyor_Module_MV, 'D', ItemList.Tool_DataStick});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_HV.get(1L, new Object[0]), bitsd, new Object[]{"DMV", "DDD", 'M', ItemList.Hull_HV, 'V', ItemList.Conveyor_Module_HV, 'D', ItemList.Tool_DataStick});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_EV.get(1L, new Object[0]), bitsd, new Object[]{"DMV", "DDD", 'M', ItemList.Hull_EV, 'V', ItemList.Conveyor_Module_EV, 'D', ItemList.Tool_DataStick});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_IV.get(1L, new Object[0]), bitsd, new Object[]{"DMV", "DDD", 'M', ItemList.Hull_IV, 'V', ItemList.Conveyor_Module_IV, 'D', ItemList.Tool_DataStick});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_LuV.get(1L, new Object[0]), bitsd, new Object[]{"DMV", "DDD", 'M', ItemList.Hull_LuV, 'V', ItemList.Conveyor_Module_LuV, 'D', ItemList.Tool_DataStick});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_ZPM.get(1L, new Object[0]), bitsd, new Object[]{"DMV", "DDD", 'M', ItemList.Hull_ZPM, 'V', ItemList.Conveyor_Module_ZPM, 'D', ItemList.Tool_DataStick});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_UV.get(1L, new Object[0]), bitsd, new Object[]{"DMV", "DDD", 'M', ItemList.Hull_UV, 'V', ItemList.Conveyor_Module_UV, 'D', ItemList.Tool_DataStick});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_SuperBuffer_MAX.get(1L, new Object[0]), bitsd, new Object[]{"DMV", "DDD", 'M', ItemList.Hull_MAX, 'V', ItemList.Conveyor_Module_UV, 'D', ItemList.Tool_DataStick});
-
-        ItemList.Automation_ItemDistributor_ULV.set(new GT_MetaTileEntity_ItemDistributor(9320, "automation.itemdistributor.tier.00", "Ultra Low Voltage Item Distributor", 0).getStackForm(1L));
-        ItemList.Automation_ItemDistributor_LV.set(new GT_MetaTileEntity_ItemDistributor(9321,  "automation.itemdistributor.tier.01", "Low Voltage Item Distributor", 1).getStackForm(1L));
-        ItemList.Automation_ItemDistributor_MV.set(new GT_MetaTileEntity_ItemDistributor(9322,  "automation.itemdistributor.tier.02", "Medium Voltage Item Distributor", 2).getStackForm(1L));
-        ItemList.Automation_ItemDistributor_HV.set(new GT_MetaTileEntity_ItemDistributor(9323,  "automation.itemdistributor.tier.03", "High Voltage Item Distributor", 3).getStackForm(1L));
-        ItemList.Automation_ItemDistributor_EV.set(new GT_MetaTileEntity_ItemDistributor(9324,  "automation.itemdistributor.tier.04", "Extreme Voltage Item Distributor", 4).getStackForm(1L));
-        ItemList.Automation_ItemDistributor_IV.set(new GT_MetaTileEntity_ItemDistributor(9325,  "automation.itemdistributor.tier.05", "Insane Voltage Item Distributor", 5).getStackForm(1L));
-        ItemList.Automation_ItemDistributor_LuV.set(new GT_MetaTileEntity_ItemDistributor(9326, "automation.itemdistributor.tier.06", "Ludicrous Voltage Item Distributor", 6).getStackForm(1L));
-        ItemList.Automation_ItemDistributor_ZPM.set(new GT_MetaTileEntity_ItemDistributor(9327, "automation.itemdistributor.tier.07", "ZPM Voltage Item Distributor", 7).getStackForm(1L));
-        ItemList.Automation_ItemDistributor_UV.set(new GT_MetaTileEntity_ItemDistributor(9328,  "automation.itemdistributor.tier.08", "Ultimate Voltage Item Distributor", 8).getStackForm(1L));
-        ItemList.Automation_ItemDistributor_MAX.set(new GT_MetaTileEntity_ItemDistributor(9329, "automation.itemdistributor.tier.09", "MAX Voltage Item Distributor", 9).getStackForm(1L));
-
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ItemDistributor_ULV.get(1L, new Object[0]), bitsd, new Object[]{"XCX", "VMV", " V ", 'M', ItemList.Hull_ULV, 'V', ItemList.Conveyor_Module_LV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Good)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ItemDistributor_LV.get(1L,  new Object[0]), bitsd, new Object[]{"XCX", "VMV", " V ", 'M', ItemList.Hull_LV,  'V', ItemList.Conveyor_Module_LV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Good)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ItemDistributor_MV.get(1L,  new Object[0]), bitsd, new Object[]{"XCX", "VMV", " V ", 'M', ItemList.Hull_MV,  'V', ItemList.Conveyor_Module_MV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Good)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ItemDistributor_HV.get(1L,  new Object[0]), bitsd, new Object[]{"XCX", "VMV", " V ", 'M', ItemList.Hull_HV,  'V', ItemList.Conveyor_Module_HV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Good)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ItemDistributor_EV.get(1L,  new Object[0]), bitsd, new Object[]{"XCX", "VMV", " V ", 'M', ItemList.Hull_EV,  'V', ItemList.Conveyor_Module_EV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Good)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ItemDistributor_IV.get(1L,  new Object[0]), bitsd, new Object[]{"XCX", "VMV", " V ", 'M', ItemList.Hull_IV,  'V', ItemList.Conveyor_Module_IV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Good)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ItemDistributor_LuV.get(1L, new Object[0]), bitsd, new Object[]{"XCX", "VMV", " V ", 'M', ItemList.Hull_LuV, 'V', ItemList.Conveyor_Module_LuV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Good)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ItemDistributor_ZPM.get(1L, new Object[0]), bitsd, new Object[]{"XCX", "VMV", " V ", 'M', ItemList.Hull_ZPM, 'V', ItemList.Conveyor_Module_ZPM, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Good)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ItemDistributor_UV.get(1L,  new Object[0]), bitsd, new Object[]{"XCX", "VMV", " V ", 'M', ItemList.Hull_UV,  'V', ItemList.Conveyor_Module_UV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Good)});
-        GT_ModHandler.addCraftingRecipe(ItemList.Automation_ItemDistributor_MAX.get(1L, new Object[0]), bitsd, new Object[]{"XCX", "VMV", " V ", 'M', ItemList.Hull_MAX, 'V', ItemList.Conveyor_Module_UV, 'C', OreDictNames.craftingChest, 'X', OrePrefixes.circuit.get(Materials.Good)});
-        
         ItemList.Basic_Tank.set(new GT_MetaTileEntity_TankBasic(13101, "basic.tank.tier.00", "Tank I", 0).getStackForm(1L));
         ItemList.Basic_Tank_Steam.set(new GT_MetaTileEntity_TankBasic(13102, "basic.tank.tier.01", "Tank II", 1).getStackForm(1L));
         ItemList.Basic_Tank_LV.set(new GT_MetaTileEntity_TankBasic(13103, "basic.tank.tier.02", "Tank III", 2).getStackForm(1L));

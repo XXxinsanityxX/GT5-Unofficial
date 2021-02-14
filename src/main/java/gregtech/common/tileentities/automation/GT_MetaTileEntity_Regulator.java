@@ -19,14 +19,12 @@ import java.util.Arrays;
 public class GT_MetaTileEntity_Regulator
         extends GT_MetaTileEntity_Buffer {
     public int[] mTargetSlots = {0, 0, 0, 0, 0, 0, 0, 0, 0};
-    private boolean charge = false, decharge = false;
 
     public GT_MetaTileEntity_Regulator(int aID, String aName, String aNameRegional, int aTier) {
-        super(aID, aName, aNameRegional, aTier, 20, new String[]{
+        super(aID, aName, aNameRegional, aTier, 19, new String[]{
         		"Filters up to 9 different Items",
         		"Allows Item-specific output stack size",
-        		"Allows Item-specific output slot",
-        		"Consumes 3EU per moved Item"});
+        		"Allows Item-specific output slot"});
     }
 
     public GT_MetaTileEntity_Regulator(String aName, int aTier, int aInvSlotCount, String aDescription, ITexture[][][] aTextures) {
@@ -106,31 +104,7 @@ public class GT_MetaTileEntity_Regulator
     }
 
     @Override
-    public int rechargerSlotStartIndex() {
-        return 19;
-    }
-
-    @Override
-    public int dechargerSlotStartIndex() {
-        return 19;
-    }
-
-    @Override
-    public int rechargerSlotCount() {
-        return charge ? 1 : 0;
-    }
-
-    @Override
-    public int dechargerSlotCount() {
-        return decharge ? 1 : 0;
-    }
-
-    @Override
     public void onPostTick(IGregTechTileEntity aBaseMetaTileEntity, long aTick) {
         super.onPostTick(aBaseMetaTileEntity, aTick);
-        if (aBaseMetaTileEntity.isServerSide()) {
-            charge = aBaseMetaTileEntity.getStoredEU() / 2 > aBaseMetaTileEntity.getEUCapacity() / 3;
-            decharge = aBaseMetaTileEntity.getStoredEU() < aBaseMetaTileEntity.getEUCapacity() / 3;
-        }
     }
 }

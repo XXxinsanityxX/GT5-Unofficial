@@ -9,8 +9,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-import static gregtech.api.enums.GT_Values.V;
-
 public abstract class GT_MetaTileEntity_Buffer extends GT_MetaTileEntity_TieredMachineBlock {
     public boolean bOutput = false, bRedstoneIfFull = false, bInvert = false;
     public int mSuccess = 0, mTargetStackSize = 0;
@@ -36,12 +34,12 @@ public abstract class GT_MetaTileEntity_Buffer extends GT_MetaTileEntity_TieredM
         ITexture[][][] rTextures = new ITexture[6][17][];
         ITexture tIcon = getOverlayIcon(), tOut = new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_PIPE_OUT), tUp = new GT_RenderedTexture(Textures.BlockIcons.ARROW_UP), tDown = new GT_RenderedTexture(Textures.BlockIcons.ARROW_DOWN), tLeft = new GT_RenderedTexture(Textures.BlockIcons.ARROW_LEFT), tRight = new GT_RenderedTexture(Textures.BlockIcons.ARROW_RIGHT);
         for (byte i = -1; i < 16; i++) {
-            rTextures[0][i + 1] = new ITexture[]{Textures.BlockIcons.MACHINE_CASINGS[mTier][i + 1], tOut};
-            rTextures[1][i + 1] = new ITexture[]{Textures.BlockIcons.MACHINE_CASINGS[mTier][i + 1], tRight, tIcon};
-            rTextures[2][i + 1] = new ITexture[]{Textures.BlockIcons.MACHINE_CASINGS[mTier][i + 1], tDown, tIcon};
-            rTextures[3][i + 1] = new ITexture[]{Textures.BlockIcons.MACHINE_CASINGS[mTier][i + 1], tLeft, tIcon};
-            rTextures[4][i + 1] = new ITexture[]{Textures.BlockIcons.MACHINE_CASINGS[mTier][i + 1], tUp, tIcon};
-            rTextures[5][i + 1] = new ITexture[]{Textures.BlockIcons.MACHINE_CASINGS[mTier][i + 1], tIcon};
+            rTextures[0][i + 1] = new ITexture[]{new GT_RenderedTexture(Textures.BlockIcons.CASING_MACHINE), tOut};
+            rTextures[1][i + 1] = new ITexture[]{new GT_RenderedTexture(Textures.BlockIcons.CASING_MACHINE), tRight, tIcon};
+            rTextures[2][i + 1] = new ITexture[]{new GT_RenderedTexture(Textures.BlockIcons.CASING_MACHINE), tDown, tIcon};
+            rTextures[3][i + 1] = new ITexture[]{new GT_RenderedTexture(Textures.BlockIcons.CASING_MACHINE), tLeft, tIcon};
+            rTextures[4][i + 1] = new ITexture[]{new GT_RenderedTexture(Textures.BlockIcons.CASING_MACHINE), tUp, tIcon};
+            rTextures[5][i + 1] = new ITexture[]{new GT_RenderedTexture(Textures.BlockIcons.CASING_MACHINE), tIcon};
         }
         return rTextures;
     }
@@ -119,16 +117,6 @@ public abstract class GT_MetaTileEntity_Buffer extends GT_MetaTileEntity_TieredM
     }
 
     @Override
-    public boolean isEnetInput() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnetOutput() {
-        return true;
-    }
-
-    @Override
     public boolean isInputFacing(byte aSide) {
         return !isOutputFacing(aSide);
     }
@@ -141,36 +129,6 @@ public abstract class GT_MetaTileEntity_Buffer extends GT_MetaTileEntity_TieredM
     @Override
     public boolean isTeleporterCompatible() {
         return false;
-    }
-
-    @Override
-    public long getMinimumStoredEU() {
-        return 512;
-    }
-
-    @Override
-    public long maxEUStore() {
-        return 512 + V[mTier] * 50;
-    }
-
-    @Override
-    public long maxEUInput() {
-        return V[mTier];
-    }
-
-    @Override
-    public long maxEUOutput() {
-        return bOutput ? V[mTier] : 0;
-    }
-
-    @Override
-    public long maxAmperesIn() {
-        return 2;
-    }
-
-    @Override
-    public long maxAmperesOut() {
-        return 2;
     }
 
     @Override
@@ -271,5 +229,10 @@ public abstract class GT_MetaTileEntity_Buffer extends GT_MetaTileEntity_TieredM
     @Override
     public boolean allowGeneralRedstoneOutput(){
     	return true;
+    }
+
+    @Override
+    public boolean isElectric() {
+        return false;
     }
 }

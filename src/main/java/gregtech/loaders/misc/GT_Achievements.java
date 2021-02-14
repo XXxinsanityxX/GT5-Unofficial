@@ -128,7 +128,7 @@ public class GT_Achievements {
         registerAchievement("orbs", -10, -14, ItemList.Energy_LapotronicOrb.get(1), "energyflow", false);
         registerAchievement("thatspower", -8, -14, ItemList.Energy_LapotronicOrb2.get(1), "orbs", false);
         registerAchievement("datasaving", -2, -12, ItemList.Tool_DataOrb.get(1), "stepforward", false);
-        registerAchievement("superbuffer", 0, -12, ItemList.Automation_SuperBuffer_LV.get(1), "datasaving", false);
+        registerAchievement("superbuffer", 0, -12, ItemList.Automation_SuperBuffer_ULV.get(1), "datasaving", false);
         registerAchievement("newstorage", -2, -14, ItemList.Quantum_Chest_HV.get(1), "superbuffer", false);
         registerAchievement("whereistheocean", 2, -14, ItemList.Quantum_Tank_IV.get(1), "superbuffer", false);
         registerAchievement("luck", 2, -6, ItemList.ZPM.get(1), "", false);
@@ -146,7 +146,7 @@ public class GT_Achievements {
         registerAchievement("slurp", 2, -12, ItemList.Pump_HV.get(1), "closeit", false);
         registerAchievement("transport", 4, -10, ItemList.Conveyor_Module_LV.get(1), "lvmotor", false);
         registerAchievement("manipulation", 4, -12, ItemList.Cover_Controller.get(1), "transport", false);
-        registerAchievement("buffer", 4, -14, ItemList.Automation_ChestBuffer_LV.get(1), "manipulation", false);
+        registerAchievement("buffer", 4, -14, ItemList.Automation_ChestBuffer_ULV.get(1), "manipulation", false);
         registerAchievement("complexmachines", 6, -9, ItemList.Robot_Arm_LV.get(1), "lvmotor", false);
         registerAchievement("avengers", 8, -11, ItemList.Machine_LV_Assembler.get(1), "complexmachines", false);
         registerAchievement("filterregulate", 10, -11, ItemList.Component_Filter.get(1), "avengers", false);

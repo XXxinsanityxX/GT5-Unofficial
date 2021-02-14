@@ -14,8 +14,7 @@ public class GT_MetaTileEntity_SuperBuffer
     public GT_MetaTileEntity_SuperBuffer(int aID, String aName, String aNameRegional, int aTier) {
         super(aID, aName, aNameRegional, aTier, 257, new String[]{
         		"Buffers up to 256 Item Stacks",
-        		"Use Screwdriver to regulate output stack size",
-        		"Consumes 1EU per moved Item"});
+        		"Use Screwdriver to regulate output stack size"});
     }
 
     public GT_MetaTileEntity_SuperBuffer(String aName, int aTier, int aInvSlotCount, String aDescription, ITexture[][][] aTextures) {

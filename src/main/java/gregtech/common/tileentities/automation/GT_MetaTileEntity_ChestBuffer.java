@@ -16,8 +16,7 @@ public class GT_MetaTileEntity_ChestBuffer
     public GT_MetaTileEntity_ChestBuffer(int aID, String aName, String aNameRegional, int aTier) {
         super(aID, aName, aNameRegional, aTier, 28, new String[]{
         		"Buffers up to 27 Item Stacks",
-        		"Use Screwdriver to regulate output stack size",
-        		"Consumes 1EU per moved Item"});
+        		"Use Screwdriver to regulate output stack size"});
     }
 
     public GT_MetaTileEntity_ChestBuffer(int aID, String aName, String aNameRegional, int aTier, int aInvSlotCount, String aDescription) {

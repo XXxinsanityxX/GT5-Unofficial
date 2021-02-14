@@ -13,16 +13,14 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class GT_MetaTileEntity_Filter
-        extends GT_MetaTileEntity_Buffer {
+public class GT_MetaTileEntity_Filter extends GT_MetaTileEntity_Buffer {
     public boolean bIgnoreNBT = false;
     public boolean bInvertFilter = false;
 
     public GT_MetaTileEntity_Filter(int aID, String aName, String aNameRegional, int aTier) {
         super(aID, aName, aNameRegional, aTier, 19, new String[]{
         		"Filters up to 9 different Items",
-        		"Use Screwdriver to regulate output stack size",
-        		"Consumes 1EU per moved Item"});
+        		"Use Screwdriver to regulate output stack size"});
     }
 
     public GT_MetaTileEntity_Filter(String aName, int aTier, int aInvSlotCount, String aDescription, ITexture[][][] aTextures) {

@@ -23,8 +23,7 @@ public class GT_MetaTileEntity_ItemDistributor extends GT_MetaTileEntity_Buffer 
 		super(aID, aName, aNameRegional, aTier, 28, new String[]{
 				"Distributes Items between different Machine Sides",
 				"Default Items per Machine Side: 0",
-				"Use Screwdriver to increase/decrease Items per Side",
-				"Consumes 1EU per moved Item"});
+				"Use Screwdriver to increase/decrease Items per Side"});
 	}
 
 	public GT_MetaTileEntity_ItemDistributor(int aID, String aName, String aNameRegional, int aTier, int aInvSlotCount,
@@ -88,8 +87,8 @@ public class GT_MetaTileEntity_ItemDistributor extends GT_MetaTileEntity_Buffer 
         ITexture[][][] returnTextures = new ITexture[2][17][];
         ITexture baseIcon = getOverlayIcon(), pipeIcon = new GT_RenderedTexture(Textures.BlockIcons.OVERLAY_PIPE_OUT);
         for (int i = 0; i < 17; i++) {
-            returnTextures[0][i] = new ITexture[]{Textures.BlockIcons.MACHINE_CASINGS[mTier][i], baseIcon};
-            returnTextures[1][i] = new ITexture[]{Textures.BlockIcons.MACHINE_CASINGS[mTier][i], pipeIcon, baseIcon};
+            returnTextures[0][i] = new ITexture[]{new GT_RenderedTexture(Textures.BlockIcons.CASING_MACHINE), baseIcon};
+            returnTextures[1][i] = new ITexture[]{new GT_RenderedTexture(Textures.BlockIcons.CASING_MACHINE), baseIcon, pipeIcon};
         }
         return returnTextures;
     }

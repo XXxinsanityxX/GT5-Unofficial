@@ -34,7 +34,7 @@ public class GT_Container_TypeFilter
         addSlotToContainer(new GT_Slot_Holo(this.mTileEntity, 10, 26, 63, false, true, 1));
         addSlotToContainer(new GT_Slot_Holo(this.mTileEntity, 10, 44, 63, false, true, 1));
         addSlotToContainer(new GT_Slot_Holo(this.mTileEntity, 10, 62, 63, false, true, 1));
-        addSlotToContainer(new GT_Slot_Holo(this.mTileEntity, 10, 80, 63, false, true, 1));
+        //addSlotToContainer(new GT_Slot_Holo(this.mTileEntity, 10, 80, 63, false, true, 1));
     }
 
     public ItemStack slotClick(int aSlotIndex, int aMouseclick, int aShifthold, EntityPlayer aPlayer) {
@@ -51,15 +51,6 @@ public class GT_Container_TypeFilter
                 return null;
             }
             if (aSlotIndex == 10) {
-                ((GT_MetaTileEntity_TypeFilter) this.mTileEntity.getMetaTileEntity()).bOutput = (!((GT_MetaTileEntity_TypeFilter) this.mTileEntity.getMetaTileEntity()).bOutput);
-                if (((GT_MetaTileEntity_TypeFilter) this.mTileEntity.getMetaTileEntity()).bOutput) {
-                    GT_Utility.sendChatToPlayer(aPlayer, trans("116","Emit Energy to Outputside"));
-                } else {
-                    GT_Utility.sendChatToPlayer(aPlayer, trans("117","Don't emit Energy"));
-                }
-                return null;
-            }
-            if (aSlotIndex == 11) {
                 ((GT_MetaTileEntity_TypeFilter) this.mTileEntity.getMetaTileEntity()).bRedstoneIfFull = (!((GT_MetaTileEntity_TypeFilter) this.mTileEntity.getMetaTileEntity()).bRedstoneIfFull);
                 if (((GT_MetaTileEntity_TypeFilter) this.mTileEntity.getMetaTileEntity()).bRedstoneIfFull) {
                     GT_Utility.sendChatToPlayer(aPlayer, trans("122","Emit Redstone if slots contain something"));
@@ -68,7 +59,7 @@ public class GT_Container_TypeFilter
                 }
                 return null;
             }
-            if (aSlotIndex == 12) {
+            if (aSlotIndex == 11) {
                 ((GT_MetaTileEntity_TypeFilter) this.mTileEntity.getMetaTileEntity()).bInvert = (!((GT_MetaTileEntity_TypeFilter) this.mTileEntity.getMetaTileEntity()).bInvert);
                 if (((GT_MetaTileEntity_TypeFilter) this.mTileEntity.getMetaTileEntity()).bInvert) {
                     GT_Utility.sendChatToPlayer(aPlayer, trans("120","Invert Redstone"));
@@ -77,7 +68,7 @@ public class GT_Container_TypeFilter
                 }
                 return null;
             }
-            if (aSlotIndex == 13) {
+            if (aSlotIndex == 12) {
                 ((GT_MetaTileEntity_TypeFilter) this.mTileEntity.getMetaTileEntity()).bInvertFilter = (!((GT_MetaTileEntity_TypeFilter) this.mTileEntity.getMetaTileEntity()).bInvertFilter);
                 if (((GT_MetaTileEntity_TypeFilter) this.mTileEntity.getMetaTileEntity()).bInvertFilter) {
                     GT_Utility.sendChatToPlayer(aPlayer, trans("124","Invert Filter"));
@@ -86,7 +77,7 @@ public class GT_Container_TypeFilter
                 }
                 return null;
             }
-            if (aSlotIndex == 14) {
+            if (aSlotIndex == 13) {
                 ((GT_MetaTileEntity_TypeFilter) this.mTileEntity.getMetaTileEntity()).bNBTAllowed = (!((GT_MetaTileEntity_TypeFilter) this.mTileEntity.getMetaTileEntity()).bNBTAllowed);
                 if (((GT_MetaTileEntity_TypeFilter) this.mTileEntity.getMetaTileEntity()).bNBTAllowed) {
                     GT_Utility.sendChatToPlayer(aPlayer, trans("126","Ignore NBT"));
