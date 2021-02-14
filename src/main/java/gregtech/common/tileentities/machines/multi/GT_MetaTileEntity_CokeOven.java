@@ -54,12 +54,6 @@ public class GT_MetaTileEntity_CokeOven extends GT_MetaTileEntity_MultiBlockBase
     public Object getClientGUI(int aID, InventoryPlayer aPlayerInventory, IGregTechTileEntity aBaseMetaTileEntity) {
         return new GT_GUIContainer_MultiMachine(aPlayerInventory, aBaseMetaTileEntity, getLocalName(), "CokeOven.png");
     }
-    //@Override
-    //public boolean onRightclick(IGregTechTileEntity aBaseMetaTileEntity, EntityPlayer aPlayer) {
-    //    if (aBaseMetaTileEntity.isClientSide()) return true;
-    //    return true;
-    //}
-
 
     public GT_Recipe.GT_Recipe_Map getRecipeMap() {
         return GT_Recipe.GT_Recipe_Map.sCokeOvenRecipes;
