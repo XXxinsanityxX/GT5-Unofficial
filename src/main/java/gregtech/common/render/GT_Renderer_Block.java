@@ -427,13 +427,12 @@ public class GT_Renderer_Block
             Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX, aFullBlock ? aY - 1 : aY, aZ));
         }
         if (aIcon != null) {
-            for (int i = 0; i < aIcon.length; i++) {
-                if (aIcon[i] != null) {
-                    aIcon[i].renderYNeg(aRenderer, aBlock, aX, aY, aZ);
+            for (ITexture iTexture : aIcon) {
+                if (iTexture != null) {
+                    iTexture.renderYNeg(aRenderer, aBlock, aX, aY, aZ);
                 }
             }
         }
-        aRenderer.flipTexture = false;
     }
 
     public static void renderPositiveYFacing(IBlockAccess aWorld, RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, ITexture[] aIcon, boolean aFullBlock) {
@@ -444,13 +443,12 @@ public class GT_Renderer_Block
             Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX, aFullBlock ? aY + 1 : aY, aZ));
         }
         if (aIcon != null) {
-            for (int i = 0; i < aIcon.length; i++) {
-                if (aIcon[i] != null) {
-                    aIcon[i].renderYPos(aRenderer, aBlock, aX, aY, aZ);
+            for (ITexture iTexture : aIcon) {
+                if (iTexture != null) {
+                    iTexture.renderYPos(aRenderer, aBlock, aX, aY, aZ);
                 }
             }
         }
-        aRenderer.flipTexture = false;
     }
 
     public static void renderNegativeZFacing(IBlockAccess aWorld, RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, ITexture[] aIcon, boolean aFullBlock) {
@@ -460,15 +458,13 @@ public class GT_Renderer_Block
             }
             Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX, aY, aFullBlock ? aZ - 1 : aZ));
         }
-        aRenderer.flipTexture = (!aFullBlock);
         if (aIcon != null) {
-            for (int i = 0; i < aIcon.length; i++) {
-                if (aIcon[i] != null) {
-                    aIcon[i].renderZNeg(aRenderer, aBlock, aX, aY, aZ);
+            for (ITexture iTexture : aIcon) {
+                if (iTexture != null) {
+                    iTexture.renderZNeg(aRenderer, aBlock, aX, aY, aZ);
                 }
             }
         }
-        aRenderer.flipTexture = false;
     }
 
     public static void renderPositiveZFacing(IBlockAccess aWorld, RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, ITexture[] aIcon, boolean aFullBlock) {
@@ -479,13 +475,12 @@ public class GT_Renderer_Block
             Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aX, aY, aFullBlock ? aZ + 1 : aZ));
         }
         if (aIcon != null) {
-            for (int i = 0; i < aIcon.length; i++) {
-                if (aIcon[i] != null) {
-                    aIcon[i].renderZPos(aRenderer, aBlock, aX, aY, aZ);
+            for (ITexture iTexture : aIcon) {
+                if (iTexture != null) {
+                    iTexture.renderZPos(aRenderer, aBlock, aX, aY, aZ);
                 }
             }
         }
-        aRenderer.flipTexture = false;
     }
 
     public static void renderNegativeXFacing(IBlockAccess aWorld, RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, ITexture[] aIcon, boolean aFullBlock) {
@@ -496,13 +491,12 @@ public class GT_Renderer_Block
             Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aFullBlock ? aX - 1 : aX, aY, aZ));
         }
         if (aIcon != null) {
-            for (int i = 0; i < aIcon.length; i++) {
-                if (aIcon[i] != null) {
-                    aIcon[i].renderXNeg(aRenderer, aBlock, aX, aY, aZ);
+            for (ITexture iTexture : aIcon) {
+                if (iTexture != null) {
+                    iTexture.renderXNeg(aRenderer, aBlock, aX, aY, aZ);
                 }
             }
         }
-        aRenderer.flipTexture = false;
     }
 
     public static void renderPositiveXFacing(IBlockAccess aWorld, RenderBlocks aRenderer, Block aBlock, int aX, int aY, int aZ, ITexture[] aIcon, boolean aFullBlock) {
@@ -512,15 +506,13 @@ public class GT_Renderer_Block
             }
             Tessellator.instance.setBrightness(aBlock.getMixedBrightnessForBlock(aWorld, aFullBlock ? aX + 1 : aX, aY, aZ));
         }
-        aRenderer.flipTexture = (!aFullBlock);
         if (aIcon != null) {
-            for (int i = 0; i < aIcon.length; i++) {
-                if (aIcon[i] != null) {
-                    aIcon[i].renderXPos(aRenderer, aBlock, aX, aY, aZ);
+            for (ITexture iTexture : aIcon) {
+                if (iTexture != null) {
+                    iTexture.renderXPos(aRenderer, aBlock, aX, aY, aZ);
                 }
             }
         }
-        aRenderer.flipTexture = false;
     }
 
     public void renderInventoryBlock(Block aBlock, int aMeta, int aModelID, RenderBlocks aRenderer) {
@@ -579,7 +571,7 @@ public class GT_Renderer_Block
         if (aTileEntity == null) {
             return false;
         }
-        if (((aTileEntity instanceof IGregTechTileEntity)) && (((IGregTechTileEntity) aTileEntity).getMetaTileEntity() != null) && (((IGregTechTileEntity) aTileEntity).getMetaTileEntity().renderInWorld(aWorld, aX, aY, aZ, aBlock, aRenderer))) {
+        if (aTileEntity instanceof IGregTechTileEntity && (((IGregTechTileEntity) aTileEntity).getMetaTileEntity() != null) && (((IGregTechTileEntity) aTileEntity).getMetaTileEntity().renderInWorld(aWorld, aX, aY, aZ, aBlock, aRenderer))) {
             return true;
         }
         if ((aTileEntity instanceof IPipeRenderedTileEntity)) {
