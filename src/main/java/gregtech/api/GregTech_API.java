@@ -207,6 +207,7 @@ public class GregTech_API {
     public static boolean mTConstruct = false;
     public static boolean mexNihilo = false;
     public static boolean mGalacticraft = false;
+    public static boolean mAE2 = false;
 
     public static boolean mUseOnlyGoodSolderingMaterials = false;
 

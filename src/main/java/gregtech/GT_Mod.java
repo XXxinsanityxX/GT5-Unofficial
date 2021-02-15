@@ -134,6 +134,7 @@ public class GT_Mod implements IGT_Mod {
         GregTech_API.mTConstruct = Loader.isModLoaded("TConstruct");
         GregTech_API.mexNihilo = Loader.isModLoaded("exnihilo");
         GregTech_API.mGalacticraft = Loader.isModLoaded("GalacticraftCore");
+        GregTech_API.mAE2 = Loader.isModLoaded("appliedenergistics2");
         GT_Log.mLogFile = new File(aEvent.getModConfigurationDirectory().getParentFile(), "logs/GregTech.log");
         if (!GT_Log.mLogFile.exists()) {
             try {
@@ -184,6 +185,7 @@ public class GT_Mod implements IGT_Mod {
         GT_Log.out.println("GT_Mod: Are you there TConstruct? " + GregTech_API.mTConstruct);
         GT_Log.out.println("GT_Mod: Are you there exnihilo? " + GregTech_API.mexNihilo);
         GT_Log.out.println("GT_Mod: Are you there GalacticraftCore? " + GregTech_API.mGalacticraft);
+        GT_Log.out.println("GT_Mod: Are you there appliedenergistics2? " + GregTech_API.mAE2);
 
         GT_Log.out.println("GT_Mod: Setting Configs");
         GT_Values.D1 = tMainConfig.get(aTextGeneral, "Debug", false).getBoolean(false);
